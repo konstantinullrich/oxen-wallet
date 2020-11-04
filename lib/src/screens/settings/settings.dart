@@ -9,7 +9,7 @@ import 'package:cake_wallet/routes.dart';
 import 'package:cake_wallet/generated/i18n.dart';
 import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/transaction_priority.dart';
+import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
 import 'package:cake_wallet/src/stores/settings/settings_store.dart';
 import 'package:cake_wallet/src/stores/action_list/action_list_display_mode.dart';
 import 'package:cake_wallet/src/screens/base_page.dart';
@@ -421,7 +421,7 @@ class SettingsFormState extends State<SettingsForm> {
   Future<void> _setTransactionPriority(BuildContext context) async {
     final settingsStore = Provider.of<SettingsStore>(context);
     final selectedPriority =
-        await presentPicker(context, TransactionPriority.all);
+        await presentPicker(context, MoneroTransactionPriority.all);
 
     if (selectedPriority != null) {
       await settingsStore.setCurrentTransactionPriority(

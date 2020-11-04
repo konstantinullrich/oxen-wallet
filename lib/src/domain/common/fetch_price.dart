@@ -1,14 +1,15 @@
 import 'dart:convert';
-import 'package:http/http.dart';
+
 import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
 import 'package:cake_wallet/src/domain/common/currency_formatter.dart';
+import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
+import 'package:http/http.dart';
 
 const fiatApiAuthority = 'fiat-api.cakewallet.com';
 const fiatApiPath = '/v1/rates';
 
 Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
-  double price = 0.0;
+  var price = 0.0;
 
   try {
     final fiatStringified = fiat.toString();

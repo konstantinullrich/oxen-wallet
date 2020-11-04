@@ -9,6 +9,8 @@
 
 using namespace std::chrono_literals;
 
+namespace Loki = Wallet;
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -65,7 +67,7 @@ struct TransactionInfoRow
 
     int64_t datetime;
 
-    TransactionInfoRow(Monero::TransactionInfo *transaction)
+    TransactionInfoRow(Loki::TransactionInfo *transaction)
     {
         amount = transaction->amount();
         fee = transaction->fee();
@@ -86,9 +88,9 @@ struct PendingTransactionRaw
     uint64_t amount;
     uint64_t fee;
     char *hash;
-    Monero::PendingTransaction *transaction;
+    Loki::PendingTransaction *transaction;
 
-    PendingTransactionRaw(Monero::PendingTransaction *_transaction)
+    PendingTransactionRaw(Loki::PendingTransaction *_transaction)
     {
         transaction = _transaction;
         amount = _transaction->amount();
@@ -97,14 +99,14 @@ struct PendingTransactionRaw
     }
 };
 
-Monero::Wallet *m_wallet;
-Monero::TransactionHistory *m_transaction_history;
-Monero::Subaddress *m_subaddress;
-Monero::SubaddressAccount *m_account;
+Loki::Wallet *m_wallet;
+Loki::TransactionHistory *m_transaction_history;
+Loki::Subaddress *m_subaddress;
+Loki::SubaddressAccount *m_account;
 uint64_t m_last_known_wallet_height;
 std::mutex m_store_mtx;
 
-void change_current_wallet(Monero::Wallet *wallet)
+void change_current_wallet(Loki::Wallet *wallet)
 {
     m_wallet = wallet;
      m_transaction_history = nullptr;
@@ -128,34 +130,36 @@ void change_current_wallet(Monero::Wallet *wallet)
     }
 }
 
-Monero::Wallet *get_current_wallet()
+Loki::Wallet *get_current_wallet()
 {
     return m_wallet;
 }
 
 bool create_wallet(char *path, char *password, char *language, int32_t networkType, char *error)
 {
-    Monero::NetworkType _networkType = static_cast<Monero::NetworkType>(networkType);
-    Monero::WalletManager *walletManager = Monero::WalletManagerFactory::getWalletManager();
-    Monero::Wallet *wallet = walletManager->createWallet(path, password, language, _networkType);
+    Loki::NetworkType _networkType = static_cast<Loki::NetworkType>(networkType);
+    Loki::WalletManagerBase *walletManager = Loki::WalletManagerFactory::getWalletManager();
+    Loki::Wallet *wallet = walletManager->createWallet(path, password, language, _networkType);
 
-    int status;
-    std::string errorString;
+    // int status;
+    // std::string errorString;
 
-    wallet->statusWithErrorString(status, errorString);
+    auto stat = wallet->status();
 
-    if (status != Monero::Wallet::Status_Ok)
+    auto& [status, errorString] = stat;
+
+    if (status != Loki::Wallet::Status_Ok)
     {
         error = strdup(errorString.c_str());
         return false;
     }
 
     walletManager->closeWallet(wallet);
-    wallet = walletManager->openWallet(std::string(path), std::string(password), networkType);
+    wallet = walletManager->openWallet(std::string(path), std::string(password), _networkType);
     
-    wallet->statusWithErrorString(status, errorString);
+    stat = wallet->status();
 
-    if (status != Monero::Wallet::Status_Ok)
+    if (status != Loki::Wallet::Status_Ok)
     {
         error = strdup(errorString.c_str());
         return false;
@@ -168,20 +172,20 @@ bool create_wallet(char *path, char *password, char *language, int32_t networkTy
 
 bool restore_wallet_from_seed(char *path, char *password, char *seed, int32_t networkType, uint64_t restoreHeight, char *error)
 {
-    Monero::NetworkType _networkType = static_cast<Monero::NetworkType>(networkType);
-    Monero::Wallet *wallet = Monero::WalletManagerFactory::getWalletManager()->recoveryWallet(
+    Loki::NetworkType _networkType = static_cast<Loki::NetworkType>(networkType);
+    Loki::Wallet *wallet = Loki::WalletManagerFactory::getWalletManager()->recoveryWallet(
         std::string(path),
         std::string(password),
         std::string(seed),
         _networkType,
         (uint64_t)restoreHeight);
 
-    int status;
-    std::string errorString;
+    // int status;
+    // std::string errorString;
 
-    wallet->statusWithErrorString(status, errorString);
+    auto [status, errorString] = wallet->status();
 
-    if (status != Monero::Wallet::Status_Ok)
+    if (status != Loki::Wallet::Status_Ok)
     {
         error = strdup(errorString.c_str());
         return false;
@@ -193,8 +197,8 @@ bool restore_wallet_from_seed(char *path, char *password, char *seed, int32_t ne
 
 bool restore_wallet_from_keys(char *path, char *password, char *language, char *address, char *viewKey, char *spendKey, int32_t networkType, uint64_t restoreHeight, char *error)
 {
-    Monero::NetworkType _networkType = static_cast<Monero::NetworkType>(networkType);
-    Monero::Wallet *wallet = Monero::WalletManagerFactory::getWalletManager()->createWalletFromKeys(
+    Loki::NetworkType _networkType = static_cast<Loki::NetworkType>(networkType);
+    Loki::Wallet *wallet = Loki::WalletManagerFactory::getWalletManager()->createWalletFromKeys(
         std::string(path),
         std::string(password),
         std::string(language),
@@ -204,12 +208,12 @@ bool restore_wallet_from_keys(char *path, char *password, char *language, char *
         std::string(viewKey),
         std::string(spendKey));
 
-    int status;
-    std::string errorString;
+    // int status;
+    // std::string errorString;
 
-    wallet->statusWithErrorString(status, errorString);
+    auto [status, errorString] = wallet->status();
 
-    if (status != Monero::Wallet::Status_Ok)
+    if (status != Loki::Wallet::Status_Ok)
     {
         error = strdup(errorString.c_str());
         return false;
@@ -221,20 +225,20 @@ bool restore_wallet_from_keys(char *path, char *password, char *language, char *
 
 void load_wallet(char *path, char *password, int32_t nettype)
 {
-    Monero::NetworkType networkType = static_cast<Monero::NetworkType>(nettype);
-    Monero::WalletManager *walletManager = Monero::WalletManagerFactory::getWalletManager();
-    Monero::Wallet *wallet = walletManager->openWallet(std::string(path), std::string(password), networkType);
+    Loki::NetworkType networkType = static_cast<Loki::NetworkType>(nettype);
+    Loki::WalletManagerBase *walletManager = Loki::WalletManagerFactory::getWalletManager();
+    Loki::Wallet *wallet = walletManager->openWallet(std::string(path), std::string(password), networkType);
     change_current_wallet(wallet);
 }
 
 bool is_wallet_exist(char *path)
 {
-    return Monero::WalletManagerFactory::getWalletManager()->walletExists(std::string(path));
+    return Loki::WalletManagerFactory::getWalletManager()->walletExists(std::string(path));
 }
 
 void close_current_wallet()
 {
-    Monero::WalletManagerFactory::getWalletManager()->closeWallet(get_current_wallet());
+    Loki::WalletManagerFactory::getWalletManager()->closeWallet(get_current_wallet());
     change_current_wallet(nullptr);
 }
 
@@ -300,7 +304,7 @@ bool connect_to_node(char *error)
 
     if (!is_connected)
     {
-        error = strdup(get_current_wallet()->errorString().c_str());
+        error = strdup(get_current_wallet()->status().second.c_str());
     }
 
     return is_connected;
@@ -309,7 +313,7 @@ bool connect_to_node(char *error)
 bool setup_node(char *address, char *login, char *password, bool use_ssl, bool is_light_wallet, char *error)
 {
     nice(19);
-    Monero::Wallet *wallet = get_current_wallet();
+    Loki::Wallet *wallet = get_current_wallet();
     
     std::string _login = "";
     std::string _password = "";
@@ -328,10 +332,10 @@ bool setup_node(char *address, char *login, char *password, bool use_ssl, bool i
 
     if (!inited)
     {
-        error = strdup(wallet->errorString().c_str());
+        error = strdup(wallet->status().second.c_str());
     } else if (!wallet->connectToDaemon()) {
         inited = false;
-        error = strdup(wallet->errorString().c_str());
+        error = strdup(wallet->status().second.c_str());
     }
 
     return inited;
@@ -366,13 +370,13 @@ void store()
 }
 
 bool transaction_create(char *address, char *payment_id, char *amount,
-                                          uint8_t priority_raw, uint32_t subaddr_account, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+                                          uint8_t priority, uint32_t subaddr_account, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
 {
     nice(19);
     
-    auto priority = static_cast<Monero::PendingTransaction::Priority>(priority_raw);
+    //auto priority = static_cast<Loki::PendingTransaction::Priority>(priority_raw);
     std::string _payment_id;
-    Monero::PendingTransaction *transaction;
+    Loki::PendingTransaction *transaction;
 
     if (payment_id != nullptr)
     {
@@ -381,19 +385,19 @@ bool transaction_create(char *address, char *payment_id, char *amount,
 
     if (amount != nullptr)
     {
-        uint64_t _amount = Monero::Wallet::amountFromString(std::string(amount));
-        transaction = m_wallet->createTransaction(std::string(address), _payment_id, _amount, m_wallet->defaultMixin(), priority, subaddr_account);
+        uint64_t _amount = Loki::Wallet::amountFromString(std::string(amount));
+        transaction = m_wallet->createTransaction(std::string(address), _amount, priority, subaddr_account);
     }
     else
     {
-        transaction = m_wallet->createTransaction(std::string(address), _payment_id, Monero::optional<uint64_t>(), m_wallet->defaultMixin(), priority, subaddr_account);
+        transaction = m_wallet->createTransaction(std::string(address), std::optional<uint64_t>(), priority, subaddr_account);
     }
     
-    int status = transaction->status();
+    int status = transaction->status().first;
 
-    if (status == Monero::PendingTransaction::Status::Status_Error || status == Monero::PendingTransaction::Status::Status_Critical)
+    if (status == Loki::PendingTransaction::Status::Status_Error || status == Loki::PendingTransaction::Status::Status_Critical)
     {
-        error = Utf8Box(strdup(transaction->errorString().c_str()));
+        error = Utf8Box(strdup(transaction->status().second.c_str()));
         return false;
     }
 
@@ -407,7 +411,7 @@ bool transaction_commit(PendingTransactionRaw *transaction, Utf8Box &error)
 
     if (!committed)
     {
-        error = Utf8Box(strdup(transaction->transaction->errorString().c_str()));
+        error = Utf8Box(strdup(transaction->transaction->status().second.c_str()));
     }
 
     return committed;
@@ -415,13 +419,13 @@ bool transaction_commit(PendingTransactionRaw *transaction, Utf8Box &error)
 
 int64_t *subaddrress_get_all()
 {
-    std::vector<Monero::SubaddressRow *> _subaddresses = m_subaddress->getAll();
+    std::vector<Loki::SubaddressRow *> _subaddresses = m_subaddress->getAll();
     size_t size = _subaddresses.size();
     int64_t *subaddresses = (int64_t *)malloc(size * sizeof(int64_t));
 
     for (int i = 0; i < size; i++)
     {
-        Monero::SubaddressRow *row = _subaddresses[i];
+        Loki::SubaddressRow *row = _subaddresses[i];
         SubaddressRow *_row = new SubaddressRow(row->getRowId(), strdup(row->getAddress().c_str()), strdup(row->getLabel().c_str()));
         subaddresses[i] = reinterpret_cast<int64_t>(_row);
     }
@@ -431,7 +435,7 @@ int64_t *subaddrress_get_all()
 
 int32_t subaddrress_size()
 {
-    std::vector<Monero::SubaddressRow *> _subaddresses = m_subaddress->getAll();
+    std::vector<Loki::SubaddressRow *> _subaddresses = m_subaddress->getAll();
     return _subaddresses.size();
 }
 
@@ -452,19 +456,19 @@ void subaddress_refresh(uint32_t accountIndex)
 
 int32_t account_size()
 {
-    std::vector<Monero::SubaddressAccountRow *> _accocunts = m_account->getAll();
+    std::vector<Loki::SubaddressAccountRow *> _accocunts = m_account->getAll();
     return _accocunts.size();
 }
 
 int64_t *account_get_all()
 {
-    std::vector<Monero::SubaddressAccountRow *> _accocunts = m_account->getAll();
+    std::vector<Loki::SubaddressAccountRow *> _accocunts = m_account->getAll();
     size_t size = _accocunts.size();
     int64_t *accocunts = (int64_t *)malloc(size * sizeof(int64_t));
 
     for (int i = 0; i < size; i++)
     {
-        Monero::SubaddressAccountRow *row = _accocunts[i];
+        Loki::SubaddressAccountRow *row = _accocunts[i];
         AccountRow *_row = new AccountRow(row->getRowId(), strdup(row->getLabel().c_str()));
         accocunts[i] = reinterpret_cast<int64_t>(_row);
     }
@@ -489,13 +493,13 @@ void account_refresh()
 
 int64_t *transactions_get_all()
 {
-    std::vector<Monero::TransactionInfo *> transactions = m_transaction_history->getAll();
+    std::vector<Loki::TransactionInfo *> transactions = m_transaction_history->getAll();
     size_t size = transactions.size();
     int64_t *transactionAddresses = (int64_t *)malloc(size * sizeof(int64_t));
 
     for (int i = 0; i < size; i++)
     {
-        Monero::TransactionInfo *row = transactions[i];
+        Loki::TransactionInfo *row = transactions[i];
         TransactionInfoRow *tx = new TransactionInfoRow(row);
         transactionAddresses[i] = reinterpret_cast<int64_t>(tx);
     }
@@ -529,7 +533,7 @@ int LedgerFind(char *buffer, size_t len)
 
 void on_startup()
 {
-    Monero::Utils::onStartup();
+    Loki::Utils::onStartup();
 }
 
 void rescan_blockchain()

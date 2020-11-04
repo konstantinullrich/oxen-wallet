@@ -44,7 +44,7 @@ class DigestRequest {
   Map<String, String> parsetAuthorizationHeader({String source}) {
     final authHeaderParts =
         source.substring(7).split(',').map((item) => item.trim());
-    final authenticate = Map<String, String>();
+    final authenticate = <String, String>{};
 
     for (final part in authHeaderParts) {
       final kv = part.split('=');

@@ -5,7 +5,7 @@ import 'package:cake_wallet/src/domain/common/node.dart';
 import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
 import 'package:cake_wallet/src/domain/common/node_list.dart';
-import 'package:cake_wallet/src/domain/common/transaction_priority.dart';
+import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
 
 Future defaultSettingsMigration(
     {@required int version,
@@ -30,7 +30,7 @@ Future defaultSettingsMigration(
           await sharedPreferences.setString(
               'current_fiat_currency', FiatCurrency.usd.toString());
           await sharedPreferences.setInt(
-              'current_fee_priority', TransactionPriority.standart.raw);
+              'current_fee_priority', MoneroTransactionPriority.standart.raw);
           await sharedPreferences.setInt('current_balance_display_mode',
               BalanceDisplayMode.availableBalance.raw);
           await sharedPreferences.setBool('save_recipient_address', true);

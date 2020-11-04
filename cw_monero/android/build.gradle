@@ -33,6 +33,15 @@ android {
     defaultConfig {
         minSdkVersion 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            // Encapsulates your CMake build configurations.
+            cmake {
+                //version "3.10.0+"
+                cppFlags "-std=c++17"
+                arguments '-DANDROID_STL=c++_shared'
+            }
+
+        }
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -41,6 +50,7 @@ android {
         // Encapsulates your CMake build configurations.
         cmake {
           // Provides a relative path to your CMake build script.
+          version "3.10.0+"
           path "CMakeLists.txt"
         }
     }

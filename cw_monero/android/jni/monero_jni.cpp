@@ -35,7 +35,7 @@ void detachJVM(JNIEnv *jenv, int envStat) {
     }
 }
 
-struct MoneroWalletListenerWrapper: Monero::WalletListener {
+struct MoneroWalletListenerWrapper: Loki::WalletListener {
     jobject listener;
 
     MoneroWalletListenerWrapper(JNIEnv *env, jobject aListener) {

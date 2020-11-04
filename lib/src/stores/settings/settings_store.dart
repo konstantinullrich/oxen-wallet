@@ -7,7 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:cake_wallet/src/domain/common/node.dart';
 import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/transaction_priority.dart';
+import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
 import 'package:cake_wallet/src/stores/action_list/action_list_display_mode.dart';
 import 'package:cake_wallet/src/screens/settings/items/item_headers.dart';
 import 'package:cake_wallet/generated/i18n.dart';
@@ -26,7 +26,7 @@ abstract class SettingsStoreBase with Store {
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required TransactionPriority initialTransactionPriority,
+      @required MoneroTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode,
       @required bool initialSaveRecipientAddress,
       @required bool initialAllowBiometricalAuthentication,
@@ -73,11 +73,11 @@ abstract class SettingsStoreBase with Store {
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required TransactionPriority initialTransactionPriority,
+      @required MoneroTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode}) async {
     final currentFiatCurrency = FiatCurrency(
         symbol: sharedPreferences.getString(currentFiatCurrencyKey));
-    final currentTransactionPriority = TransactionPriority.deserialize(
+    final currentTransactionPriority = MoneroTransactionPriority.deserialize(
         raw: sharedPreferences.getInt(currentTransactionPriorityKey));
     final currentBalanceDisplayMode = BalanceDisplayMode.deserialize(
         raw: sharedPreferences.getInt(currentBalanceDisplayModeKey));
@@ -131,7 +131,7 @@ abstract class SettingsStoreBase with Store {
   ObservableList<ActionListDisplayMode> actionlistDisplayMode;
 
   @observable
-  TransactionPriority transactionPriority;
+  MoneroTransactionPriority transactionPriority;
 
   @observable
   BalanceDisplayMode balanceDisplayMode;
@@ -196,7 +196,7 @@ abstract class SettingsStoreBase with Store {
 
   @action
   Future setCurrentTransactionPriority(
-      {@required TransactionPriority priority}) async {
+      {@required MoneroTransactionPriority priority}) async {
     this.transactionPriority = priority;
     await _sharedPreferences.setInt(
         currentTransactionPriorityKey, priority.serialize());

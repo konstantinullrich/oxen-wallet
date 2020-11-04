@@ -1,24 +1,12 @@
 -
-  uri: xmr-node-uk.cakewallet.com:18081
+  uri: public.loki.foundation:22023
   is_default: true
 -
-  uri: xmr-node-eu.cakewallet.com:18081
+  uri: nodes.hashvault.pro:22023
   is_default: false
 -
-  uri: xmr-node-usa-east.cakewallet.com:18081
+  uri: node.loki-pool.com:18081
   is_default: false
 -
-  uri: node.moneroworld.com:18089
-  is_default: false
--
-  uri: node.xmr.pt:18081
-  is_default: false
--
-  uri: node.monero.net:18081
-  is_default: false
--
-  uri: opennode.xmr-tw.org:18089
-  is_default: false
--
-  uri: node.imonero.org:18081
+  uri: freyr.imaginary.stream:22023
   is_default: false

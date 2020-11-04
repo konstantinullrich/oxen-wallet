@@ -12,5 +12,6 @@ abstract class EnumerableItem<T> {
 
 mixin Serializable<T> on EnumerableItem<T> {
   static Serializable deserialize<T>({T raw}) => null;
+
   T serialize() => raw;
 }

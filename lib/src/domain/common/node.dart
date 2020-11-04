@@ -1,8 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:hive/hive.dart';
+
 import 'package:cake_wallet/src/domain/common/digest_request.dart';
+import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
 
 part 'node.g.dart';
 
@@ -38,12 +39,12 @@ class Node extends HiveObject {
       final url = Uri.http(uri, '/json_rpc');
       final headers = {'Content-type': 'application/json'};
       final body =
-          json.encode({"jsonrpc": "2.0", "id": "0", "method": "get_info"});
+          json.encode({'jsonrpc': '2.0', 'id': '0', 'method': 'get_info'});
       final response =
           await http.post(url.toString(), headers: headers, body: body);
       resBody = json.decode(response.body) as Map<String, dynamic>;
     }
 
-    return !(resBody["result"]["offline"] as bool);
+    return !(resBody['result']['offline'] as bool);
   }
 }

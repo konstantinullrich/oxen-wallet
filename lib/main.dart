@@ -30,7 +30,7 @@ import 'package:cake_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:cake_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/transaction_priority.dart';
+import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
 import 'package:cake_wallet/src/domain/common/wallet_type.dart';
 import 'package:cake_wallet/src/domain/services/wallet_service.dart';
 import 'package:cake_wallet/generated/i18n.dart';
@@ -88,7 +88,7 @@ void main() async {
       nodes: nodes,
       sharedPreferences: sharedPreferences,
       initialFiatCurrency: FiatCurrency.usd,
-      initialTransactionPriority: TransactionPriority.slow,
+      initialTransactionPriority: MoneroTransactionPriority.slow,
       initialBalanceDisplayMode: BalanceDisplayMode.availableBalance);
   final priceStore = PriceStore();
   final walletStore =
