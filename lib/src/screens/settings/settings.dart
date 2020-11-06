@@ -54,12 +54,10 @@ class SettingsFormState extends State<SettingsForm> {
   final _xmrBtcImage = Image.asset('assets/images/xmr_btc.png');
   final _morphImage = Image.asset('assets/images/morph_icon.png');
 
-  final _emailUrl = 'mailto:support@cakewallet.com';
-  final _telegramUrl = 'https:t.me/cakewallet_bot';
-  final _twitterUrl = 'https:twitter.com/CakewalletXMR';
-  final _changeNowUrl = 'mailto:support@changenow.io';
-  final _xmrToUrl = 'mailto:support@xmr.to';
-  final _morphUrl = 'mailto:support@morphtoken.com';
+  final _emailUrl = 'mailto:team@loki.network';
+  final _telegramUrl = 'https:t.me/LokiCommunity';
+  final _twitterUrl = 'https:twitter.com/Loki_Project';
+  final _githubUrl = 'https:github.com/loki-project';
 
   final _items = <SettingsItem>[];
 
@@ -247,38 +245,26 @@ class SettingsFormState extends State<SettingsForm> {
       SettingsItem(
           onTaped: () => _launchUrl(_emailUrl),
           title: 'Email',
-          link: 'support@cakewallet.com',
+          link: 'team@loki.network',
+          image: null,
+          attribute: Attributes.link),
+      SettingsItem(
+          onTaped: () => _launchUrl(_githubUrl),
+          title: 'Github',
+          link: 'github.com/loki-project',
           image: null,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () => _launchUrl(_telegramUrl),
           title: 'Telegram',
-          link: 't.me/cakewallet_bot',
+          link: 't.me/LokiCommunity',
           image: _telegramImage,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () => _launchUrl(_twitterUrl),
           title: 'Twitter',
-          link: 'twitter.com/CakewalletXMR',
+          link: 'twitter.com/Loki_Project',
           image: _twitterImage,
-          attribute: Attributes.link),
-      SettingsItem(
-          onTaped: () => _launchUrl(_changeNowUrl),
-          title: 'ChangeNow',
-          link: 'support@changenow.io',
-          image: _changeNowImage,
-          attribute: Attributes.link),
-      SettingsItem(
-          onTaped: () => _launchUrl(_xmrToUrl),
-          title: 'XMR.to',
-          link: 'support@xmr.to',
-          image: _xmrBtcImage,
-          attribute: Attributes.link),
-      SettingsItem(
-          onTaped: () => _launchUrl(_morphUrl),
-          title: 'MorphToken',
-          link: 'support@morphtoken.com',
-          image: _morphImage,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () {

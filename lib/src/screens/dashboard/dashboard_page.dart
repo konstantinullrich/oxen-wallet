@@ -51,7 +51,7 @@ class DashboardPage extends BasePage {
             Text(
               walletStore.name,
               style: TextStyle(
-                  color: Theme.of(context).primaryTextTheme.title.color),
+                  color: Theme.of(context).primaryTextTheme.headline6.color),
             ),
             SizedBox(height: 5),
             Text(
@@ -59,7 +59,7 @@ class DashboardPage extends BasePage {
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 10,
-                  color: Theme.of(context).primaryTextTheme.title.color),
+                  color: Theme.of(context).primaryTextTheme.headline6.color),
             ),
           ]);
     });
@@ -80,13 +80,13 @@ class DashboardPage extends BasePage {
   @override
   Widget body(BuildContext context) => DashboardPageBody(key: _bodyKey);
 
-  @override
-  Widget floatingActionButton(BuildContext context) => FloatingActionButton(
-      child: Image.asset('assets/images/exchange_icon.png',
-          color: Colors.white, height: 26, width: 22),
-      backgroundColor: Palette.floatingActionButton,
-      onPressed: () async => await Navigator.of(context, rootNavigator: true)
-          .pushNamed(Routes.exchange));
+  // @override
+  // Widget floatingActionButton(BuildContext context) => FloatingActionButton(
+  //     child: Image.asset('assets/images/exchange_icon.png',
+  //         color: Colors.white, height: 26, width: 22),
+  //     backgroundColor: Palette.floatingActionButton,
+  //     onPressed: () async => await Navigator.of(context, rootNavigator: true)
+  //         .pushNamed(Routes.exchange));
 
   void _presentWalletMenu(BuildContext bodyContext) {
     final walletMenu = WalletMenu(bodyContext);
@@ -158,7 +158,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                               final status = syncStore.status;
                               final statusText = status.title();
                               final progress = syncStore.status.progress();
-                              final isFialure = status is FailedSyncStatus;
+                              final isFailure = status is FailedSyncStatus;
 
                               var descriptionText = '';
 
@@ -193,7 +193,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
-                                            color: isFialure
+                                            color: isFailure
                                                 ? Palette.failure
                                                 : Palette.cakeGreen)),
                                     Text(descriptionText,
@@ -506,11 +506,11 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                     fontSize: 16.0,
                                     color: Theme.of(context)
                                         .primaryTextTheme
-                                        .subtitle
+                                        .subtitle2
                                         .color)),
                             onSelected: (item) async {
                               if (item == 2) {
-                                final List<DateTime> picked =
+                                final picked =
                                     await date_rage_picker.showDatePicker(
                                         context: context,
                                         initialFirstDate: DateTime.now()
