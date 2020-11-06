@@ -1,4 +1,4 @@
-import 'package:cake_wallet/src/domain/common/enumerable_item.dart';
+import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
 import 'package:hive/hive.dart';
 
 part 'crypto_currency.g.dart';
@@ -9,7 +9,7 @@ class CryptoCurrency extends EnumerableItem<int> with Serializable<int> {
       : super(title: title, raw: raw);
 
   static const all = [
-    CryptoCurrency.xmr,
+    CryptoCurrency.loki,
     CryptoCurrency.ada,
     CryptoCurrency.bch,
     CryptoCurrency.bnb,
@@ -22,9 +22,10 @@ class CryptoCurrency extends EnumerableItem<int> with Serializable<int> {
     CryptoCurrency.trx,
     CryptoCurrency.usdt,
     CryptoCurrency.xlm,
-    CryptoCurrency.xrp
+    CryptoCurrency.xrp,
+    CryptoCurrency.xmr
   ];
-  static const xmr = CryptoCurrency(title: 'XMR', raw: 0);
+  static const loki = CryptoCurrency(title: 'LOKI', raw: 0);
   static const ada = CryptoCurrency(title: 'ADA', raw: 1);
   static const bch = CryptoCurrency(title: 'BCH', raw: 2);
   static const bnb = CryptoCurrency(title: 'BNB', raw: 3);
@@ -38,11 +39,13 @@ class CryptoCurrency extends EnumerableItem<int> with Serializable<int> {
   static const usdt = CryptoCurrency(title: 'USDT', raw: 11);
   static const xlm = CryptoCurrency(title: 'XLM', raw: 12);
   static const xrp = CryptoCurrency(title: 'XRP', raw: 13);
+  static const xmr = CryptoCurrency(title: 'XMR', raw: 14);
+
 
   static CryptoCurrency deserialize({int raw}) {
     switch (raw) {
       case 0:
-        return CryptoCurrency.xmr;
+        return CryptoCurrency.loki;
       case 1:
         return CryptoCurrency.ada;
       case 2:
@@ -69,6 +72,8 @@ class CryptoCurrency extends EnumerableItem<int> with Serializable<int> {
         return CryptoCurrency.xlm;
       case 13:
         return CryptoCurrency.xrp;
+      case 14:
+        return CryptoCurrency.xmr;
       default:
         return null;
     }
@@ -76,6 +81,8 @@ class CryptoCurrency extends EnumerableItem<int> with Serializable<int> {
 
   static CryptoCurrency fromString(String raw) {
     switch (raw.toLowerCase()) {
+      case 'loki':
+        return CryptoCurrency.loki;
       case 'xmr':
         return CryptoCurrency.xmr;
       case 'ada':

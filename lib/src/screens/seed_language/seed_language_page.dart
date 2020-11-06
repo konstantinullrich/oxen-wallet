@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/screens/seed_language/widgets/seed_language_picker.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/screens/seed_language/widgets/seed_language_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:loki_wallet/src/stores/seed_language/seed_language_store.dart';
 
 class SeedLanguage extends BasePage {
   final imageSeed = Image.asset('assets/images/seedIco.png');

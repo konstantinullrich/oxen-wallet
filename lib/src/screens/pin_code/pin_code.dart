@@ -1,9 +1,9 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 abstract class PinCodeWidget extends StatefulWidget {
   PinCodeWidget({Key key, this.onPinCodeEntered, this.hasLengthSwitcher})

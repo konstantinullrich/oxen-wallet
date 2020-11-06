@@ -1,17 +1,17 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:loki_wallet/src/domain/loki/loki_transaction_creation_credentials.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/domain/common/pending_transaction.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/monero/monero_transaction_creation_credentials.dart';
-import 'package:cake_wallet/src/domain/monero/transaction_description.dart';
-import 'package:cake_wallet/src/stores/price/price_store.dart';
-import 'package:cake_wallet/src/stores/send/sending_state.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/openalias_record.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/common/pending_transaction.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
+import 'package:loki_wallet/src/stores/price/price_store.dart';
+import 'package:loki_wallet/src/stores/send/sending_state.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/openalias_record.dart';
 
 part 'send_store.g.dart';
 
@@ -68,7 +68,7 @@ abstract class SendStoreBase with Store {
           : cryptoAmount == S.current.all
               ? null
               : cryptoAmount.replaceAll(',', '.');
-      final credentials = MoneroTransactionCreationCredentials(
+      final credentials = LokiTransactionCreationCredentials(
           address: address,
           paymentId: paymentId ?? '',
           amount: _amount,

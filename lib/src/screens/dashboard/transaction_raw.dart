@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/src/domain/common/transaction_direction.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/src/domain/common/transaction_direction.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 class TransactionRow extends StatelessWidget {
   TransactionRow(

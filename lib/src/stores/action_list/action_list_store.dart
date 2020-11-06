@@ -1,27 +1,27 @@
 import 'dart:async';
-import 'package:cake_wallet/src/domain/exchange/trade.dart';
+import 'package:loki_wallet/src/domain/exchange/trade.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/monero/account.dart';
-import 'package:cake_wallet/src/domain/common/transaction_history.dart';
-import 'package:cake_wallet/src/domain/common/transaction_info.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:cake_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/monero/monero_amount_format.dart';
-import 'package:cake_wallet/src/domain/monero/transaction_description.dart';
-import 'package:cake_wallet/src/stores/price/price_store.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:cake_wallet/src/stores/action_list/action_list_item.dart';
-import 'package:cake_wallet/src/stores/action_list/date_section_item.dart';
-import 'package:cake_wallet/src/stores/action_list/trade_filter_store.dart';
-import 'package:cake_wallet/src/stores/action_list/trade_list_item.dart';
-import 'package:cake_wallet/src/stores/action_list/transaction_filter_store.dart';
-import 'package:cake_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:loki_wallet/src/domain/loki/account.dart';
+import 'package:loki_wallet/src/domain/common/transaction_history.dart';
+import 'package:loki_wallet/src/domain/common/transaction_info.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
+import 'package:loki_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/loki/loki_amount_format.dart';
+import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
+import 'package:loki_wallet/src/stores/price/price_store.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:loki_wallet/src/stores/action_list/action_list_item.dart';
+import 'package:loki_wallet/src/stores/action_list/date_section_item.dart';
+import 'package:loki_wallet/src/stores/action_list/trade_filter_store.dart';
+import 'package:loki_wallet/src/stores/action_list/trade_list_item.dart';
+import 'package:loki_wallet/src/stores/action_list/transaction_filter_store.dart';
+import 'package:loki_wallet/src/stores/action_list/transaction_list_item.dart';
 
 part 'action_list_store.g.dart';
 
@@ -36,8 +36,8 @@ abstract class ActionListBase with Store {
       @required this.tradeFilterStore,
       @required this.transactionDescriptions,
       @required this.tradesSource}) {
-    trades = List<TradeListItem>();
-    _transactions = List<TransactionListItem>();
+    trades = <TradeListItem>[];
+    _transactions = <TransactionListItem>[];
     _walletService = walletService;
     _settingsStore = settingsStore;
     _priceStore = priceStore;
@@ -60,11 +60,11 @@ abstract class ActionListBase with Store {
   }
 
   static List<ActionListItem> formattedItemsList(List<ActionListItem> items) {
-    final formattedList = List<ActionListItem>();
+    final formattedList = <ActionListItem>[];
     DateTime lastDate;
     items.sort((a, b) => b.date.compareTo(a.date));
 
-    for (int i = 0; i < items.length; i++) {
+    for (var i = 0; i < items.length; i++) {
       final transaction = items[i];
 
       if (lastDate == null) {
@@ -94,12 +94,12 @@ abstract class ActionListBase with Store {
   @computed
   List<TransactionListItem> get transactions {
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.xmr);
+        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.loki);
     final price = _priceStore.prices[symbol];
 
     _transactions.forEach((item) {
       final amount = calculateFiatAmountRaw(
-          cryptoAmount: moneroAmountToDouble(amount: item.transaction.amount),
+          cryptoAmount: lokiAmountToDouble(amount: item.transaction.amount),
           price: price);
       item.transaction.changeFiatAmount(amount);
     });
@@ -115,7 +115,7 @@ abstract class ActionListBase with Store {
 
   @computed
   List<ActionListItem> get items {
-    final _items = List<ActionListItem>();
+    final _items = <ActionListItem>[];
 
     if (_settingsStore.actionlistDisplayMode
         .contains(ActionListDisplayMode.transactions)) {
@@ -167,7 +167,7 @@ abstract class ActionListBase with Store {
 //  }
 
   @action
-  Future updateTradeList() async => this.trades =
+  Future updateTradeList() async => trades =
       tradesSource.values.map((trade) => TradeListItem(trade: trade)).toList();
 
   Future _updateTransactionsList() async {
@@ -189,7 +189,7 @@ abstract class ActionListBase with Store {
     _onTransactionsChangeSubscription = _history.transactions
         .listen((transactions) => _setTransactions(transactions));
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       _account = wallet.account;
       _onAccountChangeSubscription = wallet.onAccountChange.listen((account) {
         _account = account;
@@ -202,7 +202,7 @@ abstract class ActionListBase with Store {
 
   Future _setTransactions(List<TransactionInfo> transactions) async {
     final wallet = _walletService.currentWallet;
-    List<TransactionInfo> sortedTransactions = transactions.map((transaction) {
+    var sortedTransactions = transactions.map((transaction) {
       if (transactionDescriptions.values.isNotEmpty) {
         final description = transactionDescriptions.values.firstWhere(
             (desc) => desc.id == transaction.id,
@@ -216,12 +216,12 @@ abstract class ActionListBase with Store {
       return transaction;
     }).toList();
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       sortedTransactions =
           transactions.where((tx) => tx.accountIndex == _account.id).toList();
     }
 
-    this._transactions = sortedTransactions
+    _transactions = sortedTransactions
         .map((transaction) => TransactionListItem(transaction: transaction))
         .toList();
   }

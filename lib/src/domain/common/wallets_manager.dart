@@ -1,5 +1,5 @@
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/common/wallet_description.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/common/wallet_description.dart';
 
 abstract class WalletsManager {
   Future<Wallet> create(String name, String password, String language);

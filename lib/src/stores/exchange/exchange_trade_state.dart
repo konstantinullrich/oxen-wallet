@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/exchange/trade.dart';
+import 'package:loki_wallet/src/domain/exchange/trade.dart';
 
 abstract class ExchangeTradeState {}
 

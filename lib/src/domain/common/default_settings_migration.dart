@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cake_wallet/src/domain/common/node.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/node_list.dart';
-import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:loki_wallet/src/domain/common/node_list.dart';
+import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
 
 Future defaultSettingsMigration(
     {@required int version,
@@ -30,7 +30,7 @@ Future defaultSettingsMigration(
           await sharedPreferences.setString(
               'current_fiat_currency', FiatCurrency.usd.toString());
           await sharedPreferences.setInt(
-              'current_fee_priority', MoneroTransactionPriority.standart.raw);
+              'current_fee_priority', LokiTransactionPriority.standard.raw);
           await sharedPreferences.setInt('current_balance_display_mode',
               BalanceDisplayMode.availableBalance.raw);
           await sharedPreferences.setBool('save_recipient_address', true);
@@ -62,11 +62,11 @@ Future defaultSettingsMigration(
 
 Future<void> replaceNodesMigration({@required Box<Node> nodes}) async {
   final replaceNodes = <String, Node>{
-    'eu-node.cakewallet.io:18081':
-        Node(uri: 'xmr-node-eu.cakewallet.com:18081'),
-    'node.cakewallet.io:18081':
-        Node(uri: 'xmr-node-usa-east.cakewallet.com:18081'),
-    'node.xmr.ru:13666': Node(uri: 'node.monero.net:18081')
+    'public.loki.foundation:22023':
+        Node(uri: 'public.loki.foundation:22023'),
+    'nodes.hashvault.pro:22023':
+        Node(uri: 'nodes.hashvault.pro:22023'),
+    'node.loki-pool.com:18081': Node(uri: 'node.loki-pool.com:18081')
   };
 
   nodes.values.forEach((Node node) async {
@@ -85,12 +85,12 @@ Future<void> changeCurrentNodeToDefault(
     {@required SharedPreferences sharedPreferences,
     @required Box<Node> nodes}) async {
   final timeZone = DateTime.now().timeZoneOffset.inHours;
-  String nodeUri = '';
+  var nodeUri = '';
 
   if (timeZone >= 1) { // Eurasia
-    nodeUri = 'xmr-node-eu.cakewallet.com:18081';
+    nodeUri = 'public.loki.foundation:22023';
   } else if (timeZone <= -4) { // America
-    nodeUri = 'xmr-node-usa-east.cakewallet.com:18081';
+    nodeUri = 'freyr.imaginary.stream:22023';
   }
 
   final node = nodes.values.firstWhere((Node node) => node.uri == nodeUri) ??
@@ -104,9 +104,9 @@ Future<void> replaceDefaultNode(
     {@required SharedPreferences sharedPreferences,
     @required Box<Node> nodes}) async {
   const nodesForReplace = <String>[
-    'xmr-node-uk.cakewallet.com:18081',
-    'eu-node.cakewallet.io:18081',
-    'node.cakewallet.io:18081'
+    'public.loki.foundation:22023',
+    'nodes.hashvault.pro:22023',
+    'node.loki-pool.com:18081'
   ];
   final currentNodeId = sharedPreferences.getInt('current_node_id');
   final currentNode =

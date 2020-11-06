@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/common/balance.dart';
+import 'package:loki_wallet/src/domain/common/balance.dart';
 
 class MoneroBalance extends Balance {
   MoneroBalance({@required this.fullBalance, @required this.unlockedBalance});

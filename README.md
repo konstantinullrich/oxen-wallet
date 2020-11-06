@@ -1,6 +1,6 @@
-# Cake Wallet
+# Loki Wallet
 
-The project description, motivation, build scripts, instructions, tests will be added soon (Summer 2020);
+The Loki Wallet is a Fork of the Cake Wallet.
 
 ## Build 
 
@@ -13,5 +13,7 @@ flutter pub get
 ```shell script 
 flutter pub run build_runner build
 ```
+
+3. Build the Loki Static Libs and paste them into cw_monero/ios/External/android
 
 Copyright (c) 2020 Cake Technologies LLC.

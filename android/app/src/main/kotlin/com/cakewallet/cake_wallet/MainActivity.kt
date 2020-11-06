@@ -1,4 +1,4 @@
-package com.cakewallet.cake_wallet
+package network.loki.next
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterFragmentActivity

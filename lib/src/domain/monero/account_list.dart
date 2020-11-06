@@ -1,6 +1,6 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:cw_monero/account_list.dart' as account_list;
-import 'package:cake_wallet/src/domain/monero/account.dart';
+import 'package:loki_wallet/src/domain/monero/account.dart';
 
 class AccountList {
   AccountList() {

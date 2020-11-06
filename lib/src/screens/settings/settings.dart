@@ -1,30 +1,30 @@
-import 'package:cake_wallet/src/screens/auth/auth_page.dart';
+import 'package:loki_wallet/src/screens/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cake_wallet/palette.dart';
+import 'package:loki_wallet/palette.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/screens/settings/attributes.dart';
-import 'package:cake_wallet/src/screens/disclaimer/disclaimer_page.dart';
-import 'package:cake_wallet/src/screens/settings/items/settings_item.dart';
-import 'package:cake_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:cake_wallet/src/widgets/present_picker.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/screens/settings/attributes.dart';
+import 'package:loki_wallet/src/screens/disclaimer/disclaimer_page.dart';
+import 'package:loki_wallet/src/screens/settings/items/settings_item.dart';
+import 'package:loki_wallet/src/screens/settings/items/item_headers.dart';
+import 'package:loki_wallet/src/widgets/present_picker.dart';
 // Settings widgets
-import 'package:cake_wallet/src/screens/settings/widgets/settings_arrow_list_row.dart';
-import 'package:cake_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
-import 'package:cake_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
-import 'package:cake_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
-import 'package:cake_wallet/src/screens/settings/widgets/settings_text_list_row.dart';
-import 'package:cake_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_arrow_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_text_list_row.dart';
+import 'package:loki_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
 
 class SettingsPage extends BasePage {
   @override
@@ -61,7 +61,7 @@ class SettingsFormState extends State<SettingsForm> {
   final _xmrToUrl = 'mailto:support@xmr.to';
   final _morphUrl = 'mailto:support@morphtoken.com';
 
-  final _items = List<SettingsItem>();
+  final _items = <SettingsItem>[];
 
   void _launchUrl(String url) async {
     if (await canLaunch(url)) await launch(url);
@@ -421,7 +421,7 @@ class SettingsFormState extends State<SettingsForm> {
   Future<void> _setTransactionPriority(BuildContext context) async {
     final settingsStore = Provider.of<SettingsStore>(context);
     final selectedPriority =
-        await presentPicker(context, MoneroTransactionPriority.all);
+        await presentPicker(context, LokiTransactionPriority.all);
 
     if (selectedPriority != null) {
       await settingsStore.setCurrentTransactionPriority(

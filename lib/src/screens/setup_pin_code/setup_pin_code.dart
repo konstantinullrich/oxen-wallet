@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/src/stores/user/user_store.dart';
-import 'package:cake_wallet/src/screens/pin_code/pin_code.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/user/user_store.dart';
+import 'package:loki_wallet/src/screens/pin_code/pin_code.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 class SetupPinCodePage extends BasePage {
   SetupPinCodePage({this.onPinCodeSetup});

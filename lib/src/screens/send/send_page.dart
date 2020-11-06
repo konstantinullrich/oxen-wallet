@@ -1,27 +1,27 @@
-import 'package:cake_wallet/src/screens/auth/auth_page.dart';
-import 'package:cake_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:loki_wallet/src/screens/auth/auth_page.dart';
+import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/src/widgets/address_text_field.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/stores/balance/balance_store.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/stores/send/send_store.dart';
-import 'package:cake_wallet/src/stores/send/sending_state.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/calculate_estimated_fee.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/sync_status.dart';
-import 'package:cake_wallet/src/stores/sync/sync_store.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/src/widgets/address_text_field.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/balance/balance_store.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/stores/send/send_store.dart';
+import 'package:loki_wallet/src/stores/send/sending_state.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/calculate_estimated_fee.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/sync_status.dart';
+import 'package:loki_wallet/src/stores/sync/sync_store.dart';
 
 class SendPage extends BasePage {
   @override
@@ -357,7 +357,7 @@ class SendFormState extends State<SendForm> {
                                   .backgroundColor,
                             )),
                         Text(
-                            '${calculateEstimatedFee(priority: settingsStore.transactionPriority)} XMR',
+                            '${calculateEstimatedFee(priority: settingsStore.transactionPriority)} LOKI',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,

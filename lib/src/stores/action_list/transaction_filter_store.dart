@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/common/transaction_direction.dart';
-import 'package:cake_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:loki_wallet/src/domain/common/transaction_direction.dart';
+import 'package:loki_wallet/src/stores/action_list/transaction_list_item.dart';
 
 part 'transaction_filter_store.g.dart';
 
@@ -36,7 +36,7 @@ abstract class TransactionFilterStoreBase with Store {
   void changeEndDate(DateTime date) => endDate = date;
 
   List<TransactionListItem> filtered({List<TransactionListItem> transactions}) {
-    List<TransactionListItem> _transactions = [];
+    var _transactions = <TransactionListItem>[];
     final needToFilter = !displayOutgoing ||
         !displayIncoming ||
         (startDate != null && endDate != null);

@@ -1,4 +1,4 @@
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
 
 class ExchangePair {
   ExchangePair({this.from, this.to, this.reverse = true});

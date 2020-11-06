@@ -1,11 +1,11 @@
-// import 'package:cake_wallet/src/stores/auth/auth_state.dart';
-// import 'package:cake_wallet/src/stores/login/login_store.dart';
+// import 'package:loki_wallet/src/stores/auth/auth_state.dart';
+// import 'package:loki_wallet/src/stores/login/login_store.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:mobx/mobx.dart';
 // import 'package:provider/provider.dart';
-// import 'package:cake_wallet/src/screens/pin_code/pin_code.dart';
-// import 'package:cake_wallet/src/screens/base_page.dart';
+// import 'package:loki_wallet/src/screens/pin_code/pin_code.dart';
+// import 'package:loki_wallet/src/screens/base_page.dart';
 
 // class LoginPage extends BasePage {
 //   @override

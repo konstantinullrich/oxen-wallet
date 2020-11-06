@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/exchange/trade_request.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/exchange/trade_request.dart';
 
 class ChangeNowRequest extends TradeRequest {
   ChangeNowRequest(

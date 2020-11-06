@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/stores/node_list/node_list_store.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/node_list/node_list_store.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
 
 class NewNodePage extends BasePage {
   @override

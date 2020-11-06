@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 class WelcomePage extends BasePage {
   static const _aspectRatioImage = 1.26;

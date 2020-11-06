@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/services/user_service.dart';
+import 'package:loki_wallet/src/domain/services/user_service.dart';
 
 part 'authentication_store.g.dart';
 

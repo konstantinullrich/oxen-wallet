@@ -1,12 +1,12 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cake_wallet/src/domain/services/wallet_list_service.dart';
-import 'package:cake_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:cake_wallet/src/stores/wallet_restoration/wallet_restoration_state.dart';
-import 'package:cake_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:loki_wallet/src/domain/common/mnemotic_item.dart';
+import 'package:loki_wallet/src/stores/wallet_restoration/wallet_restoration_state.dart';
+import 'package:loki_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 part 'wallet_restoration_store.g.dart';
 
@@ -81,8 +81,8 @@ abstract class WalleRestorationStoreBase with Store {
 
   @action
   void validateSeed(List<MnemoticItem> seed) {
-    final _seed = seed != null ? seed : this.seed;
-    bool isValid = _seed != null ? _seed.length == 25 : false;
+    final _seed = seed ?? this.seed;
+    var isValid = _seed != null ? _seed.length == 25 : false;
 
     if (!isValid) {
       errorMessage = S.current.wallet_restoration_store_incorrect_seed_length;
@@ -125,6 +125,7 @@ abstract class WalleRestorationStoreBase with Store {
     if (isValid && cryptoCurrency != null) {
       switch (cryptoCurrency) {
         case CryptoCurrency.xmr:
+        case CryptoCurrency.loki:
           isValid = (value.length == 95)||(value.length == 106);
           break;
         case CryptoCurrency.ada:

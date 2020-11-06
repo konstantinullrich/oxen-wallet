@@ -1,4 +1,4 @@
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 abstract class SyncStatus {
   const SyncStatus();

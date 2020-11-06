@@ -1,18 +1,19 @@
 import 'dart:async';
-import 'package:cake_wallet/src/domain/common/wallet_info.dart';
+import 'package:loki_wallet/src/domain/common/wallet_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:loki_wallet/src/domain/loki/loki_wallets_manager.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cake_wallet/src/domain/common/encrypt.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/common/wallet_description.dart';
-import 'package:cake_wallet/src/domain/common/wallets_manager.dart';
-import 'package:cake_wallet/src/domain/common/secret_store_key.dart';
-import 'package:cake_wallet/src/domain/common/wallet_type.dart';
-import 'package:cake_wallet/src/domain/monero/monero_wallets_manager.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/common/encrypt.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/common/wallet_description.dart';
+import 'package:loki_wallet/src/domain/common/wallets_manager.dart';
+import 'package:loki_wallet/src/domain/common/secret_store_key.dart';
+import 'package:loki_wallet/src/domain/common/wallet_type.dart';
+import 'package:loki_wallet/src/domain/monero/monero_wallets_manager.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
 
 class WalletIsExistException implements Exception {
   WalletIsExistException(this.name);
@@ -111,6 +112,10 @@ class WalletListService {
       case WalletType.monero:
         walletsManager =
             MoneroWalletsManager(walletInfoSource: walletInfoSource);
+        break;
+      case WalletType.loki:
+        walletsManager =
+            LokiWalletsManager(walletInfoSource: walletInfoSource);
         break;
       case WalletType.none:
         walletsManager = null;

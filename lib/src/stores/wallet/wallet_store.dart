@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:cake_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/monero/account.dart';
-import 'package:cake_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:cake_wallet/src/domain/monero/subaddress.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/loki/account.dart';
+import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
+import 'package:loki_wallet/src/domain/loki/subaddress.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 part 'wallet_store.g.dart';
 
@@ -19,7 +19,7 @@ abstract class WalletStoreBase with Store {
     _walletService = walletService;
     _settingsStore = settingsStore;
     name = '';
-    type = CryptoCurrency.xmr;
+    type = CryptoCurrency.loki;
     amountValue = '';
 
     if (_walletService.currentWallet != null) {
@@ -83,7 +83,7 @@ abstract class WalletStoreBase with Store {
   void setAccount(Account account) {
     final wallet = _walletService.currentWallet;
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       this.account = account;
       wallet.changeAccount(account);
     }
@@ -93,7 +93,7 @@ abstract class WalletStoreBase with Store {
   void setSubaddress(Subaddress subaddress) {
     final wallet = _walletService.currentWallet;
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       this.subaddress = subaddress;
       wallet.changeCurrentSubaddress(subaddress);
     }
@@ -122,7 +122,7 @@ abstract class WalletStoreBase with Store {
     wallet.onNameChange.listen((name) => this.name = name);
     wallet.onAddressChange.listen((address) => this.address = address);
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       _onAccountChangeSubscription =
           wallet.onAccountChange.listen((account) => this.account = account);
       _onSubaddressChangeSubscription = wallet.subaddress
@@ -136,7 +136,7 @@ abstract class WalletStoreBase with Store {
 
   @action
   void validateAmount(String value) {
-    const double maxValue = 18446744.073709551616;
+    const maxValue = 18446744.073709551616;
 
     if (value.isEmpty) {
       isValid = true;

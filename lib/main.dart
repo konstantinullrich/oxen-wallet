@@ -1,4 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -7,35 +8,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:cw_monero/wallet.dart' as monero_wallet;
-import 'package:cake_wallet/router.dart';
+import 'package:loki_wallet/router.dart';
 import 'theme_changer.dart';
 import 'themes.dart';
-import 'package:cake_wallet/src/domain/common/get_encryption_key.dart';
-import 'package:cake_wallet/src/domain/common/contact.dart';
-import 'package:cake_wallet/src/domain/common/node.dart';
-import 'package:cake_wallet/src/domain/common/wallet_info.dart';
-import 'package:cake_wallet/src/domain/exchange/trade.dart';
-import 'package:cake_wallet/src/domain/monero/transaction_description.dart';
-import 'package:cake_wallet/src/reactions/set_reactions.dart';
-import 'package:cake_wallet/src/stores/login/login_store.dart';
-import 'package:cake_wallet/src/stores/balance/balance_store.dart';
-import 'package:cake_wallet/src/stores/sync/sync_store.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/screens/root/root.dart';
-import 'package:cake_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/stores/price/price_store.dart';
-import 'package:cake_wallet/src/domain/services/user_service.dart';
-import 'package:cake_wallet/src/domain/services/wallet_list_service.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/default_settings_migration.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
-import 'package:cake_wallet/src/domain/common/wallet_type.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/language.dart';
-import 'package:cake_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:loki_wallet/src/domain/common/get_encryption_key.dart';
+import 'package:loki_wallet/src/domain/common/contact.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/wallet_info.dart';
+import 'package:loki_wallet/src/domain/exchange/trade.dart';
+import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
+import 'package:loki_wallet/src/reactions/set_reactions.dart';
+import 'package:loki_wallet/src/stores/login/login_store.dart';
+import 'package:loki_wallet/src/stores/balance/balance_store.dart';
+import 'package:loki_wallet/src/stores/sync/sync_store.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/screens/root/root.dart';
+import 'package:loki_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/price/price_store.dart';
+import 'package:loki_wallet/src/domain/services/user_service.dart';
+import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/default_settings_migration.dart';
+import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:loki_wallet/src/domain/common/wallet_type.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/language.dart';
+import 'package:loki_wallet/src/stores/seed_language/seed_language_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,7 +88,7 @@ void main() async {
       nodes: nodes,
       sharedPreferences: sharedPreferences,
       initialFiatCurrency: FiatCurrency.usd,
-      initialTransactionPriority: MoneroTransactionPriority.slow,
+      initialTransactionPriority: LokiTransactionPriority.blink,
       initialBalanceDisplayMode: BalanceDisplayMode.availableBalance);
   final priceStore = PriceStore();
   final walletStore =
@@ -136,7 +136,7 @@ Future<void> initialSetup(
     Box<Node> nodes,
     AuthenticationStore authStore,
     int initialMigrationVersion = 1,
-    WalletType initialWalletType = WalletType.monero}) async {
+    WalletType initialWalletType = WalletType.loki}) async {
   await walletListService.changeWalletManger(walletType: initialWalletType);
   await defaultSettingsMigration(
       version: initialMigrationVersion,

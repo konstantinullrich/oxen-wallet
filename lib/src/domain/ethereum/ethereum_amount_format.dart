@@ -1,4 +1,4 @@
-import 'package:cake_wallet/src/domain/common/crypto_amount_format.dart';
+import 'package:loki_wallet/src/domain/common/crypto_amount_format.dart';
 
 const ethereumAmountDivider = 1000000000000000000;
 

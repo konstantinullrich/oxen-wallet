@@ -2,12 +2,12 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/transaction_info.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/screens/transaction_details/standart_list_item.dart';
-import 'package:cake_wallet/src/screens/transaction_details/standart_list_row.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/transaction_info.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/screens/transaction_details/standart_list_item.dart';
+import 'package:loki_wallet/src/screens/transaction_details/standart_list_row.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
 
 class TransactionDetailsPage extends BasePage {
   TransactionDetailsPage({this.transactionInfo});

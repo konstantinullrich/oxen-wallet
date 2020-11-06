@@ -1,5 +1,5 @@
-import 'package:cake_wallet/src/domain/common/transaction_creation_credentials.dart';
-import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
+import 'package:loki_wallet/src/domain/common/transaction_creation_credentials.dart';
+import 'package:loki_wallet/src/domain/common/monero_transaction_priority.dart';
 
 class MoneroTransactionCreationCredentials
     extends TransactionCreationCredentials {

@@ -1,18 +1,18 @@
 import 'dart:convert';
-import 'package:cake_wallet/src/domain/exchange/trade_not_found_exeption.dart';
+import 'package:loki_wallet/src/domain/exchange/trade_not_found_exeption.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:cake_wallet/.secrets.g.dart' as secrets;
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_pair.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_provider.dart';
-import 'package:cake_wallet/src/domain/exchange/limits.dart';
-import 'package:cake_wallet/src/domain/exchange/trade.dart';
-import 'package:cake_wallet/src/domain/exchange/trade_request.dart';
-import 'package:cake_wallet/src/domain/exchange/trade_state.dart';
-import 'package:cake_wallet/src/domain/exchange/changenow/changenow_request.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:cake_wallet/src/domain/exchange/trade_not_created_exeption.dart';
+import 'package:loki_wallet/.secrets.g.dart' as secrets;
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_pair.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_provider.dart';
+import 'package:loki_wallet/src/domain/exchange/limits.dart';
+import 'package:loki_wallet/src/domain/exchange/trade.dart';
+import 'package:loki_wallet/src/domain/exchange/trade_request.dart';
+import 'package:loki_wallet/src/domain/exchange/trade_state.dart';
+import 'package:loki_wallet/src/domain/exchange/changenow/changenow_request.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:loki_wallet/src/domain/exchange/trade_not_created_exeption.dart';
 
 class ChangeNowExchangeProvider extends ExchangeProvider {
   ChangeNowExchangeProvider()

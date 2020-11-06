@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
 
 class SettingsArrowListRow extends StatelessWidget {
   SettingsArrowListRow({@required this.onTaped, this.title});

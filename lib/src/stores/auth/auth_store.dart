@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/services/user_service.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/stores/auth/auth_state.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/services/user_service.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/stores/auth/auth_state.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 part 'auth_store.g.dart';
 

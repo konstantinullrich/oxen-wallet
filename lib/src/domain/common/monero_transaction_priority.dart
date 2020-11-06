@@ -1,5 +1,5 @@
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/enumerable_item.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
 
 class MoneroTransactionPriority extends EnumerableItem<int> with Serializable<int> {
   const MoneroTransactionPriority({String title, int raw})

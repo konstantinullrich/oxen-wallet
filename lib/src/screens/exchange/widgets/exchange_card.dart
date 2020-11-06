@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/widgets/picker.dart';
-import 'package:cake_wallet/src/widgets/address_text_field.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/widgets/picker.dart';
+import 'package:loki_wallet/src/widgets/address_text_field.dart';
 
 class ExchangeCard extends StatefulWidget {
   ExchangeCard(

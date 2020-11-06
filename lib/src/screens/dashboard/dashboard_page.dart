@@ -3,27 +3,27 @@ import 'package:date_range_picker/date_range_picker.dart' as date_rage_picker;
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/sync_status.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:cake_wallet/src/stores/action_list/action_list_store.dart';
-import 'package:cake_wallet/src/stores/balance/balance_store.dart';
-import 'package:cake_wallet/src/stores/sync/sync_store.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/stores/action_list/date_section_item.dart';
-import 'package:cake_wallet/src/stores/action_list/trade_list_item.dart';
-import 'package:cake_wallet/src/stores/action_list/transaction_list_item.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/screens/dashboard/date_section_raw.dart';
-import 'package:cake_wallet/src/screens/dashboard/trade_row.dart';
-import 'package:cake_wallet/src/screens/dashboard/transaction_raw.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/screens/dashboard/wallet_menu.dart';
-import 'package:cake_wallet/src/widgets/picker.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/sync_status.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:loki_wallet/src/stores/action_list/action_list_store.dart';
+import 'package:loki_wallet/src/stores/balance/balance_store.dart';
+import 'package:loki_wallet/src/stores/sync/sync_store.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/stores/action_list/date_section_item.dart';
+import 'package:loki_wallet/src/stores/action_list/trade_list_item.dart';
+import 'package:loki_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/screens/dashboard/date_section_raw.dart';
+import 'package:loki_wallet/src/screens/dashboard/trade_row.dart';
+import 'package:loki_wallet/src/screens/dashboard/transaction_raw.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/screens/dashboard/wallet_menu.dart';
+import 'package:loki_wallet/src/widgets/picker.dart';
 
 class DashboardPage extends BasePage {
   final _bodyKey = GlobalKey();
@@ -125,15 +125,13 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
     final syncStore = Provider.of<SyncStore>(context);
     final settingsStore = Provider.of<SettingsStore>(context);
     final transactionDateFormat = settingsStore.getCurrentDateFormat(
-          formatUSA: "MMMM d, yyyy, HH:mm",
-          formatDefault: "d MMMM yyyy, HH:mm");
+          formatUSA: 'MMMM d, yyyy, HH:mm',
+          formatDefault: 'd MMMM yyyy, HH:mm');
 
     return Observer(
         key: _listObserverKey,
         builder: (_) {
-          final items = actionListStore.items == null
-              ? <String>[]
-              : actionListStore.items;
+          final items = actionListStore.items ?? <String>[];
           final itemsCount = items.length + 2;
 
           return ListView.builder(

@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/src/domain/services/user_service.dart';
-import 'package:cake_wallet/src/stores/user/user_store_state.dart';
+import 'package:loki_wallet/src/domain/services/user_service.dart';
+import 'package:loki_wallet/src/stores/user/user_store_state.dart';
 
 part 'user_store.g.dart';
 

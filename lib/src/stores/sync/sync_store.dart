@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/common/sync_status.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/common/sync_status.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
 
 part 'sync_store.g.dart';
 

@@ -2,10 +2,10 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
 
 class SubaddressListPage extends BasePage {
   SubaddressListPage();

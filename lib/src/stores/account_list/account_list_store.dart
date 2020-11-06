@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:cake_wallet/src/domain/monero/account.dart';
-import 'package:cake_wallet/src/domain/monero/account_list.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
+import 'package:loki_wallet/src/domain/loki/account.dart';
+import 'package:loki_wallet/src/domain/loki/account_list.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 part 'account_list_store.g.dart';
 
@@ -78,7 +78,7 @@ abstract class AcountListStoreBase with Store {
       await _onAccountsChangeSubscription.cancel();
     }
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       _accountList = wallet.getAccountList();
       _onAccountsChangeSubscription =
           _accountList.accounts.listen((accounts) => this.accounts = accounts);

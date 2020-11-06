@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/common/wallet.dart';
-import 'package:cake_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:cake_wallet/src/domain/monero/subaddress.dart';
-import 'package:cake_wallet/src/domain/monero/subaddress_list.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/domain/monero/account.dart';
+import 'package:loki_wallet/src/domain/common/wallet.dart';
+import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
+import 'package:loki_wallet/src/domain/loki/subaddress.dart';
+import 'package:loki_wallet/src/domain/loki/subaddress_list.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/loki/account.dart';
 
 part 'subaddress_list_store.g.dart';
 
@@ -57,7 +57,7 @@ abstract class SubaddressListStoreBase with Store {
       await _onSubaddressesChangeSubscription.cancel();
     }
 
-    if (wallet is MoneroWallet) {
+    if (wallet is LokiWallet) {
       _account = wallet.account;
       _subaddressList = wallet.getSubaddress();
       _onSubaddressesChangeSubscription = _subaddressList.subaddresses

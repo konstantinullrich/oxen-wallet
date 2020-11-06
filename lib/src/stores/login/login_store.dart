@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cake_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
 
 part 'login_store.g.dart';
 

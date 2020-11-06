@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/services/wallet_list_service.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/stores/wallet_restoration/wallet_restoration_store.dart';
-import 'package:cake_wallet/src/widgets/seed_widget.dart';
-import 'package:cake_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/stores/wallet_restoration/wallet_restoration_store.dart';
+import 'package:loki_wallet/src/widgets/seed_widget.dart';
+import 'package:loki_wallet/src/stores/seed_language/seed_language_store.dart';
 
 class RestoreWalletFromSeedPage extends BasePage {
   RestoreWalletFromSeedPage(

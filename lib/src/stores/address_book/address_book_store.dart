@@ -1,8 +1,8 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/contact.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/contact.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
 import 'package:hive/hive.dart';
 
 part 'address_book_store.g.dart';

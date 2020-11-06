@@ -1,5 +1,5 @@
-import 'package:cake_wallet/theme_changer.dart';
-import 'package:cake_wallet/themes.dart';
+import 'package:loki_wallet/theme_changer.dart';
+import 'package:loki_wallet/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

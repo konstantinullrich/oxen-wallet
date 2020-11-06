@@ -1,6 +1,6 @@
 import 'package:encrypt/encrypt.dart';
 import 'package:password/password.dart';
-import 'package:cake_wallet/.secrets.g.dart' as secrets;
+import 'package:loki_wallet/.secrets.g.dart' as secrets;
 
 String encrypt({String source, String key, int keyLength = 16}) {
   final _key = Key.fromUtf8(key);

@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/stores/address_book/address_book_store.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
 
 class AddressBookPage extends BasePage {
   AddressBookPage({this.isEditable = true});

@@ -1,11 +1,11 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:cake_wallet/src/domain/common/sync_status.dart';
-import 'package:cake_wallet/src/domain/common/transaction_history.dart';
-import 'package:cake_wallet/src/domain/common/wallet_type.dart';
-import 'package:cake_wallet/src/domain/common/transaction_creation_credentials.dart';
-import 'package:cake_wallet/src/domain/common/pending_transaction.dart';
-import 'package:cake_wallet/src/domain/common/balance.dart';
-import 'package:cake_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/sync_status.dart';
+import 'package:loki_wallet/src/domain/common/transaction_history.dart';
+import 'package:loki_wallet/src/domain/common/wallet_type.dart';
+import 'package:loki_wallet/src/domain/common/transaction_creation_credentials.dart';
+import 'package:loki_wallet/src/domain/common/pending_transaction.dart';
+import 'package:loki_wallet/src/domain/common/balance.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
 
 abstract class Wallet {
   WalletType getType();

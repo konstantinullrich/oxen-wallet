@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/theme_changer.dart';
-import 'package:cake_wallet/themes.dart';
-import 'package:cake_wallet/src/stores/settings/settings_store.dart';
-import 'package:cake_wallet/src/widgets/standart_switch.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/theme_changer.dart';
+import 'package:loki_wallet/themes.dart';
+import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:loki_wallet/src/widgets/standart_switch.dart';
 
 class SettingsSwitchListRow extends StatelessWidget {
   SettingsSwitchListRow({@required this.title});

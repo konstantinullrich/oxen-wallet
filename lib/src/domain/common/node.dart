@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cake_wallet/src/domain/common/digest_request.dart';
+import 'package:loki_wallet/src/domain/common/digest_request.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;

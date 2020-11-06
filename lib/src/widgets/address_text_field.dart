@@ -1,10 +1,10 @@
-import 'package:cake_wallet/routes.dart';
+import 'package:loki_wallet/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/contact.dart';
-import 'package:cake_wallet/src/domain/monero/subaddress.dart';
-import 'package:cake_wallet/src/domain/common/qr_scanner.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/contact.dart';
+import 'package:loki_wallet/src/domain/monero/subaddress.dart';
+import 'package:loki_wallet/src/domain/common/qr_scanner.dart';
 
 enum AddressTextFieldOption { qrCode, addressBook, subaddressList }
 

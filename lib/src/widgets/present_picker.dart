@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 Future<T> presentPicker<T extends Object>(
     BuildContext context, List<T> list) async {

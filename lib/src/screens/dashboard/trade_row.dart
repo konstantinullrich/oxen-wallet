@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
 
 class TradeRow extends StatelessWidget {
   TradeRow(

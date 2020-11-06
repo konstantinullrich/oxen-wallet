@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/stores/account_list/account_list_store.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/account_list/account_list_store.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
 
 class AccountListPage extends BasePage {
   @override

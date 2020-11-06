@@ -1,5 +1,5 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:cake_wallet/src/domain/common/transaction_info.dart';
+import 'package:loki_wallet/src/domain/common/transaction_info.dart';
 
 abstract class TransactionHistory {
   Observable<List<TransactionInfo>> transactions;

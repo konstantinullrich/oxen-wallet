@@ -1,23 +1,23 @@
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
-import 'package:cake_wallet/src/stores/send/send_store.dart';
-import 'package:cake_wallet/src/stores/send/sending_state.dart';
-import 'package:cake_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:cake_wallet/src/screens/exchange_trade/widgets/copy_button.dart';
-import 'package:cake_wallet/src/screens/receive/qr_image.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/screens/exchange_trade/widgets/timer_widget.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
+import 'package:loki_wallet/src/stores/send/send_store.dart';
+import 'package:loki_wallet/src/stores/send/sending_state.dart';
+import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:loki_wallet/src/screens/exchange_trade/widgets/copy_button.dart';
+import 'package:loki_wallet/src/screens/receive/qr_image.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/screens/exchange_trade/widgets/timer_widget.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
 
 class ExchangeTradePage extends BasePage {
   @override

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/common/contact.dart';
-import 'package:cake_wallet/src/stores/address_book/address_book_store.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/widgets/address_text_field.dart';
-import 'package:cake_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:cake_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/common/contact.dart';
+import 'package:loki_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/widgets/address_text_field.dart';
+import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:loki_wallet/palette.dart';
 
 class ContactPage extends BasePage {
   ContactPage({this.contact});

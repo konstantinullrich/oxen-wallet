@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
-import 'package:cake_wallet/src/domain/common/currency_formatter.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/common/currency_formatter.dart';
+import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
 import 'package:http/http.dart';
 
+// TODO: USE COINMARKETCAP-PIPE
 const fiatApiAuthority = 'fiat-api.cakewallet.com';
 const fiatApiPath = '/v1/rates';
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/routes.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/routes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cake_wallet/src/screens/restore/widgets/restore_button.dart';
-import 'package:cake_wallet/src/screens/restore/widgets/image_widget.dart';
-import 'package:cake_wallet/src/screens/restore/widgets/base_restore_widget.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/screens/restore/widgets/restore_button.dart';
+import 'package:loki_wallet/src/screens/restore/widgets/image_widget.dart';
+import 'package:loki_wallet/src/screens/restore/widgets/base_restore_widget.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 class RestoreOptionsPage extends BasePage {
   static const _aspectRatioImage = 2.086;

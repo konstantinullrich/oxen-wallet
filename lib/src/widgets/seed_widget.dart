@@ -1,19 +1,19 @@
-import 'package:cake_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/english.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/english_old.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/chinese_simplified.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/dutch.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/german.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/japanese.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/portuguese.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/russian.dart';
-import 'package:cake_wallet/src/domain/monero/mnemonics/spanish.dart';
-import 'package:cake_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/english.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/english_old.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/chinese_simplified.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/dutch.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/german.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/japanese.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/portuguese.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/russian.dart';
+import 'package:loki_wallet/src/domain/monero/mnemonics/spanish.dart';
+import 'package:loki_wallet/src/domain/common/mnemotic_item.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 final List<String> _englishWords = EnglishMnemonics.words + EnglishOldMnemonics.words;
 

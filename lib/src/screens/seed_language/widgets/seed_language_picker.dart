@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cake_wallet/palette.dart';
+import 'package:loki_wallet/palette.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/src/stores/seed_language/seed_language_store.dart';
-import 'package:cake_wallet/src/widgets/present_picker.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:loki_wallet/src/widgets/present_picker.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 class SeedLanguagePicker extends StatelessWidget {
   List<String> seedLocales = [

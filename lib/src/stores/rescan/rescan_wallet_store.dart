@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:cake_wallet/src/domain/services/wallet_service.dart';
+import 'package:loki_wallet/src/domain/services/wallet_service.dart';
 
 part 'rescan_wallet_store.g.dart';
 

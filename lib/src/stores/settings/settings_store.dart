@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive/hive.dart';
-import 'package:cake_wallet/src/domain/common/node.dart';
-import 'package:cake_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:cake_wallet/src/domain/common/fiat_currency.dart';
-import 'package:cake_wallet/src/domain/common/monero_transaction_priority.dart';
-import 'package:cake_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:cake_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/domain/common/default_settings_migration.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:loki_wallet/src/screens/settings/items/item_headers.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:package_info/package_info.dart';
-import 'package:cake_wallet/src/domain/common/language.dart';
+import 'package:loki_wallet/src/domain/common/language.dart';
 import 'package:devicelocale/devicelocale.dart';
 import 'package:intl/intl.dart';
 
@@ -26,7 +26,7 @@ abstract class SettingsStoreBase with Store {
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required MoneroTransactionPriority initialTransactionPriority,
+      @required LokiTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode,
       @required bool initialSaveRecipientAddress,
       @required bool initialAllowBiometricalAuthentication,
@@ -46,7 +46,7 @@ abstract class SettingsStoreBase with Store {
     defaultPinLength = initialPinLength;
     languageCode = initialLanguageCode;
     currentLocale = initialCurrentLocale;
-    itemHeaders = Map();
+    itemHeaders = {};
 
     actionlistDisplayMode.observe(
         (dynamic _) => _sharedPreferences.setInt(displayActionListModeKey,
@@ -73,33 +73,25 @@ abstract class SettingsStoreBase with Store {
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required MoneroTransactionPriority initialTransactionPriority,
+      @required LokiTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode}) async {
     final currentFiatCurrency = FiatCurrency(
         symbol: sharedPreferences.getString(currentFiatCurrencyKey));
-    final currentTransactionPriority = MoneroTransactionPriority.deserialize(
+    final currentTransactionPriority = LokiTransactionPriority.deserialize(
         raw: sharedPreferences.getInt(currentTransactionPriorityKey));
     final currentBalanceDisplayMode = BalanceDisplayMode.deserialize(
         raw: sharedPreferences.getInt(currentBalanceDisplayModeKey));
     final shouldSaveRecipientAddress =
         sharedPreferences.getBool(shouldSaveRecipientAddressKey);
     final allowBiometricalAuthentication =
-        sharedPreferences.getBool(allowBiometricalAuthenticationKey) == null
-            ? false
-            : sharedPreferences.getBool(allowBiometricalAuthenticationKey);
-    final savedDarkTheme = sharedPreferences.getBool(currentDarkTheme) == null
-        ? false
-        : sharedPreferences.getBool(currentDarkTheme);
+        sharedPreferences.getBool(allowBiometricalAuthenticationKey) ?? false;
+    final savedDarkTheme = sharedPreferences.getBool(currentDarkTheme) ?? false;
     final actionlistDisplayMode = ObservableList<ActionListDisplayMode>();
     actionlistDisplayMode.addAll(deserializeActionlistDisplayModes(
         sharedPreferences.getInt(displayActionListModeKey) ?? 11));
-    final defaultPinLength = sharedPreferences.getInt(currentPinLength) == null
-        ? 4
-        : sharedPreferences.getInt(currentPinLength);
+    final defaultPinLength = sharedPreferences.getInt(currentPinLength) ?? 4;
     final savedLanguageCode =
-        sharedPreferences.getString(currentLanguageCode) == null
-            ? await Language.localeDetection()
-            : sharedPreferences.getString(currentLanguageCode);
+        sharedPreferences.getString(currentLanguageCode) ?? await Language.localeDetection();
     final initialCurrentLocale = await Devicelocale.currentLocale;
 
     final store = SettingsStore(
@@ -131,7 +123,7 @@ abstract class SettingsStoreBase with Store {
   ObservableList<ActionListDisplayMode> actionlistDisplayMode;
 
   @observable
-  MoneroTransactionPriority transactionPriority;
+  LokiTransactionPriority transactionPriority;
 
   @observable
   BalanceDisplayMode balanceDisplayMode;
@@ -196,8 +188,8 @@ abstract class SettingsStoreBase with Store {
 
   @action
   Future setCurrentTransactionPriority(
-      {@required MoneroTransactionPriority priority}) async {
-    this.transactionPriority = priority;
+      {@required LokiTransactionPriority priority}) async {
+    transactionPriority = priority;
     await _sharedPreferences.setInt(
         currentTransactionPriorityKey, priority.serialize());
   }

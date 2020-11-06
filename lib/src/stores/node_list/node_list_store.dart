@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:mobx/mobx.dart';
 import 'package:hive/hive.dart';
-import 'package:cake_wallet/src/domain/common/node.dart';
-import 'package:cake_wallet/src/domain/common/node_list.dart';
-import 'package:cake_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/domain/common/node.dart';
+import 'package:loki_wallet/src/domain/common/node_list.dart';
+import 'package:loki_wallet/generated/i18n.dart';
 
 part 'node_list_store.g.dart';
 

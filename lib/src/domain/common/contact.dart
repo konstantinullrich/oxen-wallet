@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:cake_wallet/src/domain/common/crypto_currency.dart';
+import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
 
 part 'contact.g.dart';
 

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:cake_wallet/routes.dart';
-import 'package:cake_wallet/palette.dart';
-import 'package:cake_wallet/generated/i18n.dart';
-import 'package:cake_wallet/src/widgets/primary_button.dart';
-import 'package:cake_wallet/src/domain/common/wallet_description.dart';
-import 'package:cake_wallet/src/screens/base_page.dart';
-import 'package:cake_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:cake_wallet/src/stores/wallet_list/wallet_list_store.dart';
-import 'package:cake_wallet/src/screens/wallet_list/wallet_menu.dart';
-import 'package:cake_wallet/src/widgets/picker.dart';
+import 'package:loki_wallet/routes.dart';
+import 'package:loki_wallet/palette.dart';
+import 'package:loki_wallet/generated/i18n.dart';
+import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:loki_wallet/src/domain/common/wallet_description.dart';
+import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:loki_wallet/src/stores/wallet_list/wallet_list_store.dart';
+import 'package:loki_wallet/src/screens/wallet_list/wallet_menu.dart';
+import 'package:loki_wallet/src/widgets/picker.dart';
 
 class WalletListPage extends BasePage {
   @override
