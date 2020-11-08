@@ -10,8 +10,8 @@ TransactionDirection parseTransactionDirectionFromInt(int raw) {
 
 TransactionDirection parseTransactionDirectionFromNumber(String raw) {
   switch (raw) {
-    case "0": return TransactionDirection.incoming;
-    case "1": return TransactionDirection.outgoing;
+    case '0': return TransactionDirection.incoming;
+    case '1': return TransactionDirection.outgoing;
     default: return null;
   }
 }

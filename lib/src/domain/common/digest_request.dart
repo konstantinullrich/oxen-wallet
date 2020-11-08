@@ -63,7 +63,7 @@ class DigestRequest {
     final dio = __dio.Dio();
     final headers = {'Content-type': 'application/json'};
     final body =
-        json.encode({"jsonrpc": "2.0", "id": "0", "method": "get_info"});
+        json.encode({'jsonrpc': '2.0', 'id': '0', 'method': 'get_info'});
     final credentialsResponse = await dio.post<Object>(url.toString(),
         options: __dio.Options(headers: headers, validateStatus: (_) => true));
     final authenticate = parsetAuthorizationHeader(

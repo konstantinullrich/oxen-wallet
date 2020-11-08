@@ -81,12 +81,12 @@ class MorphTokenExchangeProvider extends ExchangeProvider {
     final headers = {'Content-type': 'application/json'};
     final body =
     json.encode({
-      "input": {
-        "asset": from.toString()
+      'input': {
+        'asset': from.toString()
       },
-      "output": [{
-        "asset": to.toString(),
-        "weight": weight
+      'output': [{
+        'asset': to.toString(),
+        'weight': weight
       }]});
     final response =
     await post(url, headers: headers, body: body);
@@ -140,16 +140,16 @@ class MorphTokenExchangeProvider extends ExchangeProvider {
     const url = apiUri + _morphURISuffix;
     final _request = request as MorphTokenRequest;
     final body = {
-      "input": {
-        "asset": _request.from.toString(),
-        "refund": _request.refundAddress
+      'input': {
+        'asset': _request.from.toString(),
+        'refund': _request.refundAddress
       },
-      "output": [{
-        "asset": _request.to.toString(),
-        "weight": weight,
-        "address": _request.address
+      'output': [{
+        'asset': _request.to.toString(),
+        'weight': weight,
+        'address': _request.address
       }],
-      "tag": "cakewallet"
+      'tag': 'cakewallet'
     };
 
     final response = await post(url,
@@ -205,7 +205,7 @@ class MorphTokenExchangeProvider extends ExchangeProvider {
     final status = responseJSON['state'] as String;
     final state = TradeState.deserialize(raw: status.toLowerCase());
 
-    String amount = "";
+    var amount = '';
     for (final trade in trades.values) {
       if (trade.id == id) {
         amount = trade.amount;

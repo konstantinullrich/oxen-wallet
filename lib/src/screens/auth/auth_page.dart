@@ -37,7 +37,7 @@ class AuthPageState extends State<AuthPage> {
     final authStore = Provider.of<AuthStore>(context);
     final settingsStore = Provider.of<SettingsStore>(context);
 
-    if (settingsStore.allowBiometricalAuthentication) {
+    if (settingsStore.allowBiometricAuthentication) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         final biometricAuth = BiometricAuth();
         biometricAuth.isAuthenticated().then(

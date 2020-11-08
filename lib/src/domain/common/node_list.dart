@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import "package:yaml/yaml.dart";
+import 'package:yaml/yaml.dart';
 import 'package:loki_wallet/src/domain/common/node.dart';
 
 Future<List<Node>> loadDefaultNodes() async {
@@ -18,13 +18,13 @@ Future<List<Node>> loadDefaultNodes() async {
 
 Future resetToDefault(Box<Node> nodeSource) async {
   final nodes = await loadDefaultNodes();
-  final enteties = Map<int, Node>();
+  final entities = <int, Node>{};
 
   await nodeSource.clear();
 
   for (var i = 0; i < nodes.length; i++) {
-    enteties[i] = nodes[i];
+    entities[i] = nodes[i];
   }
 
-  await nodeSource.putAll(enteties);
+  await nodeSource.putAll(entities);
 }

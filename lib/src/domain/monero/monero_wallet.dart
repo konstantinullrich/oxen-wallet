@@ -202,25 +202,19 @@ class MoneroWallet extends Wallet {
 
   @override
   TransactionHistory getHistory() {
-    if (_cachedTransactionHistory == null) {
-      _cachedTransactionHistory = MoneroTransactionHistory();
-    }
+    _cachedTransactionHistory ??= MoneroTransactionHistory();
 
     return _cachedTransactionHistory;
   }
 
   SubaddressList getSubaddress() {
-    if (_cachedSubaddressList == null) {
-      _cachedSubaddressList = SubaddressList();
-    }
+    _cachedSubaddressList ??= SubaddressList();
 
     return _cachedSubaddressList;
   }
 
   AccountList getAccountList() {
-    if (_cachedAccountList == null) {
-      _cachedAccountList = AccountList();
-    }
+    _cachedAccountList ??= AccountList();
 
     return _cachedAccountList;
   }

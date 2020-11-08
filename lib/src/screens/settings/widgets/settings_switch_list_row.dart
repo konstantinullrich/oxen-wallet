@@ -32,12 +32,12 @@ class SettingsSwitchListRow extends StatelessWidget {
         S.of(context).settings_allow_biometrical_authentication) {
       return Observer(
           builder: (_) => StandartSwitch(
-              value: settingsStore.allowBiometricalAuthentication,
+              value: settingsStore.allowBiometricAuthentication,
               onTaped: () {
                 final _currentValue =
-                    !settingsStore.allowBiometricalAuthentication;
-                settingsStore.setAllowBiometricalAuthentication(
-                    allowBiometricalAuthentication: _currentValue);
+                    !settingsStore.allowBiometricAuthentication;
+                settingsStore.setAllowBiometricAuthentication(
+                    allowBiometricAuthentication: _currentValue);
               }));
     }
 

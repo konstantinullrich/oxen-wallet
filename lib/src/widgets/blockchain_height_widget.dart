@@ -108,7 +108,7 @@ class BlockchainHeightState extends State<BlockchainHeightWidget> {
         lastDate: now);
 
     if (date != null) {
-      final height = getHeigthByDate(date: date);
+      final height = getHeightByDate(date: date);
 
       setState(() {
         dateController.text = DateFormat('yyyy-MM-dd').format(date);

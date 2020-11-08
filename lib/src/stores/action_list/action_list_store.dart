@@ -117,13 +117,13 @@ abstract class ActionListBase with Store {
   List<ActionListItem> get items {
     final _items = <ActionListItem>[];
 
-    if (_settingsStore.actionlistDisplayMode
+    if (_settingsStore.actionListDisplayMode
         .contains(ActionListDisplayMode.transactions)) {
       _items
           .addAll(transactionFilterStore.filtered(transactions: transactions));
     }
 
-    if (_settingsStore.actionlistDisplayMode
+    if (_settingsStore.actionListDisplayMode
         .contains(ActionListDisplayMode.trades)) {
       _items.addAll(tradeFilterStore.filtered(trades: trades));
     }

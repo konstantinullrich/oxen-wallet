@@ -5,7 +5,7 @@ import 'package:loki_wallet/generated/i18n.dart';
 class BiometricAuth {
 
   Future<bool> isAuthenticated() async {
-    final LocalAuthentication _localAuth = LocalAuthentication();
+    final _localAuth = LocalAuthentication();
 
     try {
       return await _localAuth.authenticateWithBiometrics(
