@@ -8,7 +8,7 @@ class CreatingTransaction extends SendingState {}
 
 class TransactionCreatedSuccessfully extends SendingState {}
 
-class TransactionCommiting extends SendingState {}
+class TransactionCommitting extends SendingState {}
 
 class TransactionCommitted extends SendingState {}
 

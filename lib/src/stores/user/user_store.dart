@@ -24,7 +24,7 @@ abstract class UserStoreBase with Store {
 
     try {
       await accountService.setPassword(password);
-      state = PinCodeSetSuccesfully();
+      state = PinCodeSetSuccessfully();
     } catch (e) {
       state = PinCodeSetFailed(error: e.toString());
     }

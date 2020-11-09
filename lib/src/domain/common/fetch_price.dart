@@ -13,9 +13,9 @@ Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
   var price = 0.0;
 
   try {
-    final fiatStringified = fiat.toString();
+    final fiatStringed = fiat.toString();
     final uri =
-        Uri.https(fiatApiAuthority, fiatApiPath, {'convert': fiatStringified});
+        Uri.https(fiatApiAuthority, fiatApiPath, {'convert': fiatStringed});
     final response = await get(uri.toString());
 
     if (response.statusCode != 200) {
@@ -27,7 +27,7 @@ Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
 
     for (final item in data) {
       if (item['symbol'] == cryptoToString(crypto)) {
-        price = item['quote'][fiatStringified]['price'] as double;
+        price = item['quote'][fiatStringed]['price'] as double;
         break;
       }
     }

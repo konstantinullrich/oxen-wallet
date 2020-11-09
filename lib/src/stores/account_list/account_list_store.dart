@@ -10,10 +10,10 @@ import 'package:loki_wallet/generated/i18n.dart';
 
 part 'account_list_store.g.dart';
 
-class AccountListStore = AcountListStoreBase with _$AccountListStore;
+class AccountListStore = AccountListStoreBase with _$AccountListStore;
 
-abstract class AcountListStoreBase with Store {
-  AcountListStoreBase({@required WalletService walletService}) {
+abstract class AccountListStoreBase with Store {
+  AccountListStoreBase({@required WalletService walletService}) {
     accounts = [];
     isAccountCreating = false;
 

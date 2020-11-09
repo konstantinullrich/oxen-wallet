@@ -116,7 +116,7 @@ abstract class ExchangeStoreBase with Store {
     provider
         .calculateAmount(
             from: depositCurrency, to: receiveCurrency, amount: _amount)
-        .then((amount) => _cryptoNumberFormat.format(amount).toString().replaceAll(RegExp("\\,"), ""))
+        .then((amount) => _cryptoNumberFormat.format(amount).toString().replaceAll(RegExp('\\,'), ''))
         .then((amount) => depositAmount = amount);
   }
 
@@ -134,7 +134,7 @@ abstract class ExchangeStoreBase with Store {
     provider
         .calculateAmount(
             from: depositCurrency, to: receiveCurrency, amount: _amount)
-        .then((amount) => _cryptoNumberFormat.format(amount).toString().replaceAll(RegExp("\\,"), ""))
+        .then((amount) => _cryptoNumberFormat.format(amount).toString().replaceAll(RegExp('\\,'), ''))
         .then((amount) => receiveAmount = amount);
   }
 
@@ -192,11 +192,11 @@ abstract class ExchangeStoreBase with Store {
 
     if (limitsState is LimitsLoadedSuccessfully && amount != null) {
       if (double.parse(amount) < limits.min) {
-        tradeState = TradeIsCreatedFailure(error: S.current.error_text_minimal_limit("${provider.description}",
-            "${limits.min}", currency.toString()));
+        tradeState = TradeIsCreatedFailure(error: S.current.error_text_minimal_limit('${provider.description}',
+            '${limits.min}', currency.toString()));
       } else if (limits.max != null && double.parse(amount) > limits.max) {
-        tradeState = TradeIsCreatedFailure(error: S.current.error_text_maximum_limit("${provider.description}",
-            "${limits.max}", currency.toString()));
+        tradeState = TradeIsCreatedFailure(error: S.current.error_text_maximum_limit('${provider.description}',
+            '${limits.max}', currency.toString()));
       } else {
         try {
           tradeState = TradeIsCreating();
@@ -209,7 +209,7 @@ abstract class ExchangeStoreBase with Store {
         }
       }
     } else {
-      tradeState = TradeIsCreatedFailure(error: S.current.error_text_limits_loading_failed("${provider.description}"));
+      tradeState = TradeIsCreatedFailure(error: S.current.error_text_limits_loading_failed('${provider.description}'));
     }
 
   }

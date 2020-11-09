@@ -21,7 +21,7 @@ abstract class AuthStoreBase with Store {
   }
   
   static const maxFailedLogins = 3;
-  static const banTimeout = 180; // 3 mins
+  static const banTimeout = 180; // 3 minutes
   final banTimeoutKey = S.current.auth_store_ban_timeout;
 
   final UserService userService;

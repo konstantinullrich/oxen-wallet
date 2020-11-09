@@ -439,7 +439,7 @@ class SendFormState extends State<SendForm> {
               borderColor:
                   Theme.of(context).accentTextTheme.button.decorationColor,
               isLoading: sendStore.state is CreatingTransaction ||
-                  sendStore.state is TransactionCommiting);
+                  sendStore.state is TransactionCommitting);
         }));
   }
 

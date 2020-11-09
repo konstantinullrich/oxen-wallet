@@ -4,12 +4,13 @@ class ItemHeaders {
   static const wallets = 'Wallets';
   static const displayBalanceAs = 'Display balance as';
   static const currency = 'Currency';
+  static const allowCurrencyRefreshing = 'Allow Currency refreshing';
   static const feePriority = 'Fee priority';
   static const saveRecipientAddress = 'Save recipient address';
   static const personal = 'Personal';
   static const changePIN = 'Change PIN';
   static const changeLanguage = 'Change language';
-  static const allowBiometricalAuthentication = 'Allow biometrical authentication';
+  static const allowBiometricAuthentication = 'Allow biometric authentication';
   static const darkMode = 'Dark mode';
   static const support = 'Support';
   static const termsAndConditions = 'Terms and conditions';

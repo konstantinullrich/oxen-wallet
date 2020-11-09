@@ -1,6 +1,6 @@
 enum ActionListDisplayMode { transactions, trades }
 
-int serializeActionlistDisplayModes(List<ActionListDisplayMode> modes) {
+int serializeActionListDisplayModes(List<ActionListDisplayMode> modes) {
   var i = 0;
 
   for (final mode in modes) {
@@ -17,8 +17,8 @@ int serializeActionlistDisplayModes(List<ActionListDisplayMode> modes) {
   return i;
 }
 
-List<ActionListDisplayMode> deserializeActionlistDisplayModes(int raw) {
-  final modes = List<ActionListDisplayMode>();
+List<ActionListDisplayMode> deserializeActionListDisplayModes(int raw) {
+  final modes = <ActionListDisplayMode>[];
 
   if (raw == 1 || raw - 10 == 1) {
     modes.add(ActionListDisplayMode.trades);

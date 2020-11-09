@@ -86,7 +86,7 @@ abstract class SendStoreBase with Store {
   Future commitTransaction() async {
     try {
       final transactionId = _pendingTransaction.hash;
-      state = TransactionCommiting();
+      state = TransactionCommitting();
       await _pendingTransaction.commit();
       state = TransactionCommitted();
 

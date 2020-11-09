@@ -10,11 +10,11 @@ import 'package:loki_wallet/generated/i18n.dart';
 
 part 'wallet_restoration_store.g.dart';
 
-class WalletRestorationStore = WalleRestorationStoreBase
+class WalletRestorationStore = WalletRestorationStoreBase
     with _$WalletRestorationStore;
 
-abstract class WalleRestorationStoreBase with Store {
-  WalleRestorationStoreBase(
+abstract class WalletRestorationStoreBase with Store {
+  WalletRestorationStoreBase(
       {this.seed,
       @required this.authStore,
       @required this.walletListService,
