@@ -12,7 +12,6 @@ import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
 import 'package:oxen_wallet/src/domain/common/wallets_manager.dart';
 import 'package:oxen_wallet/src/domain/common/secret_store_key.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
-import 'package:oxen_wallet/src/domain/monero/monero_wallets_manager.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 
 class WalletIsExistException implements Exception {
@@ -109,14 +108,11 @@ class WalletListService {
 
   Future changeWalletManger({WalletType walletType}) async {
     switch (walletType) {
-      case WalletType.monero:
-        walletsManager =
-            MoneroWalletsManager(walletInfoSource: walletInfoSource);
-        break;
       case WalletType.oxen:
         walletsManager =
             OxenWalletsManager(walletInfoSource: walletInfoSource);
         break;
+      case WalletType.monero:
       case WalletType.none:
         walletsManager = null;
         break;

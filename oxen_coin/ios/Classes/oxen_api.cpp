@@ -5,7 +5,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "thread"
-#include "../External/android/monero/include/wallet2_api.h"
+#include "../External/android/oxen/include/wallet2_api.h"
 
 using namespace std::chrono_literals;
 
@@ -367,6 +367,11 @@ void store()
     m_store_mtx.lock();
     get_current_wallet()->store("");
     m_store_mtx.unlock();
+}
+
+uint64_t transaction_estimate_fee(uint32_t priority, uint32_t recipients)
+{
+    return m_wallet->estimateTransactionFee(priority, recipients);
 }
 
 bool transaction_create(char *address, char *payment_id, char *amount,

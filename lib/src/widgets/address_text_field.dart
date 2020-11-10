@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
-import 'package:oxen_wallet/src/domain/monero/subaddress.dart';
+import 'package:oxen_wallet/src/domain/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 
 enum AddressTextFieldOption { qrCode, addressBook, subaddressList }

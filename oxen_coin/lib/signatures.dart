@@ -93,6 +93,8 @@ typedef transaction_create = Int8 Function(
 
 typedef transaction_commit = Int8 Function(Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
 
+typedef transaction_estimate_fee = Int64 Function(Int32, Int32);
+
 typedef secret_view_key = Pointer<Utf8> Function();
 
 typedef public_view_key = Pointer<Utf8> Function();

@@ -240,10 +240,7 @@ class S implements WidgetsLocalizations {
   String get transaction_details_recipient_address => "Recipient address";
   String get transaction_details_title => "Transaction Details";
   String get transaction_details_transaction_id => "Transaction ID";
-  String get transaction_priority_fast => "Fast";
-  String get transaction_priority_fastest => "Fastest";
-  String get transaction_priority_medium => "Medium";
-  String get transaction_priority_regular => "Regular";
+  String get transaction_priority_blink => "Blink";
   String get transaction_priority_slow => "Slow";
   String get transaction_sent => "Transaction sent!";
   String get transactions => "Transactions";
@@ -320,8 +317,6 @@ class $de extends S {
   String get new_subaddress_create => "Erstellen";
   @override
   String get restore_view_key_private => "Schlüssel anzeigen(geheim)";
-  @override
-  String get transaction_priority_fast => "Schnell";
   @override
   String get error_text_amount => "Betrag kann nur Zahlen enthalten";
   @override
@@ -509,8 +504,6 @@ class $de extends S {
   @override
   String get expired => "Abgelaufen";
   @override
-  String get transaction_priority_regular => "Regulär";
-  @override
   String get trade_details_created_at => "Hergestellt in";
   @override
   String get settings_wallets => "Brieftaschen";
@@ -612,8 +605,6 @@ class $de extends S {
   String get restore_spend_key_private => "Schlüssel ausgeben (geheim)";
   @override
   String get sync_status_syncronized => "SYNCHRONISIERT";
-  @override
-  String get transaction_priority_medium => "Mittel";
   @override
   String get transaction_details_transaction_id => "Transaktions-ID";
   @override
@@ -736,8 +727,6 @@ class $de extends S {
   String get sync_status_connecting => "ANSCHLUSS";
   @override
   String get settings_transactions => "Transaktionen";
-  @override
-  String get transaction_priority_fastest => "Am schnellsten";
   @override
   String get error => "Error";
   @override
@@ -888,8 +877,6 @@ class $hi extends S {
   String get new_subaddress_create => "सर्जन करना";
   @override
   String get restore_view_key_private => "कुंजी देखें (निजी)";
-  @override
-  String get transaction_priority_fast => "उपवास";
   @override
   String get error_text_amount => "राशि में केवल संख्याएँ हो सकती हैं";
   @override
@@ -1077,8 +1064,6 @@ class $hi extends S {
   @override
   String get expired => "समय सीमा समाप्त";
   @override
-  String get transaction_priority_regular => "नियमित";
-  @override
   String get trade_details_created_at => "पर बनाया गया";
   @override
   String get settings_wallets => "पर्स";
@@ -1180,8 +1165,6 @@ class $hi extends S {
   String get restore_spend_key_private => "कुंजी खर्च करें (निजीe)";
   @override
   String get sync_status_syncronized => "सिंक्रनाइज़";
-  @override
-  String get transaction_priority_medium => "मध्यम";
   @override
   String get transaction_details_transaction_id => "लेनदेन आईडी";
   @override
@@ -1304,8 +1287,6 @@ class $hi extends S {
   String get sync_status_connecting => "कनेक्ट";
   @override
   String get settings_transactions => "लेन-देन";
-  @override
-  String get transaction_priority_fastest => "सबसे तेजी से";
   @override
   String get error => "त्रुटि";
   @override
@@ -1456,8 +1437,6 @@ class $ru extends S {
   String get new_subaddress_create => "Создать";
   @override
   String get restore_view_key_private => "Приватный ключ просмотра";
-  @override
-  String get transaction_priority_fast => "Быстрый";
   @override
   String get error_text_amount => "Баланс может содержать только цифры";
   @override
@@ -1645,8 +1624,6 @@ class $ru extends S {
   @override
   String get expired => "Истекает";
   @override
-  String get transaction_priority_regular => "Обычный";
-  @override
   String get trade_details_created_at => "Создано";
   @override
   String get settings_wallets => "Кошельки";
@@ -1748,8 +1725,6 @@ class $ru extends S {
   String get restore_spend_key_private => "Приватный ключ траты";
   @override
   String get sync_status_syncronized => "СИНХРОНИЗИРОВАН";
-  @override
-  String get transaction_priority_medium => "Средний";
   @override
   String get transaction_details_transaction_id => "ID транзакции";
   @override
@@ -1872,8 +1847,6 @@ class $ru extends S {
   String get sync_status_connecting => "ПОДКЛЮЧЕНИЕ";
   @override
   String get settings_transactions => "Транзакции";
-  @override
-  String get transaction_priority_fastest => "Самый быстрый";
   @override
   String get error => "Ошибка";
   @override
@@ -2024,8 +1997,6 @@ class $ko extends S {
   String get new_subaddress_create => "몹시 떠들어 대다";
   @override
   String get restore_view_key_private => "키보기 (은밀한)";
-  @override
-  String get transaction_priority_fast => "빠른";
   @override
   String get error_text_amount => "금액은 숫자 만 포함 할 수 있습니다";
   @override
@@ -2213,8 +2184,6 @@ class $ko extends S {
   @override
   String get expired => "만료";
   @override
-  String get transaction_priority_regular => "정규병";
-  @override
   String get trade_details_created_at => "에 작성";
   @override
   String get settings_wallets => "지갑";
@@ -2316,8 +2285,6 @@ class $ko extends S {
   String get restore_spend_key_private => "지출 키 (은밀한)";
   @override
   String get sync_status_syncronized => "동기화";
-  @override
-  String get transaction_priority_medium => "매질";
   @override
   String get transaction_details_transaction_id => "트랜잭션 ID";
   @override
@@ -2440,8 +2407,6 @@ class $ko extends S {
   String get sync_status_connecting => "연결 중";
   @override
   String get settings_transactions => "업무";
-  @override
-  String get transaction_priority_fastest => "가장 빠른";
   @override
   String get error => "오류";
   @override
@@ -2592,8 +2557,6 @@ class $pt extends S {
   String get new_subaddress_create => "Criar";
   @override
   String get restore_view_key_private => "Chave de visualização (privada)";
-  @override
-  String get transaction_priority_fast => "Rápida";
   @override
   String get error_text_amount => "A quantia deve conter apenas números";
   @override
@@ -2781,8 +2744,6 @@ class $pt extends S {
   @override
   String get expired => "Expirada";
   @override
-  String get transaction_priority_regular => "Regular";
-  @override
   String get trade_details_created_at => "Criada em";
   @override
   String get settings_wallets => "Carteiras";
@@ -2884,8 +2845,6 @@ class $pt extends S {
   String get restore_spend_key_private => "Chave de gastos (privada)";
   @override
   String get sync_status_syncronized => "SINCRONIZADO";
-  @override
-  String get transaction_priority_medium => "Média";
   @override
   String get transaction_details_transaction_id => "ID da transação";
   @override
@@ -3008,8 +2967,6 @@ class $pt extends S {
   String get sync_status_connecting => "CONECTANDO";
   @override
   String get settings_transactions => "Transações";
-  @override
-  String get transaction_priority_fastest => "Muito rápida";
   @override
   String get error => "Erro";
   @override
@@ -3160,8 +3117,6 @@ class $uk extends S {
   String get new_subaddress_create => "Створити";
   @override
   String get restore_view_key_private => "Приватний ключ перегляду";
-  @override
-  String get transaction_priority_fast => "Швидкий";
   @override
   String get error_text_amount => "Баланс може містити тільки цифри";
   @override
@@ -3349,8 +3304,6 @@ class $uk extends S {
   @override
   String get expired => "Закінчується";
   @override
-  String get transaction_priority_regular => "Звичайний";
-  @override
   String get trade_details_created_at => "Створено";
   @override
   String get settings_wallets => "Гаманці";
@@ -3452,8 +3405,6 @@ class $uk extends S {
   String get restore_spend_key_private => "Приватний ключ витрати";
   @override
   String get sync_status_syncronized => "СИНХРОНІЗОВАНИЙ";
-  @override
-  String get transaction_priority_medium => "Середній";
   @override
   String get transaction_details_transaction_id => "ID транзакції";
   @override
@@ -3576,8 +3527,6 @@ class $uk extends S {
   String get sync_status_connecting => "ПІДКЛЮЧЕННЯ";
   @override
   String get settings_transactions => "Транзакції";
-  @override
-  String get transaction_priority_fastest => "Найшвидший";
   @override
   String get error => "Помилка";
   @override
@@ -3728,8 +3677,6 @@ class $ja extends S {
   String get new_subaddress_create => "作成する";
   @override
   String get restore_view_key_private => "ビューキー (プライベート)";
-  @override
-  String get transaction_priority_fast => "速い";
   @override
   String get error_text_amount => "金額には数字のみを含めることができます";
   @override
@@ -3917,8 +3864,6 @@ class $ja extends S {
   @override
   String get expired => "期限切れ";
   @override
-  String get transaction_priority_regular => "レギュラー";
-  @override
   String get trade_details_created_at => "で作成";
   @override
   String get settings_wallets => "財布";
@@ -4020,8 +3965,6 @@ class $ja extends S {
   String get restore_spend_key_private => "キーを使う (プライベート)";
   @override
   String get sync_status_syncronized => "同期された";
-  @override
-  String get transaction_priority_medium => "中";
   @override
   String get transaction_details_transaction_id => "トランザクションID";
   @override
@@ -4144,8 +4087,6 @@ class $ja extends S {
   String get sync_status_connecting => "接続中";
   @override
   String get settings_transactions => "取引";
-  @override
-  String get transaction_priority_fastest => "最速";
   @override
   String get error => "エラー";
   @override
@@ -4300,8 +4241,6 @@ class $pl extends S {
   String get new_subaddress_create => "Stwórz";
   @override
   String get restore_view_key_private => "Wyświetl klucz (prywatny)";
-  @override
-  String get transaction_priority_fast => "Szybki";
   @override
   String get error_text_amount => "Kwota może zawierać tylko liczby";
   @override
@@ -4489,8 +4428,6 @@ class $pl extends S {
   @override
   String get expired => "Przedawniony";
   @override
-  String get transaction_priority_regular => "Regularny";
-  @override
   String get trade_details_created_at => "Utworzono w";
   @override
   String get settings_wallets => "Portfele";
@@ -4592,8 +4529,6 @@ class $pl extends S {
   String get restore_spend_key_private => "Wydaj klucz (prywatny)";
   @override
   String get sync_status_syncronized => "SYNCHRONIZOWANY";
-  @override
-  String get transaction_priority_medium => "Średni";
   @override
   String get transaction_details_transaction_id => "Transakcja ID";
   @override
@@ -4716,8 +4651,6 @@ class $pl extends S {
   String get sync_status_connecting => "ZŁĄCZONY";
   @override
   String get settings_transactions => "Transakcje";
-  @override
-  String get transaction_priority_fastest => "Najszybszy";
   @override
   String get error => "Błąd";
   @override
@@ -4868,8 +4801,6 @@ class $es extends S {
   String get new_subaddress_create => "Crear";
   @override
   String get restore_view_key_private => "View clave (privado)";
-  @override
-  String get transaction_priority_fast => "Rápido";
   @override
   String get error_text_amount => "La cantidad solo puede contener números";
   @override
@@ -5057,8 +4988,6 @@ class $es extends S {
   @override
   String get expired => "Muerto";
   @override
-  String get transaction_priority_regular => "Regular";
-  @override
   String get trade_details_created_at => "Creado en";
   @override
   String get settings_wallets => "Carteras";
@@ -5160,8 +5089,6 @@ class $es extends S {
   String get restore_spend_key_private => "Spend clave (privado)";
   @override
   String get sync_status_syncronized => "SINCRONIZADO";
-  @override
-  String get transaction_priority_medium => "Medio";
   @override
   String get transaction_details_transaction_id => "ID de transacción";
   @override
@@ -5284,8 +5211,6 @@ class $es extends S {
   String get sync_status_connecting => "CONECTANDO";
   @override
   String get settings_transactions => "Transacciones";
-  @override
-  String get transaction_priority_fastest => "Lo más rápido";
   @override
   String get error => "Error";
   @override
@@ -5436,8 +5361,6 @@ class $nl extends S {
   String get new_subaddress_create => "Creëren";
   @override
   String get restore_view_key_private => "Bekijk sleutel (privaat)";
-  @override
-  String get transaction_priority_fast => "Snel";
   @override
   String get error_text_amount => "Bedrag kan alleen cijfers bevatten";
   @override
@@ -5625,8 +5548,6 @@ class $nl extends S {
   @override
   String get expired => "Verlopen";
   @override
-  String get transaction_priority_regular => "Regelmatig";
-  @override
   String get trade_details_created_at => "Gemaakt bij";
   @override
   String get settings_wallets => "Portemonnee";
@@ -5728,8 +5649,6 @@ class $nl extends S {
   String get restore_spend_key_private => "Sleutel uitgeven (privaat)";
   @override
   String get sync_status_syncronized => "SYNCHRONIZED";
-  @override
-  String get transaction_priority_medium => "Medium";
   @override
   String get transaction_details_transaction_id => "Transactie ID";
   @override
@@ -5852,8 +5771,6 @@ class $nl extends S {
   String get sync_status_connecting => "AANSLUITING";
   @override
   String get settings_transactions => "Transacties";
-  @override
-  String get transaction_priority_fastest => "Snelste";
   @override
   String get error => "Fout";
   @override
@@ -6004,8 +5921,6 @@ class $zh extends S {
   String get new_subaddress_create => "创建";
   @override
   String get restore_view_key_private => "查看金钥 (私人的)";
-  @override
-  String get transaction_priority_fast => "快速";
   @override
   String get error_text_amount => "金额只能包含数字";
   @override
@@ -6193,8 +6108,6 @@ class $zh extends S {
   @override
   String get expired => "已过期";
   @override
-  String get transaction_priority_regular => "定期";
-  @override
   String get trade_details_created_at => "创建于";
   @override
   String get settings_wallets => "皮夹";
@@ -6296,8 +6209,6 @@ class $zh extends S {
   String get restore_spend_key_private => "支出金钥 (私人的)";
   @override
   String get sync_status_syncronized => "已同步";
-  @override
-  String get transaction_priority_medium => "介质";
   @override
   String get transaction_details_transaction_id => "交易编号";
   @override
@@ -6420,8 +6331,6 @@ class $zh extends S {
   String get sync_status_connecting => "连接中";
   @override
   String get settings_transactions => "交易次数";
-  @override
-  String get transaction_priority_fastest => "最快的";
   @override
   String get error => "错误";
   @override

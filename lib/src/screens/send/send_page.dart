@@ -261,7 +261,7 @@ class SendFormState extends State<SendForm> {
                         decoration: InputDecoration(
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(top: 12),
-                              child: Text('XMR:',
+                              child: Text('OXEN:',
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Theme.of(context)
@@ -359,7 +359,7 @@ class SendFormState extends State<SendForm> {
                                   .backgroundColor,
                             )),
                         Text(
-                            '${calculateEstimatedFee(priority: settingsStore.transactionPriority)} LOKI',
+                            '${calculateEstimatedFee(priority: settingsStore.transactionPriority)} OXEN',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,

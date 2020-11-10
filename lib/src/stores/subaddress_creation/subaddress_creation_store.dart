@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:oxen_wallet/src/domain/monero/subaddress_list.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/domain/oxen/subaddress_list.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/stores/subaddress_creation/subaddress_creation_state.dart';
-import 'package:oxen_wallet/src/domain/monero/account.dart';
+import 'package:oxen_wallet/src/domain/oxen/account.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
 
 part 'subaddress_creation_store.g.dart';
@@ -62,7 +62,7 @@ abstract class SubadrressCreationStoreBase with Store {
   }
 
   Future<void> _onWalletChanged(Wallet wallet) async {
-    if (wallet is MoneroWallet) {
+    if (wallet is OxenWallet) {
       _account = wallet.account;
       _subaddressList = wallet.getSubaddress();
 

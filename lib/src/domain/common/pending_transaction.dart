@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:oxen_coin/transaction_history.dart' as transaction_history;
 import 'package:oxen_coin/structs/pending_transaction.dart';
-import 'package:oxen_wallet/src/domain/monero/monero_amount_format.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_amount_format.dart';
 
 class PendingTransaction {
   PendingTransaction(
@@ -9,8 +9,8 @@ class PendingTransaction {
 
   PendingTransaction.fromTransactionDescription(
       PendingTransactionDescription transactionDescription)
-      : amount = moneroAmountToString(amount: transactionDescription.amount),
-        fee = moneroAmountToString(amount: transactionDescription.fee),
+      : amount = oxenAmountToString(amount: transactionDescription.amount),
+        fee = oxenAmountToString(amount: transactionDescription.fee),
         hash = transactionDescription.hash,
         _pointerAddress = transactionDescription.pointerAddress;
 

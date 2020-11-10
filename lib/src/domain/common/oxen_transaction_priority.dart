@@ -31,7 +31,7 @@ class OxenTransactionPriority extends EnumerableItem<int> with Serializable<int>
       case OxenTransactionPriority.slow:
         return S.current.transaction_priority_slow;
       case OxenTransactionPriority.blink:
-        return S.current.transaction_priority_fastest; // TODO: ADD BLINK
+        return S.current.transaction_priority_blink;
       default:
         return '';
     }

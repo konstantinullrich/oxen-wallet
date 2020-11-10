@@ -5,7 +5,7 @@ import 'package:oxen_coin/transaction_history.dart' as oxen_transaction_history;
 import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
 
-List<TransactionInfo> _getAllTransactions(dynamic _) => oxen_transaction_history.getAllTransations()
+List<TransactionInfo> _getAllTransactions(dynamic _) => oxen_transaction_history.getAllTransactions()
     .map((row) => TransactionInfo.fromRow(row))
     .toList();
 

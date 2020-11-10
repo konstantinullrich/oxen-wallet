@@ -11,9 +11,9 @@ set(EXTERNAL_LIBS_DIR ${CMAKE_SOURCE_DIR}/../ios/External/android)
 
 add_library(wallet_api STATIC IMPORTED)
 set_target_properties(wallet_api PROPERTIES IMPORTED_LOCATION
-    ${EXTERNAL_LIBS_DIR}/monero/lib/${ANDROID_ABI}/libwallet_api.a)
+    ${EXTERNAL_LIBS_DIR}/oxen/lib/${ANDROID_ABI}/libwallet_api.a)
 
-include_directories( ${EXTERNAL_LIBS_DIR}/monero/include )
+include_directories( ${EXTERNAL_LIBS_DIR}/oxen/include )
 
 target_link_libraries( oxen_coin PRIVATE wallet_api )
 target_include_directories( oxen_coin PRIVATE wallet_api )

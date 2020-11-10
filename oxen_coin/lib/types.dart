@@ -91,6 +91,8 @@ typedef TransactionCreate = int Function(
 
 typedef TransactionCommit = int Function(Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
 
+typedef TransactionEstimateFee = int Function(int priorityRaw, int recipients);
+
 typedef SecretViewKey = Pointer<Utf8> Function();
 
 typedef PublicViewKey = Pointer<Utf8> Function();

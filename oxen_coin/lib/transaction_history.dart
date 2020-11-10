@@ -29,11 +29,18 @@ final transactionCommitNative = oxenApi
     .lookup<NativeFunction<transaction_commit>>('transaction_commit')
     .asFunction<TransactionCommit>();
 
+final transactionEstimateFeeNative = oxenApi
+    .lookup<NativeFunction<transaction_estimate_fee>>('transaction_estimate_fee')
+    .asFunction<TransactionEstimateFee>();
+
 void refreshTransactions() => transactionsRefreshNative();
 
 int countOfTransactions() => transactionsCountNative();
 
-List<TransactionInfoRow> getAllTransations() {
+int estimateTransactionFee(int priorityRaw, {int recipients = 1}) =>
+    transactionEstimateFeeNative(priorityRaw, recipients);
+
+List<TransactionInfoRow> getAllTransactions() {
   final size = transactionsCountNative();
   final transactionsPointer = transactionsGetAllNative();
   final transactionsAddresses = transactionsPointer.asTypedList(size);
