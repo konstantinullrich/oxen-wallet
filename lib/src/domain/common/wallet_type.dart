@@ -8,7 +8,7 @@ enum WalletType {
   monero,
 
   @HiveField(1)
-  loki,
+  oxen,
 
   @HiveField(2)
   none
@@ -18,7 +18,7 @@ int serializeToInt(WalletType type) {
   switch (type) {
     case WalletType.monero:
       return 0;
-    case WalletType.loki:
+    case WalletType.oxen:
       return 1;
     default:
       return -1;
@@ -30,7 +30,7 @@ WalletType deserializeToInt(int raw) {
     case 0:
       return WalletType.monero;
     case 1:
-      return WalletType.loki;
+      return WalletType.oxen;
     default:
       return null;
   }
@@ -40,8 +40,8 @@ String walletTypeToString(WalletType type) {
   switch (type) {
     case WalletType.monero:
       return 'Monero';
-    case WalletType.loki:
-      return 'Loki';
+    case WalletType.oxen:
+      return 'Oxen';
     default:
       return '';
   }
