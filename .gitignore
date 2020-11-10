@@ -76,11 +76,10 @@ android/app/.cxx/
 
 
 # External libs
-monero_android/
 android/app/.externalNativeBuild/
-cw_monero/ios/External/
-cw_monero/cw_monero/android/.externalNativeBuild/
-cw_monero/cw_monero/android/.cxx/
+oxen_coin/ios/External/
+oxen_coin/cw_monero/android/.externalNativeBuild/
+oxen_coin/cw_monero/android/.cxx/
 
 # Generated dart files
 **/*.g.dart

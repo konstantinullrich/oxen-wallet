@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/enumerable_item.dart';
 
 class BalanceDisplayMode extends EnumerableItem<int> with Serializable<int> {
   const BalanceDisplayMode({@required String title, @required int raw})

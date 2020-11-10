@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:cw_monero/transaction_history.dart' as transaction_history;
-import 'package:cw_monero/structs/pending_transaction.dart';
-import 'package:loki_wallet/src/domain/monero/monero_amount_format.dart';
+import 'package:oxen_coin/transaction_history.dart' as transaction_history;
+import 'package:oxen_coin/structs/pending_transaction.dart';
+import 'package:oxen_wallet/src/domain/monero/monero_amount_format.dart';
 
 class PendingTransaction {
   PendingTransaction(

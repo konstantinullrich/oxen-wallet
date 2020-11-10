@@ -1,6 +1,6 @@
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 class BiometricAuth {
 

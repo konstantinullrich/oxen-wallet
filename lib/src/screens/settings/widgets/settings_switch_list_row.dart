@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/theme_changer.dart';
-import 'package:loki_wallet/themes.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/widgets/standart_switch.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/theme_changer.dart';
+import 'package:oxen_wallet/themes.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/widgets/standart_switch.dart';
 
 class SettingsSwitchListRow extends StatelessWidget {
   SettingsSwitchListRow({@required this.title});
@@ -53,6 +53,18 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
+    // if (settingsStore.itemHeaders[title] ==
+    //     S.of(context).settings_allow_currency_refreshing) {
+    //   return Observer(
+    //       builder: (_) => StandartSwitch(
+    //           value: settingsStore.allowCurrencyRefreshing,
+    //           onTaped: () {
+    //             final _currentValue = !settingsStore.allowCurrencyRefreshing;
+    //             settingsStore.setAllowCurrencyRefreshingKey(
+    //                 allowCurrencyRefreshing: _currentValue);
+    //           }));
+    // }
+
     return null;
   }
 
@@ -61,14 +73,14 @@ class SettingsSwitchListRow extends StatelessWidget {
     final settingsStore = Provider.of<SettingsStore>(context);
 
     return Container(
-      color: Theme.of(context).accentTextTheme.headline.backgroundColor,
+      color: Theme.of(context).accentTextTheme.headline5.backgroundColor,
       child: ListTile(
           contentPadding: EdgeInsets.only(left: 20.0, right: 20.0),
           title: Observer(
             builder: (_) => Text(settingsStore.itemHeaders[title],
                 style: TextStyle(
                     fontSize: 16.0,
-                    color: Theme.of(context).primaryTextTheme.title.color)),
+                    color: Theme.of(context).primaryTextTheme.headline6.color)),
           ),
           trailing: _getSwitch(context)),
     );

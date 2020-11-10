@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/common/currency_formatter.dart';
-import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/currency_formatter.dart';
+import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:http/http.dart';
 
 // TODO: USE COINMARKETCAP-PIPE

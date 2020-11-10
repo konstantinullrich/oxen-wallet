@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider.dart';
-import 'package:loki_wallet/src/domain/exchange/changenow/changenow_exchange_provider.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:loki_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
-import 'package:loki_wallet/src/domain/exchange/morphtoken/morphtoken_exchange_provider.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider.dart';
+import 'package:oxen_wallet/src/domain/exchange/changenow/changenow_exchange_provider.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
+import 'package:oxen_wallet/src/domain/exchange/morphtoken/morphtoken_exchange_provider.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:hive/hive.dart';
 
 part 'exchange_trade_store.g.dart';

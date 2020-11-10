@@ -11,7 +11,7 @@ class Themes {
     hintColor: Palette.lightBlue,
     focusColor: Palette.lightGrey, // focused and enabled border color for text fields
     primaryTextTheme: TextTheme(
-      title: TextStyle(
+      headline6: TextStyle(
         color: Colors.black
       ),
       caption: TextStyle(
@@ -22,13 +22,13 @@ class Themes {
         backgroundColor: Palette.purple, // button purple background color
         decorationColor: Palette.deepPink // button pink border color
       ),
-      headline: TextStyle(
+      headline5: TextStyle(
         color: Colors.black // account list tile, contact page
       ),
-      subtitle: TextStyle(
+      subtitle2: TextStyle(
         color: Palette.wildDarkBlue // filters
       ),
-      subhead: TextStyle(
+        subtitle1: TextStyle(
         color: Colors.black // transaction raw, trade raw
       ),
       overline: TextStyle(
@@ -47,7 +47,7 @@ class Themes {
       color: Palette.lightGrey
     ),
     accentTextTheme: TextTheme(
-      title: TextStyle(
+      headline6: TextStyle(
         color: Colors.grey,
         backgroundColor: Palette.creamyGrey // pin button color
       ),
@@ -60,16 +60,16 @@ class Themes {
         backgroundColor: Palette.indigo, // button indigo background color
         decorationColor: Palette.deepIndigo // button indigo border color
       ),
-      subtitle: TextStyle(
+      subtitle2: TextStyle(
         color: Colors.black,
         backgroundColor: Palette.lightLavender // send page border color
       ),
-      headline: TextStyle(
+      headline5: TextStyle(
         color: Palette.lightGrey2, // receive page
         backgroundColor: Colors.white, // restore button background color
         decorationColor: Palette.darkGrey, // restore button border color
       ),
-      subhead: TextStyle(
+        subtitle1: TextStyle(
         color: Palette.lightBlue, // restore button description
         backgroundColor: Palette.lightGrey2 // change language background color
       ),
@@ -101,7 +101,7 @@ class Themes {
     hintColor: PaletteDark.darkThemeGrey,
     focusColor: PaletteDark.darkThemeGreyWithOpacity, // focused and enabled border color for text fields
     primaryTextTheme: TextTheme(
-      title: TextStyle(
+      headline6: TextStyle(
         color: PaletteDark.darkThemeTitle
       ),
       caption: TextStyle(
@@ -112,13 +112,13 @@ class Themes {
         backgroundColor: PaletteDark.darkThemePurpleButton, // button purple background color
         decorationColor: PaletteDark.darkThemePurpleButtonBorder // button pink border color
       ),
-      headline: TextStyle(
+      headline5: TextStyle(
         color: PaletteDark.darkThemeGrey // account list tile, contact page
       ),
-      subtitle: TextStyle(
+      subtitle2: TextStyle(
         color: PaletteDark.darkThemeGrey // filters
       ),
-      subhead: TextStyle(
+        subtitle1: TextStyle(
         color: Palette.blueGrey // transaction raw, trade raw
       ),
       overline: TextStyle(
@@ -137,7 +137,7 @@ class Themes {
       color: PaletteDark.darkThemeGreyWithOpacity
     ),
     accentTextTheme: TextTheme(
-      title: TextStyle(
+      headline6: TextStyle(
         color: PaletteDark.darkThemeTitle,
         backgroundColor: PaletteDark.darkThemePinDigitButton // pin button color
       ),
@@ -150,16 +150,16 @@ class Themes {
         backgroundColor: PaletteDark.darkThemeIndigoButton, // button indigo background color
         decorationColor: PaletteDark.darkThemeIndigoButtonBorder // button indigo border color
       ),
-      subtitle: TextStyle(
+      subtitle2: TextStyle(
         color: PaletteDark.wildDarkBlueWithOpacity,
         backgroundColor: PaletteDark.darkThemeDarkGrey // send page border color
       ),
-      headline: TextStyle(
+      headline5: TextStyle(
         color: PaletteDark.darkThemeBlack, // receive page
         backgroundColor: PaletteDark.darkThemeMidGrey, // restore button background color
         decorationColor: PaletteDark.darkThemeDarkGrey, // restore button border color
       ),
-      subhead: TextStyle(
+      subtitle1: TextStyle(
         color: Palette.wildDarkBlue, // restore button description
         backgroundColor: PaletteDark.darkThemeMidGrey // change language background color
       ),

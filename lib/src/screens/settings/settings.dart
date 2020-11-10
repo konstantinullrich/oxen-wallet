@@ -1,30 +1,30 @@
-import 'package:loki_wallet/src/screens/auth/auth_page.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
-import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/screens/settings/attributes.dart';
-import 'package:loki_wallet/src/screens/disclaimer/disclaimer_page.dart';
-import 'package:loki_wallet/src/screens/settings/items/settings_item.dart';
-import 'package:loki_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:loki_wallet/src/widgets/present_picker.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
+import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/settings/attributes.dart';
+import 'package:oxen_wallet/src/screens/disclaimer/disclaimer_page.dart';
+import 'package:oxen_wallet/src/screens/settings/items/settings_item.dart';
+import 'package:oxen_wallet/src/screens/settings/items/item_headers.dart';
+import 'package:oxen_wallet/src/widgets/present_picker.dart';
 // Settings widgets
-import 'package:loki_wallet/src/screens/settings/widgets/settings_arrow_list_row.dart';
-import 'package:loki_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
-import 'package:loki_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
-import 'package:loki_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
-import 'package:loki_wallet/src/screens/settings/widgets/settings_text_list_row.dart';
-import 'package:loki_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_arrow_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_text_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
 
 class SettingsPage extends BasePage {
   @override
@@ -50,9 +50,9 @@ class SettingsForm extends StatefulWidget {
 class SettingsFormState extends State<SettingsForm> {
   final _telegramImage = Image.asset('assets/images/Telegram.png');
   final _twitterImage = Image.asset('assets/images/Twitter.png');
-  final _changeNowImage = Image.asset('assets/images/change_now.png');
-  final _xmrBtcImage = Image.asset('assets/images/xmr_btc.png');
-  final _morphImage = Image.asset('assets/images/morph_icon.png');
+  // final _changeNowImage = Image.asset('assets/images/change_now.png');
+  // final _xmrBtcImage = Image.asset('assets/images/xmr_btc.png');
+  // final _morphImage = Image.asset('assets/images/morph_icon.png');
 
   final _emailUrl = 'mailto:team@loki.network';
   final _telegramUrl = 'https:t.me/LokiCommunity';
@@ -82,7 +82,7 @@ class SettingsFormState extends State<SettingsForm> {
                     style: TextStyle(
                         fontSize: 16.0,
                         color:
-                            Theme.of(context).primaryTextTheme.subtitle.color),
+                            Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
       SettingsItem(title: ItemHeaders.wallets, attribute: Attributes.header),
@@ -96,9 +96,10 @@ class SettingsFormState extends State<SettingsForm> {
                     style: TextStyle(
                         fontSize: 16.0,
                         color:
-                            Theme.of(context).primaryTextTheme.subtitle.color),
+                            Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
+      // SettingsItem(title: ItemHeaders.allowCurrencyRefreshing, attribute: Attributes.switcher),
       SettingsItem(
           onTaped: () => _setCurrency(context),
           title: ItemHeaders.currency,
@@ -109,7 +110,7 @@ class SettingsFormState extends State<SettingsForm> {
                     style: TextStyle(
                         fontSize: 16.0,
                         color:
-                            Theme.of(context).primaryTextTheme.subtitle.color),
+                            Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
       SettingsItem(
@@ -122,7 +123,7 @@ class SettingsFormState extends State<SettingsForm> {
                     style: TextStyle(
                         fontSize: 16.0,
                         color:
-                            Theme.of(context).primaryTextTheme.subtitle.color),
+                            Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
       SettingsItem(
@@ -148,7 +149,7 @@ class SettingsFormState extends State<SettingsForm> {
           title: ItemHeaders.changeLanguage,
           attribute: Attributes.arrow),
       SettingsItem(
-          title: ItemHeaders.allowBiometricalAuthentication,
+          title: ItemHeaders.allowBiometricAuthentication,
           attribute: Attributes.switcher),
       SettingsItem(title: ItemHeaders.darkMode, attribute: Attributes.switcher),
       SettingsItem(
@@ -167,7 +168,7 @@ class SettingsFormState extends State<SettingsForm> {
                                             .settings_transactions),
                                         Checkbox(
                                           value: settingsStore
-                                              .actionlistDisplayMode
+                                              .actionListDisplayMode
                                               .contains(ActionListDisplayMode
                                                   .transactions),
                                           onChanged: (value) => settingsStore
@@ -184,7 +185,7 @@ class SettingsFormState extends State<SettingsForm> {
                                         Text(S.of(context).settings_trades),
                                         Checkbox(
                                           value: settingsStore
-                                              .actionlistDisplayMode
+                                              .actionListDisplayMode
                                               .contains(
                                                   ActionListDisplayMode.trades),
                                           onChanged: (value) => settingsStore
@@ -203,24 +204,24 @@ class SettingsFormState extends State<SettingsForm> {
                                 fontSize: 16,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .title
+                                    .headline6
                                     .color)),
                         Observer(builder: (_) {
                           var title = '';
 
-                          if (settingsStore.actionlistDisplayMode.length ==
+                          if (settingsStore.actionListDisplayMode.length ==
                               ActionListDisplayMode.values.length) {
                             title = S.of(context).settings_all;
                           }
 
                           if (title.isEmpty &&
-                              settingsStore.actionlistDisplayMode
+                              settingsStore.actionListDisplayMode
                                   .contains(ActionListDisplayMode.trades)) {
                             title = S.of(context).settings_only_trades;
                           }
 
                           if (title.isEmpty &&
-                              settingsStore.actionlistDisplayMode.contains(
+                              settingsStore.actionListDisplayMode.contains(
                                   ActionListDisplayMode.transactions)) {
                             title = S.of(context).settings_only_transactions;
                           }
@@ -234,7 +235,7 @@ class SettingsFormState extends State<SettingsForm> {
                                   fontSize: 16.0,
                                   color: Theme.of(context)
                                       .primaryTextTheme
-                                      .subtitle
+                                      .subtitle2
                                       .color));
                         })
                       ]),
@@ -340,7 +341,7 @@ class SettingsFormState extends State<SettingsForm> {
             itemCount: _items.length,
             itemBuilder: (context, index) {
               final item = _items[index];
-              bool _isDrawDivider = true;
+              var _isDrawDivider = true;
 
               if (item.attribute == Attributes.header || item == _items.last) {
                 _isDrawDivider = false;
@@ -357,7 +358,7 @@ class SettingsFormState extends State<SettingsForm> {
                       ? Container(
                           color: Theme.of(context)
                               .accentTextTheme
-                              .headline
+                              .headline5
                               .backgroundColor,
                           padding: EdgeInsets.only(
                             left: 20.0,
@@ -407,7 +408,7 @@ class SettingsFormState extends State<SettingsForm> {
   Future<void> _setTransactionPriority(BuildContext context) async {
     final settingsStore = Provider.of<SettingsStore>(context);
     final selectedPriority =
-        await presentPicker(context, LokiTransactionPriority.all);
+        await presentPicker(context, OxenTransactionPriority.all);
 
     if (selectedPriority != null) {
       await settingsStore.setCurrentTransactionPriority(

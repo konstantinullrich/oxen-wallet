@@ -1,27 +1,27 @@
-import 'package:loki_wallet/src/screens/auth/auth_page.dart';
-import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/src/widgets/address_text_field.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/stores/balance/balance_store.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:loki_wallet/src/stores/send/send_store.dart';
-import 'package:loki_wallet/src/stores/send/sending_state.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:loki_wallet/src/domain/common/calculate_estimated_fee.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/sync_status.dart';
-import 'package:loki_wallet/src/stores/sync/sync_store.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/stores/send/send_store.dart';
+import 'package:oxen_wallet/src/stores/send/sending_state.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/calculate_estimated_fee.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/sync_status.dart';
+import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 
 class SendPage extends BasePage {
   @override
@@ -119,7 +119,7 @@ class SendFormState extends State<SendForm> {
                           width: 1,
                           color: Theme.of(context)
                               .accentTextTheme
-                              .subtitle
+                              .subtitle2
                               .backgroundColor))),
               child: SizedBox(
                 height: 56,
@@ -254,8 +254,9 @@ class SendFormState extends State<SendForm> {
                         keyboardType: TextInputType.numberWithOptions(
                             signed: false, decimal: true),
                         inputFormatters: [
-                          BlacklistingTextInputFormatter(
-                              RegExp('[\\-|\\ |\\,]'))
+                          FilteringTextInputFormatter.deny(
+                              RegExp('[\\-|\\ |\\,]')
+                          )
                         ],
                         decoration: InputDecoration(
                             prefixIcon: Padding(
@@ -314,8 +315,9 @@ class SendFormState extends State<SendForm> {
                         keyboardType: TextInputType.numberWithOptions(
                             signed: false, decimal: true),
                         inputFormatters: [
-                          BlacklistingTextInputFormatter(
-                              RegExp('[\\-|\\ |\\,]'))
+                          FilteringTextInputFormatter.deny(
+                              RegExp('[\\-|\\ |\\,]')
+                          )
                         ],
                         decoration: InputDecoration(
                             prefixIcon: Padding(
@@ -379,7 +381,7 @@ class SendFormState extends State<SendForm> {
                             fontWeight: FontWeight.w500,
                             color: Theme.of(context)
                                 .primaryTextTheme
-                                .subtitle
+                                .subtitle2
                                 .color,
                             height: 1.3)),
                   ),

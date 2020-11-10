@@ -1,23 +1,23 @@
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
-import 'package:loki_wallet/src/stores/send/send_store.dart';
-import 'package:loki_wallet/src/stores/send/sending_state.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:loki_wallet/src/screens/exchange_trade/widgets/copy_button.dart';
-import 'package:loki_wallet/src/screens/receive/qr_image.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/screens/exchange_trade/widgets/timer_widget.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
+import 'package:oxen_wallet/src/stores/send/send_store.dart';
+import 'package:oxen_wallet/src/stores/send/sending_state.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/screens/exchange_trade/widgets/copy_button.dart';
+import 'package:oxen_wallet/src/screens/receive/qr_image.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/exchange_trade/widgets/timer_widget.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 
 class ExchangeTradePage extends BasePage {
   @override
@@ -86,7 +86,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                                 height: 2,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .subtitle
+                                    .subtitle2
                                     .color),
                           )
                         ],
@@ -112,7 +112,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                                 height: 2,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .subtitle
+                                    .subtitle2
                                     .color),
                           )
                         ],
@@ -139,7 +139,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                                       height: 2,
                                       color: Theme.of(context)
                                           .primaryTextTheme
-                                          .subtitle
+                                          .subtitle2
                                           .color),
                                 )
                               ],
@@ -166,7 +166,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                                 height: 2,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .subtitle
+                                    .subtitle2
                                     .color),
                           )
                         ],
@@ -203,7 +203,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                       ),
                       TimerWidget(trade.expiredAt,
                           color:
-                              Theme.of(context).primaryTextTheme.subtitle.color)
+                              Theme.of(context).primaryTextTheme.subtitle2.color)
                     ],
                   ),
                 SizedBox(height: 20.0),
@@ -215,7 +215,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                   style: TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context).primaryTextTheme.headline.color),
+                      color: Theme.of(context).primaryTextTheme.headline5.color),
                 )
               ]),
             ),
@@ -281,7 +281,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontSize: 13.0,
-                    color: Theme.of(context).primaryTextTheme.title.color),
+                    color: Theme.of(context).primaryTextTheme.headline6.color),
               ),
             ),
             Text(
@@ -289,7 +289,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
               textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 13.0,
-                  color: Theme.of(context).accentTextTheme.title.color),
+                  color: Theme.of(context).accentTextTheme.headline6.color),
             )
           ],
         );

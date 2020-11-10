@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
-import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/screens/dashboard/dashboard_page.dart';
-import 'package:loki_wallet/src/stores/action_list/action_list_store.dart';
-import 'package:loki_wallet/src/stores/action_list/trade_filter_store.dart';
-import 'package:loki_wallet/src/stores/action_list/transaction_filter_store.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/screens/dashboard/dashboard_page.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/trade_filter_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 
 Widget createDashboardPage(
         {@required WalletService walletService,

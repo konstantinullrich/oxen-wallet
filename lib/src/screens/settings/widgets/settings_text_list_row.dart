@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 
 class SettingsTextListRow extends StatelessWidget {
   SettingsTextListRow({@required this.onTaped, this.title, this.widget});
@@ -15,7 +15,7 @@ class SettingsTextListRow extends StatelessWidget {
     final settingsStore = Provider.of<SettingsStore>(context);
 
     return Container(
-      color: Theme.of(context).accentTextTheme.headline.backgroundColor,
+      color: Theme.of(context).accentTextTheme.headline5.backgroundColor,
       child: ListTile(
         contentPadding: EdgeInsets.only(left: 20.0, right: 20.0),
         title: Row(
@@ -27,7 +27,7 @@ class SettingsTextListRow extends StatelessWidget {
                   settingsStore.itemHeaders[title],
                   style: TextStyle(
                            fontSize: 16.0,
-                           color: Theme.of(context).primaryTextTheme.title.color),
+                           color: Theme.of(context).primaryTextTheme.headline6.color),
                   )),
             ),
             Flexible(

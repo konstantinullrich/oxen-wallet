@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:cw_monero/subaddress_list.dart' as subaddress_list;
-import 'package:loki_wallet/src/domain/monero/subaddress.dart';
+import 'package:oxen_coin/subaddress_list.dart' as subaddress_list;
+import 'package:oxen_wallet/src/domain/monero/subaddress.dart';
 
 class SubaddressList {
   SubaddressList() {

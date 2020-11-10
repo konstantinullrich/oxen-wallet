@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
+import 'package:oxen_wallet/src/domain/common/enumerable_item.dart';
 
 class ExchangeProviderDescription extends EnumerableItem<int>
     with Serializable<int> {

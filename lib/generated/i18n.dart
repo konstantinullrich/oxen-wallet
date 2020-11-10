@@ -73,7 +73,7 @@ class S implements WidgetsLocalizations {
   String get error_text_payment_id => "Payment ID can only contain from 16 to 64 chars in hex";
   String get error_text_subaddress_name => "Subaddress name can't contain ` , ' \" symbols\nand must be between 1 and 20 characters long";
   String get error_text_wallet_name => "Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long";
-  String get error_text_xmr => "XMR value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12";
+  String get error_text_xmr => "OXEN value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12";
   String get estimated => "Estimated";
   String get exchange => "Exchange";
   String get exchange_result_write_down_ID => "*Please copy or write down your ID shown above.";
@@ -82,7 +82,7 @@ class S implements WidgetsLocalizations {
   String get faq => "FAQ";
   String get fetching => "Fetching";
   String get filters => "Filters";
-  String get first_wallet_text => "Awesome wallet\nfor Monero";
+  String get first_wallet_text => "Awesome wallet\nfor Oxen";
   String get full_balance => "Full Balance";
   String get hidden_balance => "Hidden Balance";
   String get id => "ID: ";
@@ -102,7 +102,7 @@ class S implements WidgetsLocalizations {
   String get nodes_list_reset_to_default_message => "Are you sure that you want to reset settings to default?";
   String get offer_expires_in => "Offer expires in: ";
   String get ok => "OK";
-  String get openalias_alert_title => "XMR Recipient Detected";
+  String get openalias_alert_title => "OXEN Recipient Detected";
   String get outgoing => "Outgoing";
   String get password => "Password";
   String get paste => "Paste";
@@ -124,7 +124,7 @@ class S implements WidgetsLocalizations {
   String get rescan => "Rescan";
   String get reset => "Reset";
   String get restore_address => "Address";
-  String get restore_description_from_backup => "You can restore the whole Cake Wallet app from your back-up file";
+  String get restore_description_from_backup => "You can restore the whole OXEN Wallet app from your back-up file";
   String get restore_description_from_keys => "Restore your wallet from generated keystrokes saved from your private keys";
   String get restore_description_from_seed => "Restore your wallet from either the 25 word or 13 word combination code";
   String get restore_description_from_seed_keys => "Get back your wallet from seed/keys that you've saved to secure place";
@@ -161,15 +161,16 @@ class S implements WidgetsLocalizations {
   String get send_error_currency => "Currency can only contain numbers";
   String get send_error_minimum_value => "Minimum value of amount is 0.01";
   String get send_estimated_fee => "Estimated fee:";
-  String get send_monero_address => "Monero address";
+  String get send_monero_address => "Oxen address";
   String get send_payment_id => "Payment ID (optional)";
-  String get send_title => "Send Monero";
-  String get send_xmr => "Send XMR";
+  String get send_title => "Send Oxen";
+  String get send_xmr => "Send OXEN";
   String get send_your_wallet => "Your wallet";
   String get sending => "Sending";
   String get sent => "Sent";
   String get settings_all => "ALL";
   String get settings_allow_biometrical_authentication => "Allow biometrical authentication";
+  String get settings_allow_currency_refreshing => "Allow Currency Referesh";
   String get settings_change_language => "Change language";
   String get settings_change_pin => "Change PIN";
   String get settings_currency => "Currency";
@@ -254,21 +255,21 @@ class S implements WidgetsLocalizations {
   String get wallet_list_create_new_wallet => "Create New Wallet";
   String get wallet_list_load_wallet => "Load wallet";
   String get wallet_list_restore_wallet => "Restore Wallet";
-  String get wallet_list_title => "Monero Wallet";
+  String get wallet_list_title => "Oxen Wallet";
   String get wallet_menu => "Menu";
   String get wallet_name => "Wallet name";
   String get wallet_restoration_store_incorrect_seed_length => "Incorrect seed length";
-  String get wallet_store_monero_wallet => "Monero Wallet";
+  String get wallet_store_monero_wallet => "Oxen Wallet";
   String get wallets => "Wallets";
-  String get welcome => "WELCOME\nTO CAKE WALLET";
+  String get welcome => "WELCOME\nTO OXEN WALLET";
   String get widgets_address => "Address";
   String get widgets_or => "or";
   String get widgets_restore_from_blockheight => "Restore from blockheight";
   String get widgets_restore_from_date => "Restore from date";
   String get widgets_seed => "Seed";
-  String get xmr_available_balance => "XMR Available Balance";
-  String get xmr_full_balance => "XMR Full Balance";
-  String get xmr_hidden => "XMR Hidden";
+  String get xmr_available_balance => "OXEN Available Balance";
+  String get xmr_full_balance => "OXEN Full Balance";
+  String get xmr_hidden => "OXEN Hidden";
   String get yesterday => "Yesterday";
   String get you_will_get => "You will get";
   String get you_will_send => "You will send";
@@ -338,7 +339,7 @@ class $de extends S {
   @override
   String get trade_state_underpaid => "Unterbezahlt";
   @override
-  String get welcome => "Willkommen\nzu CAKE WALLET";
+  String get welcome => "Willkommen\nzu OXEN WALLET";
   @override
   String get share_address => "Adresse teilen ";
   @override
@@ -448,7 +449,7 @@ class $de extends S {
   @override
   String get contact => "Kontakt";
   @override
-  String get openalias_alert_title => "XMR-Empfänger erkannt";
+  String get openalias_alert_title => "OXEN-Empfänger erkannt";
   @override
   String get auth_store_incorrect_password => "Falsches PIN";
   @override
@@ -474,9 +475,9 @@ class $de extends S {
   @override
   String get restore_seed_keys_restore => "Seed / Schlüssel wiederherstellen";
   @override
-  String get xmr_hidden => "XMR versteckt";
+  String get xmr_hidden => "OXEN versteckt";
   @override
-  String get send_xmr => "Senden XMR";
+  String get send_xmr => "Senden OXEN";
   @override
   String get exchange => "Austausch";
   @override
@@ -552,15 +553,15 @@ class $de extends S {
   @override
   String get subaddress_title => "Unteradressenliste";
   @override
-  String get wallet_store_monero_wallet => "Monero Wallet";
+  String get wallet_store_monero_wallet => "Oxen Wallet";
   @override
   String get send_creating_transaction => "Transaktion erstellen";
   @override
   String get trade_state_complete => "Komplett";
   @override
-  String get error_text_xmr => "Der XMR-Wert kann das verfügbare Guthaben nicht überschreiten.\nDie Anzahl der Nachkommastellen muss kleiner oder gleich 12 sein";
+  String get error_text_xmr => "Der OXEN-Wert kann das verfügbare Guthaben nicht überschreiten.\nDie Anzahl der Nachkommastellen muss kleiner oder gleich 12 sein";
   @override
-  String get xmr_available_balance => "XMR verfügbares Guthaben";
+  String get xmr_available_balance => "OXEN verfügbares Guthaben";
   @override
   String get trade_state_paid => "Bezahlt";
   @override
@@ -596,7 +597,7 @@ class $de extends S {
   @override
   String get widgets_restore_from_date => "Vom Datum wiederherstellen";
   @override
-  String get restore_recover => "Genesen";
+  String get restore_recover => "Wiederherstellen";
   @override
   String get reset => "Zurücksetzen";
   @override
@@ -694,7 +695,7 @@ class $de extends S {
   @override
   String get all => "ALLE";
   @override
-  String get xmr_full_balance => "XMR Volle Balance";
+  String get xmr_full_balance => "OXEN Volle Balance";
   @override
   String get incoming => "Eingehend";
   @override
@@ -716,7 +717,7 @@ class $de extends S {
   @override
   String get send => "Senden";
   @override
-  String get send_title => "Senden Sie Monero";
+  String get send_title => "Senden Sie Oxen";
   @override
   String get error_text_keys => "Walletschlüssel können nur 64 hexadezimale Zeichen enthalten";
   @override
@@ -752,7 +753,7 @@ class $de extends S {
   @override
   String get transaction_details_height => "Höhe";
   @override
-  String get wallet_menu => "Brieftaschen-Menü";
+  String get wallet_menu => "Wallet-Menü";
   @override
   String get settings_dark_mode => "Dunkler Modus";
   @override
@@ -760,7 +761,7 @@ class $de extends S {
   @override
   String get restore_address => "Adresse";
   @override
-  String get restore_wallet_restore_description => "Beschreibung zur Wiederherstellung der Brieftasche";
+  String get restore_wallet_restore_description => "Beschreibung zur Wiederherstellung des Wallets";
   @override
   String get today => "Heute";
   @override
@@ -770,7 +771,7 @@ class $de extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monero Wallet";
+  String get wallet_list_title => "Oxen Wallet";
   @override
   String get authentication => "Authentifizierung";
   @override
@@ -796,9 +797,9 @@ class $de extends S {
   @override
   String get restore_title_from_seed => "Aus Seed wiederherstellen";
   @override
-  String get restore_description_from_backup => "Sie können die gesamte Cake Wallet-App von wiederherstellen Ihre Sicherungsdatei";
+  String get restore_description_from_backup => "Sie können die gesamte OXEN Wallet-App von Ihrer Sicherungsdatei wiederherstellen";
   @override
-  String get send_monero_address => "Monero-Adresse";
+  String get send_monero_address => "Oxen-Adresse";
   @override
   String get error_text_node_port => "Der Knotenport kann nur Nummern zwischen 0 und 65535 enthalten";
   @override
@@ -806,7 +807,7 @@ class $de extends S {
   @override
   String get digit_pin => "-stelliger PIN";
   @override
-  String get first_wallet_text => "tolle Brieftasche\nzum Monero";
+  String get first_wallet_text => "Das coole Wallet\nfür Oxen";
   @override
   String get settings_trades => "Handel";
   @override
@@ -906,7 +907,7 @@ class $hi extends S {
   @override
   String get trade_state_underpaid => "के तहत भुगतान किया";
   @override
-  String get welcome => "स्वागत हे\nसेवा मेरे CAKE WALLET";
+  String get welcome => "स्वागत हे\nसेवा मेरे OXEN WALLET";
   @override
   String get share_address => "पता साझा करें";
   @override
@@ -1016,7 +1017,7 @@ class $hi extends S {
   @override
   String get contact => "संपर्क करें";
   @override
-  String get openalias_alert_title => "XMR प्राप्तकर्ता का पता लगाया";
+  String get openalias_alert_title => "OXEN प्राप्तकर्ता का पता लगाया";
   @override
   String get auth_store_incorrect_password => "गलत पिन";
   @override
@@ -1042,9 +1043,9 @@ class $hi extends S {
   @override
   String get restore_seed_keys_restore => "बीज / कुंजी पुनर्स्थापित करें";
   @override
-  String get xmr_hidden => "XMR छिपा हुआ";
+  String get xmr_hidden => "OXEN छिपा हुआ";
   @override
-  String get send_xmr => "संदेश XMR";
+  String get send_xmr => "संदेश OXEN";
   @override
   String get exchange => "अदला बदली";
   @override
@@ -1128,7 +1129,7 @@ class $hi extends S {
   @override
   String get error_text_xmr => "एक्सएमआर मूल्य उपलब्ध शेष राशि से अधिक नहीं हो सकता.\nअंश अंकों की संख्या 12 से कम या इसके बराबर होनी चाहिए";
   @override
-  String get xmr_available_balance => "XMR उपलब्ध शेष राशि";
+  String get xmr_available_balance => "OXEN उपलब्ध शेष राशि";
   @override
   String get trade_state_paid => "भुगतान किया है";
   @override
@@ -1262,7 +1263,7 @@ class $hi extends S {
   @override
   String get all => "सब";
   @override
-  String get xmr_full_balance => "XMR पूर्ण संतुलन";
+  String get xmr_full_balance => "OXEN पूर्ण संतुलन";
   @override
   String get incoming => "आने वाली";
   @override
@@ -1284,7 +1285,7 @@ class $hi extends S {
   @override
   String get send => "संदेश";
   @override
-  String get send_title => "संदेश Monero";
+  String get send_title => "संदेश Oxen";
   @override
   String get error_text_keys => "वॉलेट कीज़ में हेक्स में केवल 64 वर्ण हो सकते हैं";
   @override
@@ -1338,7 +1339,7 @@ class $hi extends S {
   @override
   String get ok => "ठीक है";
   @override
-  String get wallet_list_title => "Monero बटुआ";
+  String get wallet_list_title => "Oxen बटुआ";
   @override
   String get authentication => "प्रमाणीकरण";
   @override
@@ -1374,7 +1375,7 @@ class $hi extends S {
   @override
   String get digit_pin => "-अंक पिन";
   @override
-  String get first_wallet_text => "बहुत बढ़िया बटुआ\nके लिये Monero";
+  String get first_wallet_text => "बहुत बढ़िया बटुआ\nके लिये Oxen";
   @override
   String get settings_trades => "ट्रेडों";
   @override
@@ -1474,7 +1475,7 @@ class $ru extends S {
   @override
   String get trade_state_underpaid => "Недоплаченная";
   @override
-  String get welcome => "Приветствуем в CAKE WALLET";
+  String get welcome => "Приветствуем в OXEN WALLET";
   @override
   String get share_address => "Поделиться адресом";
   @override
@@ -1584,7 +1585,7 @@ class $ru extends S {
   @override
   String get contact => "Контакт";
   @override
-  String get openalias_alert_title => "Получатель XMR обнаружен";
+  String get openalias_alert_title => "Получатель OXEN обнаружен";
   @override
   String get auth_store_incorrect_password => "Некорректный PIN";
   @override
@@ -1610,9 +1611,9 @@ class $ru extends S {
   @override
   String get restore_seed_keys_restore => "Восстановить из мнемонической фразы/ключей";
   @override
-  String get xmr_hidden => "XMR Скрыто";
+  String get xmr_hidden => "OXEN Скрыто";
   @override
-  String get send_xmr => "Отправить XMR";
+  String get send_xmr => "Отправить OXEN";
   @override
   String get exchange => "Обмен";
   @override
@@ -1688,15 +1689,15 @@ class $ru extends S {
   @override
   String get subaddress_title => "Список субадресов";
   @override
-  String get wallet_store_monero_wallet => "Monero Кошелёк";
+  String get wallet_store_monero_wallet => "Oxen Кошелёк";
   @override
   String get send_creating_transaction => "Создать транзакцию";
   @override
   String get trade_state_complete => "Выполнена";
   @override
-  String get error_text_xmr => "Значение XMR не может превышать доступный баланс.\nКоличество цифр после запятой должно быть меньше или равно 12";
+  String get error_text_xmr => "Значение OXEN не может превышать доступный баланс.\nКоличество цифр после запятой должно быть меньше или равно 12";
   @override
-  String get xmr_available_balance => "Доступный XMR баланс";
+  String get xmr_available_balance => "Доступный OXEN баланс";
   @override
   String get trade_state_paid => "Оплаченная";
   @override
@@ -1830,7 +1831,7 @@ class $ru extends S {
   @override
   String get all => "ВСЕ";
   @override
-  String get xmr_full_balance => "Весь XMR баланс";
+  String get xmr_full_balance => "Весь OXEN баланс";
   @override
   String get incoming => "Входящие";
   @override
@@ -1852,7 +1853,7 @@ class $ru extends S {
   @override
   String get send => "Отправить";
   @override
-  String get send_title => "Отправить Monero";
+  String get send_title => "Отправить Oxen";
   @override
   String get error_text_keys => "Ключи кошелька могут содержать только 64 символа в hex";
   @override
@@ -1906,7 +1907,7 @@ class $ru extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monero Кошелёк";
+  String get wallet_list_title => "Oxen Кошелёк";
   @override
   String get authentication => "Аутентификация";
   @override
@@ -1932,9 +1933,9 @@ class $ru extends S {
   @override
   String get restore_title_from_seed => "Восстановить из мнемонической фразы";
   @override
-  String get restore_description_from_backup => "Вы можете восстановить Cake Wallet из вашего back-up файла";
+  String get restore_description_from_backup => "Вы можете восстановить OXEN Wallet из вашего back-up файла";
   @override
-  String get send_monero_address => "Monero адрес";
+  String get send_monero_address => "Oxen адрес";
   @override
   String get error_text_node_port => "Порт ноды может содержать только цифры от 0 до 65535";
   @override
@@ -1942,7 +1943,7 @@ class $ru extends S {
   @override
   String get digit_pin => "-значный PIN";
   @override
-  String get first_wallet_text => "В самом удобном кошельке для Monero";
+  String get first_wallet_text => "В самом удобном кошельке для Oxen";
   @override
   String get settings_trades => "Сделки";
   @override
@@ -2042,7 +2043,7 @@ class $ko extends S {
   @override
   String get trade_state_underpaid => "미지급";
   @override
-  String get welcome => "환영\n에 CAKE WALLET";
+  String get welcome => "환영\n에 OXEN WALLET";
   @override
   String get share_address => "주소 공유";
   @override
@@ -2152,7 +2153,7 @@ class $ko extends S {
   @override
   String get contact => "접촉";
   @override
-  String get openalias_alert_title => "XMR 수신자 감지";
+  String get openalias_alert_title => "OXEN 수신자 감지";
   @override
   String get auth_store_incorrect_password => "잘못된 PIN";
   @override
@@ -2178,9 +2179,9 @@ class $ko extends S {
   @override
   String get restore_seed_keys_restore => "종자 / 키 복원";
   @override
-  String get xmr_hidden => "XMR 숨김";
+  String get xmr_hidden => "OXEN 숨김";
   @override
-  String get send_xmr => "보내다 XMR";
+  String get send_xmr => "보내다 OXEN";
   @override
   String get exchange => "교환";
   @override
@@ -2262,9 +2263,9 @@ class $ko extends S {
   @override
   String get trade_state_complete => "완전한";
   @override
-  String get error_text_xmr => "XMR 값은 사용 가능한 잔액을 초과 할 수 없습니다.\n소수 자릿수는 12 이하 여야합니다";
+  String get error_text_xmr => "OXEN 값은 사용 가능한 잔액을 초과 할 수 없습니다.\n소수 자릿수는 12 이하 여야합니다";
   @override
-  String get xmr_available_balance => "XMR 사용 가능한 잔액";
+  String get xmr_available_balance => "OXEN 사용 가능한 잔액";
   @override
   String get trade_state_paid => "유료";
   @override
@@ -2398,7 +2399,7 @@ class $ko extends S {
   @override
   String get all => "모든";
   @override
-  String get xmr_full_balance => "XMR 풀 밸런스";
+  String get xmr_full_balance => "OXEN 풀 밸런스";
   @override
   String get incoming => "들어오는";
   @override
@@ -2500,7 +2501,7 @@ class $ko extends S {
   @override
   String get restore_title_from_seed => "종자에서 복원";
   @override
-  String get restore_description_from_backup => "백업 파일에서 전체 Cake Wallet 앱을 복원 할 수 있습니다.";
+  String get restore_description_from_backup => "백업 파일에서 전체 OXEN Wallet 앱을 복원 할 수 있습니다.";
   @override
   String get send_monero_address => "모네로 주소";
   @override
@@ -2510,7 +2511,7 @@ class $ko extends S {
   @override
   String get digit_pin => "숫자 PIN";
   @override
-  String get first_wallet_text => "멋진 지갑\n에 대한 Monero";
+  String get first_wallet_text => "멋진 지갑\n에 대한 Oxen";
   @override
   String get settings_trades => "거래";
   @override
@@ -2610,7 +2611,7 @@ class $pt extends S {
   @override
   String get trade_state_underpaid => "Parcialmente paga";
   @override
-  String get welcome => "BEM-VINDO(A)\nÀ CAKE WALLET";
+  String get welcome => "BEM-VINDO(A)\nÀ OXEN WALLET";
   @override
   String get share_address => "Compartilhar endereço";
   @override
@@ -2720,7 +2721,7 @@ class $pt extends S {
   @override
   String get contact => "Contato";
   @override
-  String get openalias_alert_title => "Destinatário XMR detectado";
+  String get openalias_alert_title => "Destinatário OXEN detectado";
   @override
   String get auth_store_incorrect_password => "PIN incorreto";
   @override
@@ -2748,7 +2749,7 @@ class $pt extends S {
   @override
   String get xmr_hidden => "Esconder saldo";
   @override
-  String get send_xmr => "Enviar XMR";
+  String get send_xmr => "Enviar OXEN";
   @override
   String get exchange => "Trocar";
   @override
@@ -2824,15 +2825,15 @@ class $pt extends S {
   @override
   String get subaddress_title => "Sub-endereços";
   @override
-  String get wallet_store_monero_wallet => "Carteira Monero";
+  String get wallet_store_monero_wallet => "Carteira Oxen";
   @override
   String get send_creating_transaction => "Criando transação";
   @override
   String get trade_state_complete => "Finalizada";
   @override
-  String get error_text_xmr => "A quantia em XMR não pode exceder o saldo disponível.\nTO número de dígitos decimais deve ser menor ou igual a 12";
+  String get error_text_xmr => "A quantia em OXEN não pode exceder o saldo disponível.\nTO número de dígitos decimais deve ser menor ou igual a 12";
   @override
-  String get xmr_available_balance => "Saldo XMR disponível";
+  String get xmr_available_balance => "Saldo OXEN disponível";
   @override
   String get trade_state_paid => "Paga";
   @override
@@ -2966,7 +2967,7 @@ class $pt extends S {
   @override
   String get all => "TUDO";
   @override
-  String get xmr_full_balance => "Saldo XMR total";
+  String get xmr_full_balance => "Saldo OXEN total";
   @override
   String get incoming => "Recebidas";
   @override
@@ -2988,7 +2989,7 @@ class $pt extends S {
   @override
   String get send => "Enviar";
   @override
-  String get send_title => "Enviar Monero";
+  String get send_title => "Enviar Oxen";
   @override
   String get error_text_keys => "As chaves da carteira podem conter apenas 64 caracteres em hexadecimal";
   @override
@@ -3042,7 +3043,7 @@ class $pt extends S {
   @override
   String get ok => "Ok";
   @override
-  String get wallet_list_title => "Carteira Monero";
+  String get wallet_list_title => "Carteira Oxen";
   @override
   String get authentication => "Autenticação";
   @override
@@ -3068,9 +3069,9 @@ class $pt extends S {
   @override
   String get restore_title_from_seed => "Restaurar a partir de semente";
   @override
-  String get restore_description_from_backup => "Você pode restaurar todo o aplicativo Cake Wallet de seu arquivo de backup";
+  String get restore_description_from_backup => "Você pode restaurar todo o aplicativo OXEN Wallet de seu arquivo de backup";
   @override
-  String get send_monero_address => "Endereço Monero";
+  String get send_monero_address => "Endereço Oxen";
   @override
   String get error_text_node_port => "A porta do nó deve conter apenas números entre 0 e 65535";
   @override
@@ -3078,7 +3079,7 @@ class $pt extends S {
   @override
   String get digit_pin => "dígitos";
   @override
-  String get first_wallet_text => "Uma fantástica carteira\npara Monero";
+  String get first_wallet_text => "Uma fantástica carteira\npara Oxen";
   @override
   String get settings_trades => "Trocas";
   @override
@@ -3178,7 +3179,7 @@ class $uk extends S {
   @override
   String get trade_state_underpaid => "Недоплачена";
   @override
-  String get welcome => "Вітаємо в CAKE WALLET";
+  String get welcome => "Вітаємо в OXEN WALLET";
   @override
   String get share_address => "Поділитися адресою";
   @override
@@ -3288,7 +3289,7 @@ class $uk extends S {
   @override
   String get contact => "Контакт";
   @override
-  String get openalias_alert_title => "Отримувача XMR виявлено";
+  String get openalias_alert_title => "Отримувача OXEN виявлено";
   @override
   String get auth_store_incorrect_password => "Некоректний PIN";
   @override
@@ -3314,9 +3315,9 @@ class $uk extends S {
   @override
   String get restore_seed_keys_restore => "Відновити за допомогою мнемонічної фрази/ключів";
   @override
-  String get xmr_hidden => "XMR Приховано";
+  String get xmr_hidden => "OXEN Приховано";
   @override
-  String get send_xmr => "Відправити XMR";
+  String get send_xmr => "Відправити OXEN";
   @override
   String get exchange => "Обмін";
   @override
@@ -3392,15 +3393,15 @@ class $uk extends S {
   @override
   String get subaddress_title => "Список Субадрес";
   @override
-  String get wallet_store_monero_wallet => "Monero гаманець";
+  String get wallet_store_monero_wallet => "Oxen гаманець";
   @override
   String get send_creating_transaction => "Створити транзакцію";
   @override
   String get trade_state_complete => "Завершено";
   @override
-  String get error_text_xmr => "Значення XMR не може перевищувати доступний баланс.\nКількість цифр після коми повинно бути меншим або дорівнювати 12";
+  String get error_text_xmr => "Значення OXEN не може перевищувати доступний баланс.\nКількість цифр після коми повинно бути меншим або дорівнювати 12";
   @override
-  String get xmr_available_balance => "Доступний XMR баланс";
+  String get xmr_available_balance => "Доступний OXEN баланс";
   @override
   String get trade_state_paid => "Оплачена";
   @override
@@ -3534,7 +3535,7 @@ class $uk extends S {
   @override
   String get all => "ВСЕ";
   @override
-  String get xmr_full_balance => "Весь XMR баланс";
+  String get xmr_full_balance => "Весь OXEN баланс";
   @override
   String get incoming => "Вхідні";
   @override
@@ -3556,7 +3557,7 @@ class $uk extends S {
   @override
   String get send => "Відправити";
   @override
-  String get send_title => "Відправити Monero";
+  String get send_title => "Відправити Oxen";
   @override
   String get error_text_keys => "Ключі гаманця можуть містити тільки 64 символів в hex";
   @override
@@ -3610,7 +3611,7 @@ class $uk extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monero Гаманець";
+  String get wallet_list_title => "Oxen Гаманець";
   @override
   String get authentication => "Аутентифікація";
   @override
@@ -3636,9 +3637,9 @@ class $uk extends S {
   @override
   String get restore_title_from_seed => "Відновити з мнемонічної фрази";
   @override
-  String get restore_description_from_backup => "Ви можете відновити Cake Wallet з вашого резервного файлу";
+  String get restore_description_from_backup => "Ви можете відновити OXEN Wallet з вашого резервного файлу";
   @override
-  String get send_monero_address => "Monero адреса";
+  String get send_monero_address => "Oxen адреса";
   @override
   String get error_text_node_port => "Порт вузла може містити тільки цифри від 0 до 65535";
   @override
@@ -3646,7 +3647,7 @@ class $uk extends S {
   @override
   String get digit_pin => "-значний PIN";
   @override
-  String get first_wallet_text => "В самому зручному гаманці для Monero";
+  String get first_wallet_text => "В самому зручному гаманці для Oxen";
   @override
   String get settings_trades => "Операції";
   @override
@@ -3746,7 +3747,7 @@ class $ja extends S {
   @override
   String get trade_state_underpaid => "支払不足";
   @override
-  String get welcome => "ようこそ\nに CAKE WALLET";
+  String get welcome => "ようこそ\nに OXEN WALLET";
   @override
   String get share_address => "住所を共有する";
   @override
@@ -3856,7 +3857,7 @@ class $ja extends S {
   @override
   String get contact => "接触";
   @override
-  String get openalias_alert_title => "XMR受信者が検出されました";
+  String get openalias_alert_title => "OXEN受信者が検出されました";
   @override
   String get auth_store_incorrect_password => "間違ったPIN";
   @override
@@ -3882,9 +3883,9 @@ class $ja extends S {
   @override
   String get restore_seed_keys_restore => "シード/キーの復元";
   @override
-  String get xmr_hidden => "XMR非表示";
+  String get xmr_hidden => "OXEN非表示";
   @override
-  String get send_xmr => "送る XMR";
+  String get send_xmr => "送る OXEN";
   @override
   String get exchange => "交換する";
   @override
@@ -3960,15 +3961,15 @@ class $ja extends S {
   @override
   String get subaddress_title => "サブアドレス一覧";
   @override
-  String get wallet_store_monero_wallet => "Monero 財布";
+  String get wallet_store_monero_wallet => "Oxen 財布";
   @override
   String get send_creating_transaction => "トランザクションを作成する";
   @override
   String get trade_state_complete => "コンプリート";
   @override
-  String get error_text_xmr => "XMR値は利用可能な残高を超えることはできません.\n小数桁数は12以下でなければなりません";
+  String get error_text_xmr => "OXEN値は利用可能な残高を超えることはできません.\n小数桁数は12以下でなければなりません";
   @override
-  String get xmr_available_balance => "XMR利用可能残高";
+  String get xmr_available_balance => "OXEN利用可能残高";
   @override
   String get trade_state_paid => "有料";
   @override
@@ -4102,7 +4103,7 @@ class $ja extends S {
   @override
   String get all => "すべて";
   @override
-  String get xmr_full_balance => "XMRフルバランス";
+  String get xmr_full_balance => "OXENフルバランス";
   @override
   String get incoming => "着信";
   @override
@@ -4124,7 +4125,7 @@ class $ja extends S {
   @override
   String get send => "送る";
   @override
-  String get send_title => "Moneroを送信";
+  String get send_title => "Oxenを送信";
   @override
   String get error_text_keys => "ウォレットキーには、16進数で64文字しか含めることができません";
   @override
@@ -4178,7 +4179,7 @@ class $ja extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monero 財布";
+  String get wallet_list_title => "Oxen 財布";
   @override
   String get authentication => "認証";
   @override
@@ -4204,9 +4205,9 @@ class $ja extends S {
   @override
   String get restore_title_from_seed => "シードから復元";
   @override
-  String get restore_description_from_backup => "Cake Walletアプリ全体を復元できますバックアップファイル";
+  String get restore_description_from_backup => "OXEN Walletアプリ全体を復元できますバックアップファイル";
   @override
-  String get send_monero_address => "Monero 住所";
+  String get send_monero_address => "Oxen 住所";
   @override
   String get error_text_node_port => "ノードポートには、0〜65535の数字のみを含めることができます";
   @override
@@ -4214,7 +4215,7 @@ class $ja extends S {
   @override
   String get digit_pin => "桁ピン";
   @override
-  String get first_wallet_text => "素晴らしい財布\nために Monero";
+  String get first_wallet_text => "素晴らしい財布\nために Oxen";
   @override
   String get settings_trades => "取引";
   @override
@@ -4318,7 +4319,7 @@ class $pl extends S {
   @override
   String get trade_state_underpaid => "Niedopłacone";
   @override
-  String get welcome => "WITAMY\nW CAKE WALLET";
+  String get welcome => "WITAMY\nW OXEN WALLET";
   @override
   String get share_address => "Udostępnij adres";
   @override
@@ -4428,7 +4429,7 @@ class $pl extends S {
   @override
   String get contact => "Kontakt";
   @override
-  String get openalias_alert_title => "Wykryto odbiorcę XMR";
+  String get openalias_alert_title => "Wykryto odbiorcę OXEN";
   @override
   String get auth_store_incorrect_password => "Niepoprawny PIN";
   @override
@@ -4454,9 +4455,9 @@ class $pl extends S {
   @override
   String get restore_seed_keys_restore => "Przywracanie nasion / kluczy";
   @override
-  String get xmr_hidden => "XMR Ukryty";
+  String get xmr_hidden => "OXEN Ukryty";
   @override
-  String get send_xmr => "Wysłać XMR";
+  String get send_xmr => "Wysłać OXEN";
   @override
   String get exchange => "Wymieniać się";
   @override
@@ -4532,15 +4533,15 @@ class $pl extends S {
   @override
   String get subaddress_title => "Lista podadresów";
   @override
-  String get wallet_store_monero_wallet => "Portfel Monero";
+  String get wallet_store_monero_wallet => "Portfel Oxen";
   @override
   String get send_creating_transaction => "Tworzenie transakcji";
   @override
   String get trade_state_complete => "Kompletny";
   @override
-  String get error_text_xmr => "Wartość XMR nie może przekraczać dostępnego salda.\nLiczba cyfr ułamkowych musi być mniejsza lub równa 12";
+  String get error_text_xmr => "Wartość OXEN nie może przekraczać dostępnego salda.\nLiczba cyfr ułamkowych musi być mniejsza lub równa 12";
   @override
-  String get xmr_available_balance => "XMR Dostępne saldo";
+  String get xmr_available_balance => "OXEN Dostępne saldo";
   @override
   String get trade_state_paid => "Płatny";
   @override
@@ -4674,7 +4675,7 @@ class $pl extends S {
   @override
   String get all => "WSZYSTKO";
   @override
-  String get xmr_full_balance => "XMR Pełna równowaga";
+  String get xmr_full_balance => "OXEN Pełna równowaga";
   @override
   String get incoming => "Przychodzące";
   @override
@@ -4696,7 +4697,7 @@ class $pl extends S {
   @override
   String get send => "Wysłać";
   @override
-  String get send_title => "Wyślij Monero";
+  String get send_title => "Wyślij Oxen";
   @override
   String get error_text_keys => "Klucze portfela mogą zawierać tylko 64 znaki w systemie szesnastkowym";
   @override
@@ -4750,7 +4751,7 @@ class $pl extends S {
   @override
   String get ok => "Dobrze";
   @override
-  String get wallet_list_title => "Portfel Monero";
+  String get wallet_list_title => "Portfel Oxen";
   @override
   String get authentication => "Poświadczenie";
   @override
@@ -4776,9 +4777,9 @@ class $pl extends S {
   @override
   String get restore_title_from_seed => "Przywróć z nasion";
   @override
-  String get restore_description_from_backup => "Możesz przywrócić całą aplikację Cake Wallet z plik kopii zapasowej";
+  String get restore_description_from_backup => "Możesz przywrócić całą aplikację OXEN Wallet z plik kopii zapasowej";
   @override
-  String get send_monero_address => "Adres Monero";
+  String get send_monero_address => "Adres Oxen";
   @override
   String get error_text_node_port => "Port węzła może zawierać tylko liczby od 0 do 65535";
   @override
@@ -4786,7 +4787,7 @@ class $pl extends S {
   @override
   String get digit_pin => "-znak PIN";
   @override
-  String get first_wallet_text => "Niesamowity portfel\nfdla Monero";
+  String get first_wallet_text => "Niesamowity portfel\nfdla Oxen";
   @override
   String get settings_trades => "Transakcje";
   @override
@@ -4886,7 +4887,7 @@ class $es extends S {
   @override
   String get trade_state_underpaid => "Poco pagado";
   @override
-  String get welcome => "Bienvenido\n CAKE WALLET";
+  String get welcome => "Bienvenido\n OXEN WALLET";
   @override
   String get share_address => "Compartir dirección";
   @override
@@ -4996,7 +4997,7 @@ class $es extends S {
   @override
   String get contact => "Contacto";
   @override
-  String get openalias_alert_title => "Destinatario XMR detectado";
+  String get openalias_alert_title => "Destinatario OXEN detectado";
   @override
   String get auth_store_incorrect_password => "Contraseña PIN";
   @override
@@ -5022,9 +5023,9 @@ class $es extends S {
   @override
   String get restore_seed_keys_restore => "Restauración de semillas / llaves";
   @override
-  String get xmr_hidden => "XMR Oculto";
+  String get xmr_hidden => "OXEN Oculto";
   @override
-  String get send_xmr => "Enviar XMR";
+  String get send_xmr => "Enviar OXEN";
   @override
   String get exchange => "Intercambiar";
   @override
@@ -5100,15 +5101,15 @@ class $es extends S {
   @override
   String get subaddress_title => "Lista de subdirecciones";
   @override
-  String get wallet_store_monero_wallet => "Monedero Monero";
+  String get wallet_store_monero_wallet => "Monedero Oxen";
   @override
   String get send_creating_transaction => "Creando transacción";
   @override
   String get trade_state_complete => "Completar";
   @override
-  String get error_text_xmr => "El valor XMR no puede exceder el saldo disponible.\nTEl número de dígitos de fracción debe ser menor o igual a 12";
+  String get error_text_xmr => "El valor OXEN no puede exceder el saldo disponible.\nTEl número de dígitos de fracción debe ser menor o igual a 12";
   @override
-  String get xmr_available_balance => "XMR Available Balance";
+  String get xmr_available_balance => "OXEN Available Balance";
   @override
   String get trade_state_paid => "Pagado";
   @override
@@ -5242,7 +5243,7 @@ class $es extends S {
   @override
   String get all => "TODOS";
   @override
-  String get xmr_full_balance => "XMR Saldo disponible";
+  String get xmr_full_balance => "OXEN Saldo disponible";
   @override
   String get incoming => "Entrante";
   @override
@@ -5264,7 +5265,7 @@ class $es extends S {
   @override
   String get send => "Enviar";
   @override
-  String get send_title => "Enviar Monero";
+  String get send_title => "Enviar Oxen";
   @override
   String get error_text_keys => "Las llaves de billetera solo pueden contener 64 caracteres en hexadecimal";
   @override
@@ -5318,7 +5319,7 @@ class $es extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monedero Monero";
+  String get wallet_list_title => "Monedero Oxen";
   @override
   String get authentication => "Autenticación";
   @override
@@ -5344,9 +5345,9 @@ class $es extends S {
   @override
   String get restore_title_from_seed => "De la semilla";
   @override
-  String get restore_description_from_backup => "Puede restaurar toda la aplicación Cake Wallet desde ysu archivo de respaldo";
+  String get restore_description_from_backup => "Puede restaurar toda la aplicación OXEN Wallet desde ysu archivo de respaldo";
   @override
-  String get send_monero_address => "Dirección de Monero";
+  String get send_monero_address => "Dirección de Oxen";
   @override
   String get error_text_node_port => "El puerto de nodo solo puede contener números entre 0 y 65535";
   @override
@@ -5354,7 +5355,7 @@ class $es extends S {
   @override
   String get digit_pin => "-dígito PIN";
   @override
-  String get first_wallet_text => "Impresionante billetera\npara Monero";
+  String get first_wallet_text => "Impresionante billetera\npara Oxen";
   @override
   String get settings_trades => "Comercia";
   @override
@@ -5454,7 +5455,7 @@ class $nl extends S {
   @override
   String get trade_state_underpaid => "Slecht betaald";
   @override
-  String get welcome => "WELKOM\nBIJ CAKE WALLET";
+  String get welcome => "WELKOM\nBIJ OXEN WALLET";
   @override
   String get share_address => "Deel adres";
   @override
@@ -5564,7 +5565,7 @@ class $nl extends S {
   @override
   String get contact => "Contact";
   @override
-  String get openalias_alert_title => "XMR-ontvanger gedetecteerd";
+  String get openalias_alert_title => "OXEN-ontvanger gedetecteerd";
   @override
   String get auth_store_incorrect_password => "Incorrect PIN";
   @override
@@ -5590,9 +5591,9 @@ class $nl extends S {
   @override
   String get restore_seed_keys_restore => "Zaad / sleutels herstellen";
   @override
-  String get xmr_hidden => "XMR Verborgen";
+  String get xmr_hidden => "OXEN Verborgen";
   @override
-  String get send_xmr => "Sturen XMR";
+  String get send_xmr => "Sturen OXEN";
   @override
   String get exchange => "Uitwisseling";
   @override
@@ -5668,15 +5669,15 @@ class $nl extends S {
   @override
   String get subaddress_title => "Subadreslijst";
   @override
-  String get wallet_store_monero_wallet => "Monero portemonnee";
+  String get wallet_store_monero_wallet => "Oxen portemonnee";
   @override
   String get send_creating_transaction => "Transactie maken";
   @override
   String get trade_state_complete => "Compleet";
   @override
-  String get error_text_xmr => "XMR-waarde kan het beschikbare saldo niet overschrijden.\nHet aantal breukcijfers moet kleiner zijn dan of gelijk zijn aan 12";
+  String get error_text_xmr => "OXEN-waarde kan het beschikbare saldo niet overschrijden.\nHet aantal breukcijfers moet kleiner zijn dan of gelijk zijn aan 12";
   @override
-  String get xmr_available_balance => "XMR Beschikbaar saldo";
+  String get xmr_available_balance => "OXEN Beschikbaar saldo";
   @override
   String get trade_state_paid => "Betaald";
   @override
@@ -5810,7 +5811,7 @@ class $nl extends S {
   @override
   String get all => "ALLE";
   @override
-  String get xmr_full_balance => "XMR Volledig saldo";
+  String get xmr_full_balance => "OXEN Volledig saldo";
   @override
   String get incoming => "inkomend";
   @override
@@ -5832,7 +5833,7 @@ class $nl extends S {
   @override
   String get send => "Sturen";
   @override
-  String get send_title => "Stuur Monero";
+  String get send_title => "Stuur Oxen";
   @override
   String get error_text_keys => "Portefeuillesleutels kunnen maximaal 64 tekens bevatten in hexadecimale volgorde";
   @override
@@ -5886,7 +5887,7 @@ class $nl extends S {
   @override
   String get ok => "OK";
   @override
-  String get wallet_list_title => "Monero portemonnee";
+  String get wallet_list_title => "Oxen portemonnee";
   @override
   String get authentication => "Authenticatie";
   @override
@@ -5912,9 +5913,9 @@ class $nl extends S {
   @override
   String get restore_title_from_seed => "Herstel van zaad";
   @override
-  String get restore_description_from_backup => "Je kunt de hele Cake Wallet-app herstellen van uw back-upbestand";
+  String get restore_description_from_backup => "Je kunt de hele OXEN Wallet-app herstellen van uw back-upbestand";
   @override
-  String get send_monero_address => "Monero-adres";
+  String get send_monero_address => "Oxen-adres";
   @override
   String get error_text_node_port => "Knooppuntpoort kan alleen nummers tussen 0 en 65535 bevatten";
   @override
@@ -5922,7 +5923,7 @@ class $nl extends S {
   @override
   String get digit_pin => "-cijferige PIN";
   @override
-  String get first_wallet_text => "Geweldige portemonnee\nfvoor Monero";
+  String get first_wallet_text => "Geweldige portemonnee\nfvoor Oxen";
   @override
   String get settings_trades => "Trades";
   @override
@@ -6022,7 +6023,7 @@ class $zh extends S {
   @override
   String get trade_state_underpaid => "支付不足";
   @override
-  String get welcome => "欢迎\nTO CAKE WALLET";
+  String get welcome => "欢迎\nTO OXEN WALLET";
   @override
   String get share_address => "分享地址";
   @override
@@ -6132,7 +6133,7 @@ class $zh extends S {
   @override
   String get contact => "联系";
   @override
-  String get openalias_alert_title => "檢測到XMR收件人";
+  String get openalias_alert_title => "檢測到OXEN收件人";
   @override
   String get auth_store_incorrect_password => "PIN码错误";
   @override
@@ -6158,9 +6159,9 @@ class $zh extends S {
   @override
   String get restore_seed_keys_restore => "种子/密钥还原";
   @override
-  String get xmr_hidden => "XMR Hidden";
+  String get xmr_hidden => "OXEN Hidden";
   @override
-  String get send_xmr => "发送 XMR";
+  String get send_xmr => "发送 OXEN";
   @override
   String get exchange => "交换";
   @override
@@ -6236,15 +6237,15 @@ class $zh extends S {
   @override
   String get subaddress_title => "子地址清单";
   @override
-  String get wallet_store_monero_wallet => "Monero 钱包";
+  String get wallet_store_monero_wallet => "Oxen 钱包";
   @override
   String get send_creating_transaction => "创建交易";
   @override
   String get trade_state_complete => "完成";
   @override
-  String get error_text_xmr => "XMR值不能超过可用余额.\n小数位数必须小于或等于12";
+  String get error_text_xmr => "OXEN值不能超过可用余额.\n小数位数必须小于或等于12";
   @override
-  String get xmr_available_balance => "XMR 可用余额 ";
+  String get xmr_available_balance => "OXEN 可用余额 ";
   @override
   String get trade_state_paid => "已付费";
   @override
@@ -6378,7 +6379,7 @@ class $zh extends S {
   @override
   String get all => "所有";
   @override
-  String get xmr_full_balance => "XMR 全部余额";
+  String get xmr_full_balance => "OXEN 全部余额";
   @override
   String get incoming => "传入";
   @override
@@ -6454,7 +6455,7 @@ class $zh extends S {
   @override
   String get ok => "好";
   @override
-  String get wallet_list_title => "Monero 钱包";
+  String get wallet_list_title => "Oxen 钱包";
   @override
   String get authentication => "认证方式";
   @override
@@ -6480,7 +6481,7 @@ class $zh extends S {
   @override
   String get restore_title_from_seed => "从种子还原";
   @override
-  String get restore_description_from_backup => "您可以从还原整个Cake Wallet应用您的备份文件";
+  String get restore_description_from_backup => "您可以从还原整个OXEN Wallet应用您的备份文件";
   @override
   String get send_monero_address => "门罗地址";
   @override
@@ -6490,7 +6491,7 @@ class $zh extends S {
   @override
   String get digit_pin => "数字别针";
   @override
-  String get first_wallet_text => "很棒的钱包\n对于 Monero";
+  String get first_wallet_text => "很棒的钱包\n对于 Oxen";
   @override
   String get settings_trades => "交易";
   @override
@@ -6593,7 +6594,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   @override
   Future<S> load(Locale locale) {
-    final String lang = getLang(locale);
+    final lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
         case "de":
@@ -6654,13 +6655,13 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
       return fallback ?? supported.first;
     }
 
-    final Locale languageLocale = Locale(locale.languageCode, "");
+    final languageLocale = Locale(locale.languageCode, "");
     if (supported.contains(locale)) {
       return locale;
     } else if (supported.contains(languageLocale)) {
       return languageLocale;
     } else {
-      final Locale fallbackLocale = fallback ?? supported.first;
+      final fallbackLocale = fallback ?? supported.first;
       return fallbackLocale;
     }
   }
@@ -6670,7 +6671,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   ///
   bool _isSupported(Locale locale, bool withCountry) {
     if (locale != null) {
-      for (Locale supportedLocale in supportedLocales) {
+      for (var supportedLocale in supportedLocales) {
         // Language must always match both locales.
         if (supportedLocale.languageCode != locale.languageCode) {
           continue;

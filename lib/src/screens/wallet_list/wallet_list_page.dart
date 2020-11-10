@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/domain/common/wallet_description.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:loki_wallet/src/stores/wallet_list/wallet_list_store.dart';
-import 'package:loki_wallet/src/screens/wallet_list/wallet_menu.dart';
-import 'package:loki_wallet/src/widgets/picker.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/src/stores/wallet_list/wallet_list_store.dart';
+import 'package:oxen_wallet/src/screens/wallet_list/wallet_menu.dart';
+import 'package:oxen_wallet/src/widgets/picker.dart';
 
 class WalletListPage extends BasePage {
   @override
@@ -83,7 +83,7 @@ class WalletListBodyState extends State<WalletListBody> {
                                         ? Palette.cakeGreen
                                         : Theme.of(context)
                                             .primaryTextTheme
-                                            .headline
+                                            .headline5
                                             .color,
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.w600),

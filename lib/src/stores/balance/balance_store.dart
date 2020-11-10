@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:loki_wallet/src/domain/loki/loki_balance.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_balance.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/common/wallet.dart';
-import 'package:loki_wallet/src/domain/common/balance.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/common/calculate_fiat_amount.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/common/balance.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 
 part 'balance_store.g.dart';
 
@@ -49,7 +49,7 @@ abstract class BalanceStoreBase with Store {
     }
 
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.loki);
+        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.oxen);
     final price = _priceStore.prices[symbol];
     return calculateFiatAmount(price: price, cryptoAmount: fullBalance);
   }
@@ -61,7 +61,7 @@ abstract class BalanceStoreBase with Store {
     }
 
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.loki);
+        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.oxen);
     final price = _priceStore.prices[symbol];
     return calculateFiatAmount(price: price, cryptoAmount: unlockedBalance);
   }
@@ -87,7 +87,7 @@ abstract class BalanceStoreBase with Store {
 //  }
 
   Future _onBalanceChange(Balance balance) async {
-    final _balance = balance as LokiBalance;
+    final _balance = balance as OxenBalance;
 
     if (fullBalance != _balance.fullBalance) {
       fullBalance = _balance.fullBalance;

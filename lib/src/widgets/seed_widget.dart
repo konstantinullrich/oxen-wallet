@@ -1,19 +1,19 @@
-import 'package:loki_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/english.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/english_old.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/chinese_simplified.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/dutch.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/german.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/japanese.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/portuguese.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/russian.dart';
-import 'package:loki_wallet/src/domain/monero/mnemonics/spanish.dart';
-import 'package:loki_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/english.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/english_old.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/chinese_simplified.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/dutch.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/german.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/japanese.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/portuguese.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/russian.dart';
+import 'package:oxen_wallet/src/domain/monero/mnemonics/spanish.dart';
+import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 final List<String> _englishWords = EnglishMnemonics.words + EnglishOldMnemonics.words;
 
@@ -185,7 +185,7 @@ class SeedWidgetState extends State<SeedWidget> {
           .map((text) => MnemoticItem(text: text, dic: widget.words))
           .toList();
 
-      bool isValid = true;
+      var isValid = true;
 
       for (final word in currentMnemotics) {
         isValid = word.isCorrect();

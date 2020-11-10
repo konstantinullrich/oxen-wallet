@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/widgets/picker.dart';
-import 'package:loki_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/widgets/picker.dart';
+import 'package:oxen_wallet/src/widgets/address_text_field.dart';
 
 class ExchangeCard extends StatefulWidget {
   ExchangeCard(
@@ -151,7 +151,7 @@ class ExchangeCardState extends State<ExchangeCard> {
                                         fontSize: 24,
                                         color: Theme.of(context)
                                             .primaryTextTheme
-                                            .title
+                                            .headline6
                                             .color)),
                                 widget.imageArrow
                               ]),
@@ -176,8 +176,9 @@ class ExchangeCardState extends State<ExchangeCard> {
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: true),
                           inputFormatters: [
-                            BlacklistingTextInputFormatter(
-                                RegExp('[\\-|\\ |\\,]'))
+                            FilteringTextInputFormatter.deny(
+                                RegExp('[\\-|\\ |\\,]')
+                            )
                           ],
                           decoration: InputDecoration(
                               hintStyle: TextStyle(
@@ -212,7 +213,7 @@ class ExchangeCardState extends State<ExchangeCard> {
                                             height: 1.2,
                                             color: Theme.of(context)
                                                 .primaryTextTheme
-                                                .subtitle
+                                                .subtitle2
                                                 .color),
                                       )
                                     : SizedBox(),
@@ -226,7 +227,7 @@ class ExchangeCardState extends State<ExchangeCard> {
                                             height: 1.2,
                                             color: Theme.of(context)
                                                 .primaryTextTheme
-                                                .subtitle
+                                                .subtitle2
                                                 .color))
                                     : SizedBox(),
                               ]),

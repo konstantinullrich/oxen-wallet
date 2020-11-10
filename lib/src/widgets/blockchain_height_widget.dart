@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/monero/get_height_by_date.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/monero/get_height_by_date.dart';
+import 'package:oxen_wallet/palette.dart';
 
 class BlockchainHeightWidget extends StatefulWidget {
   BlockchainHeightWidget({GlobalKey key}) : super(key: key);
@@ -61,7 +61,7 @@ class BlockchainHeightState extends State<BlockchainHeightWidget> {
             style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryTextTheme.title.color),
+                color: Theme.of(context).primaryTextTheme.headline6.color),
           ),
         ),
         Row(
@@ -101,7 +101,7 @@ class BlockchainHeightState extends State<BlockchainHeightWidget> {
 
   Future _selectDate(BuildContext context) async {
     final now = DateTime.now();
-    final DateTime date = await showDatePicker(
+    final date = await showDatePicker(
         context: context,
         initialDate: now.subtract(Duration(days: 1)),
         firstDate: DateTime(2014, DateTime.april),

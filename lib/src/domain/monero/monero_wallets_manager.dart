@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:cw_monero/wallet_manager.dart' as monero_wallet_manager;
-import 'package:loki_wallet/src/domain/common/wallet_info.dart';
-import 'package:loki_wallet/src/domain/common/wallet_type.dart';
-import 'package:loki_wallet/src/domain/common/wallets_manager.dart';
-import 'package:loki_wallet/src/domain/common/wallet.dart';
-import 'package:loki_wallet/src/domain/monero/monero_wallet.dart';
-import 'package:loki_wallet/src/domain/common/wallet_description.dart';
+import 'package:oxen_coin/wallet_manager.dart' as monero_wallet_manager;
+import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/domain/common/wallets_manager.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/monero/monero_wallet.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
 
 Future<String> pathForWallet({String name}) async {
   final directory = await getApplicationDocumentsDirectory();

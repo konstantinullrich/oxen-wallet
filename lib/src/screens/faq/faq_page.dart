@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class FaqPage extends BasePage {
   @override
@@ -18,8 +18,8 @@ class FaqPage extends BasePage {
 
         return ListView.separated(
           itemBuilder: (BuildContext context, int index) {
-            final itemTitle = faqItems[index]["question"].toString();
-            final itemChild = faqItems[index]["answer"].toString();
+            final itemTitle = faqItems[index]['question'].toString();
+            final itemChild = faqItems[index]['answer'].toString();
 
             return ExpansionTile(
               title: Text(itemTitle),

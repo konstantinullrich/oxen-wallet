@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/src/widgets/nav_bar.dart';
+import 'package:oxen_wallet/src/widgets/nav_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/themes.dart';
-import 'package:loki_wallet/theme_changer.dart';
+import 'package:oxen_wallet/themes.dart';
+import 'package:oxen_wallet/theme_changer.dart';
 
 enum AppBarStyle { regular, withShadow }
 
@@ -62,7 +62,7 @@ abstract class BasePage extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.w600,
-                color: Theme.of(context).primaryTextTheme.title.color),
+                color: Theme.of(context).primaryTextTheme.headline6.color),
           );
   }
 

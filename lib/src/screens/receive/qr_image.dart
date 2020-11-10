@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr/qr.dart';
-import 'package:loki_wallet/src/screens/receive/qr_painter.dart';
+import 'package:oxen_wallet/src/screens/receive/qr_painter.dart';
 
 class QrImage extends StatelessWidget {
   QrImage({

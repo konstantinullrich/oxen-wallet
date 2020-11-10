@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 class WelcomePage extends BasePage {
   static const _aspectRatioImage = 1.26;
   static const _baseWidth = 411.43;
   final _image = Image.asset('assets/images/welcomeImg.png');
-  final _cakeLogo = Image.asset('assets/images/cake_logo.png');
+  final _lokiLogo = Image.asset('assets/images/loki.png', width: 60, height: 60,);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class WelcomePage extends BasePage {
           AspectRatio(
               aspectRatio: _aspectRatioImage,
               child: FittedBox(child: _image, fit: BoxFit.fill)),
-          Positioned(bottom: 0.0, child: _cakeLogo)
+          Positioned(bottom: 0.0, child: _lokiLogo)
         ],
       ),
       Expanded(

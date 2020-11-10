@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/common/secret_store_key.dart';
-import 'package:loki_wallet/src/domain/common/encrypt.dart';
+import 'package:oxen_wallet/src/domain/common/secret_store_key.dart';
+import 'package:oxen_wallet/src/domain/common/encrypt.dart';
 
 class UserService {
   UserService({this.sharedPreferences, this.secureStorage});
@@ -24,7 +24,7 @@ class UserService {
   Future<bool> canAuthenticate() async {
     final key = generateStoreKeyFor(key: SecretStoreKey.pinCodePassword);
     final sharedPreferences = await SharedPreferences.getInstance();
-    final walletName = sharedPreferences.getString("current_wallet_name") ?? "";
+    final walletName = sharedPreferences.getString('current_wallet_name') ?? '';
     var password = '';
 
     try {

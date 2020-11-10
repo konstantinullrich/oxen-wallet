@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
 import 'package:hive/hive.dart';
 
 part 'wallet_info.g.dart';

@@ -1,7 +1,7 @@
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:mobx/mobx.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:loki_wallet/src/stores/action_list/trade_list_item.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/stores/action_list/trade_list_item.dart';
 
 part 'trade_filter_store.g.dart';
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/src/stores/seed_language/seed_language_store.dart';
-import 'package:loki_wallet/src/widgets/present_picker.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:oxen_wallet/src/widgets/present_picker.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 class SeedLanguagePicker extends StatelessWidget {
-  List<String> seedLocales = [
+  final List<String> seedLocales = [
     S.current.seed_language_english,
     S.current.seed_language_chinese,
     S.current.seed_language_dutch,
@@ -44,8 +44,7 @@ class SeedLanguagePicker extends StatelessWidget {
 
   Future<void> _setSeedLanguage(BuildContext context) async {
     final seedLanguageStore = Provider.of<SeedLanguageStore>(context);
-    String selectedSeedLanguage =
-    await presentPicker(context, seedLocales);
+    var selectedSeedLanguage = await presentPicker(context, seedLocales);
 
     if (selectedSeedLanguage != null) {
       selectedSeedLanguage = seedLanguages[seedLocales.indexOf(selectedSeedLanguage)];

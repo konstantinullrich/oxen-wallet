@@ -1,10 +1,10 @@
 import 'dart:core';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:cw_monero/transaction_history.dart'
+import 'package:oxen_coin/transaction_history.dart'
     as monero_transaction_history;
-import 'package:loki_wallet/src/domain/common/transaction_history.dart';
-import 'package:loki_wallet/src/domain/common/transaction_info.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
 
 List<TransactionInfo> _getAllTransactions(dynamic _) => monero_transaction_history
     .getAllTransations()

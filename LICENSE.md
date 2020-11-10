@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) 2020 Konstantin Ullrich
 Copyright (c) 2020 Cake Technologies LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -1,8 +1,8 @@
 {
-  "welcome" : "Willkommen\nzu CAKE WALLET",
-  "first_wallet_text" : "tolle Brieftasche\nzum Monero",
-  "please_make_selection" : "Bitte treffen Sie unten eine Auswahl zu\nErstellen oder Wiederherstellen Ihrer Brieftasche.",
-  "create_new" : "Erstelle neu",
+  "welcome" : "Willkommen\nim LOKI NEXT WALLET",
+  "first_wallet_text" : "Das tolle Wallet\nfür Loki",
+  "please_make_selection" : "Bitte treffen Sie unten eine Auswahl zu\nErstellen oder Wiederherstellen Ihres Wallets.",
+  "create_new" : "Neu erstellen",
   "restore_wallet" : "Wallet wiederherstellen",
 
 
@@ -27,12 +27,12 @@
   "failed_authentication" : "Authentifizierung fehlgeschlagen. ${state_error}",
 
 
-  "wallet_menu" : "Brieftaschen-Menü",
+  "wallet_menu" : "Wallet-Menü",
   "Blocks_remaining" : "${status} Verbleibende Blöcke",
   "please_try_to_connect_to_another_node" : "Bitte versuchen Sie, eine Verbindung zu einem anderen Knoten herzustellen",
-  "xmr_hidden" : "XMR versteckt",
-  "xmr_available_balance" : "XMR verfügbares Guthaben",
-  "xmr_full_balance" : "XMR Volle Balance",
+  "xmr_hidden" : "Loki versteckt",
+  "xmr_available_balance" : "LOKI verfügbares Guthaben",
+  "xmr_full_balance" : "LOKI Volle Balance",
   "send" : "Senden",
   "receive" : "Erhalten",
   "transactions" : "Transaktionen",
@@ -100,7 +100,7 @@
 
 
   "enter_your_pin" : "PIN eingeben",
-  "loading_your_wallet" : "Laden Sie Ihre Brieftasche",
+  "loading_your_wallet" : "Wallet wird geladen",
 
 
   "new_wallet" : "Neues Wallet",
@@ -138,7 +138,7 @@
   "restore_description_from_seed_keys" : "Holen Sie sich Ihr Wallet von Seed / Schlüsseln zurück, die Sie an einem sicheren Ort aufbewahrt haben",
   "restore_next" : "Nächster",
   "restore_title_from_backup" : "Aus einer Sicherungsdatei wiederherstellen",
-  "restore_description_from_backup" : "Sie können die gesamte Cake Wallet-App von wiederherstellen Ihre Sicherungsdatei",
+  "restore_description_from_backup" : "Sie können die gesamte Loki Next Wallet-App aus ihrer Sicherungsdatei wiederherstellen.",
   "restore_seed_keys_restore" : "Seed / Schlüssel wiederherstellen",
   "restore_title_from_seed" : "Aus Seed wiederherstellen",
   "restore_description_from_seed" : "Stellen Sie Ihr Wallet aus den 25 Wörtern wieder her oder 13-Wort-Kombinationscode",
@@ -148,8 +148,8 @@
   "restore_address" : "Adresse",
   "restore_view_key_private" : "Schlüssel anzeigen(geheim)",
   "restore_spend_key_private" : "Schlüssel ausgeben (geheim)",
-  "restore_recover" : "Genesen",
-  "restore_wallet_restore_description" : "Beschreibung zur Wiederherstellung der Brieftasche",
+  "restore_recover" : "Wiederherstellen",
+  "restore_wallet_restore_description" : "Beschreibung zur Wiederherstellung des Wallets",
 
 
   "seed_title" : "Seed",
@@ -162,22 +162,22 @@
   "seed_language_english" : "Englisch",
   "seed_language_chinese" : "Chinesisch",
   "seed_language_dutch" : "Niederländisch",
-  "seed_language_german" : "Deutsche",
+  "seed_language_german" : "Deutsch",
   "seed_language_japanese" : "Japanisch",
   "seed_language_portuguese" : "Portugiesisch",
   "seed_language_russian" : "Russisch",
   "seed_language_spanish" : "Spanisch",
 
 
-  "send_title" : "Senden Sie Monero",
-  "send_your_wallet" : "Deine Geldbörse",
-  "send_monero_address" : "Monero-Adresse",
+  "send_title" : "Senden Sie Loki",
+  "send_your_wallet" : "Dein Wallet",
+  "send_monero_address" : "Loki-Adresse",
   "send_payment_id" : "Zahlungs ID (wahlweise)",
   "all" : "ALLE",
   "send_error_minimum_value" : "Der Mindestbetrag beträgt 0,01",
   "send_error_currency" : "Die Währung kann nur Zahlen enthalten",
   "send_estimated_fee" : "Geschätzte Gebühr:",
-  "send_priority" : "Derzeit ist die Gebühr auf festgelegt ${transactionPriority} priorität.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden",
+  "send_priority" : "Derzeit ist die Gebühr auf ${transactionPriority} priorität festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden",
   "send_creating_transaction" : "Transaktion erstellen",
 
 
@@ -269,9 +269,9 @@
   "router_no_route" : "Keine Route definiert für ${name}",
 
 
-  "error_text_account_name" : "Der Kontoname darf nur Wallet und Zahlen enthalten\nund muss zwischen 1 und 15 Zeichen lang sein",
+  "error_text_account_name" : "Der Kontoname darf nur Buchstaben und Zahlen enthalten\nund muss zwischen 1 und 15 Zeichen lang sein",
   "error_text_contact_name" : "Kontaktname darf nicht enthalten sein ` , ' \" Symbole\nund muss zwischen 1 und 32 Zeichen lang sein",
-  "error_text_address" : "Die Walletadresse muss dem Typ entsprechen\nder Kryptowährung",
+  "error_text_address" : "Die Walletadresse muss dem Typ der Kryptowährung \nentsprechen",
   "error_text_node_address" : "Bitte geben Sie eine iPv4-Adresse ein",
   "error_text_node_port" : "Der Knotenport kann nur Nummern zwischen 0 und 65535 enthalten",
   "error_text_payment_id" : "Die Zahlungs-ID kann nur 16 bis 64 hexadezimale Zeichen enthalten",
@@ -292,7 +292,7 @@
   "auth_store_banned_minutes" : " Protokoll",
   "auth_store_incorrect_password" : "Falsches PIN",
   "wallet_store_monero_wallet" : "Monero Wallet",
-  "wallet_restoration_store_incorrect_seed_length" : "Falsche Samenlänge",
+  "wallet_restoration_store_incorrect_seed_length" : "Falsche Seed-länge",
 
 
   "full_balance" : "Volle Balance",
@@ -338,7 +338,7 @@
   "trade_state_finished" : "Fertig",
 
   "change_language" : "Sprache ändern",
-  "change_language_to" : "Ändern Sie die Sprache in ${language}?",
+  "change_language_to" : "Ändern Sie die Sprache zu ${language}?",
   
   "paste" : "Einfügen",
   "restore_from_seed_placeholder" : "Bitte geben Sie hier Ihren Code ein",
@@ -348,6 +348,6 @@
   "biometric_auth_reason" : "Scannen Sie Ihren Fingerabdruck zur Authentifizierung",
   "version" : "Ausführung ${currentVersion}",
 
-  "openalias_alert_title" : "XMR-Empfänger erkannt",
+  "openalias_alert_title" : "LOKI-Empfänger erkannt",
   "openalias_alert_content" : "Sie senden Geld an\n${recipient_name}"
 }

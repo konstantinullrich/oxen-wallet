@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 Future<T> presentPicker<T extends Object>(
     BuildContext context, List<T> list) async {
-  T _value = list[0];
+  var _value = list[0];
 
   return await showDialog(
       context: context,

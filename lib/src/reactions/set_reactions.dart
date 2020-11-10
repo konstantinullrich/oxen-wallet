@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:loki_wallet/src/domain/common/node.dart';
-import 'package:loki_wallet/src/domain/common/sync_status.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/start_updating_price.dart';
-import 'package:loki_wallet/src/stores/sync/sync_store.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:loki_wallet/src/stores/login/login_store.dart';
+import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/domain/common/sync_status.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/start_updating_price.dart';
+import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/src/stores/login/login_store.dart';
 
 Timer _reconnectionTimer;
 ReactionDisposer _connectToNodeDisposer;

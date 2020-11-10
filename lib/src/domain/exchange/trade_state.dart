@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
+import 'package:oxen_wallet/src/domain/common/enumerable_item.dart';
 
 class TradeState extends EnumerableItem<String> with Serializable<String> {
   const TradeState({@required String raw, @required String title})

@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'package:loki_wallet/src/domain/common/wallet_info.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:loki_wallet/src/domain/loki/loki_wallets_manager.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_wallets_manager.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/common/encrypt.dart';
-import 'package:loki_wallet/src/domain/common/wallet.dart';
-import 'package:loki_wallet/src/domain/common/wallet_description.dart';
-import 'package:loki_wallet/src/domain/common/wallets_manager.dart';
-import 'package:loki_wallet/src/domain/common/secret_store_key.dart';
-import 'package:loki_wallet/src/domain/common/wallet_type.dart';
-import 'package:loki_wallet/src/domain/monero/monero_wallets_manager.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/domain/common/encrypt.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
+import 'package:oxen_wallet/src/domain/common/wallets_manager.dart';
+import 'package:oxen_wallet/src/domain/common/secret_store_key.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/domain/monero/monero_wallets_manager.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 
 class WalletIsExistException implements Exception {
   WalletIsExistException(this.name);
@@ -21,7 +21,7 @@ class WalletIsExistException implements Exception {
   String name;
 
   @override
-  String toString() => "Wallet with name $name is already exist!";
+  String toString() => 'Wallet with name $name is already exist!';
 }
 
 class WalletListService {
@@ -113,9 +113,9 @@ class WalletListService {
         walletsManager =
             MoneroWalletsManager(walletInfoSource: walletInfoSource);
         break;
-      case WalletType.loki:
+      case WalletType.oxen:
         walletsManager =
-            LokiWalletsManager(walletInfoSource: walletInfoSource);
+            OxenWalletsManager(walletInfoSource: walletInfoSource);
         break;
       case WalletType.none:
         walletsManager = null;

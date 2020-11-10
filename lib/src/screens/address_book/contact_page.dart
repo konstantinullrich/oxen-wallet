@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/common/contact.dart';
-import 'package:loki_wallet/src/stores/address_book/address_book_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/widgets/address_text_field.dart';
-import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/contact.dart';
+import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/palette.dart';
 
 class ContactPage extends BasePage {
   ContactPage({this.contact});
@@ -125,7 +125,7 @@ class ContactFormState extends State<ContactForm> {
               TextFormField(
                 style: TextStyle(
                     fontSize: 14.0,
-                    color: Theme.of(context).primaryTextTheme.headline.color),
+                    color: Theme.of(context).primaryTextTheme.headline5.color),
                 decoration: InputDecoration(
                     hintStyle: TextStyle(color: Theme.of(context).hintColor),
                     hintText: S.of(context).contact_name,
@@ -151,7 +151,7 @@ class ContactFormState extends State<ContactForm> {
                           fontSize: 14.0,
                           color: Theme.of(context)
                               .primaryTextTheme
-                              .headline
+                              .headline5
                               .color),
                       decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(

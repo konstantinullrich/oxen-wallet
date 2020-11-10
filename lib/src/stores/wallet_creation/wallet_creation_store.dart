@@ -1,10 +1,10 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
-import 'package:loki_wallet/src/stores/wallet_creation/wallet_creation_state.dart';
-import 'package:loki_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:oxen_wallet/src/stores/wallet_creation/wallet_creation_state.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 part 'wallet_creation_store.g.dart';
 

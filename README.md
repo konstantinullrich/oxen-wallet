@@ -1,6 +1,6 @@
-# Loki Wallet
+# Oxen Wallet
 
-The Loki Wallet is a Fork of the Cake Wallet.
+The Oxen Wallet is a Fork of the Cake Wallet.
 
 ## Build 
 
@@ -14,6 +14,8 @@ flutter pub get
 flutter pub run build_runner build
 ```
 
-3. Build the Loki Static Libs and paste them into cw_monero/ios/External/android
+3. Build the Oxen Static Libs and paste them into oxen_coin/ios/External/android
+
+Copyright (c) 2020 Konstantin Ullrich.
 
 Copyright (c) 2020 Cake Technologies LLC.

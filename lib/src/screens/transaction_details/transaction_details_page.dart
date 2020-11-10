@@ -2,12 +2,12 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/transaction_info.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/screens/transaction_details/standart_list_item.dart';
-import 'package:loki_wallet/src/screens/transaction_details/standart_list_row.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/screens/transaction_details/standart_list_item.dart';
+import 'package:oxen_wallet/src/screens/transaction_details/standart_list_row.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class TransactionDetailsPage extends BasePage {
   TransactionDetailsPage({this.transactionInfo});
@@ -41,13 +41,13 @@ class TransactionDetailsForm extends StatefulWidget {
 }
 
 class TransactionDetailsFormState extends State<TransactionDetailsForm> {
-  final _items = List<StandartListItem>();
+  final _items = <StandartListItem>[];
 
   @override
   void initState() {
     final _dateFormat = widget.settingsStore.getCurrentDateFormat(
-          formatUSA: "yyyy.MM.dd, HH:mm",
-          formatDefault: "dd.MM.yyyy, HH:mm");
+          formatUSA: 'yyyy.MM.dd, HH:mm',
+          formatDefault: 'dd.MM.yyyy, HH:mm');
     final items = [
       StandartListItem(
           title: S.current.transaction_details_transaction_id,

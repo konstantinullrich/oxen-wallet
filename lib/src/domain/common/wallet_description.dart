@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
 
 class WalletDescription {
   WalletDescription({this.name, this.type});

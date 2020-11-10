@@ -1,17 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_pair.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider.dart';
-import 'package:loki_wallet/src/domain/exchange/limits.dart';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_request.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_state.dart';
-import 'package:loki_wallet/src/domain/exchange/xmrto/xmrto_trade_request.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_not_created_exeption.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_not_found_exeption.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_pair.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider.dart';
+import 'package:oxen_wallet/src/domain/exchange/limits.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_request.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_state.dart';
+import 'package:oxen_wallet/src/domain/exchange/xmrto/xmrto_trade_request.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_not_created_exeption.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_not_found_exeption.dart';
 
 class XMRTOExchangeProvider extends ExchangeProvider {
   XMRTOExchangeProvider()

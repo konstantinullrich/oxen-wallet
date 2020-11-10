@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/common/node.dart';
-import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
-import 'package:loki_wallet/src/domain/common/node_list.dart';
-import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
+import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
+import 'package:oxen_wallet/src/domain/common/node_list.dart';
+import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
 
 Future defaultSettingsMigration(
     {@required int version,
@@ -30,7 +30,7 @@ Future defaultSettingsMigration(
           await sharedPreferences.setString(
               'current_fiat_currency', FiatCurrency.usd.toString());
           await sharedPreferences.setInt(
-              'current_fee_priority', LokiTransactionPriority.standard.raw);
+              'current_fee_priority', OxenTransactionPriority.standard.raw);
           await sharedPreferences.setInt('current_balance_display_mode',
               BalanceDisplayMode.availableBalance.raw);
           await sharedPreferences.setBool('save_recipient_address', true);

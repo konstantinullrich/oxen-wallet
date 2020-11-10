@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/language.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/language.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class ChangeLanguage extends BasePage {
   @override
@@ -16,7 +16,7 @@ class ChangeLanguage extends BasePage {
     final currentLanguage = Provider.of<Language>(context);
 
     final currentColor = Theme.of(context).selectedRowColor;
-    final notCurrentColor = Theme.of(context).accentTextTheme.subhead.backgroundColor;
+    final notCurrentColor = Theme.of(context).accentTextTheme.subtitle1.backgroundColor;
 
     return Container(
         padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -36,7 +36,7 @@ class ChangeLanguage extends BasePage {
                   languages.values.elementAt(index),
                   style: TextStyle(
                       fontSize: 16.0,
-                      color: Theme.of(context).primaryTextTheme.title.color),
+                      color: Theme.of(context).primaryTextTheme.headline6.color),
                 ),
                 onTap: () async {
                   if (!isCurrent) {

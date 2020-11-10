@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/services/user_service.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/screens/auth/auth_page.dart';
-import 'package:loki_wallet/src/stores/auth/auth_store.dart';
+import 'package:oxen_wallet/src/domain/services/user_service.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
+import 'package:oxen_wallet/src/stores/auth/auth_store.dart';
 
 Widget createUnlockPage(
           {@required SharedPreferences sharedPreferences,

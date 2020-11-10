@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 
 class NodeIndicator extends StatelessWidget {
   NodeIndicator({this.color = Palette.red});

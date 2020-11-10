@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/src/screens/settings/attributes.dart';
+import 'package:oxen_wallet/src/screens/settings/attributes.dart';
 
 class SettingsItem {
   SettingsItem(

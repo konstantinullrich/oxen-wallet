@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/src/stores/user/user_store.dart';
-import 'package:loki_wallet/src/screens/pin_code/pin_code.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/user/user_store.dart';
+import 'package:oxen_wallet/src/screens/pin_code/pin_code.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 class SetupPinCodePage extends BasePage {
   SetupPinCodePage({this.onPinCodeSetup});
@@ -52,7 +52,7 @@ class _SetupPinCodeFormState<WidgetType extends SetupPinCodeForm>
       state.clear();
     } else {
       if (listEquals<int>(state.pin, _originalPin)) {
-        final String pin = state.pin.fold("", (ac, val) => ac + '$val');
+        final String pin = state.pin.fold('', (ac, val) => ac + '$val');
         _userStore.set(password: pin);
         _settingsStore.setDefaultPinLength(pinLength: state.pinLength);
 

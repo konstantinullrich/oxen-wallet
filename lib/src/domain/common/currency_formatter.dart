@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 
 String cryptoToString(CryptoCurrency crypto) {
   switch (crypto) {

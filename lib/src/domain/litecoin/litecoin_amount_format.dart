@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/crypto_amount_format.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_amount_format.dart';
 
 const litecoinAmountDivider = 100000000;
 

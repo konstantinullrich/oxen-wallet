@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/src/domain/common/loki_transaction_priority.dart';
+import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive/hive.dart';
-import 'package:loki_wallet/src/domain/common/node.dart';
-import 'package:loki_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
-import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:loki_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/default_settings_migration.dart';
+import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:oxen_wallet/src/screens/settings/items/item_headers.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:package_info/package_info.dart';
-import 'package:loki_wallet/src/domain/common/language.dart';
+import 'package:oxen_wallet/src/domain/common/language.dart';
 import 'package:devicelocale/devicelocale.dart';
 import 'package:intl/intl.dart';
 
@@ -26,12 +26,13 @@ abstract class SettingsStoreBase with Store {
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required LokiTransactionPriority initialTransactionPriority,
+      @required OxenTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode,
       @required bool initialSaveRecipientAddress,
-      @required bool initialAllowBiometricalAuthentication,
+      @required bool allowBiometricAuthenticationKey,
+      // @required bool allowCurrencyRefreshingKey,
       @required bool initialDarkTheme,
-      this.actionlistDisplayMode,
+      this.actionListDisplayMode,
       @required int initialPinLength,
       @required String initialLanguageCode,
       @required String initialCurrentLocale}) {
@@ -41,16 +42,17 @@ abstract class SettingsStoreBase with Store {
     shouldSaveRecipientAddress = initialSaveRecipientAddress;
     _sharedPreferences = sharedPreferences;
     _nodes = nodes;
-    allowBiometricalAuthentication = initialAllowBiometricalAuthentication;
+    allowBiometricAuthentication = allowBiometricAuthenticationKey;
+    // allowCurrencyRefreshing = allowCurrencyRefreshingKey;
     isDarkTheme = initialDarkTheme;
     defaultPinLength = initialPinLength;
     languageCode = initialLanguageCode;
     currentLocale = initialCurrentLocale;
     itemHeaders = {};
 
-    actionlistDisplayMode.observe(
+    actionListDisplayMode.observe(
         (dynamic _) => _sharedPreferences.setInt(displayActionListModeKey,
-            serializeActionlistDisplayModes(actionlistDisplayMode)),
+            serializeActionListDisplayModes(actionListDisplayMode)),
         fireImmediately: false);
 
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) => currentVersion = packageInfo.version);
@@ -62,32 +64,35 @@ abstract class SettingsStoreBase with Store {
   static const currentTransactionPriorityKey = 'current_fee_priority';
   static const currentBalanceDisplayModeKey = 'current_balance_display_mode';
   static const shouldSaveRecipientAddressKey = 'save_recipient_address';
-  static const allowBiometricalAuthenticationKey =
-      'allow_biometrical_authentication';
+  static const allowBiometricAuthenticationKey =
+      'allow_biometric_authentication';
   static const currentDarkTheme = 'dark_theme';
   static const displayActionListModeKey = 'display_list_mode';
   static const currentPinLength = 'current_pin_length';
   static const currentLanguageCode = 'language_code';
+  // static const allowCurrencyRefreshingKey = 'allow_currency_refreshing';
 
   static Future<SettingsStore> load(
       {@required SharedPreferences sharedPreferences,
       @required Box<Node> nodes,
       @required FiatCurrency initialFiatCurrency,
-      @required LokiTransactionPriority initialTransactionPriority,
+      @required OxenTransactionPriority initialTransactionPriority,
       @required BalanceDisplayMode initialBalanceDisplayMode}) async {
     final currentFiatCurrency = FiatCurrency(
         symbol: sharedPreferences.getString(currentFiatCurrencyKey));
-    final currentTransactionPriority = LokiTransactionPriority.deserialize(
+    final currentTransactionPriority = OxenTransactionPriority.deserialize(
         raw: sharedPreferences.getInt(currentTransactionPriorityKey));
     final currentBalanceDisplayMode = BalanceDisplayMode.deserialize(
         raw: sharedPreferences.getInt(currentBalanceDisplayModeKey));
     final shouldSaveRecipientAddress =
         sharedPreferences.getBool(shouldSaveRecipientAddressKey);
-    final allowBiometricalAuthentication =
-        sharedPreferences.getBool(allowBiometricalAuthenticationKey) ?? false;
+    final allowBiometricAuthentication =
+        sharedPreferences.getBool(allowBiometricAuthenticationKey) ?? false;
+    // final allowCurrencyRefreshing =
+    //     sharedPreferences.getBool(allowCurrencyRefreshingKey) ?? false;
     final savedDarkTheme = sharedPreferences.getBool(currentDarkTheme) ?? false;
-    final actionlistDisplayMode = ObservableList<ActionListDisplayMode>();
-    actionlistDisplayMode.addAll(deserializeActionlistDisplayModes(
+    final actionListDisplayMode = ObservableList<ActionListDisplayMode>();
+    actionListDisplayMode.addAll(deserializeActionListDisplayModes(
         sharedPreferences.getInt(displayActionListModeKey) ?? 11));
     final defaultPinLength = sharedPreferences.getInt(currentPinLength) ?? 4;
     final savedLanguageCode =
@@ -101,9 +106,10 @@ abstract class SettingsStoreBase with Store {
         initialTransactionPriority: currentTransactionPriority,
         initialBalanceDisplayMode: currentBalanceDisplayMode,
         initialSaveRecipientAddress: shouldSaveRecipientAddress,
-        initialAllowBiometricalAuthentication: allowBiometricalAuthentication,
+        allowBiometricAuthenticationKey: allowBiometricAuthentication,
+        // allowCurrencyRefreshingKey: allowCurrencyRefreshing,
         initialDarkTheme: savedDarkTheme,
-        actionlistDisplayMode: actionlistDisplayMode,
+        actionListDisplayMode: actionListDisplayMode,
         initialPinLength: defaultPinLength,
         initialLanguageCode: savedLanguageCode,
         initialCurrentLocale: initialCurrentLocale);
@@ -120,10 +126,10 @@ abstract class SettingsStoreBase with Store {
   FiatCurrency fiatCurrency;
 
   @observable
-  ObservableList<ActionListDisplayMode> actionlistDisplayMode;
+  ObservableList<ActionListDisplayMode> actionListDisplayMode;
 
   @observable
-  LokiTransactionPriority transactionPriority;
+  OxenTransactionPriority transactionPriority;
 
   @observable
   BalanceDisplayMode balanceDisplayMode;
@@ -132,7 +138,10 @@ abstract class SettingsStoreBase with Store {
   bool shouldSaveRecipientAddress;
 
   @observable
-  bool allowBiometricalAuthentication;
+  bool allowBiometricAuthentication;
+
+  // @observable
+  // bool allowCurrencyRefreshing;
 
   @observable
   bool isDarkTheme;
@@ -152,12 +161,20 @@ abstract class SettingsStoreBase with Store {
   String currentVersion;
 
   @action
-  Future setAllowBiometricalAuthentication(
-      {@required bool allowBiometricalAuthentication}) async {
-    this.allowBiometricalAuthentication = allowBiometricalAuthentication;
+  Future setAllowBiometricAuthentication(
+      {@required bool allowBiometricAuthentication}) async {
+    this.allowBiometricAuthentication = allowBiometricAuthentication;
     await _sharedPreferences.setBool(
-        allowBiometricalAuthenticationKey, allowBiometricalAuthentication);
+        allowBiometricAuthenticationKey, allowBiometricAuthentication);
   }
+
+  // @action
+  // Future setAllowCurrencyRefreshingKey(
+  //     {@required bool allowCurrencyRefreshing}) async {
+  //   this.allowCurrencyRefreshing = allowCurrencyRefreshing;
+  //   await _sharedPreferences.setBool(
+  //       allowCurrencyRefreshingKey, allowCurrencyRefreshing);
+  // }
 
   @action
   Future saveDarkTheme({@required bool isDarkTheme}) async {
@@ -181,14 +198,14 @@ abstract class SettingsStoreBase with Store {
 
   @action
   Future setCurrentFiatCurrency({@required FiatCurrency currency}) async {
-    this.fiatCurrency = currency;
+    fiatCurrency = currency;
     await _sharedPreferences.setString(
         currentFiatCurrencyKey, fiatCurrency.serialize());
   }
 
   @action
   Future setCurrentTransactionPriority(
-      {@required LokiTransactionPriority priority}) async {
+      {@required OxenTransactionPriority priority}) async {
     transactionPriority = priority;
     await _sharedPreferences.setInt(
         currentTransactionPriorityKey, priority.serialize());
@@ -214,34 +231,34 @@ abstract class SettingsStoreBase with Store {
 
   @action
   void toggleTransactionsDisplay() =>
-      actionlistDisplayMode.contains(ActionListDisplayMode.transactions)
+      actionListDisplayMode.contains(ActionListDisplayMode.transactions)
           ? _hideTransaction()
           : _showTransaction();
 
   @action
   void toggleTradesDisplay() =>
-      actionlistDisplayMode.contains(ActionListDisplayMode.trades)
+      actionListDisplayMode.contains(ActionListDisplayMode.trades)
           ? _hideTrades()
           : _showTrades();
 
   @action
   void _hideTransaction() =>
-      actionlistDisplayMode.remove(ActionListDisplayMode.transactions);
+      actionListDisplayMode.remove(ActionListDisplayMode.transactions);
 
   @action
   void _hideTrades() =>
-      actionlistDisplayMode.remove(ActionListDisplayMode.trades);
+      actionListDisplayMode.remove(ActionListDisplayMode.trades);
 
   @action
   void _showTransaction() =>
-      actionlistDisplayMode.add(ActionListDisplayMode.transactions);
+      actionListDisplayMode.add(ActionListDisplayMode.transactions);
 
   @action
-  void _showTrades() => actionlistDisplayMode.add(ActionListDisplayMode.trades);
+  void _showTrades() => actionListDisplayMode.add(ActionListDisplayMode.trades);
 
   @action
   Future setDefaultPinLength({@required int pinLength}) async {
-    this.defaultPinLength = pinLength;
+    defaultPinLength = pinLength;
     await _sharedPreferences.setInt(currentPinLength, pinLength);
   }
 
@@ -266,8 +283,10 @@ abstract class SettingsStoreBase with Store {
       ItemHeaders.personal: S.current.settings_personal,
       ItemHeaders.changePIN: S.current.settings_change_pin,
       ItemHeaders.changeLanguage: S.current.settings_change_language,
-      ItemHeaders.allowBiometricalAuthentication:
+      ItemHeaders.allowBiometricAuthentication:
           S.current.settings_allow_biometrical_authentication,
+      // ItemHeaders.allowCurrencyRefreshing:
+      //     S.current.settings_allow_currency_refreshing,
       ItemHeaders.darkMode: S.current.settings_dark_mode,
       ItemHeaders.support: S.current.settings_support,
       ItemHeaders.termsAndConditions: S.current.settings_terms_and_conditions,

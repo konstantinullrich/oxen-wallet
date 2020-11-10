@@ -1,27 +1,27 @@
 import 'dart:async';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/loki/account.dart';
-import 'package:loki_wallet/src/domain/common/transaction_history.dart';
-import 'package:loki_wallet/src/domain/common/transaction_info.dart';
-import 'package:loki_wallet/src/domain/common/wallet.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
-import 'package:loki_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/loki/loki_amount_format.dart';
-import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/stores/action_list/action_list_display_mode.dart';
-import 'package:loki_wallet/src/stores/action_list/action_list_item.dart';
-import 'package:loki_wallet/src/stores/action_list/date_section_item.dart';
-import 'package:loki_wallet/src/stores/action_list/trade_filter_store.dart';
-import 'package:loki_wallet/src/stores/action_list/trade_list_item.dart';
-import 'package:loki_wallet/src/stores/action_list/transaction_filter_store.dart';
-import 'package:loki_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:oxen_wallet/src/domain/oxen/account.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_item.dart';
+import 'package:oxen_wallet/src/stores/action_list/date_section_item.dart';
+import 'package:oxen_wallet/src/stores/action_list/trade_filter_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/trade_list_item.dart';
+import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
+import 'package:oxen_wallet/src/stores/action_list/transaction_list_item.dart';
 
 part 'action_list_store.g.dart';
 
@@ -94,12 +94,12 @@ abstract class ActionListBase with Store {
   @computed
   List<TransactionListItem> get transactions {
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.loki);
+        fiat: _settingsStore.fiatCurrency, crypto: CryptoCurrency.oxen);
     final price = _priceStore.prices[symbol];
 
     _transactions.forEach((item) {
       final amount = calculateFiatAmountRaw(
-          cryptoAmount: lokiAmountToDouble(amount: item.transaction.amount),
+          cryptoAmount: oxenAmountToDouble(amount: item.transaction.amount),
           price: price);
       item.transaction.changeFiatAmount(amount);
     });
@@ -189,7 +189,7 @@ abstract class ActionListBase with Store {
     _onTransactionsChangeSubscription = _history.transactions
         .listen((transactions) => _setTransactions(transactions));
 
-    if (wallet is LokiWallet) {
+    if (wallet is OxenWallet) {
       _account = wallet.account;
       _onAccountChangeSubscription = wallet.onAccountChange.listen((account) {
         _account = account;
@@ -216,7 +216,7 @@ abstract class ActionListBase with Store {
       return transaction;
     }).toList();
 
-    if (wallet is LokiWallet) {
+    if (wallet is OxenWallet) {
       sortedTransactions =
           transactions.where((tx) => tx.accountIndex == _account.id).toList();
     }

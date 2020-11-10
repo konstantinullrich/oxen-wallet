@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/screens/transaction_details/standart_list_item.dart';
-import 'package:loki_wallet/src/screens/transaction_details/standart_list_row.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/transaction_details/standart_list_item.dart';
+import 'package:oxen_wallet/src/screens/transaction_details/standart_list_row.dart';
 
 class TradeDetailsPage extends BasePage {
   @override
@@ -22,8 +22,8 @@ class TradeDetailsPage extends BasePage {
     final exchangeStore = Provider.of<ExchangeTradeStore>(context);
     final settingsStore = Provider.of<SettingsStore>(context);
     final createdAtFormat = settingsStore.getCurrentDateFormat(
-          formatUSA: "yyyy.MM.dd, HH:mm",
-          formatDefault: "dd.MM.yyyy, HH:mm");
+          formatUSA: 'yyyy.MM.dd, HH:mm',
+          formatDefault: 'dd.MM.yyyy, HH:mm');
 
     return Container(
         padding: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 20, right: 15),

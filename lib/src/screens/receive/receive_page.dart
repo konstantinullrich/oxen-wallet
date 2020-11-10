@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:loki_wallet/src/screens/receive/qr_image.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/screens/receive/qr_image.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class ReceivePage extends BasePage {
   @override
@@ -140,7 +140,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                 fontWeight: FontWeight.w600,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .title
+                                    .headline6
                                     .color),
                           ),
                         ),
@@ -158,8 +158,9 @@ class ReceiveBodyState extends State<ReceiveBody> {
                             keyboardType:
                                 TextInputType.numberWithOptions(decimal: true),
                             inputFormatters: [
-                              BlacklistingTextInputFormatter(
-                                  RegExp('[\\-|\\ |\\,]'))
+                              FilteringTextInputFormatter.deny(
+                                  RegExp('[\\-|\\ |\\,]')
+                              )
                             ],
                             style: TextStyle(
                               fontSize: 14.0,
@@ -191,7 +192,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
           children: <Widget>[
             Expanded(
                 child: Container(
-              color: Theme.of(context).accentTextTheme.headline.color,
+              color: Theme.of(context).accentTextTheme.headline5.color,
               child: Column(
                 children: <Widget>[
                   ListTile(
@@ -201,7 +202,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                           fontSize: 16.0,
                           color: Theme.of(context)
                               .primaryTextTheme
-                              .headline
+                              .headline5
                               .color),
                     ),
                     trailing: Container(
@@ -263,7 +264,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                 fontSize: 16.0,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .headline
+                                    .headline5
                                     .color),
                           ),
                         )

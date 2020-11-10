@@ -7,8 +7,8 @@ class QrPainter extends CustomPainter {
     this.color,
     this.version,
     this.errorCorrectionLevel,
-  ) : this._qr = QrCode(version, errorCorrectionLevel) {
-    _p.color = this.color;
+  ) : _qr = QrCode(version, errorCorrectionLevel) {
+    _p.color = color;
 
     _qr.addData(data);
     _qr.make();
@@ -24,8 +24,8 @@ class QrPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final squareSize = size.shortestSide / _qr.moduleCount;
-    for (int x = 0; x < _qr.moduleCount; x++) {
-      for (int y = 0; y < _qr.moduleCount; y++) {
+    for (var x = 0; x < _qr.moduleCount; x++) {
+      for (var y = 0; y < _qr.moduleCount; y++) {
         if (_qr.isDark(y, x)) {
           final squareRect = Rect.fromLTWH(
               x * squareSize, y * squareSize, squareSize, squareSize);
@@ -38,9 +38,9 @@ class QrPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     if (oldDelegate is QrPainter) {
-      return this.color != oldDelegate.color ||
-          this.errorCorrectionLevel != oldDelegate.errorCorrectionLevel ||
-          this.version != oldDelegate.version;
+      return color != oldDelegate.color ||
+          errorCorrectionLevel != oldDelegate.errorCorrectionLevel ||
+          version != oldDelegate.version;
     }
     
     return false;

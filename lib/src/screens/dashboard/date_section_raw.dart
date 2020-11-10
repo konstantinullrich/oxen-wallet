@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:intl/intl.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 
 class DateSectionRaw extends StatelessWidget {
   DateSectionRaw({this.date});
@@ -20,9 +20,9 @@ class DateSectionRaw extends StatelessWidget {
     final settingsStore = Provider.of<SettingsStore>(context);
     final currentLanguage = settingsStore.languageCode;
     final dateSectionDateFormat = settingsStore.getCurrentDateFormat(
-          formatUSA: "MMM d",
-          formatDefault: "d MMM");
-    var title = "";
+          formatUSA: 'MMM d',
+          formatDefault: 'd MMM');
+    var title = '';
 
     if (isToday) {
       title = S.of(context).today;

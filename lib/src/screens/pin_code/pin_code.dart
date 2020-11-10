@@ -1,9 +1,9 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 abstract class PinCodeWidget extends StatefulWidget {
   PinCodeWidget({Key key, this.onPinCodeEntered, this.hasLengthSwitcher})
@@ -142,8 +142,8 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                         childAspectRatio: _aspectRatio,
                         physics: const NeverScrollableScrollPhysics(),
                         children: List.generate(12, (index) {
-                          const double marginRight = 15;
-                          const double marginLeft = 15;
+                          const marginRight = 15.0;
+                          const marginLeft = 15.0;
 
                           if (index == 9) {
                             return Container(
@@ -178,7 +178,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                               onPressed: () => _push(index),
                               color: Theme.of(context)
                                   .accentTextTheme
-                                  .title
+                                  .headline6
                                   .backgroundColor,
                               shape: CircleBorder(),
                               child: Text('$index',

@@ -1,12 +1,12 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:loki_wallet/src/domain/services/wallet_list_service.dart';
-import 'package:loki_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:loki_wallet/src/stores/wallet_restoration/wallet_restoration_state.dart';
-import 'package:loki_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
+import 'package:oxen_wallet/src/stores/wallet_restoration/wallet_restoration_state.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 part 'wallet_restoration_store.g.dart';
 
@@ -125,7 +125,7 @@ abstract class WalletRestorationStoreBase with Store {
     if (isValid && cryptoCurrency != null) {
       switch (cryptoCurrency) {
         case CryptoCurrency.xmr:
-        case CryptoCurrency.loki:
+        case CryptoCurrency.oxen:
           isValid = (value.length == 95)||(value.length == 106);
           break;
         case CryptoCurrency.ada:

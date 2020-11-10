@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:loki_wallet/src/domain/common/fiat_currency.dart';
+import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/common/fetch_price.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/common/fetch_price.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 
 bool _startedUpdatingPrice = false;
 
@@ -20,7 +20,7 @@ Future<void> startUpdatingPrice(
     return;
   }
 
-  const currentCrypto = CryptoCurrency.loki;
+  const currentCrypto = CryptoCurrency.oxen;
   _startedUpdatingPrice = true;
 
   final price = await updatePrice(

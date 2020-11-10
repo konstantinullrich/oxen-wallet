@@ -2,12 +2,12 @@ import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/stores/auth/auth_state.dart';
-import 'package:loki_wallet/src/stores/auth/auth_store.dart';
-import 'package:loki_wallet/src/screens/pin_code/pin_code.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/src/domain/common/biometric_auth.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/stores/auth/auth_state.dart';
+import 'package:oxen_wallet/src/stores/auth/auth_store.dart';
+import 'package:oxen_wallet/src/screens/pin_code/pin_code.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/domain/common/biometric_auth.dart';
 
 typedef OnAuthenticationFinished = void Function(bool, AuthPageState);
 

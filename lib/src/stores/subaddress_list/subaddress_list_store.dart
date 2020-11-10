@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:loki_wallet/src/domain/common/wallet.dart';
-import 'package:loki_wallet/src/domain/loki/loki_wallet.dart';
-import 'package:loki_wallet/src/domain/loki/subaddress.dart';
-import 'package:loki_wallet/src/domain/loki/subaddress_list.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/domain/loki/account.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/domain/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/domain/oxen/subaddress_list.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/domain/oxen/account.dart';
 
 part 'subaddress_list_store.g.dart';
 
@@ -57,7 +57,7 @@ abstract class SubaddressListStoreBase with Store {
       await _onSubaddressesChangeSubscription.cancel();
     }
 
-    if (wallet is LokiWallet) {
+    if (wallet is OxenWallet) {
       _account = wallet.account;
       _subaddressList = wallet.getSubaddress();
       _onSubaddressesChangeSubscription = _subaddressList.subaddresses

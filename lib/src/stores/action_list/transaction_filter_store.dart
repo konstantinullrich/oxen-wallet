@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:loki_wallet/src/domain/common/transaction_direction.dart';
-import 'package:loki_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_direction.dart';
+import 'package:oxen_wallet/src/stores/action_list/transaction_list_item.dart';
 
 part 'transaction_filter_store.g.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 
 class ExchangeConfirmPage extends BasePage {
   ExchangeConfirmPage({@required this.trade});

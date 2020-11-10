@@ -1,10 +1,10 @@
-import 'package:loki_wallet/routes.dart';
+import 'package:oxen_wallet/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/contact.dart';
-import 'package:loki_wallet/src/domain/monero/subaddress.dart';
-import 'package:loki_wallet/src/domain/common/qr_scanner.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/contact.dart';
+import 'package:oxen_wallet/src/domain/monero/subaddress.dart';
+import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 
 enum AddressTextFieldOption { qrCode, addressBook, subaddressList }
 
@@ -31,7 +31,7 @@ class AddressTextField extends StatelessWidget {
   final Function(Uri) onURIScanned;
   final List<AddressTextFieldOption> options;
   final FormFieldValidator<String> validator;
-  FocusNode focusNode;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class AddressTextField extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(width: 5),
-              if (this.options.contains(AddressTextFieldOption.qrCode)) ...[
+              if (options.contains(AddressTextFieldOption.qrCode)) ...[
                 Container(
                     width: prefixIconWidth,
                     height: prefixIconHeight,
@@ -64,8 +64,7 @@ class AddressTextField extends StatelessWidget {
                           child: Image.asset('assets/images/qr_code_icon.png')),
                     ))
               ],
-              if (this
-                  .options
+              if (options
                   .contains(AddressTextFieldOption.addressBook)) ...[
                 Container(
                     width: prefixIconWidth,
@@ -83,8 +82,7 @@ class AddressTextField extends StatelessWidget {
                               'assets/images/address_book_icon.png')),
                     ))
               ],
-              if (this
-                  .options
+              if (options
                   .contains(AddressTextFieldOption.subaddressList)) ...[
                 Container(
                     width: prefixIconWidth,

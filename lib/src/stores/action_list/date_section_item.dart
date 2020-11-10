@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/stores/action_list/action_list_item.dart';
+import 'package:oxen_wallet/src/stores/action_list/action_list_item.dart';
 
 class DateSectionItem extends ActionListItem {
   DateSectionItem(this.date);

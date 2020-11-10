@@ -1,8 +1,8 @@
 import 'package:hive/hive.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_state.dart';
-import 'package:loki_wallet/src/domain/common/format_amount.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_state.dart';
+import 'package:oxen_wallet/src/domain/common/format_amount.dart';
 
 part 'trade.g.dart';
 

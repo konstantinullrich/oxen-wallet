@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:loki_wallet/src/domain/common/crypto_amount_format.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_amount_format.dart';
 
 const moneroAmountLength = 12;
 const moneroAmountDivider = 1000000000000;

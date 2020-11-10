@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/theme_changer.dart';
-import 'package:loki_wallet/themes.dart';
-import 'package:loki_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/theme_changer.dart';
+import 'package:oxen_wallet/themes.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 
 class EnterPinCode extends StatefulWidget {
   const EnterPinCode(this.currentPinLength, this.currentPin);

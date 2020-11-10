@@ -1,17 +1,17 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:loki_wallet/src/domain/loki/loki_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/domain/oxen/oxen_transaction_creation_credentials.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/services/wallet_service.dart';
-import 'package:loki_wallet/src/domain/common/pending_transaction.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/loki/transaction_description.dart';
-import 'package:loki_wallet/src/stores/price/price_store.dart';
-import 'package:loki_wallet/src/stores/send/sending_state.dart';
-import 'package:loki_wallet/src/stores/settings/settings_store.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/openalias_record.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/send/sending_state.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/openalias_record.dart';
 
 part 'send_store.g.dart';
 
@@ -63,12 +63,10 @@ abstract class SendStoreBase with Store {
     state = CreatingTransaction();
 
     try {
-      final _amount = amount != null
-          ? amount
-          : cryptoAmount == S.current.all
+      final _amount = amount ?? (cryptoAmount == S.current.all
               ? null
-              : cryptoAmount.replaceAll(',', '.');
-      final credentials = LokiTransactionCreationCredentials(
+              : cryptoAmount.replaceAll(',', '.'));
+      final credentials = OxenTransactionCreationCredentials(
           address: address,
           paymentId: paymentId ?? '',
           amount: _amount,
@@ -236,7 +234,7 @@ abstract class SendStoreBase with Store {
   }
 
   void validateXMR(String value, String availableBalance) {
-    const double maxValue = 18446744.073709551616;
+    const maxValue = 18446744.073709551616;
     const pattern = '^([0-9]+([.][0-9]{0,12})?|[.][0-9]{1,12})\$|ALL';
     final regExp = RegExp(pattern);
 
@@ -261,7 +259,7 @@ abstract class SendStoreBase with Store {
   }
 
   void validateFiat(String value, {double maxValue}) {
-    const double minValue = 0.01;
+    const minValue = 0.01;
 
     if (value.isEmpty && cryptoAmount == 'ALL') {
       isValid = true;
@@ -283,7 +281,7 @@ abstract class SendStoreBase with Store {
 
     errorMessage = isValid
         ? null
-        : "Value of amount can't exceed available balance.\n"
-            "The number of fraction digits must be less or equal to 2";
+        : 'Value of amount can\'t exceed available balance.\n'
+            'The number of fraction digits must be less or equal to 2';
   }
 }

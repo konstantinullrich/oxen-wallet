@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:loki_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
-import 'package:loki_wallet/src/stores/exchange/exchange_trade_state.dart';
-import 'package:loki_wallet/src/stores/exchange/limits_state.dart';
-import 'package:loki_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:loki_wallet/src/stores/exchange/exchange_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
-import 'package:loki_wallet/src/screens/exchange/widgets/exchange_card.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/widgets/picker.dart';
-import 'package:loki_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
+import 'package:oxen_wallet/src/stores/exchange/exchange_trade_state.dart';
+import 'package:oxen_wallet/src/stores/exchange/limits_state.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/stores/exchange/exchange_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/exchange/widgets/exchange_card.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/picker.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 
 class ExchangePage extends BasePage {
   @override
@@ -50,7 +50,7 @@ class ExchangePage extends BasePage {
                     style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryTextTheme.title.color)),
+                        color: Theme.of(context).primaryTextTheme.headline6.color)),
                 SizedBox(width: 5),
                 arrowBottomPurple
               ]),
@@ -60,7 +60,7 @@ class ExchangePage extends BasePage {
                       fontSize: 10.0,
                       fontWeight: FontWeight.w400,
                       color:
-                          Theme.of(context).primaryTextTheme.headline.color)))
+                          Theme.of(context).primaryTextTheme.headline5.color)))
         ],
       ),
     );
@@ -157,7 +157,7 @@ class ExchangeFormState extends State<ExchangeForm> {
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         height: 1.1,
-                        color: Theme.of(context).primaryTextTheme.title.color),
+                        color: Theme.of(context).primaryTextTheme.headline6.color),
                   ),
                 ),
                 ExchangeCard(
@@ -195,7 +195,7 @@ class ExchangeFormState extends State<ExchangeForm> {
                           fontSize: 18,
                           height: 1.1,
                           color:
-                              Theme.of(context).primaryTextTheme.title.color),
+                              Theme.of(context).primaryTextTheme.headline6.color),
                     )),
                 Observer(
                     builder: (_) => ExchangeCard(

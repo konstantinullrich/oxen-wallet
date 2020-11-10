@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:loki_wallet/routes.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/stores/address_book/address_book_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class AddressBookPage extends BasePage {
   AddressBookPage({this.isEditable = true});
@@ -118,7 +118,7 @@ class AddressBookPage extends BasePage {
                     contact.name,
                     style: TextStyle(
                         fontSize: 16.0,
-                        color: Theme.of(context).primaryTextTheme.title.color),
+                        color: Theme.of(context).primaryTextTheme.headline6.color),
                   ),
                 );
 

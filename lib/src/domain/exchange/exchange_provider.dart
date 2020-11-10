@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
-import 'package:loki_wallet/src/domain/common/crypto_currency.dart';
-import 'package:loki_wallet/src/domain/exchange/trade_request.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_pair.dart';
-import 'package:loki_wallet/src/domain/exchange/limits.dart';
-import 'package:loki_wallet/src/domain/exchange/trade.dart';
-import 'package:loki_wallet/src/domain/exchange/exchange_provider_description.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade_request.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_pair.dart';
+import 'package:oxen_wallet/src/domain/exchange/limits.dart';
+import 'package:oxen_wallet/src/domain/exchange/trade.dart';
+import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
 
 abstract class ExchangeProvider {
   ExchangeProvider({this.pairList});

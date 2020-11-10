@@ -1,4 +1,4 @@
-import 'package:loki_wallet/src/domain/common/enumerable_item.dart';
+import 'package:oxen_wallet/src/domain/common/enumerable_item.dart';
 
 class FiatCurrency extends EnumerableItem<String> with Serializable<String> {
   const FiatCurrency({String symbol}) : super(title: symbol, raw: symbol);

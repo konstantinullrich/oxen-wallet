@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:loki_wallet/palette.dart';
-import 'package:loki_wallet/generated/i18n.dart';
-import 'package:loki_wallet/src/widgets/primary_button.dart';
-import 'package:loki_wallet/src/stores/wallet_seed/wallet_seed_store.dart';
-import 'package:loki_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/stores/wallet_seed/wallet_seed_store.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 
 class SeedPage extends BasePage {
   SeedPage({this.onCloseCallback});
@@ -88,7 +88,7 @@ class SeedPage extends BasePage {
                                 fontSize: 14.0,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .title
+                                    .headline6
                                     .color),
                           )
                         ],

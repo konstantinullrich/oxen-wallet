@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loki_wallet/palette.dart';
+import 'package:oxen_wallet/palette.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
@@ -25,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
         height: 56.0,
         child: FlatButton(
           onPressed: isDisabled
-              ? (onDisabledPressed != null ? onDisabledPressed : null)
+              ? onDisabledPressed
               : onPressed,
           color: isDisabled ? Colors.transparent : color,
           shape: RoundedRectangleBorder(
