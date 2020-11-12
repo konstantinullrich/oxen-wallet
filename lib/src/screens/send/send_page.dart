@@ -44,7 +44,6 @@ class SendForm extends StatefulWidget {
 
 class SendFormState extends State<SendForm> {
   final _addressController = TextEditingController();
-  final _paymentIdController = TextEditingController();
   final _cryptoAmountController = TextEditingController();
   final _fiatAmountController = TextEditingController();
 
@@ -190,19 +189,16 @@ class SendFormState extends State<SendForm> {
                     onURIScanned: (uri) {
                       var address = '';
                       var amount = '';
-                      var paymentId = '';
 
                       if (uri != null) {
                         address = uri.path;
                         amount = uri.queryParameters['tx_amount'];
-                        paymentId = uri.queryParameters['tx_payment_id'];
                       } else {
                         address = uri.toString();
                       }
 
                       _addressController.text = address;
                       _cryptoAmountController.text = amount;
-                      _paymentIdController.text = paymentId;
                     },
                     options: [
                       AddressTextFieldOption.qrCode,
@@ -213,33 +209,6 @@ class SendFormState extends State<SendForm> {
                           cryptoCurrency: CryptoCurrency.xmr);
                       return sendStore.errorMessage;
                     },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: TextFormField(
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            color: Theme.of(context)
-                                .accentTextTheme
-                                .overline
-                                .backgroundColor),
-                        controller: _paymentIdController,
-                        decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                fontSize: 14.0,
-                                color: Theme.of(context).hintColor),
-                            hintText: S.of(context).send_payment_id,
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Theme.of(context).focusColor,
-                                    width: 1.0))),
-                        validator: (value) {
-                          sendStore.validatePaymentID(value);
-                          return sendStore.errorMessage;
-                        }),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -421,9 +390,8 @@ class SendFormState extends State<SendForm> {
                                           Navigator.of(auth.context).pop();
 
                                           sendStore.createTransaction(
-                                              address: _addressController.text,
-                                              paymentId:
-                                                  _paymentIdController.text);
+                                              address: _addressController.text
+                                          );
                                         });
                                       }),
                                   FlatButton(

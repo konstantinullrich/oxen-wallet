@@ -82,7 +82,6 @@ typedef TransactionsGetAll = Pointer<Int64> Function();
 
 typedef TransactionCreate = int Function(
     Pointer<Utf8> address,
-    Pointer<Utf8> paymentId,
     Pointer<Utf8> amount,
     int priorityRaw,
     int subaddrAccount,

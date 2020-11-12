@@ -59,7 +59,7 @@ abstract class SendStoreBase with Store {
 
   @action
   Future createTransaction(
-      {String address, String paymentId, String amount}) async {
+      {String address, String amount}) async {
     state = CreatingTransaction();
 
     try {
@@ -68,7 +68,6 @@ abstract class SendStoreBase with Store {
               : cryptoAmount.replaceAll(',', '.'));
       final credentials = OxenTransactionCreationCredentials(
           address: address,
-          paymentId: paymentId ?? '',
           amount: _amount,
           priority: settingsStore.transactionPriority);
 
@@ -173,6 +172,7 @@ abstract class SendStoreBase with Store {
     isValid = regExp.hasMatch(value);
     if (isValid && cryptoCurrency != null) {
       switch (cryptoCurrency) {
+        case CryptoCurrency.oxen:
         case CryptoCurrency.xmr:
           isValid = (value.length == 95)||(value.length == 106);
           break;
@@ -219,18 +219,6 @@ abstract class SendStoreBase with Store {
     }
 
     errorMessage = isValid ? null : S.current.error_text_address;
-  }
-
-  void validatePaymentID(String value) {
-    if (value.isEmpty) {
-      isValid = true;
-    } else {
-      const pattern = '^[A-Fa-f0-9]{16,64}\$';
-      final regExp = RegExp(pattern);
-      isValid = regExp.hasMatch(value);
-    }
-
-    errorMessage = isValid ? null : S.current.error_text_payment_id;
   }
 
   void validateXMR(String value, String availableBalance) {

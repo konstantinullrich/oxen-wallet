@@ -52,18 +52,15 @@ List<TransactionInfoRow> getAllTransactions() {
 
 PendingTransactionDescription createTransactionSync(
     {String address,
-    String paymentId,
     String amount,
     int priorityRaw,
     int accountIndex = 0}) {
   final addressPointer = Utf8.toUtf8(address);
-  final paymentIdPointer = Utf8.toUtf8(paymentId);
   final amountPointer = amount != null ? Utf8.toUtf8(amount) : nullptr;
   final errorMessagePointer = allocate<Utf8Box>();
   final pendingTransactionRawPointer = allocate<PendingTransactionRaw>();
   final created = transactionCreateNative(
           addressPointer,
-          paymentIdPointer,
           amountPointer,
           priorityRaw,
           accountIndex,
@@ -72,7 +69,6 @@ PendingTransactionDescription createTransactionSync(
       0;
 
   free(addressPointer);
-  free(paymentIdPointer);
 
   if (amountPointer != nullptr) {
     free(amountPointer);
@@ -108,14 +104,12 @@ void commitTransaction({Pointer<PendingTransactionRaw> transactionPointer}) {
 
 PendingTransactionDescription _createTransactionSync(Map args) {
   final address = args['address'] as String;
-  final paymentId = args['paymentId'] as String;
   final amount = args['amount'] as String;
   final priorityRaw = args['priorityRaw'] as int;
   final accountIndex = args['accountIndex'] as int;
 
   return createTransactionSync(
       address: address,
-      paymentId: paymentId,
       amount: amount,
       priorityRaw: priorityRaw,
       accountIndex: accountIndex);
@@ -123,13 +117,11 @@ PendingTransactionDescription _createTransactionSync(Map args) {
 
 Future<PendingTransactionDescription> createTransaction(
         {String address,
-        String paymentId,
         String amount,
         int priorityRaw,
         int accountIndex = 0}) =>
     compute(_createTransactionSync, {
       'address': address,
-      'paymentId': paymentId,
       'amount': amount,
       'priorityRaw': priorityRaw,
       'accountIndex': accountIndex

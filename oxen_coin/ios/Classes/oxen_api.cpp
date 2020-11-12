@@ -374,19 +374,12 @@ uint64_t transaction_estimate_fee(uint32_t priority, uint32_t recipients)
     return m_wallet->estimateTransactionFee(priority, recipients);
 }
 
-bool transaction_create(char *address, char *payment_id, char *amount,
-                                          uint8_t priority, uint32_t subaddr_account, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+bool transaction_create(char *address, char *amount, uint8_t priority, uint32_t subaddr_account, Utf8Box &error,
+    PendingTransactionRaw &pendingTransaction)
 {
     nice(19);
-    
-    //auto priority = static_cast<Oxen::PendingTransaction::Priority>(priority_raw);
-    std::string _payment_id;
-    Oxen::PendingTransaction *transaction;
 
-    if (payment_id != nullptr)
-    {
-        _payment_id = std::string(payment_id);
-    }
+    Oxen::PendingTransaction *transaction;
 
     if (amount != nullptr)
     {

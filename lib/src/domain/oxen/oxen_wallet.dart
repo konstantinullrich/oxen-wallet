@@ -281,7 +281,6 @@ class OxenWallet extends Wallet {
     final _credentials = credentials as OxenTransactionCreationCredentials;
     final transactionDescription = await transaction_history.createTransaction(
         address: _credentials.address,
-        paymentId: _credentials.paymentId,
         amount: _credentials.amount,
         priorityRaw: _credentials.priority.serialize(),
         accountIndex: _account.value.id);
