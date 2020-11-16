@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_wallet.dart';
-import 'package:oxen_wallet/src/domain/oxen/account.dart';
-import 'package:oxen_wallet/src/domain/oxen/account_list.dart';
+import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/oxen/account.dart';
+import 'package:oxen_wallet/src/oxen/account_list.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
 

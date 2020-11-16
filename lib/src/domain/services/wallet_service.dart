@@ -94,7 +94,7 @@ class WalletService extends Wallet {
   Future<String> getUnlockedBalance() => _currentWallet.getUnlockedBalance();
 
   @override
-  Future<int> getCurrentHeight() => _currentWallet.getCurrentHeight();
+  int getCurrentHeight() => _currentWallet.getCurrentHeight();
 
   @override
   Future<int> getNodeHeight() => _currentWallet.getNodeHeight();

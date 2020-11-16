@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/oxen/account.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_wallet.dart';
-import 'package:oxen_wallet/src/domain/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/oxen/account.dart';
+import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
@@ -132,7 +132,7 @@ abstract class WalletStoreBase with Store {
 
   @action
   void onChangedAmountValue(String value) =>
-      amountValue = value.isNotEmpty ? '?tx_amount=' + value : '';
+      amountValue = value.isNotEmpty ? '?tx_amount=$value' : '';
 
   @action
   void validateAmount(String value) {

@@ -1,12 +1,17 @@
-import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
 import 'package:hive/hive.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
 
 part 'wallet_info.g.dart';
 
 @HiveType(typeId: 4)
 class WalletInfo extends HiveObject {
   WalletInfo(
-      {this.id, this.name, this.type, this.isRecovery, this.restoreHeight});
+      {this.id,
+      this.name,
+      this.type,
+      this.isRecovery,
+      this.restoreHeight,
+      this.timestamp});
 
   static const boxName = 'WalletInfo';
 
@@ -24,4 +29,9 @@ class WalletInfo extends HiveObject {
 
   @HiveField(4)
   int restoreHeight;
+
+  @HiveField(5)
+  int timestamp;
+
+  DateTime get date => DateTime.fromMillisecondsSinceEpoch(timestamp);
 }

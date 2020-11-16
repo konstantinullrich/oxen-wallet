@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:oxen_wallet/src/domain/oxen/oxen_balance.dart';
+import 'package:oxen_wallet/src/oxen/oxen_balance.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';

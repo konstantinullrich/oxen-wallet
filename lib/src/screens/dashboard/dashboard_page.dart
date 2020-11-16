@@ -8,7 +8,6 @@ import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/sync_status.dart';
-import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
@@ -429,77 +428,6 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                   value: 2,
                                   child:
                                       Text(S.of(context).transactions_by_date)),
-                              PopupMenuDivider(),
-                              PopupMenuItem(
-                                  enabled: false,
-                                  value: -1,
-                                  child: Text(S.of(context).trades,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(context).primaryTextTheme.caption.color))),
-                              PopupMenuItem(
-                                  value: 3,
-                                  child: Observer(
-                                      builder: (_) => Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text('XMR.TO'),
-                                                Checkbox(
-                                                  value: actionListStore
-                                                      .tradeFilterStore
-                                                      .displayXMRTO,
-                                                  onChanged: (value) =>
-                                                      actionListStore
-                                                          .tradeFilterStore
-                                                          .toggleDisplayExchange(
-                                                              ExchangeProviderDescription
-                                                                  .xmrto),
-                                                )
-                                              ]))),
-                              PopupMenuItem(
-                                  value: 4,
-                                  child: Observer(
-                                      builder: (_) => Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text('Change.NOW'),
-                                                Checkbox(
-                                                  value: actionListStore
-                                                      .tradeFilterStore
-                                                      .displayChangeNow,
-                                                  onChanged: (value) =>
-                                                      actionListStore
-                                                          .tradeFilterStore
-                                                          .toggleDisplayExchange(
-                                                              ExchangeProviderDescription
-                                                                  .changeNow),
-                                                )
-                                              ]))),
-                              PopupMenuItem(
-                                  value: 5,
-                                  child: Observer(
-                                      builder: (_) => Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceBetween,
-                                          children: [
-                                            Text('MorphToken'),
-                                            Checkbox(
-                                              value: actionListStore
-                                                  .tradeFilterStore
-                                                  .displayMorphToken,
-                                              onChanged: (value) =>
-                                                  actionListStore
-                                                      .tradeFilterStore
-                                                      .toggleDisplayExchange(
-                                                      ExchangeProviderDescription
-                                                          .morphToken),
-                                            )
-                                          ])))
                             ],
                             child: Text(S.of(context).filters,
                                 style: TextStyle(

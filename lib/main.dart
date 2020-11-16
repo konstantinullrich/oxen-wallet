@@ -1,5 +1,5 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
+import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_coin/wallet.dart' as oxen_wallet;
-import 'package:oxen_wallet/router.dart';
+import 'package:oxen_wallet/router.dart' as oxenroute;
 import 'theme_changer.dart';
 import 'themes.dart';
 import 'package:oxen_wallet/src/domain/common/get_encryption_key.dart';
@@ -16,7 +16,7 @@ import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
 import 'package:oxen_wallet/src/domain/exchange/trade.dart';
-import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/reactions/set_reactions.dart';
 import 'package:oxen_wallet/src/stores/login/login_store.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
@@ -201,7 +201,7 @@ class MaterialAppWithTheme extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         locale: Locale(currentLanguage.getCurrentLanguage()),
-        onGenerateRoute: (settings) => Router.generateRoute(
+        onGenerateRoute: (settings) => oxenroute.Router.generateRoute(
             sharedPreferences: sharedPreferences,
             walletListService: walletListService,
             walletService: walletService,

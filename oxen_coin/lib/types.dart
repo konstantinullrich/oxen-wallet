@@ -43,7 +43,7 @@ typedef SetRefreshFromBlockHeight = void Function(int);
 
 typedef SetRecoveringFromSeed = void Function(int);
 
-typedef Store = void Function();
+typedef Store = void Function(Pointer<Utf8>);
 
 typedef SetListener = void Function();
 

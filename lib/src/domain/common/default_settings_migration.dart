@@ -5,7 +5,7 @@ import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:oxen_wallet/src/domain/common/node_list.dart';
-import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
+import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
 
 Future defaultSettingsMigration(
     {@required int version,

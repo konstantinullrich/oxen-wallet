@@ -1,12 +1,12 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/oxen/oxen_transaction_creation_credentials.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/send/sending_state.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';

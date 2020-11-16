@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
-import 'package:oxen_wallet/src/domain/oxen/get_height_by_date.dart';
+import 'package:oxen_wallet/src/oxen/get_height_by_date.dart';
 import 'package:oxen_wallet/palette.dart';
 
 class BlockchainHeightWidget extends StatefulWidget {

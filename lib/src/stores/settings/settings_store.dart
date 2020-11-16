@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
+import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';

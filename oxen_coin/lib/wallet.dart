@@ -83,7 +83,7 @@ final storeNative =
     oxenApi.lookup<NativeFunction<store_c>>('store').asFunction<Store>();
 
 final setListenerNative = oxenApi.lookupFunction<
-    Void Function(Int64 sendPort), void Function(int sendPort)>('set_listener');
+    Void Function(), void Function()>('set_listener');
 
 final getSyncingHeightNative = oxenApi
     .lookup<NativeFunction<get_syncing_height>>('get_syncing_height')
@@ -202,7 +202,9 @@ void setRecoveringFromSeed({bool isRecovery}) =>
     setRecoveringFromSeedNative(_boolToInt(isRecovery));
 
 void storeSync() {
-  storeNative();
+  final pathPointer = Utf8.toUtf8('');
+  storeNative(pathPointer);
+  free(pathPointer);
 }
 
 void closeCurrentWallet() => closeCurrentWalletNative();
@@ -219,37 +221,78 @@ String getSecretSpendKey() =>
 String getPublicSpendKey() =>
     convertUTF8ToString(pointer: getPublicSpendKeyNative());
 
-Future<void> setListeners(
-    Future Function(int) onNewBlock,
-    Future Function() onNeedToRefresh,
-    Future Function() onNewTransaction) async {
-  statusSyncChannel.setMessageHandler((message) async {
-    try {
-      final type = message.buffer.asByteData(0, 1).getUint8(0);
+class SyncListener {
+  SyncListener(this.onNewBlock, this.onNewTransaction) {
+    _cachedBlockchainHeight = 0;
+    _lastKnownBlockHeight = 0;
+    _initialSyncHeight = 0;
+  }
 
-      if (type == newBlockEvent) {
-        final value = message.buffer.asByteData(1).getUint64(0);
-        await onNewBlock(value);
-      }
+  void Function(int, int, double) onNewBlock;
+  void Function() onNewTransaction;
 
-      if (type == refreshedEvent) {
-        await onNeedToRefresh();
-      }
+  Timer _updateSyncInfoTimer;
+  int _cachedBlockchainHeight;
+  int _lastKnownBlockHeight;
+  int _initialSyncHeight;
 
-      if (type == moneyReceivedEvent ||
-          type == moneySpentEvent ||
-          type == unconfirmedMoneyReceivedEvent) {
-        await onNewTransaction();
-      }
-    } catch(e) {
-      print(e.toString());
+  Future<int> getNodeHeightOrUpdate(int baseHeight) async {
+    if (_cachedBlockchainHeight < baseHeight || _cachedBlockchainHeight == 0) {
+      _cachedBlockchainHeight = await getNodeHeight();
     }
 
-    return null;
-  });
+    return _cachedBlockchainHeight;
+  }
 
-   await oxenMethodChannel
-      .invokeMethod<bool>('setupSyncStatusListener');
+  void start() {
+    _cachedBlockchainHeight = 0;
+    _lastKnownBlockHeight = 0;
+    _initialSyncHeight = 0;
+    _updateSyncInfoTimer ??=
+        Timer.periodic(Duration(milliseconds: 1200), (_) async {
+          if (isNewTransactionExist()) {
+            onNewTransaction?.call();
+          }
+
+          var syncHeight = getSyncingHeight();
+
+          if (syncHeight <= 0) {
+            syncHeight = getCurrentHeight();
+          }
+
+          if (_initialSyncHeight <= 0) {
+            _initialSyncHeight = syncHeight;
+          }
+
+          final bchHeight = await getNodeHeightOrUpdate(syncHeight);
+
+          if (_lastKnownBlockHeight == syncHeight || syncHeight == null) {
+            return;
+          }
+
+          _lastKnownBlockHeight = syncHeight;
+          final track = bchHeight - _initialSyncHeight;
+          final diff = track - (bchHeight - syncHeight);
+          final ptc = diff <= 0 ? 0.0 : diff / track;
+          final left = bchHeight - syncHeight;
+
+          if (syncHeight < 0 || left < 0) {
+            return;
+          }
+
+          // 1. Actual new height; 2. Blocks left to finish; 3. Progress in percents;
+          onNewBlock?.call(syncHeight, left, ptc);
+        });
+  }
+
+  void stop() => _updateSyncInfoTimer?.cancel();
+}
+
+SyncListener setListeners(void Function(int, int, double) onNewBlock,
+    void Function() onNewTransaction) {
+  final listener = SyncListener(onNewBlock, onNewTransaction);
+  setListenerNative();
+  return listener;
 }
 
 void onStartup() => onStartupNative();

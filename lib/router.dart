@@ -18,12 +18,12 @@ import 'package:oxen_wallet/src/domain/exchange/changenow/changenow_exchange_pro
 import 'package:oxen_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
 import 'package:oxen_wallet/src/domain/exchange/morphtoken/morphtoken_exchange_provider.dart';
 import 'package:oxen_wallet/src/domain/common/node.dart';
-import 'package:oxen_wallet/src/domain/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/domain/exchange/trade.dart';
-import 'package:oxen_wallet/src/domain/oxen/account.dart';
+import 'package:oxen_wallet/src/oxen/account.dart';
 import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
-import 'package:oxen_wallet/src/domain/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/oxen/subaddress.dart';
 
 // MARK: Import stores
 

@@ -1,27 +1,28 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_transaction_history.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:oxen_coin/wallet.dart' as oxen_wallet;
 import 'package:oxen_coin/transaction_history.dart' as transaction_history;
-import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
-import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/common/sync_status.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_creation_credentials.dart';
-import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_amount_format.dart';
-import 'package:oxen_wallet/src/domain/oxen/account.dart';
-import 'package:oxen_wallet/src/domain/oxen/account_list.dart';
-import 'package:oxen_wallet/src/domain/oxen/subaddress_list.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_transaction_creation_credentials.dart';
-import 'package:oxen_wallet/src/domain/oxen/subaddress.dart';
+import 'package:oxen_coin/wallet.dart' as oxen_wallet;
 import 'package:oxen_wallet/src/domain/common/balance.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_balance.dart';
+import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
+import 'package:oxen_wallet/src/domain/common/sync_status.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
+import 'package:oxen_wallet/src/domain/common/wallet.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
+import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/oxen/account.dart';
+import 'package:oxen_wallet/src/oxen/account_list.dart';
+import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/oxen/oxen_balance.dart';
+import 'package:oxen_wallet/src/oxen/oxen_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/oxen/oxen_transaction_history.dart';
+import 'package:oxen_wallet/src/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/oxen/subaddress_list.dart';
+import 'package:rxdart/rxdart.dart';
 
 const oxenBlockSize = 1000;
 
@@ -53,7 +54,8 @@ class OxenWallet extends Wallet {
         name: name,
         type: type,
         isRecovery: isRecovery,
-        restoreHeight: restoreHeight);
+        restoreHeight: restoreHeight,
+        timestamp: DateTime.now().millisecondsSinceEpoch);
     await walletInfoSource.add(walletInfo);
 
     return await configured(
@@ -72,8 +74,8 @@ class OxenWallet extends Wallet {
   static Future<OxenWallet> configured(
       {@required Box<WalletInfo> walletInfoSource,
       @required WalletInfo walletInfo}) async {
-    final wallet = OxenWallet(
-        walletInfoSource: walletInfoSource, walletInfo: walletInfo);
+    final wallet =
+        OxenWallet(walletInfoSource: walletInfoSource, walletInfo: walletInfo);
 
     if (walletInfo.isRecovery) {
       wallet.setRecoveringFromSeed();
@@ -118,6 +120,7 @@ class OxenWallet extends Wallet {
   Box<WalletInfo> walletInfoSource;
   WalletInfo walletInfo;
 
+  oxen_wallet.SyncListener _listener;
   BehaviorSubject<Account> _account;
   BehaviorSubject<OxenBalance> _onBalanceChange;
   BehaviorSubject<SyncStatus> _syncStatus;
@@ -148,7 +151,7 @@ class OxenWallet extends Wallet {
     final subaddresses = subaddressList.getAll();
     _subaddress.value = subaddresses.first;
     _address.value = await getAddress();
-    await setListeners();
+    setListeners();
   }
 
   @override
@@ -172,11 +175,10 @@ class OxenWallet extends Wallet {
 
   @override
   Future<String> getUnlockedBalance() async => oxenAmountToString(
-      amount:
-          oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id));
+      amount: oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id));
 
   @override
-  Future<int> getCurrentHeight() async => oxen_wallet.getCurrentHeight();
+  int getCurrentHeight() => oxen_wallet.getCurrentHeight();
 
   @override
   Future<int> getNodeHeight() async {
@@ -248,9 +250,17 @@ class OxenWallet extends Wallet {
   @override
   Future startSync() async {
     try {
+      _setInitialHeight();
+    } catch (_) {}
+
+    print('Starting from height: ${getCurrentHeight()}');
+
+    try {
       _syncStatus.value = StartingSyncStatus();
       oxen_wallet.startRefresh();
-    } on PlatformException catch (e) {
+      _setListeners();
+      _listener?.start();
+    } catch (e) {
       _syncStatus.value = FailedSyncStatus();
       print(e);
       rethrow;
@@ -354,38 +364,75 @@ class OxenWallet extends Wallet {
     }
   }
 
-  Future<void> setListeners() async => await oxen_wallet.setListeners(
-      _onNewBlock, _onNeedToRefresh, _onNewTransaction);
+  oxen_wallet.SyncListener setListeners() =>
+      oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
-  Future _onNewBlock(int height) async {
-    try {
-      final nodeHeight = await getNodeHeightOrUpdate(height);
+  Future _onNewBlock(int height, int blocksLeft, double ptc) async {
+    final currHeight = getCurrentHeight();
+    print('Height: $height, $currHeight, $blocksLeft');
 
-      if (isRecovery && _refreshHeight <= 0) {
-        _refreshHeight = height;
+    await askForUpdateTransactionHistory();
+    await askForUpdateBalance();
+
+    if (blocksLeft < 100) {
+      _syncStatus.add(SyncedSyncStatus());
+      await oxen_wallet.store();
+
+      print('saving');
+      if (walletInfo.isRecovery) {
+        await setAsRecovered();
       }
-
-      if (isRecovery &&
-          (_lastSyncHeight == 0 ||
-              (height - _lastSyncHeight) > oxenBlockSize)) {
-        _lastSyncHeight = height;
-        await askForUpdateBalance();
-        await askForUpdateTransactionHistory();
-      }
-
-      if (height > 0 && ((nodeHeight - height) < oxenBlockSize)) {
-        _syncStatus.add(SyncedSyncStatus());
-      } else {
-        _syncStatus.add(SyncingSyncStatus(height, nodeHeight, _refreshHeight));
-      }
-    } catch (e) {
-      print(e);
+    } else {
+      _syncStatus.add(SyncingSyncStatus(blocksLeft, ptc));
     }
+
+    if (blocksLeft <= 1) {
+      oxen_wallet.setRefreshFromBlockHeight(height: height);
+    }
+  }
+
+  void _setListeners() {
+    _listener?.stop();
+    _listener = oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
+  }
+
+  void _setInitialHeight() {
+    if (walletInfo.isRecovery) {
+      return;
+    }
+
+    final currentHeight = getCurrentHeight();
+
+    if (currentHeight <= 1) {
+      final height = _getHeightByDate(walletInfo.date);
+      oxen_wallet.setRecoveringFromSeed(isRecovery: true);
+      oxen_wallet.setRefreshFromBlockHeight(height: height);
+    }
+  }
+
+  int _getHeightDistance(DateTime date) {
+    final distance =
+        DateTime.now().millisecondsSinceEpoch - date.millisecondsSinceEpoch;
+    final daysTmp = (distance / 86400).round();
+    final days = daysTmp < 1 ? 1 : daysTmp;
+
+    return days * 1000;
+  }
+
+  int _getHeightByDate(DateTime date) {
+    final nodeHeight = oxen_wallet.getNodeHeightSync();
+    final heightDistance = _getHeightDistance(date);
+
+    if (nodeHeight <= 0) {
+      return 0;
+    }
+
+    return nodeHeight - heightDistance;
   }
 
   Future _onNeedToRefresh() async {
     try {
-      final currentHeight = await getCurrentHeight();
+      final currentHeight = getCurrentHeight();
       final nodeHeight = await getNodeHeightOrUpdate(currentHeight);
 
       // no blocks - maybe we're not connected to the node ?
@@ -413,7 +460,7 @@ class OxenWallet extends Wallet {
       final now = DateTime.now().millisecondsSinceEpoch;
       final lastRefreshedTimeDifference = now - _lastRefreshedTime;
 
-      if (lastRefreshedTimeDifference >=  60000) {
+      if (lastRefreshedTimeDifference >= 60000) {
         await askForSave();
         _lastRefreshedTime = now;
       }

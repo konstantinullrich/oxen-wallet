@@ -10,7 +10,7 @@ import 'package:oxen_wallet/src/domain/common/wallets_manager.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
 
-import 'oxen_wallet.dart';
+import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
 
 Future<String> pathForWallet({String name}) async {
   final directory = await getApplicationDocumentsDirectory();
@@ -47,7 +47,7 @@ class OxenWalletsManager extends WalletsManager {
 
       return wallet;
     } catch (e) {
-      print('LokiWalletsManager Error: $e');
+      print('OxenWalletsManager Error: $e');
       rethrow;
     }
   }
@@ -74,7 +74,7 @@ class OxenWalletsManager extends WalletsManager {
 
       return wallet;
     } catch (e) {
-      print('LokiWalletsManager Error: $e');
+      print('OxenWalletsManager Error: $e');
       rethrow;
     }
   }
@@ -110,7 +110,7 @@ class OxenWalletsManager extends WalletsManager {
 
       return wallet;
     } catch (e) {
-      print('LokiWalletsManager Error: $e');
+      print('OxenWalletsManager Error: $e');
       rethrow;
     }
   }
@@ -124,7 +124,7 @@ class OxenWalletsManager extends WalletsManager {
       await wallet.updateInfo();
       return wallet;
     } catch (e) {
-      print('LokiWalletsManager Error: $e');
+      print('OxenWalletsManager Error: $e');
       rethrow;
     }
   }
@@ -135,7 +135,7 @@ class OxenWalletsManager extends WalletsManager {
       final path = await pathForWallet(name: name);
       return oxen_wallet_manager.isWalletExist(path: path);
     } catch (e) {
-      print('LokiWalletsManager Error: $e');
+      print('OxenWalletsManager Error: $e');
       rethrow;
     }
   }

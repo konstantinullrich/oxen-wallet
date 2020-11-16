@@ -1,18 +1,23 @@
-@interface OxenWalletListener : NSObject
+#include <stdint.h>
 
-@property(nonatomic) void (*onNewBlock)(uint64_t);
-@property(nonatomic) void (*onUpdated)(void *);
-@property(nonatomic) void (*onRefreshed)(void *);
-@property(nonatomic) void (*onMoneyReceived) (NSString *, uint64_t);
-@property(nonatomic) void (*onMoneySpent) (NSString *, uint64_t);
-@property(nonatomic) void (*onUnconfirmedMoneyReceived) (NSString *, uint64_t);
+struct CWMoneroWalletListener;
 
-- (void)setup;
-- (void)newBlock:(uint64_t) block;
-- (void)updated;
-- (void)refreshed;
-- (void)moneyReceived:(NSString *) txId amount:(uint64_t) amount;
-- (void)moneySpent:(NSString *) txId amount:(uint64_t) amount;
-- (void)unconfirmedMoneyReceived:(NSString *) txId amount:(uint64_t) amount;
+typedef int8_t (*on_new_block_callback)(uint64_t height);
+typedef int8_t (*on_need_to_refresh_callback)();
 
-@end
+typedef struct CWMoneroWalletListener
+{
+    // on_money_spent_callback *on_money_spent;
+    // on_money_received_callback *on_money_received;
+    // on_unconfirmed_money_received_callback *on_unconfirmed_money_received;
+    // on_new_block_callback *on_new_block;
+    // on_updated_callback *on_updated;
+    // on_refreshed_callback *on_refreshed;
+
+    on_new_block_callback on_new_block;
+} CWMoneroWalletListener;
+
+struct TestListener {
+    // int8_t x;
+    on_new_block_callback on_new_block;
+};

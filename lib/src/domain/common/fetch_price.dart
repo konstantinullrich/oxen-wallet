@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/src/domain/common/currency_formatter.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:http/http.dart';
 
@@ -26,7 +25,7 @@ Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
     final data = responseJSON['data'] as List<dynamic>;
 
     for (final item in data) {
-      if (item['symbol'] == cryptoToString(crypto)) {
+      if (item['symbol'] == crypto.title) {
         price = item['quote'][fiatStringed]['price'] as double;
         break;
       }

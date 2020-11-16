@@ -15,6 +15,7 @@ import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
 import 'package:oxen_wallet/src/screens/seed_language/widgets/seed_language_picker.dart';
+import 'package:oxen_wallet/src/util/generate_name.dart';
 
 class NewWalletPage extends BasePage {
   NewWalletPage(
@@ -39,8 +40,19 @@ class WalletNameForm extends StatefulWidget {
 }
 
 class _WalletNameFormState extends State<WalletNameForm> {
+  _WalletNameFormState() {
+    setName();
+  }
+
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
+  String _generatedName;
+
+  Future setName() async {
+    final name = await generateName();
+    nameController.text = name;
+    print(name);
+  }
 
   @override
   Widget build(BuildContext context) {

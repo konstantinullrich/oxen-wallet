@@ -72,7 +72,7 @@ class S implements WidgetsLocalizations {
   String get error_text_node_port => "Node port can only contain numbers between 0 and 65535";
   String get error_text_payment_id => "Payment ID can only contain from 16 to 64 chars in hex";
   String get error_text_subaddress_name => "Subaddress name can't contain ` , ' \" symbols\nand must be between 1 and 20 characters long";
-  String get error_text_wallet_name => "Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long";
+  String get error_text_wallet_name => "Wallet name can only contain letters, numbers\nand must be between 1 and 255 characters long";
   String get error_text_xmr => "OXEN value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12";
   String get estimated => "Estimated";
   String get exchange => "Exchange";
@@ -692,7 +692,7 @@ class $de extends S {
   @override
   String get trade_history_title => "Handelsgeschichte";
   @override
-  String get error_text_wallet_name => "Der Wallet darf nur Buchstaben und Zahlen enthalten\nund muss zwischen 1 und 15 Zeichen lang sein";
+  String get error_text_wallet_name => "Der Wallet darf nur Buchstaben und Zahlen enthalten\nund muss zwischen 1 und 255 Zeichen lang sein";
   @override
   String get restore_description_from_keys => "Stellen Sie Ihr Wallet von generiert wieder her Tastenanschläge, die von Ihren privaten Schlüsseln gespeichert wurden";
   @override
@@ -1252,7 +1252,7 @@ class $hi extends S {
   @override
   String get trade_history_title => "व्यापार का इतिहास";
   @override
-  String get error_text_wallet_name => "वॉलेट नाम में केवल अक्षर, संख्याएं हो सकती हैं\nऔर 1 और 15 वर्णों के बीच लंबा होना चाहिए";
+  String get error_text_wallet_name => "वॉलेट नाम में केवल अक्षर, संख्याएं हो सकती हैं\nऔर 1 और 255 वर्णों के बीच लंबा होना चाहिए";
   @override
   String get restore_description_from_keys => "अपने वॉलेट को जेनरेट से पुनर्स्थापित करें आपकी निजी कुंजी से कीस्ट्रोक्स सहेजे गए";
   @override
@@ -1812,7 +1812,7 @@ class $ru extends S {
   @override
   String get trade_history_title => "История сделок";
   @override
-  String get error_text_wallet_name => "Имя кошелька может содержать только буквы, цифры\nи должно быть от 1 до 15 символов в длину";
+  String get error_text_wallet_name => "Имя кошелька может содержать только буквы, цифры\nи должно быть от 1 до 255 символов в длину";
   @override
   String get restore_description_from_keys => "Вы можете восстановить кошелёк с помощью приватных ключей";
   @override
@@ -2372,7 +2372,7 @@ class $ko extends S {
   @override
   String get trade_history_title => "무역 역사";
   @override
-  String get error_text_wallet_name => "지갑 이름은 문자, 숫자 만 포함 할 수 있습니다\n1 ~ 15 자 사이 여야합니다";
+  String get error_text_wallet_name => "지갑 이름은 문자, 숫자 만 포함 할 수 있습니다\n1 ~ 255 자 사이 여야합니다";
   @override
   String get restore_description_from_keys => "개인 키에서 저장된 생성 된 키 스트로크에서 월렛 복원";
   @override
@@ -2932,7 +2932,7 @@ class $pt extends S {
   @override
   String get trade_history_title => "Histórico de trocas";
   @override
-  String get error_text_wallet_name => "O nome da carteira só pode conter letras, números\ne deve ter entre 1 e 15 caracteres";
+  String get error_text_wallet_name => "O nome da carteira só pode conter letras, números\ne deve ter entre 1 e 255 caracteres";
   @override
   String get restore_description_from_keys => "Restaure sua carteira a partir de suas chaves privadas";
   @override
@@ -3492,7 +3492,7 @@ class $uk extends S {
   @override
   String get trade_history_title => "Історія операцій";
   @override
-  String get error_text_wallet_name => "Ім'я гаманця може містити тільки букви, цифри\nі повинно бути від 1 до 15 символів в довжину";
+  String get error_text_wallet_name => "Ім'я гаманця може містити тільки букви, цифри\nі повинно бути від 1 до 255 символів в довжину";
   @override
   String get restore_description_from_keys => "Ви можете відновити гаманець за допомогою приватних ключів";
   @override
@@ -4052,7 +4052,7 @@ class $ja extends S {
   @override
   String get trade_history_title => "取引履歴";
   @override
-  String get error_text_wallet_name => "ウォレット名には文字のみを含めることができます\n1〜15文字である必要があります";
+  String get error_text_wallet_name => "ウォレット名には文字のみを含めることができます\n1〜255文字である必要があります";
   @override
   String get restore_description_from_keys => "生成されたウォレットを復元します秘密鍵から保存されたキーストローク";
   @override
@@ -4616,7 +4616,7 @@ class $pl extends S {
   @override
   String get trade_history_title => "Historia handlu";
   @override
-  String get error_text_wallet_name => "Nazwa portfela może zawierać tylko litery i cyfry\ni musi mieć od 1 do 15 znaków";
+  String get error_text_wallet_name => "Nazwa portfela może zawierać tylko litery i cyfry\ni musi mieć od 1 do 255 znaków";
   @override
   String get restore_description_from_keys => "Przywróć swój portfel z wygenerowanego naciśnięcia klawiszy zapisane z kluczy prywatnych";
   @override
@@ -5176,7 +5176,7 @@ class $es extends S {
   @override
   String get trade_history_title => "Historia del comercio";
   @override
-  String get error_text_wallet_name => "El nombre de la billetera solo puede contener letras, números \ny debe tener entre 1 y 15 caracteres de longitud";
+  String get error_text_wallet_name => "El nombre de la billetera solo puede contener letras, números \ny debe tener entre 1 y 255 caracteres de longitud";
   @override
   String get restore_description_from_keys => "Restaure su billetera de las pulsaciones de teclas generadas guardadas de sus claves privadas";
   @override
@@ -5736,7 +5736,7 @@ class $nl extends S {
   @override
   String get trade_history_title => "Handelsgeschiedenis";
   @override
-  String get error_text_wallet_name => "Naam portemonnee kan alleen letters, cijfers bevatten\nen moet tussen de 1 en 15 tekens lang zijn";
+  String get error_text_wallet_name => "Naam portemonnee kan alleen letters, cijfers bevatten\nen moet tussen de 1 en 255 tekens lang zijn";
   @override
   String get restore_description_from_keys => "Herstel uw portemonnee van gegenereerd toetsaanslagen opgeslagen van uw privésleutels";
   @override
@@ -6296,7 +6296,7 @@ class $zh extends S {
   @override
   String get trade_history_title => "交易历史";
   @override
-  String get error_text_wallet_name => "钱包名称只能包含字母，数字\n且必须介于1到15个字符之间";
+  String get error_text_wallet_name => "钱包名称只能包含字母，数字\n且必须介于1到255个字符之间";
   @override
   String get restore_description_from_keys => "R从生成的电子钱包从您的私钥中保存的击键";
   @override

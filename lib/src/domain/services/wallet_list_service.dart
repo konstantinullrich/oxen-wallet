@@ -3,7 +3,7 @@ import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_wallets_manager.dart';
+import 'package:oxen_wallet/src/oxen/oxen_wallets_manager.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:oxen_wallet/src/domain/common/encrypt.dart';

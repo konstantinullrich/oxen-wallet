@@ -1,4 +1,4 @@
-import 'package:oxen_wallet/src/domain/common/oxen_transaction_priority.dart';
+import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_creation_credentials.dart';
 
 class OxenTransactionCreationCredentials

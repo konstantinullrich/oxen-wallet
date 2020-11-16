@@ -13,12 +13,8 @@ import 'package:oxen_wallet/src/domain/exchange/trade_state.dart';
 import 'package:oxen_wallet/src/domain/exchange/morphtoken/morphtoken_request.dart';
 import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
 import 'package:oxen_wallet/src/domain/exchange/trade_not_created_exeption.dart';
-import 'package:oxen_wallet/src/domain/oxen/oxen_amount_format.dart';
-import 'package:oxen_wallet/src/domain/bitcoin/bitcoin_amount_format.dart';
-import 'package:oxen_wallet/src/domain/bitcoin_cash/bitcoin_cash_amount_format.dart';
-import 'package:oxen_wallet/src/domain/dash/dash_amount_format.dart';
-import 'package:oxen_wallet/src/domain/ethereum/ethereum_amount_format.dart';
-import 'package:oxen_wallet/src/domain/litecoin/litecoin_amount_format.dart';
+import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/domain/crypto_amount_format.dart';
 
 class MorphTokenExchangeProvider extends ExchangeProvider {
   MorphTokenExchangeProvider({@required this.trades})

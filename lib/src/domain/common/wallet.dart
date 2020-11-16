@@ -40,7 +40,7 @@ abstract class Wallet {
 
   Future<String> getUnlockedBalance();
 
-  Future<int> getCurrentHeight();
+  int getCurrentHeight();
 
   Future<int> getNodeHeight();
 
@@ -50,7 +50,8 @@ abstract class Wallet {
 
   TransactionHistory getHistory();
 
-  Future connectToNode({Node node, bool useSSL = false, bool isLightWallet = false});
+  Future connectToNode(
+      {Node node, bool useSSL = false, bool isLightWallet = false});
 
   Future startSync();
 
