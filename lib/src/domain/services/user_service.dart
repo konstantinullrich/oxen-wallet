@@ -13,9 +13,9 @@ class UserService {
     final key = generateStoreKeyFor(key: SecretStoreKey.pinCodePassword);
 
     try {
-      final encodedPassord = encodedPinCode(pin: password);
+      final encodedPassword = encodedPinCode(pin: password);
 
-      await secureStorage.write(key: key, value: encodedPassord);
+      await secureStorage.write(key: key, value: encodedPassword);
     } catch (e) {
       print(e);
     }

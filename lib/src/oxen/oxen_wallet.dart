@@ -223,6 +223,7 @@ class OxenWallet extends Wallet {
 
   @override
   Future close() async {
+    _listener?.stop();
     oxen_wallet.closeCurrentWallet();
     await _name.close();
     await _address.close();
