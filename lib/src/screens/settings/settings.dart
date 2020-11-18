@@ -99,7 +99,7 @@ class SettingsFormState extends State<SettingsForm> {
                             Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
-      // SettingsItem(title: ItemHeaders.allowCurrencyRefreshing, attribute: Attributes.switcher),
+      SettingsItem(title: ItemHeaders.enableFiatCurrency, attribute: Attributes.switcher),
       SettingsItem(
           onTaped: () => _setCurrency(context),
           title: ItemHeaders.currency,

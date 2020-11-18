@@ -170,7 +170,7 @@ class S implements WidgetsLocalizations {
   String get sent => "Sent";
   String get settings_all => "ALL";
   String get settings_allow_biometrical_authentication => "Allow biometrical authentication";
-  String get settings_allow_currency_refreshing => "Allow Currency Referesh";
+  String get settings_enable_fiat_currency => "Enable Fiat Currency conversion";
   String get settings_change_language => "Change language";
   String get settings_change_pin => "Change PIN";
   String get settings_currency => "Currency";
@@ -367,6 +367,8 @@ class $de extends S {
   String get receive_amount => "Menge";
   @override
   String get settings_allow_biometrical_authentication => "Biometrische Authentifizierung zulassen";
+  @override
+  String get settings_enable_fiat_currency => "Als Fiat Währung anzeigen";
   @override
   String get view_key_private => "Schlüssel anzeigen (eheim)";
   @override

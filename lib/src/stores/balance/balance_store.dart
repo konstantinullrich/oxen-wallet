@@ -9,6 +9,7 @@ import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/start_updating_price.dart';
 
 part 'balance_store.g.dart';
 
@@ -116,5 +117,10 @@ abstract class BalanceStoreBase with Store {
 
     fullBalance = await _walletService.getFullBalance();
     unlockedBalance = await _walletService.getUnlockedBalance();
+    await updateFiatBalance();
+  }
+
+  Future updateFiatBalance() async {
+    await startUpdatingPrice(settingsStore: _settingsStore, priceStore: _priceStore);
   }
 }

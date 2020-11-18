@@ -30,7 +30,7 @@ abstract class SettingsStoreBase with Store {
       @required BalanceDisplayMode initialBalanceDisplayMode,
       @required bool initialSaveRecipientAddress,
       @required bool allowBiometricAuthenticationKey,
-      // @required bool allowCurrencyRefreshingKey,
+      @required bool enableFiatCurrencyKey,
       @required bool initialDarkTheme,
       this.actionListDisplayMode,
       @required int initialPinLength,
@@ -43,7 +43,7 @@ abstract class SettingsStoreBase with Store {
     _sharedPreferences = sharedPreferences;
     _nodes = nodes;
     allowBiometricAuthentication = allowBiometricAuthenticationKey;
-    // allowCurrencyRefreshing = allowCurrencyRefreshingKey;
+    enableFiatCurrency = enableFiatCurrencyKey;
     isDarkTheme = initialDarkTheme;
     defaultPinLength = initialPinLength;
     languageCode = initialLanguageCode;
@@ -70,7 +70,7 @@ abstract class SettingsStoreBase with Store {
   static const displayActionListModeKey = 'display_list_mode';
   static const currentPinLength = 'current_pin_length';
   static const currentLanguageCode = 'language_code';
-  // static const allowCurrencyRefreshingKey = 'allow_currency_refreshing';
+  static const enableFiatCurrencyKey = 'enable_fiat_currency';
 
   static Future<SettingsStore> load(
       {@required SharedPreferences sharedPreferences,
@@ -88,8 +88,8 @@ abstract class SettingsStoreBase with Store {
         sharedPreferences.getBool(shouldSaveRecipientAddressKey);
     final allowBiometricAuthentication =
         sharedPreferences.getBool(allowBiometricAuthenticationKey) ?? false;
-    // final allowCurrencyRefreshing =
-    //     sharedPreferences.getBool(allowCurrencyRefreshingKey) ?? false;
+    final enableFiatCurrency =
+        sharedPreferences.getBool(enableFiatCurrencyKey) ?? false;
     final savedDarkTheme = sharedPreferences.getBool(currentDarkTheme) ?? false;
     final actionListDisplayMode = ObservableList<ActionListDisplayMode>();
     actionListDisplayMode.addAll(deserializeActionListDisplayModes(
@@ -107,7 +107,7 @@ abstract class SettingsStoreBase with Store {
         initialBalanceDisplayMode: currentBalanceDisplayMode,
         initialSaveRecipientAddress: shouldSaveRecipientAddress,
         allowBiometricAuthenticationKey: allowBiometricAuthentication,
-        // allowCurrencyRefreshingKey: allowCurrencyRefreshing,
+        enableFiatCurrencyKey: enableFiatCurrency,
         initialDarkTheme: savedDarkTheme,
         actionListDisplayMode: actionListDisplayMode,
         initialPinLength: defaultPinLength,
@@ -140,8 +140,8 @@ abstract class SettingsStoreBase with Store {
   @observable
   bool allowBiometricAuthentication;
 
-  // @observable
-  // bool allowCurrencyRefreshing;
+  @observable
+  bool enableFiatCurrency;
 
   @observable
   bool isDarkTheme;
@@ -168,13 +168,13 @@ abstract class SettingsStoreBase with Store {
         allowBiometricAuthenticationKey, allowBiometricAuthentication);
   }
 
-  // @action
-  // Future setAllowCurrencyRefreshingKey(
-  //     {@required bool allowCurrencyRefreshing}) async {
-  //   this.allowCurrencyRefreshing = allowCurrencyRefreshing;
-  //   await _sharedPreferences.setBool(
-  //       allowCurrencyRefreshingKey, allowCurrencyRefreshing);
-  // }
+  @action
+  Future setEnableFiatCurrency(
+      {@required bool enableFiatCurrency}) async {
+    this.enableFiatCurrency = enableFiatCurrency;
+    await _sharedPreferences.setBool(
+        enableFiatCurrencyKey, enableFiatCurrency);
+  }
 
   @action
   Future saveDarkTheme({@required bool isDarkTheme}) async {
@@ -285,8 +285,8 @@ abstract class SettingsStoreBase with Store {
       ItemHeaders.changeLanguage: S.current.settings_change_language,
       ItemHeaders.allowBiometricAuthentication:
           S.current.settings_allow_biometrical_authentication,
-      // ItemHeaders.allowCurrencyRefreshing:
-      //     S.current.settings_allow_currency_refreshing,
+      ItemHeaders.enableFiatCurrency:
+          S.current.settings_enable_fiat_currency,
       ItemHeaders.darkMode: S.current.settings_dark_mode,
       ItemHeaders.support: S.current.settings_support,
       ItemHeaders.termsAndConditions: S.current.settings_terms_and_conditions,

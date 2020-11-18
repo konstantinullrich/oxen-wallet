@@ -2,8 +2,6 @@
 
 The Oxen Wallet is a Fork of the Cake Wallet.
 
-> Maybe only works with Flutter v20
-
 ## Build 
 
 1. Get Dependencies from pub

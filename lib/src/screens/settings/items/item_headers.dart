@@ -4,7 +4,7 @@ class ItemHeaders {
   static const wallets = 'Wallets';
   static const displayBalanceAs = 'Display balance as';
   static const currency = 'Currency';
-  static const allowCurrencyRefreshing = 'Allow Currency refreshing';
+  static const enableFiatCurrency = 'Enable Fiat Currency conversion';
   static const feePriority = 'Fee priority';
   static const saveRecipientAddress = 'Save recipient address';
   static const personal = 'Personal';

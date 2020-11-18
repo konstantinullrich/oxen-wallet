@@ -53,17 +53,18 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
-    // if (settingsStore.itemHeaders[title] ==
-    //     S.of(context).settings_allow_currency_refreshing) {
-    //   return Observer(
-    //       builder: (_) => StandartSwitch(
-    //           value: settingsStore.allowCurrencyRefreshing,
-    //           onTaped: () {
-    //             final _currentValue = !settingsStore.allowCurrencyRefreshing;
-    //             settingsStore.setAllowCurrencyRefreshingKey(
-    //                 allowCurrencyRefreshing: _currentValue);
-    //           }));
-    // }
+
+    if (settingsStore.itemHeaders[title] ==
+        S.of(context).settings_enable_fiat_currency) {
+      return Observer(
+          builder: (_) => StandartSwitch(
+              value: settingsStore.enableFiatCurrency,
+              onTaped: () {
+                final _currentValue = !settingsStore.enableFiatCurrency;
+                settingsStore.setEnableFiatCurrency(
+                    enableFiatCurrency: _currentValue);
+              }));
+    }
 
     return null;
   }

@@ -16,7 +16,7 @@ Future<double> updatePrice(Map args) async => compute(_updatePrice, args);
 
 Future<void> startUpdatingPrice(
     {SettingsStore settingsStore, PriceStore priceStore}) async {
-  if (_startedUpdatingPrice) {
+  if (_startedUpdatingPrice || !settingsStore.enableFiatCurrency) {
     return;
   }
 
