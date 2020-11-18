@@ -19,18 +19,14 @@ Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
     final uri = Uri.https(fiatApiAuthority, apiPath);
     final response = await get(uri.toString());
 
-    print(response.statusCode);
-
     if (response.statusCode != 200) {
       return 0.0;
     }
 
     final responseJSON = json.decode(response.body) as Map<String, dynamic>;
-    print(responseJSON);
 
     if (responseJSON.containsKey(fiatStringed.toLowerCase())) {
       price = responseJSON[fiatStringed.toLowerCase()] as double;
-      print(price);
     }
 
     return price;

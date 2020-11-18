@@ -370,7 +370,6 @@ class OxenWallet extends Wallet {
 
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
     final currHeight = getCurrentHeight();
-    print('Height: $height, $currHeight, $blocksLeft');
 
     await askForUpdateTransactionHistory();
     await askForUpdateBalance();
@@ -379,7 +378,6 @@ class OxenWallet extends Wallet {
       _syncStatus.add(SyncedSyncStatus());
       await oxen_wallet.store();
 
-      print('saving');
       if (walletInfo.isRecovery) {
         await setAsRecovered();
       }
