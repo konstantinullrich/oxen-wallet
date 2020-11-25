@@ -29,8 +29,8 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
   static const defaultPinLength = 4;
   static const sixPinLength = 6;
   static const fourPinLength = 4;
-  static final deleteIconImage = Image.asset('assets/images/delete_icon.png');
-  static final backArrowImage = Image.asset('assets/images/back_arrow.png');
+  // static final deleteIcon = Image.asset('assets/images/delete_icon.png');
+  static final deleteIcon = Icon(Icons.backspace, color: Palette.blueGrey);
   final _gridViewKey = GlobalKey();
 
   int pinLength = defaultPinLength;
@@ -151,7 +151,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                                   left: marginLeft, right: marginRight),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Theme.of(context).buttonColor,
+                                color: Colors.transparent,
                               ),
                             );
                           } else if (index == 10) {
@@ -162,9 +162,9 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                                   left: marginLeft, right: marginRight),
                               child: FlatButton(
                                 onPressed: () => _pop(),
-                                color: Theme.of(context).buttonColor,
+                                color: Colors.transparent,
                                 shape: CircleBorder(),
-                                child: deleteIconImage,
+                                child: deleteIcon,
                               ),
                             );
                           } else {
@@ -176,10 +176,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                                 left: marginLeft, right: marginRight),
                             child: FlatButton(
                               onPressed: () => _push(index),
-                              color: Theme.of(context)
-                                  .accentTextTheme
-                                  .headline6
-                                  .backgroundColor,
+                              color: Colors.transparent,
                               shape: CircleBorder(),
                               child: Text('$index',
                                   style: TextStyle(

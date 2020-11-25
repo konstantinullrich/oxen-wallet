@@ -18,8 +18,8 @@ import 'package:oxen_wallet/src/screens/disclaimer/disclaimer_page.dart';
 import 'package:oxen_wallet/src/screens/settings/items/settings_item.dart';
 import 'package:oxen_wallet/src/screens/settings/items/item_headers.dart';
 import 'package:oxen_wallet/src/widgets/present_picker.dart';
+import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
 // Settings widgets
-import 'package:oxen_wallet/src/screens/settings/widgets/settings_arrow_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
@@ -295,9 +295,9 @@ class SettingsFormState extends State<SettingsForm> {
   Widget _getWidget(SettingsItem item) {
     switch (item.attribute) {
       case Attributes.arrow:
-        return SettingsArrowListRow(
-          onTaped: item.onTaped,
-          title: item.title,
+        return NavListArrow(
+          onTap: item.onTaped,
+          text: item.title,
         );
       case Attributes.header:
         return SettingsHeaderListRow(
