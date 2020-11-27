@@ -21,7 +21,6 @@ import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/widgets/picker.dart';
-import 'package:oxen_wallet/src/widgets/bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 
 class DashboardPage extends BasePage {
@@ -70,15 +69,15 @@ class DashboardPage extends BasePage {
       width: 30,
       child: FlatButton(
           padding: EdgeInsets.all(0),
-          onPressed: () => Navigator.of(context).pushNamed(Routes.settings),
-          child: Icon(Icons.settings_rounded,
+          onPressed: () => Navigator.of(context).pushNamed(Routes.profile),
+          child: Icon(Icons.account_circle_rounded,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 30)),
     );
   }
 
-  @override
-  Widget bottomNavigationBar(BuildContext context) => BottomNavBar(currentIndex: 1);
+  // @override
+  // Widget bottomNavigationBar(BuildContext context) => BottomNavBar(currentIndex: 1);
 
   @override
   Widget body(BuildContext context) => DashboardPageBody(key: _bodyKey);

@@ -19,7 +19,8 @@ class NavListArrow extends StatelessWidget {
                 fontSize: 16.0,
                 color: Theme.of(context).primaryTextTheme.headline6.color)),
         trailing: Icon(Icons.arrow_forward_ios_rounded,
-            color: Theme.of(context).primaryTextTheme.headline6.color),
+            color: Theme.of(context).primaryTextTheme.headline6.color,
+            size: 20),
         onTap: onTap,
       ),
     );
