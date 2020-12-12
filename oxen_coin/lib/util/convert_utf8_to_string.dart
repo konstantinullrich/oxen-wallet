@@ -1,4 +1,5 @@
 import 'dart:ffi';
+
 import 'package:ffi/ffi.dart';
 
 String convertUTF8ToString({Pointer<Utf8> pointer}) {

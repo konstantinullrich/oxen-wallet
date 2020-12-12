@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:typed_data';
+import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:oxen_coin/convert_utf8_to_string.dart';
-import 'package:oxen_coin/signatures.dart';
-import 'package:oxen_coin/types.dart';
 import 'package:oxen_coin/oxen_api.dart';
+import 'package:oxen_coin/util/convert_utf8_to_string.dart';
+import 'package:oxen_coin/util/signatures.dart';
+import 'package:oxen_coin/util/types.dart';
 import 'package:oxen_coin/exceptions/setup_wallet_exception.dart';
 
 // Listener event types constants

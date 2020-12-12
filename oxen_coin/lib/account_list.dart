@@ -1,10 +1,11 @@
 import 'dart:ffi';
+
 import 'package:ffi/ffi.dart';
-import 'package:oxen_coin/signatures.dart';
-import 'package:oxen_coin/types.dart';
+import 'package:flutter/foundation.dart';
 import 'package:oxen_coin/oxen_api.dart';
 import 'package:oxen_coin/structs/account_row.dart';
-import 'package:flutter/foundation.dart';
+import 'package:oxen_coin/util/signatures.dart';
+import 'package:oxen_coin/util/types.dart';
 
 final accountSizeNative = oxenApi
     .lookup<NativeFunction<account_size>>('account_size')

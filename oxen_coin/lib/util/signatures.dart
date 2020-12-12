@@ -1,7 +1,8 @@
 import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
 import 'package:oxen_coin/structs/pending_transaction.dart';
 import 'package:oxen_coin/structs/ut8_box.dart';
-import 'package:ffi/ffi.dart';
 
 typedef create_wallet = Int8 Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Int32, Pointer<Utf8>);
@@ -9,8 +10,16 @@ typedef create_wallet = Int8 Function(
 typedef restore_wallet_from_seed = Int8 Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Int32, Int64, Pointer<Utf8>);
 
-typedef restore_wallet_from_keys = Int8 Function(Pointer<Utf8>, Pointer<Utf8>,
-    Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Int32, Int64, Pointer<Utf8>);
+typedef restore_wallet_from_keys = Int8 Function(
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Int32,
+    Int64,
+    Pointer<Utf8>);
 
 typedef is_wallet_exist = Int8 Function(Pointer<Utf8>);
 
@@ -76,7 +85,7 @@ typedef account_add_new = Void Function(Pointer<Utf8> label);
 typedef account_set_label = Void Function(
     Int32 accountIndex, Pointer<Utf8> label);
 
-    typedef transactions_refresh = Void Function();
+typedef transactions_refresh = Void Function();
 
 typedef transactions_count = Int64 Function();
 
@@ -90,7 +99,8 @@ typedef transaction_create = Int8 Function(
     Pointer<Utf8Box> error,
     Pointer<PendingTransactionRaw> pendingTransaction);
 
-typedef transaction_commit = Int8 Function(Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
+typedef transaction_commit = Int8 Function(
+    Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
 
 typedef transaction_estimate_fee = Int64 Function(Int32, Int32);
 

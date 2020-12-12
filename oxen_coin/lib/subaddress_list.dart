@@ -1,10 +1,11 @@
 import 'dart:ffi';
+
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_coin/signatures.dart';
-import 'package:oxen_coin/types.dart';
 import 'package:oxen_coin/oxen_api.dart';
 import 'package:oxen_coin/structs/subaddress_row.dart';
+import 'package:oxen_coin/util/signatures.dart';
+import 'package:oxen_coin/util/types.dart';
 
 final subaddressSizeNative = oxenApi
     .lookup<NativeFunction<subaddrress_size>>('subaddrress_size')
@@ -48,7 +49,7 @@ void addSubaddressSync({int accountIndex, String label}) {
 void setLabelForSubaddressSync(
     {int accountIndex, int addressIndex, String label}) {
   final labelPointer = Utf8.toUtf8(label);
-  
+
   subaddrressSetLabelNative(accountIndex, addressIndex, labelPointer);
   free(labelPointer);
 }
@@ -70,7 +71,8 @@ void _setLabelForSubaddress(Map<String, dynamic> args) {
 }
 
 Future addSubaddress({int accountIndex, String label}) async =>
-    compute<Map<String, Object>, void>(_addSubaddress, {'accountIndex': accountIndex, 'label': label});
+    compute<Map<String, Object>, void>(
+        _addSubaddress, {'accountIndex': accountIndex, 'label': label});
 
 Future setLabelForSubaddress(
         {int accountIndex, int addressIndex, String label}) =>

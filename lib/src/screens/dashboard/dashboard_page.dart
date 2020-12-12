@@ -98,7 +98,7 @@ class DashboardPage extends BasePage {
             items: walletMenu.items,
             selectedAtIndex: -1,
             title: S.of(bodyContext).wallet_menu,
-            pickerHeight: 250,
+            pickerHeight: 300,
             onItemSelected: (String item) =>
                 walletMenu.action(walletMenu.items.indexOf(item))),
         context: bodyContext);
@@ -345,7 +345,8 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       IconButton(
-                                        icon: Icon(Icons.arrow_downward_rounded),
+                                        icon:
+                                            Icon(Icons.arrow_downward_rounded),
                                         onPressed: () => Navigator.of(context,
                                                 rootNavigator: true)
                                             .pushNamed(Routes.receive),
