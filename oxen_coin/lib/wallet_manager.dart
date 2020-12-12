@@ -1,10 +1,10 @@
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_coin/convert_utf8_to_string.dart';
-import 'package:oxen_coin/signatures.dart';
-import 'package:oxen_coin/types.dart';
 import 'package:oxen_coin/oxen_api.dart';
+import 'package:oxen_coin/util/convert_utf8_to_string.dart';
+import 'package:oxen_coin/util/signatures.dart';
+import 'package:oxen_coin/util/types.dart';
 import 'package:oxen_coin/exceptions/wallet_creation_exception.dart';
 import 'package:oxen_coin/exceptions/wallet_restore_from_keys_exception.dart';
 import 'package:oxen_coin/exceptions/wallet_restore_from_seed_exception.dart';

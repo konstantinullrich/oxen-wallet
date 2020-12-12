@@ -35,19 +35,22 @@ class WalletListBody extends StatefulWidget {
 class WalletListBodyState extends State<WalletListBody> {
   WalletListStore _walletListStore;
 
-  void presetMenuForWallet(WalletDescription wallet, bool isCurrentWallet,
-      BuildContext bodyContext) {
+  void presetMenuForWallet(WalletDescription wallet, BuildContext bodyContext) {
+    final isCurrentWallet = false;
     final walletMenu = WalletMenu(bodyContext);
     final items = walletMenu.generateItemsForWalletMenu(isCurrentWallet);
 
     showDialog<void>(
       context: bodyContext,
-      builder: (_) => Picker(
-          items: items,
-          selectedAtIndex: -1,
-          title: S.of(context).wallet_menu,
-          onItemSelected: (String item) => walletMenu.action(
-              walletMenu.listItems.indexOf(item), wallet, isCurrentWallet)),
+      builder: (_) =>
+          Picker(
+              items: items,
+              selectedAtIndex: -1,
+              title: S.of(context).wallet_menu,
+              onItemSelected: (String item) =>
+                  walletMenu.action(
+                      walletMenu.listItems.indexOf(item), wallet,
+                      isCurrentWallet)),
     );
   }
 
@@ -57,68 +60,106 @@ class WalletListBodyState extends State<WalletListBody> {
 
     return ScrollableWithBottomSection(
         content: Container(
-          padding: EdgeInsets.all(20),
           child: Observer(
-            builder: (_) => ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (_, index) => Divider(
-                    color: Theme.of(context).dividerTheme.color, height: 1.0),
-                itemCount: _walletListStore.wallets.length,
-                itemBuilder: (__, index) {
-                  final wallet = _walletListStore.wallets[index];
-                  final isCurrentWallet =
+            builder: (_) =>
+                ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (_, index) =>
+                        Divider(
+                            color: Theme
+                                .of(context)
+                                .dividerTheme
+                                .color, height: 1.0),
+                    itemCount: _walletListStore.wallets.length,
+                    itemBuilder: (__, index) {
+                      final wallet = _walletListStore.wallets[index];
+                      final isCurrentWallet =
                       _walletListStore.isCurrentWallet(wallet);
 
-                  return InkWell(
-                      onTap: () =>
-                          presetMenuForWallet(wallet, isCurrentWallet, context),
-                      child: Container(
-                          padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: ListTile(
-                              title: Text(
-                                wallet.name,
-                                style: TextStyle(
-                                    color: isCurrentWallet
-                                        ? Palette.cakeGreen
-                                        : Theme.of(context)
+                      return InkWell(
+                          onTap: () =>
+                          isCurrentWallet
+                              ? null
+                              : presetMenuForWallet(wallet, context),
+                          child: Container(
+                              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: ListTile(
+                                  title: Text(
+                                    wallet.name,
+                                    style: TextStyle(
+                                        color: isCurrentWallet
+                                            ? Palette.cakeGreen
+                                            : Theme
+                                            .of(context)
                                             .primaryTextTheme
                                             .headline5
                                             .color,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              trailing: isCurrentWallet
-                                  ? Icon(
-                                      Icons.check,
-                                      color: Palette.cakeGreen,
-                                      size: 20.0,
-                                    )
-                                  : null)));
-                }),
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  trailing: isCurrentWallet
+                                      ? Icon(
+                                    Icons.check_rounded,
+                                    color: Palette.cakeGreen,
+                                    size: 20.0,
+                                  )
+                                      : null)));
+                    }),
           ),
         ),
         bottomSection: Column(children: <Widget>[
           PrimaryIconButton(
-              onPressed: () => Navigator.of(context).pushNamed(Routes.newWallet),
-              iconData: Icons.add,
-              color: Theme.of(context).primaryTextTheme.button.backgroundColor,
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(Routes.newWallet),
+              iconData: Icons.add_rounded,
+              color: Theme
+                  .of(context)
+                  .primaryTextTheme
+                  .button
+                  .backgroundColor,
               borderColor:
-                  Theme.of(context).primaryTextTheme.button.decorationColor,
+              Theme
+                  .of(context)
+                  .primaryTextTheme
+                  .button
+                  .decorationColor,
               iconColor: Palette.violet,
-              iconBackgroundColor: Theme.of(context).primaryIconTheme.color,
-              text: S.of(context).wallet_list_create_new_wallet),
+              iconBackgroundColor: Theme
+                  .of(context)
+                  .primaryIconTheme
+                  .color,
+              text: S
+                  .of(context)
+                  .wallet_list_create_new_wallet),
           SizedBox(height: 10.0),
           PrimaryIconButton(
               onPressed: () =>
                   Navigator.of(context).pushNamed(Routes.restoreWalletOptions),
-              iconData: Icons.refresh,
-              text: S.of(context).wallet_list_restore_wallet,
-              color: Theme.of(context).accentTextTheme.button.backgroundColor,
+              iconData: Icons.refresh_rounded,
+              text: S
+                  .of(context)
+                  .wallet_list_restore_wallet,
+              color: Theme
+                  .of(context)
+                  .accentTextTheme
+                  .button
+                  .backgroundColor,
               borderColor:
-                  Theme.of(context).accentTextTheme.button.decorationColor,
-              iconColor: Theme.of(context).primaryTextTheme.caption.color,
-              iconBackgroundColor: Theme.of(context).accentIconTheme.color)
+              Theme
+                  .of(context)
+                  .accentTextTheme
+                  .button
+                  .decorationColor,
+              iconColor: Theme
+                  .of(context)
+                  .primaryTextTheme
+                  .caption
+                  .color,
+              iconBackgroundColor: Theme
+                  .of(context)
+                  .accentIconTheme
+                  .color)
         ]));
   }
 }

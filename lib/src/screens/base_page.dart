@@ -9,9 +9,13 @@ enum AppBarStyle { regular, withShadow }
 
 abstract class BasePage extends StatelessWidget {
   String get title => null;
+
   bool get isModalBackButton => false;
+
   Color get backgroundColor => Colors.white;
+
   bool get resizeToAvoidBottomPadding => true;
+
   AppBarStyle get appBarStyle => AppBarStyle.regular;
 
   final _backArrowImage = Image.asset('assets/images/back_arrow.png');
@@ -109,6 +113,8 @@ abstract class BasePage extends StatelessWidget {
 
   Widget body(BuildContext context);
 
+  Widget bottomNavigationBar(BuildContext context) => null;
+
   @override
   Widget build(BuildContext context) {
     final _themeChanger = Provider.of<ThemeChanger>(context);
@@ -120,6 +126,9 @@ abstract class BasePage extends StatelessWidget {
         resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
         appBar: appBar(context),
         body: SafeArea(child: body(context)),
-        floatingActionButton: floatingActionButton(context));
+        floatingActionButton: floatingActionButton(context),
+        bottomNavigationBar: bottomNavigationBar(context),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
+    );
   }
 }

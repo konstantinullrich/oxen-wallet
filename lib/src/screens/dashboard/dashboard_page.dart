@@ -21,7 +21,6 @@ import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/widgets/picker.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
 
 class DashboardPage extends BasePage {
@@ -34,9 +33,9 @@ class DashboardPage extends BasePage {
         child: FlatButton(
             padding: EdgeInsets.all(0),
             onPressed: () => _presentWalletMenu(context),
-            child: Image.asset('assets/images/more.png',
+            child: Icon(Icons.sync_rounded,
                 color: Theme.of(context).primaryTextTheme.caption.color,
-                width: 30)));
+                size: 30)));
   }
 
   @override
@@ -67,14 +66,18 @@ class DashboardPage extends BasePage {
   @override
   Widget trailing(BuildContext context) {
     return SizedBox(
-      width: 20,
+      width: 30,
       child: FlatButton(
           padding: EdgeInsets.all(0),
-          onPressed: () => Navigator.of(context).pushNamed(Routes.settings),
-          child: Image.asset('assets/images/settings_icon.png',
-              color: Colors.grey, height: 20)),
+          onPressed: () => Navigator.of(context).pushNamed(Routes.profile),
+          child: Icon(Icons.account_circle_rounded,
+              color: Theme.of(context).primaryTextTheme.caption.color,
+              size: 30)),
     );
   }
+
+  // @override
+  // Widget bottomNavigationBar(BuildContext context) => BottomNavBar(currentIndex: 1);
 
   @override
   Widget body(BuildContext context) => DashboardPageBody(key: _bodyKey);
@@ -95,7 +98,7 @@ class DashboardPage extends BasePage {
             items: walletMenu.items,
             selectedAtIndex: -1,
             title: S.of(bodyContext).wallet_menu,
-            pickerHeight: 510,
+            pickerHeight: 300,
             onItemSelected: (String item) =>
                 walletMenu.action(walletMenu.items.indexOf(item))),
         context: bodyContext);
@@ -324,48 +327,84 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                             child: Container(
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                 children: <Widget>[
-                                  Expanded(
-                                      child: PrimaryImageButton(
-                                    image: Image.asset(
-                                        'assets/images/send_icon.png',
-                                        height: 25,
-                                        width: 25),
-                                    text: S.of(context).send,
-                                    onPressed: () => Navigator.of(context,
-                                            rootNavigator: true)
-                                        .pushNamed(Routes.send),
-                                    color: Theme.of(context)
-                                        .primaryTextTheme
-                                        .button
-                                        .backgroundColor,
-                                    borderColor: Theme.of(context)
-                                        .primaryTextTheme
-                                        .button
-                                        .decorationColor,
-                                  )),
-                                  SizedBox(width: 10),
-                                  SizedBox(width: 10),
-                                  Expanded(
-                                      child: PrimaryImageButton(
-                                    image: Image.asset(
-                                        'assets/images/receive_icon.png',
-                                        height: 25,
-                                        width: 25),
-                                    text: S.of(context).receive,
-                                    onPressed: () => Navigator.of(context,
-                                            rootNavigator: true)
-                                        .pushNamed(Routes.receive),
-                                    color: Theme.of(context)
-                                        .accentTextTheme
-                                        .caption
-                                        .backgroundColor,
-                                    borderColor: Theme.of(context)
-                                        .accentTextTheme
-                                        .caption
-                                        .decorationColor,
-                                  ))
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon: Icon(Icons.arrow_upward_rounded),
+                                        onPressed: () => Navigator.of(context,
+                                                rootNavigator: true)
+                                            .pushNamed(Routes.send),
+                                      ),
+                                      Text(S.of(context).send)
+                                    ],
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon:
+                                            Icon(Icons.arrow_downward_rounded),
+                                        onPressed: () => Navigator.of(context,
+                                                rootNavigator: true)
+                                            .pushNamed(Routes.receive),
+                                      ),
+                                      Text(S.of(context).receive)
+                                    ],
+                                  ),
+                                  // Column(
+                                  //   mainAxisSize: MainAxisSize.min,
+                                  //   children: <Widget>[
+                                  //     IconButton(
+                                  //       icon: Icon(Icons.repeat_rounded),
+                                  //       tooltip: S.of(context).exchange,
+                                  //       onPressed: () {},
+                                  //     ),
+                                  //     Text(S.of(context).exchange)
+                                  //   ],
+                                  // ),
+                                  // Expanded(
+                                  //     child: PrimaryImageButton(
+                                  //   image: Image.asset(
+                                  //       'assets/images/send_icon.png',
+                                  //       height: 25,
+                                  //       width: 25),
+                                  //   text: S.of(context).send,
+                                  //   onPressed: () => Navigator.of(context,
+                                  //           rootNavigator: true)
+                                  //       .pushNamed(Routes.send),
+                                  //   color: Theme.of(context)
+                                  //       .primaryTextTheme
+                                  //       .button
+                                  //       .backgroundColor,
+                                  //   borderColor: Theme.of(context)
+                                  //       .primaryTextTheme
+                                  //       .button
+                                  //       .decorationColor,
+                                  // )),
+                                  // SizedBox(width: 10),
+                                  // SizedBox(width: 10),
+                                  // Expanded(
+                                  //     child: PrimaryImageButton(
+                                  //   image: Image.asset(
+                                  //       'assets/images/receive_icon.png',
+                                  //       height: 25,
+                                  //       width: 25),
+                                  //   text: S.of(context).receive,
+                                  //   onPressed: () => Navigator.of(context,
+                                  //           rootNavigator: true)
+                                  //       .pushNamed(Routes.receive),
+                                  //   color: Theme.of(context)
+                                  //       .accentTextTheme
+                                  //       .caption
+                                  //       .backgroundColor,
+                                  //   borderColor: Theme.of(context)
+                                  //       .accentTextTheme
+                                  //       .caption
+                                  //       .decorationColor,
+                                  // ))
                                 ],
                               ),
                             )),

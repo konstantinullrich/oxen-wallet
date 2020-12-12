@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:oxen_wallet/routes.dart';
-import 'package:provider/provider.dart';
 import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
+import 'package:provider/provider.dart';
 
 class WalletMenu {
   WalletMenu(this.context);
@@ -11,11 +11,7 @@ class WalletMenu {
   final List<String> items = [
     S.current.reconnect,
     S.current.rescan,
-    S.current.wallets,
-    S.current.show_seed,
-    S.current.show_keys,
-    S.current.accounts,
-    S.current.address_book_menu
+    S.current.reload_fiat
   ];
 
   final BuildContext context;
@@ -29,32 +25,7 @@ class WalletMenu {
         Navigator.of(context).pushNamed(Routes.rescan);
         break;
       case 2:
-        Navigator.of(context).pushNamed(Routes.walletList);
-
-        break;
-      case 3:
-        Navigator.of(context).pushNamed(Routes.auth,
-            arguments: (bool isAuthenticatedSuccessfully, AuthPageState auth) =>
-                isAuthenticatedSuccessfully
-                    ? Navigator.of(auth.context).popAndPushNamed(Routes.seed)
-                    : null);
-
-        break;
-      case 4:
-        Navigator.of(context).pushNamed(Routes.auth,
-            arguments: (bool isAuthenticatedSuccessfully, AuthPageState auth) =>
-                isAuthenticatedSuccessfully
-                    ? Navigator.of(auth.context)
-                        .popAndPushNamed(Routes.showKeys)
-                    : null);
-        break;
-      case 5:
-        Navigator.of(context).pushNamed(Routes.accountList);
-        break;
-      case 6:
-        Navigator.of(context).pushNamed(Routes.addressBook);
-        break;
-      default:
+        Provider.of<BalanceStore>(context).updateFiatBalance();
         break;
     }
   }

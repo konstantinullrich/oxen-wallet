@@ -1,7 +1,8 @@
 import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
 import 'package:oxen_coin/structs/pending_transaction.dart';
 import 'package:oxen_coin/structs/ut8_box.dart';
-import 'package:ffi/ffi.dart';
 
 typedef CreateWallet = int Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, int, Pointer<Utf8>);
@@ -9,8 +10,16 @@ typedef CreateWallet = int Function(
 typedef RestoreWalletFromSeed = int Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, int, int, Pointer<Utf8>);
 
-typedef RestoreWalletFromKeys = int Function(Pointer<Utf8>, Pointer<Utf8>,
-    Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, int, int, Pointer<Utf8>);
+typedef RestoreWalletFromKeys = int Function(
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    Pointer<Utf8>,
+    int,
+    int,
+    Pointer<Utf8>);
 
 typedef IsWalletExist = int Function(Pointer<Utf8>);
 
@@ -88,7 +97,8 @@ typedef TransactionCreate = int Function(
     Pointer<Utf8Box> error,
     Pointer<PendingTransactionRaw> pendingTransaction);
 
-typedef TransactionCommit = int Function(Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
+typedef TransactionCommit = int Function(
+    Pointer<PendingTransactionRaw>, Pointer<Utf8Box>);
 
 typedef TransactionEstimateFee = int Function(int priorityRaw, int recipients);
 

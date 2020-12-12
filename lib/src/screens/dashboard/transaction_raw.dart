@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:oxen_wallet/generated/i18n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_direction.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
 
 class TransactionRow extends StatelessWidget {
   TransactionRow(

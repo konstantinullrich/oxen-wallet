@@ -1,10 +1,11 @@
 import 'dart:ffi';
-import 'package:oxen_coin/structs/ut8_box.dart';
+
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_coin/signatures.dart';
-import 'package:oxen_coin/types.dart';
 import 'package:oxen_coin/oxen_api.dart';
+import 'package:oxen_coin/util/signatures.dart';
+import 'package:oxen_coin/util/types.dart';
+import 'package:oxen_coin/structs/ut8_box.dart';
 import 'package:oxen_coin/structs/transaction_info_row.dart';
 import 'package:oxen_coin/structs/pending_transaction.dart';
 import 'package:oxen_coin/exceptions/creation_transaction_exception.dart';
@@ -30,7 +31,8 @@ final transactionCommitNative = oxenApi
     .asFunction<TransactionCommit>();
 
 final transactionEstimateFeeNative = oxenApi
-    .lookup<NativeFunction<transaction_estimate_fee>>('transaction_estimate_fee')
+    .lookup<NativeFunction<transaction_estimate_fee>>(
+        'transaction_estimate_fee')
     .asFunction<TransactionEstimateFee>();
 
 void refreshTransactions() => transactionsRefreshNative();
@@ -51,10 +53,7 @@ List<TransactionInfoRow> getAllTransactions() {
 }
 
 PendingTransactionDescription createTransactionSync(
-    {String address,
-    String amount,
-    int priorityRaw,
-    int accountIndex = 0}) {
+    {String address, String amount, int priorityRaw, int accountIndex = 0}) {
   final addressPointer = Utf8.toUtf8(address);
   final amountPointer = amount != null ? Utf8.toUtf8(amount) : nullptr;
   final errorMessagePointer = allocate<Utf8Box>();

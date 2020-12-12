@@ -87,6 +87,7 @@ import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
 import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
 import 'package:oxen_wallet/src/screens/dashboard/create_dashboard_page.dart';
 import 'package:oxen_wallet/src/screens/welcome/create_welcome_page.dart';
+import 'package:oxen_wallet/src/screens/profile/profile_page.dart';
 
 class Router {
   static Route<dynamic> generateRoute(
@@ -481,6 +482,9 @@ class Router {
 
       case Routes.changeLanguage:
         return MaterialPageRoute<void>(builder: (_) => ChangeLanguage());
+
+      case Routes.profile:
+        return CupertinoPageRoute<void>(builder: (_) => ProfilePage());
 
       default:
         return MaterialPageRoute<void>(

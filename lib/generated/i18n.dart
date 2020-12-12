@@ -123,6 +123,7 @@ class S implements WidgetsLocalizations {
   String get remove_node_message => "Are you sure that you want to remove selected node?";
   String get rescan => "Rescan";
   String get reset => "Reset";
+  String get reload_fiat => "Reload Fiat data";
   String get restore_address => "Address";
   String get restore_description_from_backup => "You can restore the whole OXEN Wallet app from your back-up file";
   String get restore_description_from_keys => "Restore your wallet from generated keystrokes saved from your private keys";
