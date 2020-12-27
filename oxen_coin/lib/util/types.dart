@@ -102,6 +102,16 @@ typedef TransactionCommit = int Function(
 
 typedef TransactionEstimateFee = int Function(int priorityRaw, int recipients);
 
+typedef StakeCount = int Function();
+
+typedef StakeGetAll = Pointer<Int64> Function();
+
+typedef StakeCreate = int Function(
+    Pointer<Utf8> serviceNodeKey,
+    Pointer<Utf8> amount,
+    Pointer<Utf8Box> error,
+    Pointer<PendingTransactionRaw> pendingTransaction);
+
 typedef SecretViewKey = Pointer<Utf8> Function();
 
 typedef PublicViewKey = Pointer<Utf8> Function();

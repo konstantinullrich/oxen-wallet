@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 abstract class PinCodeWidget extends StatefulWidget {
   PinCodeWidget({Key key, this.onPinCodeEntered, this.hasLengthSwitcher})

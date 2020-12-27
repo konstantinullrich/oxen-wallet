@@ -6,7 +6,7 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:provider/provider.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/screens/receive/qr_image.dart';

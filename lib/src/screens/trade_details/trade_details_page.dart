@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';

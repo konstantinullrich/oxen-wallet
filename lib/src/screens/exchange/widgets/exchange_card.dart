@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/widgets/picker.dart';
 import 'package:oxen_wallet/src/widgets/address_text_field.dart';

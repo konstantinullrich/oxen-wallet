@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/theme_changer.dart';
 import 'package:oxen_wallet/themes.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';

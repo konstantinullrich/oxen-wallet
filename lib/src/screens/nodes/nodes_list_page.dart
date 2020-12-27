@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/screens/nodes/node_indicator.dart';
 import 'package:oxen_wallet/src/stores/node_list/node_list_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';

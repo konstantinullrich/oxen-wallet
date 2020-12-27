@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
@@ -50,9 +50,11 @@ class SettingsForm extends StatefulWidget {
 class SettingsFormState extends State<SettingsForm> {
   final _telegramImage = Image.asset('assets/images/Telegram.png');
   final _twitterImage = Image.asset('assets/images/Twitter.png');
-  // final _changeNowImage = Image.asset('assets/images/change_now.png');
-  // final _xmrBtcImage = Image.asset('assets/images/xmr_btc.png');
-  // final _morphImage = Image.asset('assets/images/morph_icon.png');
+
+  final _emailText = 'team@loki.network';
+  final _telegramText = 't.me/LokiCommunity';
+  final _twitterText = 'twitter.com/Loki_Project';
+  final _githubText = 'github.com/loki-project';
 
   final _emailUrl = 'mailto:team@loki.network';
   final _telegramUrl = 'https:t.me/LokiCommunity';
@@ -246,25 +248,25 @@ class SettingsFormState extends State<SettingsForm> {
       SettingsItem(
           onTaped: () => _launchUrl(_emailUrl),
           title: 'Email',
-          link: 'team@loki.network',
+          link: _emailText,
           image: null,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () => _launchUrl(_githubUrl),
           title: 'Github',
-          link: 'github.com/loki-project',
+          link: _githubText,
           image: null,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () => _launchUrl(_telegramUrl),
           title: 'Telegram',
-          link: 't.me/LokiCommunity',
+          link: _telegramText,
           image: _telegramImage,
           attribute: Attributes.link),
       SettingsItem(
           onTaped: () => _launchUrl(_twitterUrl),
           title: 'Twitter',
-          link: 'twitter.com/Loki_Project',
+          link: _twitterText,
           image: _twitterImage,
           attribute: Attributes.link),
       SettingsItem(

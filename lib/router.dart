@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 // MARK: Import domains
 
@@ -88,6 +88,8 @@ import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
 import 'package:oxen_wallet/src/screens/dashboard/create_dashboard_page.dart';
 import 'package:oxen_wallet/src/screens/welcome/create_welcome_page.dart';
 import 'package:oxen_wallet/src/screens/profile/profile_page.dart';
+import 'package:oxen_wallet/src/screens/stake/stake_page.dart';
+
 
 class Router {
   static Route<dynamic> generateRoute(
@@ -485,6 +487,9 @@ class Router {
 
       case Routes.profile:
         return CupertinoPageRoute<void>(builder: (_) => ProfilePage());
+
+      case Routes.stake:
+        return CupertinoPageRoute<void>(builder: (_) => StakePage());
 
       default:
         return MaterialPageRoute<void>(

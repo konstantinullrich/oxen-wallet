@@ -10,7 +10,7 @@ import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
 import 'package:oxen_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:package_info/package_info.dart';
 import 'package:oxen_wallet/src/domain/common/language.dart';

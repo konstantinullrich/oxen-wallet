@@ -1,4 +1,4 @@
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/enumerable_item.dart';
 
 class OxenTransactionPriority extends EnumerableItem<int> with Serializable<int> {

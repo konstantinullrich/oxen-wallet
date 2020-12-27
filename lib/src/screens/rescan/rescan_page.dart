@@ -5,7 +5,7 @@ import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/widgets/blockchain_height_widget.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/stores/rescan/rescan_wallet_store.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class RescanPage extends BasePage {
   final blockchainKey = GlobalKey<BlockchainHeightState>();

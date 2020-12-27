@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/stores/wallet_seed/wallet_seed_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';

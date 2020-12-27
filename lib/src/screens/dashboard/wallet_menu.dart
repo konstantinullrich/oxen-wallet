@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';

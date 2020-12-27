@@ -13,7 +13,7 @@ import 'package:oxen_wallet/src/oxen/mnemonics/portuguese.dart';
 import 'package:oxen_wallet/src/oxen/mnemonics/russian.dart';
 import 'package:oxen_wallet/src/oxen/mnemonics/spanish.dart';
 import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 final List<String> _englishWords = EnglishMnemonics.words + EnglishOldMnemonics.words;
 

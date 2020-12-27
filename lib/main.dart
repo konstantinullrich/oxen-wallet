@@ -33,7 +33,7 @@ import 'package:oxen_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/language.dart';
 import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
 

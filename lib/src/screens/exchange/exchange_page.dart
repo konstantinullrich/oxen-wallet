@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/exchange/exchange_provider.dart';
 import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';

@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/stores/auth/auth_state.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 part 'auth_store.g.dart';
 

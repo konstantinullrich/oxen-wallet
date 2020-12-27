@@ -6,7 +6,7 @@ import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
 import 'package:oxen_wallet/src/stores/wallet_restoration/wallet_restoration_state.dart';
 import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 part 'wallet_restoration_store.g.dart';
 

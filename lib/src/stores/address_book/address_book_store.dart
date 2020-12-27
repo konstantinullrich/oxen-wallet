@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:hive/hive.dart';

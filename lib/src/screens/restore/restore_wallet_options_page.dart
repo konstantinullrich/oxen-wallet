@@ -6,7 +6,7 @@ import 'package:oxen_wallet/src/screens/restore/widgets/restore_button.dart';
 import 'package:oxen_wallet/src/screens/restore/widgets/image_widget.dart';
 import 'package:oxen_wallet/src/screens/restore/widgets/base_restore_widget.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
 import 'package:provider/provider.dart';
 

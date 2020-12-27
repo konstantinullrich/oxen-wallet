@@ -10,7 +10,7 @@ import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/send/sending_state.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/openalias_record.dart';
 
 part 'send_store.g.dart';

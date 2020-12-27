@@ -6,7 +6,7 @@ import 'package:oxen_wallet/src/stores/user/user_store.dart';
 import 'package:oxen_wallet/src/screens/pin_code/pin_code.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class SetupPinCodePage extends BasePage {
   SetupPinCodePage({this.onPinCodeSetup});

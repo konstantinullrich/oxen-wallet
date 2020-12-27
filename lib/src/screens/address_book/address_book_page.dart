@@ -6,7 +6,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';

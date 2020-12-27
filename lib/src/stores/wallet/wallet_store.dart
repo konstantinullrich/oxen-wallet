@@ -8,7 +8,7 @@ import 'package:oxen_wallet/src/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 part 'wallet_store.g.dart';
 

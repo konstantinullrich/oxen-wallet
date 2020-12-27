@@ -3,7 +3,7 @@ import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class WelcomePage extends BasePage {
   static const _aspectRatioImage = 1.26;

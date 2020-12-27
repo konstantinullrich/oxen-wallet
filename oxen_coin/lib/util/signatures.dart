@@ -104,6 +104,16 @@ typedef transaction_commit = Int8 Function(
 
 typedef transaction_estimate_fee = Int64 Function(Int32, Int32);
 
+typedef stake_count = Int32 Function();
+
+typedef stake_get_all = Pointer<Int64> Function();
+
+typedef stake_create = Int8 Function(
+    Pointer<Utf8> serviceNodeKey,
+    Pointer<Utf8> amount,
+    Pointer<Utf8Box> error,
+    Pointer<PendingTransactionRaw> pendingTransaction);
+
 typedef secret_view_key = Pointer<Utf8> Function();
 
 typedef public_view_key = Pointer<Utf8> Function();

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
@@ -76,6 +76,12 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                 onTap: () =>
                     Navigator.of(context).pushNamed(Routes.walletList)),
             NavListHeader(title: S.current.wallet_menu),
+            NavListArrow(
+                leading: Icon(Icons.attach_money_rounded,
+                    color: Theme.of(context).primaryTextTheme.headline6.color),
+                text: 'Stake', // Todo: Use Lang String
+                onTap: () =>
+                    Navigator.of(context).pushNamed(Routes.stake)),
             NavListArrow(
                 leading: Icon(Icons.contacts_rounded,
                     color: Theme.of(context).primaryTextTheme.headline6.color),

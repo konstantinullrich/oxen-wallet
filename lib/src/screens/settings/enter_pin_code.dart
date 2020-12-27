@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:oxen_wallet/theme_changer.dart';
 import 'package:oxen_wallet/themes.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class EnterPinCode extends StatefulWidget {
   const EnterPinCode(this.currentPinLength, this.currentPin);

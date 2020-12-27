@@ -3,7 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:oxen_wallet/src/domain/common/node_list.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 part 'node_list_store.g.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';

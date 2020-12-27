@@ -170,6 +170,18 @@ extern "C"
         }
     };
 
+    struct StakeRow
+    {
+        char *service_node_key;
+        uint32_t amount;
+
+        StakeRow(char *_service_node_key, uint32_t _amount)
+        {
+            service_node_key = _service_node_key;
+            amount = _amount;
+        }
+    };
+
     Oxen::Wallet *m_wallet;
     Oxen::TransactionHistory *m_transaction_history;
     OxenWalletListener *m_listener;
@@ -348,7 +360,6 @@ extern "C"
         return strdup(get_current_wallet()->address(account_index, address_index).c_str());
     }
 
-
     const char *seed()
     {
         return strdup(get_current_wallet()->seed().c_str());
@@ -444,6 +455,49 @@ extern "C"
         get_current_wallet()->store(std::string(path));
         store_mutex.unlock();
     }
+
+    int32_t stake_count() {
+        auto* stakes = m_wallet->listCurrentStakes();
+        int32_t count = stakes->size();
+        delete stakes;
+        return count;
+    }
+
+    int64_t* stake_get_all() {
+        auto* _stakes = m_wallet->listCurrentStakes();
+        size_t size = _stakes->size();
+        int64_t *stakes = (int64_t *)malloc(size * sizeof(int64_t));
+
+        for (int i = 0; i < size; i++) {
+            auto& [pubkey, amount] = (*_stakes)[i];
+            StakeRow *_row = new StakeRow(strdup(pubkey.c_str()), amount);
+            stakes[i] = reinterpret_cast<int64_t>(_row);
+        }
+
+        delete _stakes;
+        return stakes;
+    }
+
+//    bool stake_create(char *service_node_key, char *amount, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+//    {
+//        nice(19);
+//
+//        Oxen::PendingTransaction *transaction;
+//        std:string error_msg;
+//
+//        transaction = m_wallet->stakePending(std::string(service_node_key), std::string(amount), *error_msg);
+//
+//        int status = transaction->status().first;
+//
+//        if (status == Oxen::PendingTransaction::Status::Status_Error || status == Oxen::PendingTransaction::Status::Status_Critical)
+//        {
+//            error = Utf8Box(strdup(transaction->status().second.c_str()));
+//            return false;
+//        }
+//
+//        pendingTransaction = PendingTransactionRaw(transaction);
+//        return true;
+//    }
 
     uint64_t transaction_estimate_fee(uint32_t priority, uint32_t recipients)
     {

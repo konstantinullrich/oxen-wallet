@@ -4,7 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
 import 'package:oxen_wallet/src/widgets/present_picker.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class SeedLanguagePicker extends StatelessWidget {
   final List<String> seedLocales = [

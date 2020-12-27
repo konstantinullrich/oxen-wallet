@@ -1,5 +1,5 @@
 import 'package:oxen_wallet/src/domain/exchange/exchange_provider_description.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class TradeNotCreatedException implements Exception {
   TradeNotCreatedException(this.provider, {this.description = ''});

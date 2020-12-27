@@ -6,7 +6,7 @@ import 'package:oxen_wallet/src/screens/restore/widgets/restore_button.dart';
 import 'package:oxen_wallet/src/screens/restore/widgets/image_widget.dart';
 import 'package:oxen_wallet/src/screens/restore/widgets/base_restore_widget.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 
 class RestoreOptionsPage extends BasePage {
   static const _aspectRatioImage = 2.086;

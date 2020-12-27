@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
 import 'package:oxen_wallet/src/stores/send/send_store.dart';
 import 'package:oxen_wallet/src/stores/send/sending_state.dart';

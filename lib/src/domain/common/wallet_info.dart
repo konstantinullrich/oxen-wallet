@@ -11,7 +11,8 @@ class WalletInfo extends HiveObject {
       this.type,
       this.isRecovery,
       this.restoreHeight,
-      this.timestamp});
+      this.timestamp,
+      this.hasTestnet = false});
 
   static const boxName = 'WalletInfo';
 
@@ -32,6 +33,9 @@ class WalletInfo extends HiveObject {
 
   @HiveField(5)
   int timestamp;
+
+  @HiveField(6)
+  bool hasTestnet;
 
   DateTime get date => DateTime.fromMillisecondsSinceEpoch(timestamp);
 }

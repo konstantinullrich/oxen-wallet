@@ -14,7 +14,7 @@ import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/stores/exchange/exchange_trade_state.dart';
 import 'package:oxen_wallet/src/stores/exchange/limits_state.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/exchange/limits.dart';
 import 'package:intl/intl.dart';
 

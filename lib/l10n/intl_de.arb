@@ -30,9 +30,9 @@
   "wallet_menu" : "Wallet-Menü",
   "Blocks_remaining" : "${status} Verbleibende Blöcke",
   "please_try_to_connect_to_another_node" : "Bitte versuchen Sie, eine Verbindung zu einem anderen Knoten herzustellen",
-  "xmr_hidden" : "Loki versteckt",
-  "xmr_available_balance" : "LOKI verfügbares Guthaben",
-  "xmr_full_balance" : "LOKI Volle Balance",
+  "xmr_hidden" : "Oxen versteckt",
+  "xmr_available_balance" : "OXEN verfügbares Guthaben",
+  "xmr_full_balance" : "OXEN volles Guthaben",
   "send" : "Senden",
   "receive" : "Erhalten",
   "transactions" : "Transaktionen",
@@ -138,7 +138,7 @@
   "restore_description_from_seed_keys" : "Holen Sie sich Ihr Wallet von Seed / Schlüsseln zurück, die Sie an einem sicheren Ort aufbewahrt haben",
   "restore_next" : "Nächster",
   "restore_title_from_backup" : "Aus einer Sicherungsdatei wiederherstellen",
-  "restore_description_from_backup" : "Sie können die gesamte Loki Next Wallet-App aus ihrer Sicherungsdatei wiederherstellen.",
+  "restore_description_from_backup" : "Sie können die gesamte Oxen Wallet-App aus ihrer Sicherungsdatei wiederherstellen.",
   "restore_seed_keys_restore" : "Seed / Schlüssel wiederherstellen",
   "restore_title_from_seed" : "Aus Seed wiederherstellen",
   "restore_description_from_seed" : "Stellen Sie Ihr Wallet aus den 25 Wörtern wieder her oder 13-Wort-Kombinationscode",
@@ -169,9 +169,9 @@
   "seed_language_spanish" : "Spanisch",
 
 
-  "send_title" : "Senden Sie Loki",
+  "send_title" : "Senden Sie Oxen",
   "send_your_wallet" : "Dein Wallet",
-  "send_monero_address" : "Loki-Adresse",
+  "send_monero_address" : "Oxen-Adresse",
   "send_payment_id" : "Zahlungs ID (wahlweise)",
   "all" : "ALLE",
   "send_error_minimum_value" : "Der Mindestbetrag beträgt 0,01",
@@ -348,6 +348,6 @@
   "biometric_auth_reason" : "Scannen Sie Ihren Fingerabdruck zur Authentifizierung",
   "version" : "Ausführung ${currentVersion}",
 
-  "openalias_alert_title" : "LOKI-Empfänger erkannt",
+  "openalias_alert_title" : "OXEN-Empfänger erkannt",
   "openalias_alert_content" : "Sie senden Geld an\n${recipient_name}"
 }

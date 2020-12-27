@@ -2,7 +2,7 @@ import 'package:date_range_picker/date_range_picker.dart' as date_rage_picker;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/generated/i18n.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
