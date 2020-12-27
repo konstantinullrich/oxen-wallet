@@ -225,10 +225,10 @@ class S {
     );
   }
 
-  /// `Failed authentication. ${state_error}`
+  /// `Failed authentication. {state_error}`
   String failed_authentication(Object state_error) {
     return Intl.message(
-      'Failed authentication. \$$state_error',
+      'Failed authentication. $state_error',
       name: 'failed_authentication',
       desc: '',
       args: [state_error],
@@ -245,10 +245,10 @@ class S {
     );
   }
 
-  /// `${status} Blocks Remaining`
+  /// `{status} Blocks Remaining`
   String Blocks_remaining(Object status) {
     return Intl.message(
-      '\$$status Blocks Remaining',
+      '$status Blocks Remaining',
       name: 'Blocks_remaining',
       desc: '',
       args: [status],
@@ -585,10 +585,10 @@ class S {
     );
   }
 
-  /// `Powered by ${title}`
+  /// `Powered by {title}`
   String powered_by(Object title) {
     return Intl.message(
-      'Powered by \$$title',
+      'Powered by $title',
       name: 'powered_by',
       desc: '',
       args: [title],
@@ -615,20 +615,20 @@ class S {
     );
   }
 
-  /// `Min: ${value} ${currency}`
+  /// `Min: {value} {currency}`
   String min_value(Object value, Object currency) {
     return Intl.message(
-      'Min: \$$value \$$currency',
+      'Min: $value $currency',
       name: 'min_value',
       desc: '',
       args: [value, currency],
     );
   }
 
-  /// `Max: ${value} ${currency}`
+  /// `Max: {value} {currency}`
   String max_value(Object value, Object currency) {
     return Intl.message(
-      'Max: \$$value \$$currency',
+      'Max: $value $currency',
       name: 'max_value',
       desc: '',
       args: [value, currency],
@@ -665,10 +665,10 @@ class S {
     );
   }
 
-  /// `Trade ID:\n${id}`
+  /// `Trade ID:\n{id}`
   String trade_id(Object id) {
     return Intl.message(
-      'Trade ID:\n\$$id',
+      'Trade ID:\n$id',
       name: 'trade_id',
       desc: '',
       args: [id],
@@ -755,10 +755,10 @@ class S {
     );
   }
 
-  /// `This trade is powered by ${provider}`
+  /// `This trade is powered by {provider}`
   String trade_is_powered_by(Object provider) {
     return Intl.message(
-      'This trade is powered by \$$provider',
+      'This trade is powered by $provider',
       name: 'trade_is_powered_by',
       desc: '',
       args: [provider],
@@ -775,20 +775,20 @@ class S {
     );
   }
 
-  /// `By pressing confirm, you will be sending ${fetchingLabel} ${from} from your wallet called ${walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n`
+  /// `By pressing confirm, you will be sending {fetchingLabel} {from} from your wallet called {walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n`
   String exchange_result_confirm(Object fetchingLabel, Object from, Object walletName) {
     return Intl.message(
-      'By pressing confirm, you will be sending \$$fetchingLabel \$$from from your wallet called \$$walletName to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n',
+      'By pressing confirm, you will be sending $fetchingLabel $from from your wallet called $walletName to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n',
       name: 'exchange_result_confirm',
       desc: '',
       args: [fetchingLabel, from, walletName],
     );
   }
 
-  /// `Please send ${fetchingLabel} ${from} to the address shown above.\n\n`
+  /// `Please send {fetchingLabel} {from} to the address shown above.\n\n`
   String exchange_result_description(Object fetchingLabel, Object from) {
     return Intl.message(
-      'Please send \$$fetchingLabel \$$from to the address shown above.\n\n',
+      'Please send $fetchingLabel $from to the address shown above.\n\n',
       name: 'exchange_result_description',
       desc: '',
       args: [fetchingLabel, from],
@@ -825,10 +825,10 @@ class S {
     );
   }
 
-  /// `Commit transaction\nAmount: ${amount}\nFee: ${fee}`
+  /// `Commit transaction\nAmount: {amount}\nFee: {fee}`
   String commit_transaction_amount_fee(Object amount, Object fee) {
     return Intl.message(
-      'Commit transaction\nAmount: \$$amount\nFee: \$$fee',
+      'Commit transaction\nAmount: $amount\nFee: $fee',
       name: 'commit_transaction_amount_fee',
       desc: '',
       args: [amount, fee],
@@ -865,10 +865,10 @@ class S {
     );
   }
 
-  /// `${minutes}m ${seconds}s`
+  /// `{minutes}m {seconds}s`
   String time(Object minutes, Object seconds) {
     return Intl.message(
-      '\$${minutes}m \$${seconds}s',
+      '${minutes}m ${seconds}s',
       name: 'time',
       desc: '',
       args: [minutes, seconds],
@@ -1025,10 +1025,10 @@ class S {
     );
   }
 
-  /// `Are you sure to change current node to ${node}?`
+  /// `Are you sure to change current node to {node}?`
   String change_current_node(Object node) {
     return Intl.message(
-      'Are you sure to change current node to \$$node?',
+      'Are you sure to change current node to $node?',
       name: 'change_current_node',
       desc: '',
       args: [node],
@@ -1515,10 +1515,10 @@ class S {
     );
   }
 
-  /// `Currently the fee is set at ${transactionPriority} priority.\nTransaction priority can be adjusted in the settings`
+  /// `Currently the fee is set at {transactionPriority} priority.\nTransaction priority can be adjusted in the settings`
   String send_priority(Object transactionPriority) {
     return Intl.message(
-      'Currently the fee is set at \$$transactionPriority priority.\nTransaction priority can be adjusted in the settings',
+      'Currently the fee is set at $transactionPriority priority.\nTransaction priority can be adjusted in the settings',
       name: 'send_priority',
       desc: '',
       args: [transactionPriority],
@@ -1855,10 +1855,10 @@ class S {
     );
   }
 
-  /// `Copied ${key} to Clipboard`
+  /// `Copied {key} to Clipboard`
   String copied_key_to_clipboard(Object key) {
     return Intl.message(
-      'Copied \$$key to Clipboard',
+      'Copied $key to Clipboard',
       name: 'copied_key_to_clipboard',
       desc: '',
       args: [key],
@@ -1975,10 +1975,10 @@ class S {
     );
   }
 
-  /// `${title} copied to Clipboard`
+  /// `{title} copied to Clipboard`
   String trade_details_copied(Object title) {
     return Intl.message(
-      '\$$title copied to Clipboard',
+      '$title copied to Clipboard',
       name: 'trade_details_copied',
       desc: '',
       args: [title],
@@ -2045,10 +2045,10 @@ class S {
     );
   }
 
-  /// `${title} copied to Clipboard`
+  /// `{title} copied to Clipboard`
   String transaction_details_copied(Object title) {
     return Intl.message(
-      '\$$title copied to Clipboard',
+      '$title copied to Clipboard',
       name: 'transaction_details_copied',
       desc: '',
       args: [title],
@@ -2105,40 +2105,40 @@ class S {
     );
   }
 
-  /// `Loading ${wallet_name} wallet`
+  /// `Loading {wallet_name} wallet`
   String wallet_list_loading_wallet(Object wallet_name) {
     return Intl.message(
-      'Loading \$$wallet_name wallet',
+      'Loading $wallet_name wallet',
       name: 'wallet_list_loading_wallet',
       desc: '',
       args: [wallet_name],
     );
   }
 
-  /// `Failed to load ${wallet_name} wallet. ${error}`
+  /// `Failed to load {wallet_name} wallet. {error}`
   String wallet_list_failed_to_load(Object wallet_name, Object error) {
     return Intl.message(
-      'Failed to load \$$wallet_name wallet. \$$error',
+      'Failed to load $wallet_name wallet. $error',
       name: 'wallet_list_failed_to_load',
       desc: '',
       args: [wallet_name, error],
     );
   }
 
-  /// `Removing ${wallet_name} wallet`
+  /// `Removing {wallet_name} wallet`
   String wallet_list_removing_wallet(Object wallet_name) {
     return Intl.message(
-      'Removing \$$wallet_name wallet',
+      'Removing $wallet_name wallet',
       name: 'wallet_list_removing_wallet',
       desc: '',
       args: [wallet_name],
     );
   }
 
-  /// `Failed to remove ${wallet_name} wallet. ${error}`
+  /// `Failed to remove {wallet_name} wallet. {error}`
   String wallet_list_failed_to_remove(Object wallet_name, Object error) {
     return Intl.message(
-      'Failed to remove \$$wallet_name wallet. \$$error',
+      'Failed to remove $wallet_name wallet. $error',
       name: 'wallet_list_failed_to_remove',
       desc: '',
       args: [wallet_name, error],
@@ -2195,10 +2195,10 @@ class S {
     );
   }
 
-  /// `No route defined for ${name}`
+  /// `No route defined for {name}`
   String router_no_route(Object name) {
     return Intl.message(
-      'No route defined for \$$name',
+      'No route defined for $name',
       name: 'router_no_route',
       desc: '',
       args: [name],
@@ -2335,30 +2335,30 @@ class S {
     );
   }
 
-  /// `Trade for ${provider} is not created. Amount is less then minimal: ${min} ${currency}`
+  /// `Trade for {provider} is not created. Amount is less then minimal: {min} {currency}`
   String error_text_minimal_limit(Object provider, Object min, Object currency) {
     return Intl.message(
-      'Trade for \$$provider is not created. Amount is less then minimal: \$$min \$$currency',
+      'Trade for $provider is not created. Amount is less then minimal: $min $currency',
       name: 'error_text_minimal_limit',
       desc: '',
       args: [provider, min, currency],
     );
   }
 
-  /// `Trade for ${provider} is not created. Amount is more then maximum: ${max} ${currency}`
+  /// `Trade for {provider} is not created. Amount is more then maximum: {max} {currency}`
   String error_text_maximum_limit(Object provider, Object max, Object currency) {
     return Intl.message(
-      'Trade for \$$provider is not created. Amount is more then maximum: \$$max \$$currency',
+      'Trade for $provider is not created. Amount is more then maximum: $max $currency',
       name: 'error_text_maximum_limit',
       desc: '',
       args: [provider, max, currency],
     );
   }
 
-  /// `Trade for ${provider} is not created. Limits loading failed`
+  /// `Trade for {provider} is not created. Limits loading failed`
   String error_text_limits_loading_failed(Object provider) {
     return Intl.message(
-      'Trade for \$$provider is not created. Limits loading failed',
+      'Trade for $provider is not created. Limits loading failed',
       name: 'error_text_limits_loading_failed',
       desc: '',
       args: [provider],
@@ -2545,10 +2545,10 @@ class S {
     );
   }
 
-  /// `Trade for ${title} is not created.`
+  /// `Trade for {title} is not created.`
   String trade_for_not_created(Object title) {
     return Intl.message(
-      'Trade for \$$title is not created.',
+      'Trade for $title is not created.',
       name: 'trade_for_not_created',
       desc: '',
       args: [title],
@@ -2565,10 +2565,10 @@ class S {
     );
   }
 
-  /// `Trade ${tradeId} of ${title} not found.`
+  /// `Trade {tradeId} of {title} not found.`
   String trade_id_not_found(Object tradeId, Object title) {
     return Intl.message(
-      'Trade \$$tradeId of \$$title not found.',
+      'Trade $tradeId of $title not found.',
       name: 'trade_id_not_found',
       desc: '',
       args: [tradeId, title],
@@ -2735,10 +2735,10 @@ class S {
     );
   }
 
-  /// `Change language to ${language}?`
+  /// `Change language to {language}?`
   String change_language_to(Object language) {
     return Intl.message(
-      'Change language to \$$language?',
+      'Change language to $language?',
       name: 'change_language_to',
       desc: '',
       args: [language],
@@ -2795,10 +2795,10 @@ class S {
     );
   }
 
-  /// `Version ${currentVersion}`
+  /// `Version {currentVersion}`
   String version(Object currentVersion) {
     return Intl.message(
-      'Version \$$currentVersion',
+      'Version $currentVersion',
       name: 'version',
       desc: '',
       args: [currentVersion],
@@ -2815,10 +2815,10 @@ class S {
     );
   }
 
-  /// `You will be sending funds to\n${recipient_name}`
+  /// `You will be sending funds to\n{recipient_name}`
   String openalias_alert_content(Object recipient_name) {
     return Intl.message(
-      'You will be sending funds to\n\$$recipient_name',
+      'You will be sending funds to\n$recipient_name',
       name: 'openalias_alert_content',
       desc: '',
       args: [recipient_name],

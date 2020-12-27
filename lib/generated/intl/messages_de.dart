@@ -19,63 +19,63 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static m0(status) => "\$${status} Verbleibende Blöcke";
+  static m0(status) => "${status} Verbleibende Blöcke";
 
-  static m1(node) => "Möchten Sie den aktuellen Knoten wirklich auf ändern? \$${node}?";
+  static m1(node) => "Möchten Sie den aktuellen Knoten wirklich auf ändern? ${node}?";
 
-  static m2(language) => "Ändern Sie die Sprache zu \$${language}?";
+  static m2(language) => "Ändern Sie die Sprache zu ${language}?";
 
-  static m3(amount, fee) => "Transaktion festschreiben\nMenge: \$${amount}\nGebühr: \$${fee}";
+  static m3(amount, fee) => "Transaktion festschreiben\nMenge: ${amount}\nGebühr: ${fee}";
 
-  static m4(key) => "Kopiert \$${key} Zur Zwischenablage";
+  static m4(key) => "Kopiert ${key} Zur Zwischenablage";
 
-  static m5(provider) => "Handel für \$${provider} wird nicht erstellt. Das Laden der Limits ist fehlgeschlagen";
+  static m5(provider) => "Handel für ${provider} wird nicht erstellt. Das Laden der Limits ist fehlgeschlagen";
 
-  static m6(provider, max, currency) => "Handel für \$${provider} wird nicht erstellt. Menge ist mehr als maximal: \$${max} \$${currency}";
+  static m6(provider, max, currency) => "Handel für ${provider} wird nicht erstellt. Menge ist mehr als maximal: ${max} ${currency}";
 
-  static m7(provider, min, currency) => "Handel für \$${provider} wird nicht erstellt. Menge ist weniger als minimal: \$${min} \$${currency}";
+  static m7(provider, min, currency) => "Handel für ${provider} wird nicht erstellt. Menge ist weniger als minimal: ${min} ${currency}";
 
-  static m8(fetchingLabel, from, walletName) => "Durch Drücken von Bestätigen wird gesendet \$${fetchingLabel} \$${from} von Ihrer Brieftasche aus angerufen \$${walletName} an die oben angegebene Adresse. Oder Sie können von Ihrem externen Portemonnaie an die oben angegebene Adresse / QR-Code senden.\n\nBitte bestätigen Sie, um fortzufahren, oder gehen Sie zurück, um die Beträge zu änderns.\n\n";
+  static m8(fetchingLabel, from, walletName) => "Durch Drücken von Bestätigen wird gesendet ${fetchingLabel} ${from} von Ihrer Brieftasche aus angerufen ${walletName} an die oben angegebene Adresse. Oder Sie können von Ihrem externen Portemonnaie an die oben angegebene Adresse / QR-Code senden.\n\nBitte bestätigen Sie, um fortzufahren, oder gehen Sie zurück, um die Beträge zu änderns.\n\n";
 
-  static m9(fetchingLabel, from) => "Bitte senden \$${fetchingLabel} \$${from} an die oben angegebene Adresse.\n\n\'";
+  static m9(fetchingLabel, from) => "Bitte senden ${fetchingLabel} ${from} an die oben angegebene Adresse.\n\n\'";
 
-  static m10(state_error) => "Authentifizierung fehlgeschlagen. \$${state_error}";
+  static m10(state_error) => "Authentifizierung fehlgeschlagen. ${state_error}";
 
-  static m11(value, currency) => "Max: \$${value} \$${currency}";
+  static m11(value, currency) => "Max: ${value} ${currency}";
 
-  static m12(value, currency) => "Mindest: \$${value} \$${currency}";
+  static m12(value, currency) => "Mindest: ${value} ${currency}";
 
-  static m13(recipient_name) => "Sie senden Geld an\n\$${recipient_name}";
+  static m13(recipient_name) => "Sie senden Geld an\n${recipient_name}";
 
-  static m14(title) => "Unterstützt von \$${title}";
+  static m14(title) => "Unterstützt von ${title}";
 
-  static m15(name) => "Keine Route definiert für \$${name}";
+  static m15(name) => "Keine Route definiert für ${name}";
 
-  static m16(transactionPriority) => "Derzeit ist die Gebühr auf \$${transactionPriority} priorität festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden";
+  static m16(transactionPriority) => "Derzeit ist die Gebühr auf ${transactionPriority} priorität festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden";
 
-  static m17(minutes, seconds) => "\$${minutes}m \$${seconds}s";
+  static m17(minutes, seconds) => "${minutes}m ${seconds}s";
 
-  static m18(title) => "\$${title} in die Zwischenablage kopiert";
+  static m18(title) => "${title} in die Zwischenablage kopiert";
 
-  static m19(title) => "Handel für \$${title} wird nicht erstellt.";
+  static m19(title) => "Handel für ${title} wird nicht erstellt.";
 
-  static m20(id) => "Handel-ID:\n\$${id}";
+  static m20(id) => "Handel-ID:\n${id}";
 
-  static m21(tradeId, title) => "Handel \$${tradeId} von \$${title} nicht gefunden.";
+  static m21(tradeId, title) => "Handel ${tradeId} von ${title} nicht gefunden.";
 
-  static m22(provider) => "Dieser Handel wird betrieben von \$${provider}";
+  static m22(provider) => "Dieser Handel wird betrieben von ${provider}";
 
-  static m23(title) => "\$${title} in die Zwischenablage kopiert";
+  static m23(title) => "${title} in die Zwischenablage kopiert";
 
-  static m24(currentVersion) => "Ausführung \$${currentVersion}";
+  static m24(currentVersion) => "Ausführung ${currentVersion}";
 
-  static m25(wallet_name, error) => "Laden fehlgeschlagen \$${wallet_name} Wallet. \$${error}";
+  static m25(wallet_name, error) => "Laden fehlgeschlagen ${wallet_name} Wallet. ${error}";
 
-  static m26(wallet_name, error) => "Fehler beim Entfernen \$${wallet_name} Wallet. \$${error}";
+  static m26(wallet_name, error) => "Fehler beim Entfernen ${wallet_name} Wallet. ${error}";
 
-  static m27(wallet_name) => "Wird geladen \$${wallet_name} Wallet";
+  static m27(wallet_name) => "Wird geladen ${wallet_name} Wallet";
 
-  static m28(wallet_name) => "Entfernen \$${wallet_name} Wallet";
+  static m28(wallet_name) => "Entfernen ${wallet_name} Wallet";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {

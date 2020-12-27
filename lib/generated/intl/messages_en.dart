@@ -19,63 +19,63 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static m0(status) => "\$${status} Blocks Remaining";
+  static m0(status) => "${status} Blocks Remaining";
 
-  static m1(node) => "Are you sure to change current node to \$${node}?";
+  static m1(node) => "Are you sure to change current node to ${node}?";
 
-  static m2(language) => "Change language to \$${language}?";
+  static m2(language) => "Change language to ${language}?";
 
-  static m3(amount, fee) => "Commit transaction\nAmount: \$${amount}\nFee: \$${fee}";
+  static m3(amount, fee) => "Commit transaction\nAmount: ${amount}\nFee: ${fee}";
 
-  static m4(key) => "Copied \$${key} to Clipboard";
+  static m4(key) => "Copied ${key} to Clipboard";
 
-  static m5(provider) => "Trade for \$${provider} is not created. Limits loading failed";
+  static m5(provider) => "Trade for ${provider} is not created. Limits loading failed";
 
-  static m6(provider, max, currency) => "Trade for \$${provider} is not created. Amount is more then maximum: \$${max} \$${currency}";
+  static m6(provider, max, currency) => "Trade for ${provider} is not created. Amount is more then maximum: ${max} ${currency}";
 
-  static m7(provider, min, currency) => "Trade for \$${provider} is not created. Amount is less then minimal: \$${min} \$${currency}";
+  static m7(provider, min, currency) => "Trade for ${provider} is not created. Amount is less then minimal: ${min} ${currency}";
 
-  static m8(fetchingLabel, from, walletName) => "By pressing confirm, you will be sending \$${fetchingLabel} \$${from} from your wallet called \$${walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n";
+  static m8(fetchingLabel, from, walletName) => "By pressing confirm, you will be sending ${fetchingLabel} ${from} from your wallet called ${walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n";
 
-  static m9(fetchingLabel, from) => "Please send \$${fetchingLabel} \$${from} to the address shown above.\n\n";
+  static m9(fetchingLabel, from) => "Please send ${fetchingLabel} ${from} to the address shown above.\n\n";
 
-  static m10(state_error) => "Failed authentication. \$${state_error}";
+  static m10(state_error) => "Failed authentication. ${state_error}";
 
-  static m11(value, currency) => "Max: \$${value} \$${currency}";
+  static m11(value, currency) => "Max: ${value} ${currency}";
 
-  static m12(value, currency) => "Min: \$${value} \$${currency}";
+  static m12(value, currency) => "Min: ${value} ${currency}";
 
-  static m13(recipient_name) => "You will be sending funds to\n\$${recipient_name}";
+  static m13(recipient_name) => "You will be sending funds to\n${recipient_name}";
 
-  static m14(title) => "Powered by \$${title}";
+  static m14(title) => "Powered by ${title}";
 
-  static m15(name) => "No route defined for \$${name}";
+  static m15(name) => "No route defined for ${name}";
 
-  static m16(transactionPriority) => "Currently the fee is set at \$${transactionPriority} priority.\nTransaction priority can be adjusted in the settings";
+  static m16(transactionPriority) => "Currently the fee is set at ${transactionPriority} priority.\nTransaction priority can be adjusted in the settings";
 
-  static m17(minutes, seconds) => "\$${minutes}m \$${seconds}s";
+  static m17(minutes, seconds) => "${minutes}m ${seconds}s";
 
-  static m18(title) => "\$${title} copied to Clipboard";
+  static m18(title) => "${title} copied to Clipboard";
 
-  static m19(title) => "Trade for \$${title} is not created.";
+  static m19(title) => "Trade for ${title} is not created.";
 
-  static m20(id) => "Trade ID:\n\$${id}";
+  static m20(id) => "Trade ID:\n${id}";
 
-  static m21(tradeId, title) => "Trade \$${tradeId} of \$${title} not found.";
+  static m21(tradeId, title) => "Trade ${tradeId} of ${title} not found.";
 
-  static m22(provider) => "This trade is powered by \$${provider}";
+  static m22(provider) => "This trade is powered by ${provider}";
 
-  static m23(title) => "\$${title} copied to Clipboard";
+  static m23(title) => "${title} copied to Clipboard";
 
-  static m24(currentVersion) => "Version \$${currentVersion}";
+  static m24(currentVersion) => "Version ${currentVersion}";
 
-  static m25(wallet_name, error) => "Failed to load \$${wallet_name} wallet. \$${error}";
+  static m25(wallet_name, error) => "Failed to load ${wallet_name} wallet. ${error}";
 
-  static m26(wallet_name, error) => "Failed to remove \$${wallet_name} wallet. \$${error}";
+  static m26(wallet_name, error) => "Failed to remove ${wallet_name} wallet. ${error}";
 
-  static m27(wallet_name) => "Loading \$${wallet_name} wallet";
+  static m27(wallet_name) => "Loading ${wallet_name} wallet";
 
-  static m28(wallet_name) => "Removing \$${wallet_name} wallet";
+  static m28(wallet_name) => "Removing ${wallet_name} wallet";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
