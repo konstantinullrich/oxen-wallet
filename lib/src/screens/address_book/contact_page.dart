@@ -38,7 +38,7 @@ class ContactFormState extends State<ContactForm> {
   final _currencyTypeController = TextEditingController();
   final _addressController = TextEditingController();
 
-  CryptoCurrency _selectectCrypto = CryptoCurrency.xmr;
+  CryptoCurrency _selectectCrypto = CryptoCurrency.oxen;
 
   @override
   void initState() {
@@ -131,7 +131,7 @@ class ContactFormState extends State<ContactForm> {
                     hintText: S.of(context).contact_name,
                     focusedBorder: UnderlineInputBorder(
                         borderSide:
-                            BorderSide(color: Palette.cakeGreen, width: 2.0)),
+                            BorderSide(color: OxenPalette.teal, width: 2.0)),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context).focusColor, width: 1.0))),
@@ -156,7 +156,7 @@ class ContactFormState extends State<ContactForm> {
                       decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Palette.cakeGreen, width: 2.0)),
+                                  color: OxenPalette.teal, width: 2.0)),
                           enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).focusColor,

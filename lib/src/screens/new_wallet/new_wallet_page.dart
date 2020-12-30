@@ -105,7 +105,7 @@ class _WalletNameFormState extends State<WalletNameForm> {
                       hintText: S.of(context).wallet_name,
                       focusedBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: Palette.cakeGreen, width: 2.0)),
+                              BorderSide(color: OxenPalette.teal, width: 2.0)),
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context).focusColor,

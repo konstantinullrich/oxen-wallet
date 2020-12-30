@@ -46,7 +46,7 @@ class BlockchainHeightState extends State<BlockchainHeightWidget> {
                     hintText: S.of(context).widgets_restore_from_blockheight,
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                            color: Palette.cakeGreen, width: 2.0)),
+                            color: OxenPalette.teal, width: 2.0)),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context).focusColor, width: 1.0))),
@@ -79,7 +79,7 @@ class BlockchainHeightState extends State<BlockchainHeightWidget> {
                         hintText: S.of(context).widgets_restore_from_date,
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                                color: Palette.cakeGreen,
+                                color: OxenPalette.teal,
                                 width: 2.0)),
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(

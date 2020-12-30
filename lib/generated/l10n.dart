@@ -266,30 +266,30 @@ class S {
   }
 
   /// `OXEN Hidden`
-  String get xmr_hidden {
+  String get oxen_hidden {
     return Intl.message(
       'OXEN Hidden',
-      name: 'xmr_hidden',
+      name: 'oxen_hidden',
       desc: '',
       args: [],
     );
   }
 
   /// `OXEN Available Balance`
-  String get xmr_available_balance {
+  String get oxen_available_balance {
     return Intl.message(
       'OXEN Available Balance',
-      name: 'xmr_available_balance',
+      name: 'oxen_available_balance',
       desc: '',
       args: [],
     );
   }
 
   /// `OXEN Full Balance`
-  String get xmr_full_balance {
+  String get oxen_full_balance {
     return Intl.message(
       'OXEN Full Balance',
-      name: 'xmr_full_balance',
+      name: 'oxen_full_balance',
       desc: '',
       args: [],
     );
@@ -876,10 +876,10 @@ class S {
   }
 
   /// `Send OXEN`
-  String get send_xmr {
+  String get send_oxen {
     return Intl.message(
       'Send OXEN',
-      name: 'send_xmr',
+      name: 'send_oxen',
       desc: '',
       args: [],
     );
@@ -1456,10 +1456,10 @@ class S {
   }
 
   /// `Oxen address`
-  String get send_monero_address {
+  String get send_oxen_address {
     return Intl.message(
       'Oxen address',
-      name: 'send_monero_address',
+      name: 'send_oxen_address',
       desc: '',
       args: [],
     );
@@ -1530,6 +1530,46 @@ class S {
     return Intl.message(
       'Creating transaction',
       name: 'send_creating_transaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Contributions`
+  String get your_contributions {
+    return Intl.message(
+      'Your Contributions',
+      name: 'your_contributions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start staking`
+  String get start_staking {
+    return Intl.message(
+      'Start staking',
+      name: 'start_staking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stake more`
+  String get stake_more {
+    return Intl.message(
+      'Stake more',
+      name: 'stake_more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing staked yet`
+  String get nothing_staked {
+    return Intl.message(
+      'Nothing staked yet',
+      name: 'nothing_staked',
       desc: '',
       args: [],
     );
@@ -2266,10 +2306,10 @@ class S {
   }
 
   /// `OXEN value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12`
-  String get error_text_xmr {
+  String get error_text_oxen {
     return Intl.message(
       'OXEN value can\'t exceed available balance.\nThe number of fraction digits must be less or equal to 12',
-      name: 'error_text_xmr',
+      name: 'error_text_oxen',
       desc: '',
       args: [],
     );
@@ -2400,16 +2440,6 @@ class S {
     return Intl.message(
       'Wrong PIN',
       name: 'auth_store_incorrect_password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Oxen Wallet`
-  String get wallet_store_monero_wallet {
-    return Intl.message(
-      'Oxen Wallet',
-      name: 'wallet_store_monero_wallet',
       desc: '',
       args: [],
     );

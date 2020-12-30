@@ -171,7 +171,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                 hintText: S.of(context).amount,
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Palette.cakeGreen, width: 2.0)),
+                                        color: OxenPalette.teal, width: 2.0)),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Theme.of(context).focusColor,

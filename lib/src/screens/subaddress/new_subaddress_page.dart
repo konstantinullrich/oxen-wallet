@@ -60,7 +60,7 @@ class NewSubaddressFormState extends State<NewSubaddressForm> {
                       hintText: S.of(context).new_subaddress_label_name,
                       focusedBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: Palette.cakeGreen, width: 2.0)),
+                              BorderSide(color: OxenPalette.teal, width: 2.0)),
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context).focusColor,

@@ -188,7 +188,7 @@ class ExchangeCardState extends State<ExchangeCard> {
                               hintText: '0.00000000',
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                      color: Palette.cakeGreen, width: 2.0)),
+                                      color: OxenPalette.teal, width: 2.0)),
                               enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: _isAmountEditable

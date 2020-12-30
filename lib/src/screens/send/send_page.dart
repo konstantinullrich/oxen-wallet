@@ -154,7 +154,7 @@ class SendFormState extends State<SendForm> {
                       return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(S.of(context).xmr_available_balance,
+                            Text(S.current.oxen_available_balance,
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Theme.of(context)
@@ -184,7 +184,7 @@ class SendFormState extends State<SendForm> {
                 child: Column(children: <Widget>[
                   AddressTextField(
                     controller: _addressController,
-                    placeholder: S.of(context).send_monero_address,
+                    placeholder: S.of(context).send_oxen_address,
                     focusNode: _focusNode,
                     onURIScanned: (uri) {
                       var address = '';
@@ -206,7 +206,7 @@ class SendFormState extends State<SendForm> {
                     ],
                     validator: (value) {
                       sendStore.validateAddress(value,
-                          cryptoCurrency: CryptoCurrency.xmr);
+                          cryptoCurrency: CryptoCurrency.oxen);
                       return sendStore.errorMessage;
                     },
                   ),
@@ -260,13 +260,13 @@ class SendFormState extends State<SendForm> {
                             hintText: '0.0000',
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
                                     width: 1.0))),
                         validator: (value) {
-                          sendStore.validateXMR(
+                          sendStore.validateOXEN(
                               value, balanceStore.unlockedBalance);
                           return sendStore.errorMessage;
                         }),
@@ -307,7 +307,7 @@ class SendFormState extends State<SendForm> {
                             hintText: '0.00',
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,

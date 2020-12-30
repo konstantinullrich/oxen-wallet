@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/nodes/node_indicator.dart';
 import 'package:oxen_wallet/src/stores/node_list/node_list_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:provider/provider.dart';
 
 class NodeListPage extends BasePage {
   NodeListPage();
@@ -73,7 +73,7 @@ class NodeListPage extends BasePage {
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
-                Icon(Icons.add, color: Palette.violet, size: 22.0),
+                Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
                 ButtonTheme(
                   minWidth: 28.0,
                   height: 28.0,
@@ -142,9 +142,7 @@ class NodeListPageBodyState extends State<NodeListPageBody> {
                                 switch (snapshot.connectionState) {
                                   case ConnectionState.done:
                                     return NodeIndicator(
-                                        color: snapshot.data as bool
-                                            ? Palette.green
-                                            : Palette.red);
+                                        active: snapshot.data as bool);
                                   default:
                                     return NodeIndicator();
                                 }
@@ -216,7 +214,7 @@ class NodeListPageBodyState extends State<NodeListPageBody> {
                             background: Container(
                                 padding: EdgeInsets.only(right: 10.0),
                                 alignment: AlignmentDirectional.centerEnd,
-                                color: Palette.red,
+                                color: OxenPalette.red,
                                 child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,

@@ -35,7 +35,7 @@ class SettingsLinktListRow extends StatelessWidget {
         ),
         trailing: Text(
           link,
-          style: TextStyle(fontSize: 14.0, color: Palette.cakeGreen),
+          style: TextStyle(fontSize: 14.0, color: OxenPalette.teal),
         ),
         onTap: onTaped,
       ),

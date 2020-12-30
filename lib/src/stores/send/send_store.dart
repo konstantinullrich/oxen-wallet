@@ -129,7 +129,7 @@ abstract class SendStoreBase with Store {
   @action
   Future _calculateFiatAmount() async {
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: settingsStore.fiatCurrency, crypto: CryptoCurrency.xmr);
+        fiat: settingsStore.fiatCurrency, crypto: CryptoCurrency.oxen);
     final price = priceStore.prices[symbol] ?? 0;
 
     try {
@@ -143,7 +143,7 @@ abstract class SendStoreBase with Store {
   @action
   Future _calculateCryptoAmount() async {
     final symbol = PriceStoreBase.generateSymbolForPair(
-        fiat: settingsStore.fiatCurrency, crypto: CryptoCurrency.xmr);
+        fiat: settingsStore.fiatCurrency, crypto: CryptoCurrency.oxen);
     final price = priceStore.prices[symbol] ?? 0;
 
     try {
@@ -221,7 +221,7 @@ abstract class SendStoreBase with Store {
     errorMessage = isValid ? null : S.current.error_text_address;
   }
 
-  void validateXMR(String value, String availableBalance) {
+  void validateOXEN(String value, String availableBalance) {
     const maxValue = 18446744.073709551616;
     const pattern = '^([0-9]+([.][0-9]{0,12})?|[.][0-9]{1,12})\$|ALL';
     final regExp = RegExp(pattern);
@@ -243,7 +243,7 @@ abstract class SendStoreBase with Store {
       isValid = false;
     }
     
-    errorMessage = isValid ? null : S.current.error_text_xmr;
+    errorMessage = isValid ? null : S.current.error_text_oxen;
   }
 
   void validateFiat(String value, {double maxValue}) {

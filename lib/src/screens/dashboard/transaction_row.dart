@@ -32,12 +32,30 @@ class TransactionRow extends StatelessWidget {
                       width: 0.5,
                       style: BorderStyle.solid))),
           child: Row(children: <Widget>[
-            Image.asset(
+            Container(
+              height: 27,
+              width: 27,
+              child: Icon(
                 direction == TransactionDirection.incoming
-                    ? 'assets/images/transaction_incoming.png'
-                    : 'assets/images/transaction_outgoing.png',
-                height: 25,
-                width: 25),
+                    ? Icons.arrow_downward_rounded
+                    : Icons.arrow_upward_rounded,
+                color: direction == TransactionDirection.incoming
+                    ? OxenPalette.lime
+                    : OxenPalette.lightRed,
+              ),
+              decoration: BoxDecoration(
+                color: direction == TransactionDirection.incoming
+                    ? OxenPalette.limeWithOpacity
+                    : OxenPalette.lightRedWithOpacity,
+                shape: BoxShape.circle,
+              ),
+            ),
+            // Image.asset(
+            //     direction == TransactionDirection.incoming
+            //         ? 'assets/images/transaction_incoming.png'
+            //         : 'assets/images/transaction_outgoing.png',
+            //     height: 25,
+            //     width: 25),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),

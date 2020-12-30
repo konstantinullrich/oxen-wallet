@@ -9,7 +9,7 @@ class WelcomePage extends BasePage {
   static const _aspectRatioImage = 1.26;
   static const _baseWidth = 411.43;
   final _image = Image.asset('assets/images/welcomeImg.png');
-  final _lokiLogo = Image.asset('assets/images/loki.png', width: 60, height: 60,);
+  final _logo = Image.asset('assets/images/oxen.png', width: 60, height: 60);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class WelcomePage extends BasePage {
           AspectRatio(
               aspectRatio: _aspectRatioImage,
               child: FittedBox(child: _image, fit: BoxFit.fill)),
-          Positioned(bottom: 0.0, child: _lokiLogo)
+          Positioned(bottom: 0.0, child: _logo)
         ],
       ),
       Expanded(

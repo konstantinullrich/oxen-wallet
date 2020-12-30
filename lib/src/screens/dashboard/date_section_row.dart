@@ -5,8 +5,8 @@ import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:provider/provider.dart';
 
-class DateSectionRaw extends StatelessWidget {
-  DateSectionRaw({this.date});
+class DateSectionRow extends StatelessWidget {
+  DateSectionRow({this.date});
 
   static final nowDate = DateTime.now();
   final DateTime date;

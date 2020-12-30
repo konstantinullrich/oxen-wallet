@@ -41,7 +41,7 @@ class AddressBookPage extends BasePage {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            Icon(Icons.add, color: Palette.violet, size: 22.0),
+            Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
             ButtonTheme(
               minWidth: 28.0,
               height: 28.0,
@@ -175,7 +175,7 @@ class AddressBookPage extends BasePage {
     Color color;
     switch (currency) {
       case CryptoCurrency.xmr:
-        color = Palette.cakeGreenWithOpacity;
+        color = OxenPalette.tealWithOpacity;
         break;
       case CryptoCurrency.ada:
         color = Colors.blue[200];
@@ -226,7 +226,7 @@ class AddressBookPage extends BasePage {
     Color color;
     switch (currency) {
       case CryptoCurrency.xmr:
-        color = Palette.cakeGreen;
+        color = OxenPalette.teal;
         break;
       case CryptoCurrency.ltc:
       case CryptoCurrency.ada:

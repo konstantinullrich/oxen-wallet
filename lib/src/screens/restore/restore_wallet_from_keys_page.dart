@@ -100,7 +100,7 @@ class _RestoreFromKeysFromState extends State<RestoreFromKeysFrom> {
                             hintText: S.of(context).restore_wallet_name,
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
@@ -129,7 +129,7 @@ class _RestoreFromKeysFromState extends State<RestoreFromKeysFrom> {
                             hintText: S.of(context).restore_address,
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
@@ -156,7 +156,7 @@ class _RestoreFromKeysFromState extends State<RestoreFromKeysFrom> {
                             hintText: S.of(context).restore_view_key_private,
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
@@ -183,7 +183,7 @@ class _RestoreFromKeysFromState extends State<RestoreFromKeysFrom> {
                             hintText: S.of(context).restore_spend_key_private,
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: Palette.cakeGreen, width: 2.0)),
+                                    color: OxenPalette.teal, width: 2.0)),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,

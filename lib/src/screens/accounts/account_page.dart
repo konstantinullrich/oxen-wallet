@@ -64,7 +64,7 @@ class AccountFormState extends State<AccountForm> {
                     hintText: S.of(context).account,
                     focusedBorder: UnderlineInputBorder(
                         borderSide:
-                            BorderSide(color: Palette.cakeGreen, width: 2.0)),
+                            BorderSide(color: OxenPalette.teal, width: 2.0)),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context).focusColor, width: 1.0))),

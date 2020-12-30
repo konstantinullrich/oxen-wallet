@@ -30,9 +30,9 @@
   "wallet_menu" : "Menu",
   "Blocks_remaining" : "{status} Blocks Remaining",
   "please_try_to_connect_to_another_node" : "Please try to connect to another node",
-  "xmr_hidden" : "OXEN Hidden",
-  "xmr_available_balance" : "OXEN Available Balance",
-  "xmr_full_balance" : "OXEN Full Balance",
+  "oxen_hidden" : "OXEN Hidden",
+  "oxen_available_balance" : "OXEN Available Balance",
+  "oxen_full_balance" : "OXEN Full Balance",
   "send" : "Send",
   "receive" : "Receive",
   "transactions" : "Transactions",
@@ -95,7 +95,7 @@
   "transaction_sent" : "Transaction sent!",
   "expired" : "Expired",
   "time" : "{minutes}m {seconds}s",
-  "send_xmr" : "Send OXEN",
+  "send_oxen" : "Send OXEN",
 
   "faq" : "FAQ",
 
@@ -172,7 +172,7 @@
 
   "send_title" : "Send Oxen",
   "send_your_wallet" : "Your wallet",
-  "send_monero_address" : "Oxen address",
+  "send_oxen_address" : "Oxen address",
   "send_payment_id" : "Payment ID (optional)",
   "all" : "ALL",
   "send_error_minimum_value" : "Minimum value of amount is 0.01",
@@ -181,6 +181,11 @@
   "send_priority" : "Currently the fee is set at {transactionPriority} priority.\nTransaction priority can be adjusted in the settings",
   "send_creating_transaction" : "Creating transaction",
 
+
+  "your_contributions" : "Your Contributions",
+  "start_staking" : "Start staking",
+  "stake_more" : "Stake more",
+  "nothing_staked" : "Nothing staked yet",
 
   "settings_title" : "Settings",
   "settings_nodes" : "Nodes",
@@ -277,7 +282,7 @@
   "error_text_node_address" : "Please enter a iPv4 address",
   "error_text_node_port" : "Node port can only contain numbers between 0 and 65535",
   "error_text_payment_id" : "Payment ID can only contain from 16 to 64 chars in hex",
-  "error_text_xmr" : "OXEN value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12",
+  "error_text_oxen" : "OXEN value can't exceed available balance.\nThe number of fraction digits must be less or equal to 12",
   "error_text_fiat" : "Value of amount can't exceed available balance.\nThe number of fraction digits must be less or equal to 2",
   "error_text_subaddress_name" : "Subaddress name can't contain ` , ' \" symbols\nand must be between 1 and 20 characters long",
   "error_text_amount" : "Amount can only contain numbers",
@@ -293,7 +298,6 @@
   "auth_store_banned_for" : "Banned for ",
   "auth_store_banned_minutes" : " minutes",
   "auth_store_incorrect_password" : "Wrong PIN",
-  "wallet_store_monero_wallet" : "Oxen Wallet",
   "wallet_restoration_store_incorrect_seed_length" : "Incorrect seed length",
 
 

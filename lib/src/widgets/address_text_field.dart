@@ -106,7 +106,7 @@ class AddressTextField extends StatelessWidget {
         hintStyle: TextStyle(color: Theme.of(context).hintColor),
         hintText: placeholder ?? S.current.widgets_address,
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Palette.cakeGreen, width: 2.0)),
+            borderSide: BorderSide(color: OxenPalette.teal, width: 2.0)),
         enabledBorder: UnderlineInputBorder(
             borderSide:
                 BorderSide(color: Theme.of(context).focusColor, width: 1.0)),

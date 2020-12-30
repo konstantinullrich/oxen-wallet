@@ -319,7 +319,7 @@ class SeedWidgetState extends State<SeedWidget> {
                           errorText: _errorMessage,
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Palette.cakeGreen, width: 2.0)),
+                                  color: OxenPalette.teal, width: 2.0)),
                           enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                   color: Theme.of(context).focusColor,

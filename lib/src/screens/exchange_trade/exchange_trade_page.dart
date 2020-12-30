@@ -310,7 +310,7 @@ class ExchangeTradeState extends State<ExchangeTradeForm> {
                       text: tradeStore.trade.provider ==
                               ExchangeProviderDescription.xmrto
                           ? S.of(context).confirm
-                          : S.of(context).send_xmr,
+                          : S.of(context).send_oxen,
                       color: Theme.of(context)
                           .primaryTextTheme
                           .button

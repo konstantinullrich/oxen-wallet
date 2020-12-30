@@ -26,7 +26,7 @@ class AccountListPage extends BasePage {
         child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
-            Icon(Icons.add, color: Palette.violet, size: 22.0),
+            Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
             ButtonTheme(
               minWidth: 28.0,
               height: 28.0,

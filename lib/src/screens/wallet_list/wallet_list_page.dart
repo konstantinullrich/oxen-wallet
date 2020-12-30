@@ -89,7 +89,7 @@ class WalletListBodyState extends State<WalletListBody> {
                                     wallet.name,
                                     style: TextStyle(
                                         color: isCurrentWallet
-                                            ? Palette.cakeGreen
+                                            ? OxenPalette.teal
                                             : Theme
                                             .of(context)
                                             .primaryTextTheme
@@ -101,7 +101,7 @@ class WalletListBodyState extends State<WalletListBody> {
                                   trailing: isCurrentWallet
                                       ? Icon(
                                     Icons.check_rounded,
-                                    color: Palette.cakeGreen,
+                                    color: OxenPalette.teal,
                                     size: 20.0,
                                   )
                                       : null)));
@@ -124,7 +124,7 @@ class WalletListBodyState extends State<WalletListBody> {
                   .primaryTextTheme
                   .button
                   .decorationColor,
-              iconColor: Palette.violet,
+              iconColor: OxenPalette.teal,
               iconBackgroundColor: Theme
                   .of(context)
                   .primaryIconTheme

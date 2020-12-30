@@ -11,7 +11,7 @@ description: A Wallet for Oxen.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.0.1-bavitz-edition
+version: 0.0.1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -74,6 +74,9 @@ flutter_icons:
   image_path: "assets/images/app_logo.png"
   ios: true
   android: true
+  adaptive_icon_background: "#DBF7F5"
+  adaptive_icon_foreground: "assets/images/app_logo_foreground.png"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oxen_coin/stake.dart';
 import 'package:oxen_coin/structs/stake_row.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
@@ -36,7 +38,10 @@ class StakePageBody extends StatefulWidget {
 
 class StakePageBodyState extends State<StakePageBody> {
   List<StakeRow> allStakes = getAllStakes();
-  Color get stakeColor => allStakes.isEmpty ? Colors.red : Colors.blue;
+
+  Color get stakeColor =>
+      allStakes.isEmpty ? OxenPalette.lightRed : OxenPalette.lime;
+
   double get stakePercentage {
     if (allStakes.isEmpty) return 1;
     final percentage = allStakes.length / 4;
@@ -69,7 +74,7 @@ class StakePageBodyState extends State<StakePageBody> {
                       ),
                     ),
                   ),
-                  Center(child: Text('Get Staked Fucker!')),
+                  Center(child: Text(S.current.nothing_staked)),
                 ],
               ),
             ),
@@ -83,29 +88,28 @@ class StakePageBodyState extends State<StakePageBody> {
                     onPressed: () => Navigator.of(context, rootNavigator: true)
                         .pushNamed(Routes.send),
                   ),
-                  Text('Stake More') //Todo: Use Lang String
+                  Text(allStakes.isEmpty
+                      ? S.current.start_staking
+                      : S.current.stake_more)
                 ],
               ),
             ),
-            NavListHeader(title: 'Your Contributions'),
-            //Todo: Use Lang String
-            // ListView.builder(
-            //     itemCount: allStakes.length,
-            //     itemBuilder: (BuildContext context, int index) {
-            //       final stake = allStakes[index];
-            //       final nodeName = '${stake.getServiceNodeKey().substring(0, 8)}...${stake.getServiceNodeKey().substring(-4)}';
-            //
-            //       return NavListArrow(
-            //           leading: CircularProgressIndicator(value: 1),
-            //           text: nodeName,
-            //           onTap: () =>
-            //               Navigator.of(context).pushNamed(Routes.accountList));
-            //     }),
-            NavListArrow(
-                leading: CircularProgressIndicator(value: 1),
-                text: '2efe0f12...4a5d3',
-                onTap: () =>
-                    Navigator.of(context).pushNamed(Routes.accountList)),
+            if (allStakes.isNotEmpty)
+              NavListHeader(title: S.current.your_contributions),
+            if (allStakes.isNotEmpty)
+              ListView.builder(
+                  itemCount: allStakes.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final stake = allStakes[index];
+                    final nodeName =
+                        '${stake.getServiceNodeKey().substring(0, 8)}...${stake.getServiceNodeKey().substring(-4)}';
+
+                    return NavListArrow(
+                        leading: CircularProgressIndicator(value: 1),
+                        text: nodeName,
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(Routes.accountList));
+                  }),
             // NavListArrow(
             //     leading: CircularProgressIndicator(value: 0.5),
             //     text: '223ade37...8199',

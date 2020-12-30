@@ -8,9 +8,9 @@ import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/sync_status.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/src/screens/dashboard/date_section_raw.dart';
+import 'package:oxen_wallet/src/screens/dashboard/date_section_row.dart';
 import 'package:oxen_wallet/src/screens/dashboard/trade_row.dart';
-import 'package:oxen_wallet/src/screens/dashboard/transaction_raw.dart';
+import 'package:oxen_wallet/src/screens/dashboard/transaction_row.dart';
 import 'package:oxen_wallet/src/screens/dashboard/wallet_menu.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/date_section_item.dart';
@@ -185,7 +185,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                         backgroundColor: Palette.separator,
                                         valueColor:
                                             AlwaysStoppedAnimation<Color>(
-                                                Palette.cakeGreen),
+                                                OxenPalette.teal),
                                         value: progress,
                                       ),
                                     ),
@@ -196,7 +196,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                             fontWeight: FontWeight.bold,
                                             color: isFailure
                                                 ? Palette.failure
-                                                : Palette.cakeGreen)),
+                                                : OxenPalette.teal)),
                                     Text(descriptionText,
                                         style: TextStyle(
                                             fontSize: 11,
@@ -232,7 +232,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
 
                                       return Text(displayMode.toString(),
                                           style: TextStyle(
-                                              color: Palette.violet,
+                                              color: OxenPalette.teal,
                                               fontSize: 16));
                                     }),
                                 Observer(
@@ -353,58 +353,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                       ),
                                       Text(S.of(context).receive)
                                     ],
-                                  ),
-                                  // Column(
-                                  //   mainAxisSize: MainAxisSize.min,
-                                  //   children: <Widget>[
-                                  //     IconButton(
-                                  //       icon: Icon(Icons.repeat_rounded),
-                                  //       tooltip: S.of(context).exchange,
-                                  //       onPressed: () {},
-                                  //     ),
-                                  //     Text(S.of(context).exchange)
-                                  //   ],
-                                  // ),
-                                  // Expanded(
-                                  //     child: PrimaryImageButton(
-                                  //   image: Image.asset(
-                                  //       'assets/images/send_icon.png',
-                                  //       height: 25,
-                                  //       width: 25),
-                                  //   text: S.of(context).send,
-                                  //   onPressed: () => Navigator.of(context,
-                                  //           rootNavigator: true)
-                                  //       .pushNamed(Routes.send),
-                                  //   color: Theme.of(context)
-                                  //       .primaryTextTheme
-                                  //       .button
-                                  //       .backgroundColor,
-                                  //   borderColor: Theme.of(context)
-                                  //       .primaryTextTheme
-                                  //       .button
-                                  //       .decorationColor,
-                                  // )),
-                                  // SizedBox(width: 10),
-                                  // SizedBox(width: 10),
-                                  // Expanded(
-                                  //     child: PrimaryImageButton(
-                                  //   image: Image.asset(
-                                  //       'assets/images/receive_icon.png',
-                                  //       height: 25,
-                                  //       width: 25),
-                                  //   text: S.of(context).receive,
-                                  //   onPressed: () => Navigator.of(context,
-                                  //           rootNavigator: true)
-                                  //       .pushNamed(Routes.receive),
-                                  //   color: Theme.of(context)
-                                  //       .accentTextTheme
-                                  //       .caption
-                                  //       .backgroundColor,
-                                  //   borderColor: Theme.of(context)
-                                  //       .accentTextTheme
-                                  //       .caption
-                                  //       .decorationColor,
-                                  // ))
+                                  )
                                 ],
                               ),
                             )),
@@ -515,7 +464,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                 final item = items[index];
 
                 if (item is DateSectionItem) {
-                  return DateSectionRaw(date: item.date);
+                  return DateSectionRow(date: item.date);
                 }
 
                 if (item is TransactionListItem) {
