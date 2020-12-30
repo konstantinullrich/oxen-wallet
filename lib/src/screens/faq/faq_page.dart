@@ -54,28 +54,8 @@ class FaqPage extends BasePage {
     switch (settingsStore.languageCode) {
       case 'en':
         return 'assets/faq/faq_en.json';
-      case 'uk':
-        return 'assets/faq/faq_uk.json';
-      case 'ru':
-        return 'assets/faq/faq_ru.json';
-      case 'es':
-        return 'assets/faq/faq_es.json';
-      case 'ja':
-        return 'assets/faq/faq_ja.json';
-      case 'ko':
-        return 'assets/faq/faq_ko.json';
-      case 'hi':
-        return 'assets/faq/faq_hi.json';
       case 'de':
         return 'assets/faq/faq_de.json';
-      case 'zh':
-        return 'assets/faq/faq_zh.json';
-      case 'pt':
-        return 'assets/faq/faq_pt.json';
-      case 'pl':
-        return 'assets/faq/faq_pl.json';
-      case 'nl':
-        return 'assets/faq/faq_nl.json';
       default:
         return 'assets/faq/faq_en.json';
     }
