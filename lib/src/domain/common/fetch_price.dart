@@ -4,7 +4,7 @@ import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:http/http.dart';
 
-// TODO: USE COINMARKETCAP-PIPE
+// TODO: Move that out of my Basement!
 const fiatApiAuthority = 'crypto.konstantinullrich.de';
 const fiatApiPath = '/v1/rates';
 

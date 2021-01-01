@@ -81,6 +81,7 @@ import 'package:oxen_wallet/src/screens/exchange/exchange_page.dart';
 import 'package:oxen_wallet/src/screens/settings/settings.dart';
 import 'package:oxen_wallet/src/screens/rescan/rescan_page.dart';
 import 'package:oxen_wallet/src/screens/faq/faq_page.dart';
+import 'package:oxen_wallet/src/screens/changelog/changelog_page.dart';
 import 'package:oxen_wallet/src/screens/trade_details/trade_details_page.dart';
 import 'package:oxen_wallet/src/screens/auth/create_unlock_page.dart';
 import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
@@ -481,6 +482,9 @@ class Router {
 
       case Routes.faq:
         return MaterialPageRoute<void>(builder: (_) => FaqPage());
+
+      case Routes.changelog:
+        return MaterialPageRoute<void>(builder: (_) => ChangelogPage());
 
       case Routes.changeLanguage:
         return MaterialPageRoute<void>(builder: (_) => ChangeLanguage());

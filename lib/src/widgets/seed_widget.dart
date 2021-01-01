@@ -249,7 +249,7 @@ class SeedWidgetState extends State<SeedWidget> {
                   onTap: () => onMnemoticTap(item),
                   child: Container(
                       decoration: BoxDecoration(
-                          color: isValid ? Colors.transparent : Palette.red),
+                          color: isValid ? Colors.transparent : OxenPalette.red),
                       margin: EdgeInsets.only(right: 7, bottom: 8),
                       child: Text(
                         item.toString(),

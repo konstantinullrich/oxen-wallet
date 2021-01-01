@@ -92,6 +92,7 @@ flutter:
   assets:
     - assets/images/
     - assets/node_list.yml
+    - assets/changelog.yml
     - assets/text/
     - assets/faq/
 

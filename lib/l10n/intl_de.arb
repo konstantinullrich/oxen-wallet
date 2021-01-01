@@ -97,7 +97,7 @@
   "send_oxen" : "OXEN Senden",
 
   "faq" : "FAQ",
-
+  "changelog" : "Änderungsprotokoll",
 
   "enter_your_pin" : "PIN eingeben",
   "loading_your_wallet" : "Wallet wird geladen",
@@ -180,6 +180,7 @@
   "send_priority" : "Derzeit ist die Priorität auf {transactionPriority} festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden",
   "send_creating_transaction" : "Transaktion erstellen",
 
+  "stakes": "Stakes",
   "your_contributions" : "Deine Anteile",
   "start_staking" : "Starte zu staken",
   "stake_more" : "Mehr staken",

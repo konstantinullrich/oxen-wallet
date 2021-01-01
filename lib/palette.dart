@@ -13,8 +13,6 @@ class Palette {
   static const Color wildDarkBlue = Color.fromRGBO(155, 172, 197, 1.0);
   static const Color wildDarkBlueWithOpacity =
       Color.fromRGBO(155, 172, 197, 0.1);
-  static const Color lightGreen = Color.fromRGBO(52, 186, 204, 1.0);
-  static const Color darkPurple = Color.fromRGBO(124, 83, 240, 1.0);
   static const Color brightBlue = Color.fromRGBO(151, 226, 255, 0.6);
   static const Color cloudySky = Color.fromRGBO(121, 201, 233, 0.8);
   static const Color darkGrey = Color.fromRGBO(136, 155, 183, 0.21);
@@ -23,12 +21,9 @@ class Palette {
       Color.fromRGBO(132, 141, 198, 0.05);
   static const Color blueGrey = Color.fromRGBO(103, 107, 141, 1.0);
   static const Color lightGrey2 = Color.fromRGBO(249, 249, 249, 1.0);
-  static const Color violet = Color.fromRGBO(138, 80, 255, 1.0);
   static const Color lightViolet = Color.fromRGBO(131, 87, 255, 1);
   static const Color switchBackground = Color.fromRGBO(228, 231, 240, 1.0);
   static const Color switchBorder = Color.fromRGBO(211, 222, 238, 1.0);
-  static const Color green = Color.fromRGBO(39, 206, 80, 1.0);
-  static const Color red = Color.fromRGBO(255, 51, 51, 1.0);
   static const Color nightBlue = Color.fromRGBO(34, 40, 75, 1.0);
   static const Color lavender = Color.fromRGBO(249, 250, 253, 1);
   static const Color lightLavender = Color.fromRGBO(242, 244, 247, 1);
@@ -38,7 +33,6 @@ class Palette {
   static const Color containerLavender = Color.fromRGBO(226, 235, 238, 0.4);
   static const Color purpleBlue = Color.fromRGBO(84, 92, 139, 1);
   static const Color floatingActionButton = Color.fromRGBO(213, 56, 99, 1);
-  static const Color failure = Color.fromRGBO(226, 35, 35, 1);
   static const Color powered = Color.fromRGBO(191, 201, 215, 1);
   static const Color buttonShadow = Color.fromRGBO(23, 46, 77, 0.129207);
 }
@@ -51,8 +45,6 @@ class PaletteDark {
       Color.fromRGBO(100, 115, 137, 0.5);
   static const Color darkThemeMidGrey = Color.fromRGBO(20, 26, 38, 1.0);
   static const Color darkThemePurpleButton = Color.fromRGBO(182, 143, 255, 0.1);
-  static const Color darkThemePurpleButtonBorder =
-      Color.fromRGBO(161, 120, 255, 0.7);
   static const Color darkThemeBackground = Color.fromRGBO(39, 41, 50, 1.0);
   static const Color darkThemeBackgroundDark = Color.fromRGBO(9, 12, 18, 1.0);
   static const Color darkThemeDarkGrey = Color.fromRGBO(218, 228, 243, 0.06);

@@ -98,6 +98,7 @@
   "send_oxen" : "Send OXEN",
 
   "faq" : "FAQ",
+  "changelog" : "Changelog",
 
 
   "enter_your_pin" : "Enter your PIN",
@@ -182,6 +183,7 @@
   "send_creating_transaction" : "Creating transaction",
 
 
+  "stakes": "Stakes",
   "your_contributions" : "Your Contributions",
   "start_staking" : "Start staking",
   "stake_more" : "Stake more",

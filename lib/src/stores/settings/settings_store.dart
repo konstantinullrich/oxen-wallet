@@ -291,6 +291,7 @@ abstract class SettingsStoreBase with Store {
       ItemHeaders.support: S.current.settings_support,
       ItemHeaders.termsAndConditions: S.current.settings_terms_and_conditions,
       ItemHeaders.faq: S.current.faq,
+      ItemHeaders.changelog: S.current.changelog,
       ItemHeaders.version: S.current.version(currentVersion)
     });
   }

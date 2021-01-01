@@ -895,6 +895,16 @@ class S {
     );
   }
 
+  /// `Changelog`
+  String get changelog {
+    return Intl.message(
+      'Changelog',
+      name: 'changelog',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter your PIN`
   String get enter_your_pin {
     return Intl.message(
@@ -1530,6 +1540,16 @@ class S {
     return Intl.message(
       'Creating transaction',
       name: 'send_creating_transaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stakes`
+  String get stakes {
+    return Intl.message(
+      'Stakes',
+      name: 'stakes',
       desc: '',
       args: [],
     );

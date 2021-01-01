@@ -43,6 +43,7 @@ class Routes {
   static const unlock = '/auth_not_closable';
   static const rescan = '/rescan';
   static const faq = '/faq';
+  static const changelog = '/changelog';
   static const changeLanguage = '/change_language';
   static const profile = '/profile';
   static const stake = '/stake';

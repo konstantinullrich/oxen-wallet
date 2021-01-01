@@ -15,5 +15,6 @@ class ItemHeaders {
   static const support = 'Support';
   static const termsAndConditions = 'Terms and conditions';
   static const faq = 'FAQ';
+  static const changelog = 'Changelog';
   static const version = 'Version';
 }
