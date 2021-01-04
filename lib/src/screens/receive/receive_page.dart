@@ -217,7 +217,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                         borderRadius: BorderRadius.all(Radius.circular(14.0)),
                         child: Icon(
                           Icons.add,
-                          color: Palette.violet,
+                          color: OxenPalette.teal,
                           size: 22.0,
                         ),
                       ),

@@ -196,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "reconnect" : MessageLookupByLibrary.simpleMessage("Erneut verbinden"),
     "reconnect_alert_text" : MessageLookupByLibrary.simpleMessage("Sind Sie sicher, dass Sie die Verbindung wiederherstellen möchten?"),
     "reconnection" : MessageLookupByLibrary.simpleMessage("Wiederverbindung"),
+    "reload_fiat" : MessageLookupByLibrary.simpleMessage("Fiat-Kurs neuladen"),
     "remove" : MessageLookupByLibrary.simpleMessage("Löschen"),
     "remove_node" : MessageLookupByLibrary.simpleMessage("Knoten entfernen"),
     "remove_node_message" : MessageLookupByLibrary.simpleMessage("Möchten Sie den ausgewählten Knoten wirklich entfernen?"),

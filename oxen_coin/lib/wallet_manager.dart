@@ -143,8 +143,9 @@ void _createWallet(Map<String, dynamic> args) {
   final path = args['path'] as String;
   final password = args['password'] as String;
   final language = args['language'] as String;
+  final nettype = args['nettype'] as int;
 
-  createWalletSync(path: path, password: password, language: language);
+  createWalletSync(path: path, password: password, language: language, nettype: nettype);
 }
 
 void _restoreFromSeed(Map<String, dynamic> args) {
@@ -152,9 +153,10 @@ void _restoreFromSeed(Map<String, dynamic> args) {
   final password = args['password'] as String;
   final seed = args['seed'] as String;
   final restoreHeight = args['restoreHeight'] as int;
+  final nettype = args['nettype'] as int;
 
   restoreWalletFromSeedSync(
-      path: path, password: password, seed: seed, restoreHeight: restoreHeight);
+      path: path, password: password, seed: seed, restoreHeight: restoreHeight, nettype: nettype);
 }
 
 void _restoreFromKeys(Map<String, dynamic> args) {
@@ -162,6 +164,7 @@ void _restoreFromKeys(Map<String, dynamic> args) {
   final password = args['password'] as String;
   final language = args['language'] as String;
   final restoreHeight = args['restoreHeight'] as int;
+  final nettype = args['nettype'] as int;
   final address = args['address'] as String;
   final viewKey = args['viewKey'] as String;
   final spendKey = args['spendKey'] as String;
@@ -171,6 +174,7 @@ void _restoreFromKeys(Map<String, dynamic> args) {
       password: password,
       language: language,
       restoreHeight: restoreHeight,
+      nettype: nettype,
       address: address,
       viewKey: viewKey,
       spendKey: spendKey);
@@ -182,7 +186,7 @@ Future<void> _openWallet(Map<String, String> args) async =>
 bool _isWalletExist(String path) => isWalletExistSync(path: path);
 
 void openWallet({String path, String password, int nettype = 0}) async =>
-    loadWallet(path: path, password: password);
+    loadWallet(path: path, password: password, nettype: nettype);
 
 Future<void> openWalletAsync(Map<String, String> args) async =>
     compute(_openWallet, args);

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "thread"
-#include "OxenWalletListener.h"
+// #include "OxenWalletListener.h"
 #include "../External/android/oxen/include/wallet2_api.h"
 
 using namespace std::chrono_literals;
@@ -173,9 +173,9 @@ extern "C"
     struct StakeRow
     {
         char *service_node_key;
-        uint32_t amount;
+        uint64_t amount;
 
-        StakeRow(char *_service_node_key, uint32_t _amount)
+        StakeRow(char *_service_node_key, uint64_t _amount)
         {
             service_node_key = _service_node_key;
             amount = _amount;

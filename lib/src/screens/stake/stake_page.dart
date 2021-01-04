@@ -51,7 +51,7 @@ class StakePageBodyState extends State<StakePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    print(allStakes);
+    print('Stake ${allStakes[0].getServiceNodeKey()}');
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[
@@ -101,6 +101,7 @@ class StakePageBodyState extends State<StakePageBody> {
                   itemCount: allStakes.length,
                   itemBuilder: (BuildContext context, int index) {
                     final stake = allStakes[index];
+                    print(stake);
                     final nodeName =
                         '${stake.getServiceNodeKey().substring(0, 8)}...${stake.getServiceNodeKey().substring(-4)}';
 

@@ -11,6 +11,7 @@ import 'package:oxen_wallet/src/domain/common/wallet.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
 
 import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/devtools.dart';
 
 Future<String> pathForWallet({String name}) async {
   final directory = await getApplicationDocumentsDirectory();
@@ -28,6 +29,7 @@ class OxenWalletsManager extends WalletsManager {
   OxenWalletsManager({@required this.walletInfoSource});
 
   static const type = WalletType.oxen;
+  static const nettype = isTestnet ? 1 : 0; // Mainnet: 0 Testnet: 1
 
   Box<WalletInfo> walletInfoSource;
 
@@ -37,7 +39,7 @@ class OxenWalletsManager extends WalletsManager {
       const isRecovery = false;
       final path = await pathForWallet(name: name);
 
-      await oxen_wallet_manager.createWallet(path: path, password: password, language: language);
+      await oxen_wallet_manager.createWallet(path: path, password: password, language: language, nettype: nettype);
 
       final wallet = await OxenWallet.createdWallet(
           walletInfoSource: walletInfoSource,
@@ -63,7 +65,9 @@ class OxenWalletsManager extends WalletsManager {
           path: path,
           password: password,
           seed: seed,
-          restoreHeight: restoreHeight);
+          restoreHeight: restoreHeight,
+        nettype: nettype
+      );
 
       final wallet = await OxenWallet.createdWallet(
           walletInfoSource: walletInfoSource,
@@ -97,6 +101,7 @@ class OxenWalletsManager extends WalletsManager {
           password: password,
           language: language,
           restoreHeight: restoreHeight,
+          nettype: nettype,
           address: address,
           viewKey: viewKey,
           spendKey: spendKey);
@@ -117,9 +122,10 @@ class OxenWalletsManager extends WalletsManager {
 
   @override
   Future<Wallet> openWallet(String name, String password) async {
+    print('opening a Wallet with nettype $nettype');
     try {
       final path = await pathForWallet(name: name);
-      oxen_wallet_manager.openWallet(path: path, password: password);
+      oxen_wallet_manager.openWallet(path: path, password: password, nettype: nettype);
       final wallet = await OxenWallet.load(walletInfoSource, name, type);
       await wallet.updateInfo();
       return wallet;

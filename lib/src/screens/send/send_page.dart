@@ -133,7 +133,7 @@ class SendFormState extends State<SendForm> {
                           children: <Widget>[
                             Text(S.of(context).send_your_wallet,
                                 style: TextStyle(
-                                    fontSize: 12, color: Palette.lightViolet)),
+                                    fontSize: 12, color: OxenPalette.teal)),
                             Text(walletStore.name,
                                 style: TextStyle(
                                     fontSize: 18,

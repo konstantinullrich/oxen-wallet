@@ -54,6 +54,7 @@
   "address_book_menu" : "Adressbuch",
   "reconnection" : "Wiederverbindung",
   "reconnect_alert_text" : "Sind Sie sicher, dass Sie die Verbindung wiederherstellen möchten?",
+  "reload_fiat": "Fiat-Kurs neuladen",
 
 
   "exchange" : "Austausch",

@@ -195,7 +195,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
                                             color: isFailure
-                                                ? Palette.failure
+                                                ? OxenPalette.red
                                                 : OxenPalette.teal)),
                                     Text(descriptionText,
                                         style: TextStyle(

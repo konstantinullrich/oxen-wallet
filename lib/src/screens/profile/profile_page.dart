@@ -76,12 +76,15 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                 onTap: () =>
                     Navigator.of(context).pushNamed(Routes.walletList)),
             NavListHeader(title: S.current.wallet_menu),
+            /*
+            TODO: Waiting for Implementation
             NavListArrow(
                 leading: Icon(Icons.attach_money_rounded,
                     color: Theme.of(context).primaryTextTheme.headline6.color),
-                text: 'Stake', // Todo: Use Lang String
+                text: S.current.stakes,
                 onTap: () =>
                     Navigator.of(context).pushNamed(Routes.stake)),
+             */
             NavListArrow(
                 leading: Icon(Icons.contacts_rounded,
                     color: Theme.of(context).primaryTextTheme.headline6.color),
