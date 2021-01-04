@@ -25,7 +25,7 @@ class EnterPinCodeState extends State<EnterPinCode> {
   final _closeButtonImage = Image.asset('assets/images/close_button.png');
   final _closeButtonImageDarkTheme =
       Image.asset('assets/images/close_button_dark_theme.png');
-  static final deleteIconImage = Image.asset('assets/images/delete_icon.png');
+  static final deleteIcon = Icon(Icons.backspace, color: Palette.blueGrey);
   final int pinLength;
   final List<int> currentPin;
   List<int> pin;
@@ -136,7 +136,7 @@ class EnterPinCodeState extends State<EnterPinCode> {
                                         ? PaletteDark.darkThemePinButton
                                         : Palette.darkGrey,
                                     shape: CircleBorder(),
-                                    child: deleteIconImage,
+                                    child: deleteIcon,
                                   ),
                                 );
                               } else {

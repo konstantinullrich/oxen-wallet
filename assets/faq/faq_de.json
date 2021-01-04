@@ -21,7 +21,7 @@
   },
   {
     "question" : "Sammeln Sie Informationen zu mir oder meinem Wallet?",
-    "answer" : "Oxen Wallet sammelt oder zeichnet keine Informationen über Sie oder Ihr Wallet auf. Ihre Privatsphäre ist uns wichtig.\nIhre Privatsphäre kann aber duch die Verbindung zu einem bösarigem Node kompromitiert werden. Deshalb empfehlen wir, die Standart Nodes oder ihren eigenen zu verwenden. "
+    "answer" : "Oxen Wallet sammelt oder zeichnet keine Informationen über Sie oder Ihr Wallet auf. Ihre Privatsphäre ist uns wichtig.\nIhre Privatsphäre kann aber duch die Verbindung zu einem bösarigem Knoten kompromitiert werden. Deshalb empfehlen wir, die Standart Knoten oder ihren eigenen zu verwenden. "
   },
   {
     "question" : "Woher die Fiat-Daten?",

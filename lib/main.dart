@@ -127,7 +127,7 @@ void main() async {
     Provider(create: (_) => transactionDescriptions),
     Provider(create: (_) => trades),
     Provider(create: (_) => seedLanguageStore)
-  ], child: CakeWalletApp()));
+  ], child: OxenWalletApp()));
 }
 
 Future<void> initialSetup(
@@ -146,8 +146,8 @@ Future<void> initialSetup(
   oxen_wallet.onStartup();
 }
 
-class CakeWalletApp extends StatelessWidget {
-  CakeWalletApp() {
+class OxenWalletApp extends StatelessWidget {
+  OxenWalletApp() {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }

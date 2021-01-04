@@ -29,7 +29,6 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
   static const defaultPinLength = 4;
   static const sixPinLength = 6;
   static const fourPinLength = 4;
-  // static final deleteIcon = Image.asset('assets/images/delete_icon.png');
   static final deleteIcon = Icon(Icons.backspace, color: Palette.blueGrey);
   final _gridViewKey = GlobalKey();
 

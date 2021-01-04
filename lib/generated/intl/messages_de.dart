@@ -19,7 +19,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static m0(status) => "${status} Verbleibende Blöcke";
+  static m0(status) => "${status} verbleibende Blöcke";
 
   static m1(node) => "Möchten Sie den aktuellen Knoten wirklich auf ändern? ${node}?";
 
@@ -106,7 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language" : MessageLookupByLibrary.simpleMessage("Sprache ändern"),
     "change_language_to" : m2,
     "changelog" : MessageLookupByLibrary.simpleMessage("Änderungsprotokoll"),
-    "clear" : MessageLookupByLibrary.simpleMessage("klar"),
+    "clear" : MessageLookupByLibrary.simpleMessage("Löschen"),
     "commit_transaction_amount_fee" : m3,
     "confirm" : MessageLookupByLibrary.simpleMessage("Bestätigen"),
     "confirm_sending" : MessageLookupByLibrary.simpleMessage("Bestätigen Sie das Senden"),
@@ -222,7 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "restore_wallet_name" : MessageLookupByLibrary.simpleMessage("Walletname"),
     "restore_wallet_restore_description" : MessageLookupByLibrary.simpleMessage("Beschreibung zur Wiederherstellung des Wallets"),
     "router_no_route" : m15,
-    "save" : MessageLookupByLibrary.simpleMessage("speichern"),
+    "save" : MessageLookupByLibrary.simpleMessage("Speichern"),
     "saved_the_trade_id" : MessageLookupByLibrary.simpleMessage("Ich habe die Geschäfts-ID gespeichert"),
     "seed_language_chinese" : MessageLookupByLibrary.simpleMessage("Chinesisch"),
     "seed_language_choose" : MessageLookupByLibrary.simpleMessage("Bitte wählen Sie die Ausgangssprache"),
