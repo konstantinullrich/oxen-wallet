@@ -18,9 +18,6 @@ abstract class BasePage extends StatelessWidget {
 
   AppBarStyle get appBarStyle => AppBarStyle.regular;
 
-  final _backArrowImage = Image.asset('assets/images/back_arrow.png');
-  final _backArrowImageDarkTheme =
-      Image.asset('assets/images/back_arrow_dark_theme.png');
   final _closeButtonImage = Image.asset('assets/images/close_button.png');
   final _closeButtonImageDarkTheme =
       Image.asset('assets/images/close_button_dark_theme.png');
@@ -33,13 +30,12 @@ abstract class BasePage extends StatelessWidget {
     }
 
     final _themeChanger = Provider.of<ThemeChanger>(context);
-    Image _closeButton, _backButton;
+    final _backButton = Icon(Icons.arrow_back_ios_rounded);
+    Image _closeButton;
 
     if (_themeChanger.getTheme() == Themes.darkTheme) {
-      _backButton = _backArrowImageDarkTheme;
       _closeButton = _closeButtonImageDarkTheme;
     } else {
-      _backButton = _backArrowImage;
       _closeButton = _closeButtonImage;
     }
 

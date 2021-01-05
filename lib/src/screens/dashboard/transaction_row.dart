@@ -50,12 +50,6 @@ class TransactionRow extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
             ),
-            // Image.asset(
-            //     direction == TransactionDirection.incoming
-            //         ? 'assets/images/transaction_incoming.png'
-            //         : 'assets/images/transaction_outgoing.png',
-            //     height: 25,
-            //     width: 25),
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),

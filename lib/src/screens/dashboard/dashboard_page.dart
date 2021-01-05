@@ -76,19 +76,8 @@ class DashboardPage extends BasePage {
     );
   }
 
-  // @override
-  // Widget bottomNavigationBar(BuildContext context) => BottomNavBar(currentIndex: 1);
-
   @override
   Widget body(BuildContext context) => DashboardPageBody(key: _bodyKey);
-
-  // @override
-  // Widget floatingActionButton(BuildContext context) => FloatingActionButton(
-  //     child: Image.asset('assets/images/exchange_icon.png',
-  //         color: Colors.white, height: 26, width: 22),
-  //     backgroundColor: Palette.floatingActionButton,
-  //     onPressed: () async => await Navigator.of(context, rootNavigator: true)
-  //         .pushNamed(Routes.exchange));
 
   void _presentWalletMenu(BuildContext bodyContext) {
     final walletMenu = WalletMenu(bodyContext);
