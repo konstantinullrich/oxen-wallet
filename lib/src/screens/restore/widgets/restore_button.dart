@@ -43,11 +43,11 @@ class RestoreButton extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              imageWidget,
-              Column(
+              // imageWidget, // TODO: Wait for new Images
+            Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                    padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                     child: AutoSizeText(
                       title,
                       textAlign: TextAlign.center,

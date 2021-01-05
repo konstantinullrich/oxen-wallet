@@ -86,10 +86,10 @@ class _WalletNameFormState extends State<WalletNameForm> {
     return ScrollableWithBottomSection(
         content: Column(children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: Image.asset('assets/images/bitmap.png',
-                height: 224, width: 400),
-          ),
+            padding: EdgeInsets.all(20),
+            child: Image.asset('assets/images/oxen.png',
+                height: 124, width: 400),
+          ), // TODO: Wait for new Images
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: Form(

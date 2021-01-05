@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
 
 class WelcomePage extends BasePage {
   static const _aspectRatioImage = 1.26;
@@ -25,46 +25,57 @@ class WelcomePage extends BasePage {
     final textScaleFactor = _screenWidth < _baseWidth ? 0.76 : 1.0;
 
     return Column(children: <Widget>[
-      Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          AspectRatio(
-              aspectRatio: _aspectRatioImage,
-              child: FittedBox(child: _image, fit: BoxFit.fill)),
-          Positioned(bottom: 0.0, child: _logo)
-        ],
-      ),
+      // Stack(
+      //   alignment: Alignment.center,
+      //   children: <Widget>[
+      //     AspectRatio(
+      //         aspectRatio: _aspectRatioImage,
+      //         child: FittedBox(child: _image, fit: BoxFit.fill)),
+      //     Positioned(bottom: 0.0, child: _logo)
+      //   ],
+      // ),
       Expanded(
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                S.of(context).welcome,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                textScaleFactor: textScaleFactor,
-                textAlign: TextAlign.center,
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Image.asset('assets/images/oxen.png', height: 124, width: 400),
               ),
-              Text(
-                S.of(context).first_wallet_text,
-                style: TextStyle(
-                  fontSize: 22.0,
-                  color: Palette.lightBlue,
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  S.of(context).welcome,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textScaleFactor: textScaleFactor,
+                  textAlign: TextAlign.center,
                 ),
-                textScaleFactor: textScaleFactor,
-                textAlign: TextAlign.center,
               ),
-              Text(
-                S.of(context).please_make_selection,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Palette.lightBlue,
-                ),
-                textScaleFactor: textScaleFactor,
-                textAlign: TextAlign.center,
-              )
+              Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    S.of(context).first_wallet_text,
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      color: Palette.lightBlue,
+                    ),
+                    textScaleFactor: textScaleFactor,
+                    textAlign: TextAlign.center,
+                  )),
+              Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    S.of(context).please_make_selection,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Palette.lightBlue,
+                    ),
+                    textScaleFactor: textScaleFactor,
+                    textAlign: TextAlign.center,
+                  ))
             ]),
       ),
       Container(

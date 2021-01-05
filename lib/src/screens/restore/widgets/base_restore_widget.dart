@@ -12,6 +12,7 @@ class BaseRestoreWidget extends StatelessWidget {
   final Widget firstRestoreButton;
   final Widget secondRestoreButton;
   final bool isLargeScreen;
+  final bool fixedLarge = false;  // TODO: Wait for new Images
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class BaseRestoreWidget extends StatelessWidget {
           left: 20.0,
           right: 20.0,
         ),
-        child: isLargeScreen
+        child: fixedLarge
             ? Column(
               children: <Widget>[
                 Flexible(
