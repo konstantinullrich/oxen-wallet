@@ -5,17 +5,15 @@ import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:http/http.dart';
 
 // TODO: Move that out of my Basement!
-const fiatApiAuthority = 'crypto.konstantinullrich.de';
-const fiatApiPath = '/v1/rates';
+const fiatApiAuthority = 'lokiblocks.com';
 
 Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
   var price = 0.0;
 
   try {
     final fiatStringed = fiat.toString();
-    final cryptoStringed = crypto.toString();
 
-    final apiPath = '/api/price/$fiatStringed/$cryptoStringed';
+    final apiPath = '/api/price/$fiatStringed';
     final uri = Uri.https(fiatApiAuthority, apiPath);
     final response = await get(uri.toString());
 
