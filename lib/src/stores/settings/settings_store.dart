@@ -230,31 +230,12 @@ abstract class SettingsStoreBase with Store {
   Future loadSettings() async => node = await _fetchCurrentNode();
 
   @action
-  void toggleTransactionsDisplay() =>
-      actionListDisplayMode.contains(ActionListDisplayMode.transactions)
-          ? _hideTransaction()
-          : _showTransaction();
-
-  @action
-  void toggleTradesDisplay() =>
-      actionListDisplayMode.contains(ActionListDisplayMode.trades)
-          ? _hideTrades()
-          : _showTrades();
-
-  @action
   void _hideTransaction() =>
       actionListDisplayMode.remove(ActionListDisplayMode.transactions);
 
   @action
-  void _hideTrades() =>
-      actionListDisplayMode.remove(ActionListDisplayMode.trades);
-
-  @action
   void _showTransaction() =>
       actionListDisplayMode.add(ActionListDisplayMode.transactions);
-
-  @action
-  void _showTrades() => actionListDisplayMode.add(ActionListDisplayMode.trades);
 
   @action
   Future setDefaultPinLength({@required int pinLength}) async {

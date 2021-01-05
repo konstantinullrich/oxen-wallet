@@ -70,7 +70,6 @@ class RootState extends State<Root> with WidgetsBindingObserver {
     final userService = Provider.of<UserService>(context);
     final priceStore = Provider.of<PriceStore>(context);
     final authenticationStore = Provider.of<AuthenticationStore>(context);
-    final trades = Provider.of<Box<Trade>>(context);
     final transactionDescriptions =
         Provider.of<Box<TransactionDescription>>(context);
     final walletStore = Provider.of<WalletStore>(context);
@@ -115,7 +114,6 @@ class RootState extends State<Root> with WidgetsBindingObserver {
         return createDashboardPage(
             walletService: walletService,
             priceStore: priceStore,
-            trades: trades,
             transactionDescriptions: transactionDescriptions,
             walletStore: walletStore,
             settingsStore: settingsStore);

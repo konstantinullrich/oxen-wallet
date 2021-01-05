@@ -31,14 +31,8 @@ class Routes {
   static const pickerAddressBook = '/picker_address_book';
   static const addressBookAddContact = '/address_book_add_contact';
   static const showKeys = '/show_keys';
-  static const exchangeConfirm = '/exchange_confirm';
-  static const tradeHistory = '/trade_history';
-  static const tradeDetails = '/trade_details';
-  static const exchangeFunds = '/exchange_funds';
-  static const exchangeTrade = '/exchange_trade';
   static const subaddressList = '/subaddress_list';
   static const restoreWalletFromSeedDetails = '/restore_from_seed_details';
-  static const exchange = '/exchange';
   static const settings = '/settings';
   static const unlock = '/auth_not_closable';
   static const rescan = '/rescan';

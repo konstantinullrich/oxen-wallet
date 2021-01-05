@@ -5,7 +5,6 @@ import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/screens/dashboard/dashboard_page.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
-import 'package:oxen_wallet/src/stores/action_list/trade_filter_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
@@ -17,15 +16,12 @@ Widget createDashboardPage(
         @required PriceStore priceStore,
         @required Box<TransactionDescription> transactionDescriptions,
         @required SettingsStore settingsStore,
-        @required Box<Trade> trades,
         @required WalletStore walletStore}) =>
     Provider(
         create: (_) => ActionListStore(
             walletService: walletService,
             settingsStore: settingsStore,
             priceStore: priceStore,
-            tradesSource: trades,
             transactionFilterStore: TransactionFilterStore(),
-            tradeFilterStore: TradeFilterStore(walletStore: walletStore),
             transactionDescriptions: transactionDescriptions),
         child: DashboardPage());

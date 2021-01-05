@@ -13,13 +13,8 @@ import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/src/domain/exchange/changenow/changenow_exchange_provider.dart';
-import 'package:oxen_wallet/src/domain/exchange/xmrto/xmrto_exchange_provider.dart';
-import 'package:oxen_wallet/src/domain/exchange/morphtoken/morphtoken_exchange_provider.dart';
 import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
-import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:oxen_wallet/src/oxen/account.dart';
 import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
@@ -44,8 +39,6 @@ import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_keys_store.dart';
-import 'package:oxen_wallet/src/stores/exchange_trade/exchange_trade_store.dart';
-import 'package:oxen_wallet/src/stores/exchange/exchange_store.dart';
 import 'package:oxen_wallet/src/stores/rescan/rescan_wallet_store.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 
@@ -72,17 +65,13 @@ import 'package:oxen_wallet/src/screens/accounts/account_list_page.dart';
 import 'package:oxen_wallet/src/screens/address_book/address_book_page.dart';
 import 'package:oxen_wallet/src/screens/address_book/contact_page.dart';
 import 'package:oxen_wallet/src/screens/show_keys/show_keys_page.dart';
-import 'package:oxen_wallet/src/screens/exchange_trade/exchange_confirm_page.dart';
-import 'package:oxen_wallet/src/screens/exchange_trade/exchange_trade_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/subaddress_list_page.dart';
 import 'package:oxen_wallet/src/screens/settings/change_language.dart';
 import 'package:oxen_wallet/src/screens/restore/restore_wallet_from_seed_details.dart';
-import 'package:oxen_wallet/src/screens/exchange/exchange_page.dart';
 import 'package:oxen_wallet/src/screens/settings/settings.dart';
 import 'package:oxen_wallet/src/screens/rescan/rescan_page.dart';
 import 'package:oxen_wallet/src/screens/faq/faq_page.dart';
 import 'package:oxen_wallet/src/screens/changelog/changelog_page.dart';
-import 'package:oxen_wallet/src/screens/trade_details/trade_details_page.dart';
 import 'package:oxen_wallet/src/screens/auth/create_unlock_page.dart';
 import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
 import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
@@ -106,8 +95,7 @@ class Router {
       SettingsStore settingsStore,
       Box<Contact> contacts,
       Box<Node> nodes,
-      Box<TransactionDescription> transactionDescriptions,
-      Box<Trade> trades}) {
+      Box<TransactionDescription> transactionDescriptions}) {
     switch (settings.name) {
       case Routes.welcome:
         return MaterialPageRoute<void>(builder: (_) => createWelcomePage());
@@ -212,7 +200,6 @@ class Router {
                 walletService: walletService,
                 priceStore: priceStore,
                 settingsStore: settingsStore,
-                trades: trades,
                 transactionDescriptions: transactionDescriptions,
                 walletStore: walletStore));
 
@@ -392,43 +379,6 @@ class Router {
             },
             fullscreenDialog: true);
 
-      case Routes.exchangeTrade:
-        return CupertinoPageRoute<void>(
-            builder: (_) => MultiProvider(
-                  providers: [
-                    ProxyProvider<SettingsStore, ExchangeTradeStore>(
-                      update: (_, settingsStore, __) => ExchangeTradeStore(
-                          trade: settings.arguments as Trade,
-                          walletStore: walletStore,
-                          trades: trades),
-                    ),
-                    ProxyProvider<SettingsStore, SendStore>(
-                        update: (_, settingsStore, __) => SendStore(
-                            transactionDescriptions: transactionDescriptions,
-                            walletService: walletService,
-                            settingsStore: settingsStore,
-                            priceStore: priceStore)),
-                  ],
-                  child: ExchangeTradePage(),
-                ));
-
-      case Routes.exchangeConfirm:
-        return MaterialPageRoute<void>(
-            builder: (_) =>
-                ExchangeConfirmPage(trade: settings.arguments as Trade));
-
-      case Routes.tradeDetails:
-        return MaterialPageRoute<void>(builder: (context) {
-          return MultiProvider(providers: [
-            ProxyProvider<SettingsStore, ExchangeTradeStore>(
-              update: (_, settingsStore, __) => ExchangeTradeStore(
-                  trade: settings.arguments as Trade,
-                  walletStore: walletStore,
-                  trades: trades),
-            )
-          ], child: TradeDetailsPage());
-        });
-
       case Routes.subaddressList:
         return MaterialPageRoute<Subaddress>(
             builder: (_) => MultiProvider(providers: [
@@ -447,26 +397,6 @@ class Router {
                         walletListService: walletListService,
                         seed: settings.arguments as List<MnemoticItem>),
                     child: RestoreWalletFromSeedDetailsPage()));
-
-      case Routes.exchange:
-        return MaterialPageRoute<void>(
-            builder: (_) => MultiProvider(providers: [
-                  Provider(create: (_) {
-                    final xmrtoprovider = XMRTOExchangeProvider();
-
-                    return ExchangeStore(
-                        initialProvider: xmrtoprovider,
-                        initialDepositCurrency: CryptoCurrency.xmr,
-                        initialReceiveCurrency: CryptoCurrency.btc,
-                        trades: trades,
-                        providerList: [
-                          xmrtoprovider,
-                          ChangeNowExchangeProvider(),
-                          MorphTokenExchangeProvider(trades: trades)
-                        ],
-                        walletStore: walletStore);
-                  }),
-                ], child: ExchangePage()));
 
       case Routes.settings:
         return MaterialPageRoute<void>(

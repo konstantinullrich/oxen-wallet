@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
@@ -15,11 +14,8 @@ import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_item.dart';
 import 'package:oxen_wallet/src/stores/action_list/date_section_item.dart';
-import 'package:oxen_wallet/src/stores/action_list/trade_filter_store.dart';
-import 'package:oxen_wallet/src/stores/action_list/trade_list_item.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_list_item.dart';
 
@@ -33,10 +29,7 @@ abstract class ActionListBase with Store {
       @required SettingsStore settingsStore,
       @required PriceStore priceStore,
       @required this.transactionFilterStore,
-      @required this.tradeFilterStore,
-      @required this.transactionDescriptions,
-      @required this.tradesSource}) {
-    trades = <TradeListItem>[];
+      @required this.transactionDescriptions}) {
     _transactions = <TransactionListItem>[];
     _walletService = walletService;
     _settingsStore = settingsStore;
@@ -52,11 +45,6 @@ abstract class ActionListBase with Store {
     _onTransactionDescriptions = transactionDescriptions
         .watch()
         .listen((_) async => await _updateTransactionsList());
-
-    _onTradesChanged =
-        tradesSource.watch().listen((_) async => await updateTradeList());
-
-    updateTradeList();
   }
 
   static List<ActionListItem> formattedItemsList(List<ActionListItem> items) {
@@ -110,34 +98,11 @@ abstract class ActionListBase with Store {
   @observable
   List<TransactionListItem> _transactions;
 
-  @observable
-  List<TradeListItem> trades;
-
   @computed
-  List<ActionListItem> get items {
-    final _items = <ActionListItem>[];
-
-    if (_settingsStore.actionListDisplayMode
-        .contains(ActionListDisplayMode.transactions)) {
-      _items
-          .addAll(transactionFilterStore.filtered(transactions: transactions));
-    }
-
-    if (_settingsStore.actionListDisplayMode
-        .contains(ActionListDisplayMode.trades)) {
-      _items.addAll(tradeFilterStore.filtered(trades: trades));
-    }
-
-    return formattedItemsList(_items);
-  }
-
-  @computed
-  int get totalCount => transactions.length + trades.length;
+  int get totalCount => transactions.length;
 
   TransactionFilterStore transactionFilterStore;
-  TradeFilterStore tradeFilterStore;
   Box<TransactionDescription> transactionDescriptions;
-  Box<Trade> tradesSource;
 
   WalletService _walletService;
   TransactionHistory _history;
@@ -165,10 +130,6 @@ abstract class ActionListBase with Store {
 //    _onTradesChanged?.cancel();
 //    super.dispose();
 //  }
-
-  @action
-  Future updateTradeList() async => trades =
-      tradesSource.values.map((trade) => TradeListItem(trade: trade)).toList();
 
   Future _updateTransactionsList() async {
     await _history.refresh();

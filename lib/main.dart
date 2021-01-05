@@ -15,7 +15,6 @@ import 'package:oxen_wallet/src/domain/common/get_encryption_key.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/node.dart';
 import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
-import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/reactions/set_reactions.dart';
 import 'package:oxen_wallet/src/stores/login/login_store.dart';
@@ -45,7 +44,6 @@ void main() async {
   Hive.registerAdapter(ContactAdapter());
   Hive.registerAdapter(NodeAdapter());
   Hive.registerAdapter(TransactionDescriptionAdapter());
-  Hive.registerAdapter(TradeAdapter());
   Hive.registerAdapter(WalletInfoAdapter());
   Hive.registerAdapter(WalletTypeAdapter());
 
@@ -53,17 +51,12 @@ void main() async {
   final transactionDescriptionsBoxKey = await getEncryptionKey(
       secureStorage: secureStorage,
       forKey: 'transactionDescriptionsBoxKey'); // FIXME: Unnamed constant
-  final tradesBoxKey = await getEncryptionKey(
-      secureStorage: secureStorage,
-      forKey: 'tradesBoxKey'); // FIXME: Unnamed constant
 
   final contacts = await Hive.openBox<Contact>(Contact.boxName);
   final nodes = await Hive.openBox<Node>(Node.boxName);
   final transactionDescriptions = await Hive.openBox<TransactionDescription>(
       TransactionDescription.boxName,
       encryptionKey: transactionDescriptionsBoxKey);
-  final trades =
-      await Hive.openBox<Trade>(Trade.boxName, encryptionKey: tradesBoxKey);
   final walletInfoSource = await Hive.openBox<WalletInfo>(WalletInfo.boxName);
 
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -125,7 +118,6 @@ void main() async {
     Provider(create: (_) => contacts),
     Provider(create: (_) => nodes),
     Provider(create: (_) => transactionDescriptions),
-    Provider(create: (_) => trades),
     Provider(create: (_) => seedLanguageStore)
   ], child: OxenWalletApp()));
 }
@@ -183,7 +175,6 @@ class MaterialAppWithTheme extends StatelessWidget {
     final currentLanguage = Provider.of<Language>(context);
     final contacts = Provider.of<Box<Contact>>(context);
     final nodes = Provider.of<Box<Node>>(context);
-    final trades = Provider.of<Box<Trade>>(context);
     final transactionDescriptions =
         Provider.of<Box<TransactionDescription>>(context);
 
@@ -214,7 +205,6 @@ class MaterialAppWithTheme extends StatelessWidget {
             settingsStore: settingsStore,
             contacts: contacts,
             nodes: nodes,
-            trades: trades,
             transactionDescriptions: transactionDescriptions),
         home: Root());
   }

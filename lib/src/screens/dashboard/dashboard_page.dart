@@ -9,12 +9,10 @@ import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/sync_status.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/dashboard/date_section_row.dart';
-import 'package:oxen_wallet/src/screens/dashboard/trade_row.dart';
 import 'package:oxen_wallet/src/screens/dashboard/transaction_row.dart';
 import 'package:oxen_wallet/src/screens/dashboard/wallet_menu.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/date_section_item.dart';
-import 'package:oxen_wallet/src/stores/action_list/trade_list_item.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_list_item.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
@@ -121,7 +119,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
     return Observer(
         key: _listObserverKey,
         builder: (_) {
-          final items = actionListStore.items ?? <String>[];
+          final items = actionListStore.transactions ?? <String>[];
           final itemsCount = items.length + 2;
 
           return ListView.builder(
@@ -478,26 +476,6 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                       formattedAmount: formattedAmount,
                       formattedFiatAmount: formattedFiatAmount,
                       isPending: transaction.isPending);
-                }
-
-                if (item is TradeListItem) {
-                  final trade = item.trade;
-                  final savedDisplayMode = settingsStore.balanceDisplayMode;
-                  final formattedAmount = trade.amount != null
-                      ? savedDisplayMode == BalanceDisplayMode.hiddenBalance
-                          ? '---'
-                          : trade.amountFormatted()
-                      : trade.amount;
-
-                  return TradeRow(
-                      onTap: () => Navigator.of(context)
-                          .pushNamed(Routes.tradeDetails, arguments: trade),
-                      provider: trade.provider,
-                      from: trade.from,
-                      to: trade.to,
-                      createdAtFormattedDate:
-                          transactionDateFormat.format(trade.createdAt),
-                      formattedAmount: formattedAmount);
                 }
 
                 return Container();
