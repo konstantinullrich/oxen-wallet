@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include "thread"
 // #include "OxenWalletListener.h"
-#include "../External/android/oxen/include/wallet2_api.h"
+#include "../External/ios/oxen/include/wallet2_api.h"
 
 using namespace std::chrono_literals;
 
@@ -734,7 +734,7 @@ extern "C"
         return -1;
     }
 
-    void on_startup()
+    void on_startup(void)
     {
         Oxen::Utils::onStartup();
         Oxen::WalletManagerFactory::setLogLevel(4);
