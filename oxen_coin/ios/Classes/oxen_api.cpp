@@ -1,23 +1,20 @@
-#include <stdint.h>
-#include "cstdlib"
+#include <cstdint>
+#include <cstdlib>
 #include <chrono>
 #include <functional>
 #include <iostream>
 #include <unistd.h>
-#include "thread"
+#include <thread>
 // #include "OxenWalletListener.h"
 #include "../External/ios/oxen/include/wallet2_api.h"
 
-using namespace std::chrono_literals;
-
 namespace Oxen = Wallet;
 
-#ifdef __cplusplus
+// Macro to force symbol visibility, and prevent the symbol being stripped
+#define EXPORT __attribute__((visibility("default"))) __attribute__((used))
+
 extern "C"
 {
-#endif
-    const uint64_t OXEN_BLOCK_SIZE = 1000;
-
     struct Utf8Box
     {
         char *value;
@@ -226,11 +223,13 @@ extern "C"
         }
     }
 
+    EXPORT
     Oxen::Wallet *get_current_wallet()
     {
         return m_wallet;
     }
 
+    EXPORT
     bool create_wallet(char *path, char *password, char *language, int32_t networkType, char *error)
     {
         Oxen::NetworkType _networkType = static_cast<Oxen::NetworkType>(networkType);
@@ -263,6 +262,7 @@ extern "C"
         return true;
     }
 
+    EXPORT
     bool restore_wallet_from_seed(char *path, char *password, char *seed, int32_t networkType, uint64_t restoreHeight, char *error)
     {
         Oxen::NetworkType _networkType = static_cast<Oxen::NetworkType>(networkType);
@@ -285,6 +285,7 @@ extern "C"
         return true;
     }
 
+    EXPORT
     bool restore_wallet_from_keys(char *path, char *password, char *language, char *address, char *viewKey, char *spendKey, int32_t networkType, uint64_t restoreHeight, char *error)
     {
         Oxen::NetworkType _networkType = static_cast<Oxen::NetworkType>(networkType);
@@ -311,6 +312,7 @@ extern "C"
         return true;
     }
 
+    EXPORT
     void load_wallet(char *path, char *password, int32_t nettype)
     {
         nice(19);
@@ -319,72 +321,86 @@ extern "C"
         change_current_wallet(wallet);
     }
 
+    EXPORT
     bool is_wallet_exist(char *path)
     {
         return Oxen::WalletManagerFactory::getWalletManager()->walletExists(std::string(path));
     }
 
+    EXPORT
     void close_current_wallet()
     {
         Oxen::WalletManagerFactory::getWalletManager()->closeWallet(get_current_wallet());
         change_current_wallet(nullptr);
     }
 
+    EXPORT
     char *get_filename()
     {
         return strdup(get_current_wallet()->filename().c_str());
     }
 
+    EXPORT
     char *secret_view_key()
     {
         return strdup(get_current_wallet()->secretViewKey().c_str());
     }
 
+    EXPORT
     char *public_view_key()
     {
         return strdup(get_current_wallet()->publicViewKey().c_str());
     }
 
+    EXPORT
     char *secret_spend_key()
     {
         return strdup(get_current_wallet()->secretSpendKey().c_str());
     }
 
+    EXPORT
     char *public_spend_key()
     {
         return strdup(get_current_wallet()->publicSpendKey().c_str());
     }
 
+    EXPORT
     char *get_address(uint32_t account_index, uint32_t address_index)
     {
         return strdup(get_current_wallet()->address(account_index, address_index).c_str());
     }
 
+    EXPORT
     const char *seed()
     {
         return strdup(get_current_wallet()->seed().c_str());
     }
 
+    EXPORT
     uint64_t get_full_balance(uint32_t account_index)
     {
         return get_current_wallet()->balance(account_index);
     }
 
+    EXPORT
     uint64_t get_unlocked_balance(uint32_t account_index)
     {
         return get_current_wallet()->unlockedBalance(account_index);
     }
 
+    EXPORT
     uint64_t get_current_height()
     {
         return get_current_wallet()->blockChainHeight();
     }
 
+    EXPORT
     uint64_t get_node_height()
     {
         return get_current_wallet()->daemonBlockChainHeight();
     }
 
+    EXPORT
     bool connect_to_node(char *error)
     {
         nice(19);
@@ -398,6 +414,7 @@ extern "C"
         return is_connected;
     }
 
+    EXPORT
     bool setup_node(char *address, char *login, char *password, bool use_ssl, bool is_light_wallet, char *error)
     {
         nice(19);
@@ -428,34 +445,40 @@ extern "C"
         return inited;
     }
 
+    EXPORT
     bool is_connected()
     {
         return get_current_wallet()->connected();
     }
 
+    EXPORT
     void start_refresh()
     {
         get_current_wallet()->refreshAsync();
         get_current_wallet()->startRefresh();
     }
 
+    EXPORT
     void set_refresh_from_block_height(uint64_t height)
     {
         get_current_wallet()->setRefreshFromBlockHeight(height);
     }
 
+    EXPORT
     void set_recovering_from_seed(bool is_recovery)
     {
         get_current_wallet()->setRecoveringFromSeed(is_recovery);
     }
 
-    void store(char *path = "")
+    EXPORT
+    void store(const char *path = "")
     {
         store_mutex.lock();
         get_current_wallet()->store(std::string(path));
         store_mutex.unlock();
     }
 
+    EXPORT
     int32_t stake_count() {
         auto* stakes = m_wallet->listCurrentStakes();
         int32_t count = stakes->size();
@@ -463,6 +486,7 @@ extern "C"
         return count;
     }
 
+    EXPORT
     int64_t* stake_get_all() {
         auto* _stakes = m_wallet->listCurrentStakes();
         size_t size = _stakes->size();
@@ -499,11 +523,13 @@ extern "C"
 //        return true;
 //    }
 
+    EXPORT
     uint64_t transaction_estimate_fee(uint32_t priority, uint32_t recipients)
     {
         return m_wallet->estimateTransactionFee(priority, recipients);
     }
 
+    EXPORT
     bool transaction_create(char *address, char *amount, uint8_t priority, uint32_t subaddr_account, Utf8Box &error,
         PendingTransactionRaw &pendingTransaction)
     {
@@ -533,6 +559,7 @@ extern "C"
         return true;
     }
 
+    EXPORT
     bool transaction_commit(PendingTransactionRaw *transaction, Utf8Box &error)
     {
         bool committed = transaction->transaction->commit();
@@ -547,6 +574,7 @@ extern "C"
         return committed;
     }
 
+    EXPORT
     uint64_t get_node_height_or_update(uint64_t base_eight)
     {
         if (m_cached_syncing_blockchain_height < base_eight) {
@@ -556,6 +584,7 @@ extern "C"
         return m_cached_syncing_blockchain_height;
     }
 
+    EXPORT
     uint64_t get_syncing_height()
     {
         if (m_listener == nullptr) {
@@ -576,6 +605,7 @@ extern "C"
         return height;
     }
 
+    EXPORT
     uint64_t is_needed_to_refresh()
     {
         if (m_listener == nullptr) {
@@ -591,6 +621,7 @@ extern "C"
         return should_refresh;
     }
 
+    EXPORT
     uint8_t is_new_transaction_exist()
     {
         if (m_listener == nullptr) {
@@ -607,6 +638,7 @@ extern "C"
         return is_new_transaction_exist;
     }
 
+    EXPORT
     void set_listener()
     {
         m_last_known_wallet_height = 0;
@@ -620,6 +652,7 @@ extern "C"
         get_current_wallet()->setListener(m_listener);
     }
 
+    EXPORT
     int64_t *subaddrress_get_all()
     {
         std::vector<Oxen::SubaddressRow *> _subaddresses = m_subaddress->getAll();
@@ -636,64 +669,73 @@ extern "C"
         return subaddresses;
     }
 
+    EXPORT
     int32_t subaddrress_size()
     {
         std::vector<Oxen::SubaddressRow *> _subaddresses = m_subaddress->getAll();
         return _subaddresses.size();
     }
 
+    EXPORT
     void subaddress_add_row(uint32_t accountIndex, char *label)
     {
         m_subaddress->addRow(accountIndex, std::string(label));
     }
 
+    EXPORT
     void subaddress_set_label(uint32_t accountIndex, uint32_t addressIndex, char *label)
     {
         m_subaddress->setLabel(accountIndex, addressIndex, std::string(label));
     }
 
+    EXPORT
     void subaddress_refresh(uint32_t accountIndex)
     {
         m_subaddress->refresh(accountIndex);
     }
 
+    EXPORT
     int32_t account_size()
     {
-        std::vector<Oxen::SubaddressAccountRow *> _accocunts = m_account->getAll();
-        return _accocunts.size();
+        return static_cast<int32_t>(m_account->getAll().size());
     }
 
+    EXPORT
     int64_t *account_get_all()
     {
-        std::vector<Oxen::SubaddressAccountRow *> _accocunts = m_account->getAll();
-        size_t size = _accocunts.size();
-        int64_t *accocunts = (int64_t *)malloc(size * sizeof(int64_t));
+        std::vector<Oxen::SubaddressAccountRow *> _accounts = m_account->getAll();
+        size_t size = _accounts.size();
+        int64_t *accounts = (int64_t *)malloc(size * sizeof(int64_t));
 
         for (int i = 0; i < size; i++)
         {
-            Oxen::SubaddressAccountRow *row = _accocunts[i];
+            Oxen::SubaddressAccountRow *row = _accounts[i];
             AccountRow *_row = new AccountRow(row->getRowId(), strdup(row->getLabel().c_str()));
-            accocunts[i] = reinterpret_cast<int64_t>(_row);
+            accounts[i] = reinterpret_cast<int64_t>(_row);
         }
 
-        return accocunts;
+        return accounts;
     }
 
+    EXPORT
     void account_add_row(char *label)
     {
         m_account->addRow(std::string(label));
     }
 
+    EXPORT
     void account_set_label_row(uint32_t account_index, char *label)
     {
         m_account->setLabel(account_index, label);
     }
 
+    EXPORT
     void account_refresh()
     {
         m_account->refresh();
     }
 
+    EXPORT
     int64_t *transactions_get_all()
     {
         std::vector<Oxen::TransactionInfo *> transactions = m_transaction_history->getAll();
@@ -710,46 +752,35 @@ extern "C"
         return transactionAddresses;
     }
 
+    EXPORT
     void transactions_refresh()
     {
         m_transaction_history->refresh();
     }
 
+    EXPORT
     int64_t transactions_count()
     {
         return m_transaction_history->count();
     }
 
-    int LedgerExchange(
-        unsigned char *command,
-        unsigned int cmd_len,
-        unsigned char *response,
-        unsigned int max_resp_len)
-    {
-        return -1;
-    }
-
-    int LedgerFind(char *buffer, size_t len)
-    {
-        return -1;
-    }
-
+    EXPORT
     void on_startup(void)
     {
         Oxen::Utils::onStartup();
         Oxen::WalletManagerFactory::setLogLevel(4);
     }
 
+    EXPORT
     void rescan_blockchain()
     {
         m_wallet->rescanBlockchainAsync();
     }
 
+    EXPORT
     char * get_tx_key(char * txId)
     {
         return strdup(m_wallet->getTxKey(std::string(txId)).c_str());
     }
 
-#ifdef __cplusplus
 }
-#endif
