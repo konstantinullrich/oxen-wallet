@@ -11,7 +11,6 @@ import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
 import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/src/stores/action_list/action_list_display_mode.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/settings/attributes.dart';
 import 'package:oxen_wallet/src/screens/disclaimer/disclaimer_page.dart';
@@ -51,14 +50,14 @@ class SettingsFormState extends State<SettingsForm> {
   final _telegramImage = Image.asset('assets/images/Telegram.png');
   final _twitterImage = Image.asset('assets/images/Twitter.png');
 
-  final _emailText = 'team@loki.network';
+  final _emailText = 'team@oxen.io';
   final _telegramText = 't.me/LokiCommunity';
-  final _twitterText = 'twitter.com/Loki_Project';
+  final _twitterText = 'twitter.com/Oxen_io';
   final _githubText = 'github.com/loki-project';
 
-  final _emailUrl = 'mailto:team@loki.network';
+  final _emailUrl = 'mailto:team@oxen.io';
   final _telegramUrl = 'https:t.me/LokiCommunity';
-  final _twitterUrl = 'https:twitter.com/Loki_Project';
+  final _twitterUrl = 'https:twitter.com/Oxen_io';
   final _githubUrl = 'https:github.com/loki-project';
 
   final _items = <SettingsItem>[];

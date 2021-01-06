@@ -13,7 +13,8 @@ import 'package:oxen_wallet/src/screens/base_page.dart';
 class SeedPage extends BasePage {
   SeedPage({this.onCloseCallback});
 
-  static final image = Image.asset('assets/images/seed_image.png');
+  // static final image = Image.asset('assets/images/seed_image.png');
+  static final image = Image.asset('assets/images/oxen.png', height: 124, width: 400);
 
   @override
   bool get isModalBackButton => true;
