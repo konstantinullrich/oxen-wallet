@@ -3,7 +3,7 @@
 struct OxenWalletListener;
 
 typedef int8_t (*on_new_block_callback)(uint64_t height);
-typedef int8_t (*on_need_to_refresh_callback)();
+typedef int8_t (*on_need_to_refresh_callback)(void);
 
 typedef struct OxenWalletListener
 {
