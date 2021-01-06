@@ -18,10 +18,6 @@ abstract class BasePage extends StatelessWidget {
 
   AppBarStyle get appBarStyle => AppBarStyle.regular;
 
-  final _closeButtonImage = Image.asset('assets/images/close_button.png');
-  final _closeButtonImageDarkTheme =
-      Image.asset('assets/images/close_button_dark_theme.png');
-
   void onClose(BuildContext context) => Navigator.of(context).pop();
 
   Widget leading(BuildContext context) {
@@ -29,15 +25,8 @@ abstract class BasePage extends StatelessWidget {
       return null;
     }
 
-    final _themeChanger = Provider.of<ThemeChanger>(context);
-    final _backButton = Icon(Icons.arrow_back_ios_rounded);
-    Image _closeButton;
-
-    if (_themeChanger.getTheme() == Themes.darkTheme) {
-      _closeButton = _closeButtonImageDarkTheme;
-    } else {
-      _closeButton = _closeButtonImage;
-    }
+    final _backButton = Icon(Icons.arrow_back_ios_rounded, size: 25);
+    final _closeButton = Icon(Icons.close_rounded, size: 25);
 
     return SizedBox(
       height: 37,
