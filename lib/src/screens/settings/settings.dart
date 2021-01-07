@@ -51,12 +51,12 @@ class SettingsFormState extends State<SettingsForm> {
   final _twitterImage = Image.asset('assets/images/Twitter.png');
 
   final _emailText = 'team@oxen.io';
-  final _telegramText = 't.me/LokiCommunity';
+  final _telegramText = 't.me/Oxen_Community';
   final _twitterText = 'twitter.com/Oxen_io';
   final _githubText = 'github.com/loki-project';
 
   final _emailUrl = 'mailto:team@oxen.io';
-  final _telegramUrl = 'https:t.me/LokiCommunity';
+  final _telegramUrl = 'https:t.me/Oxen_Community';
   final _twitterUrl = 'https:twitter.com/Oxen_io';
   final _githubUrl = 'https:github.com/loki-project';
 

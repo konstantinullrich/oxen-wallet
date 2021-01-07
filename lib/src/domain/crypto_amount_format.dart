@@ -1,5 +1,7 @@
 double cryptoAmountToDouble({num amount, num divider}) => amount / divider;
 
+int doubleToCryptoAmount({double amount, num divider}) => (amount * divider).toInt();
+
 // Litecoin
 const litecoinAmountDivider = 100000000;
 double litecoinAmountToDouble({int amount}) =>

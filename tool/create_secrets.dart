@@ -24,8 +24,7 @@ Future<void> main() async {
             'salt': getRandomString(32),
             'key': getRandomString(32),
             'walletSalt': getRandomString(8),
-            'shortKey': getRandomString(24),
-            'change_now_api_key': ''
+            'shortKey': getRandomString(24)
           }
       )
   );

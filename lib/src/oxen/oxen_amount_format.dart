@@ -7,7 +7,14 @@ final oxenAmountFormat = NumberFormat()
   ..maximumFractionDigits = oxenAmountLength
   ..minimumFractionDigits = 1;
 
-String oxenAmountToString({int amount}) =>
-    oxenAmountFormat.format(cryptoAmountToDouble(amount: amount, divider: oxenAmountDivider));
+String oxenAmountToString({int amount}) => oxenAmountFormat
+    .format(cryptoAmountToDouble(amount: amount, divider: oxenAmountDivider));
 
-double oxenAmountToDouble({int amount}) => cryptoAmountToDouble(amount: amount, divider: oxenAmountDivider);
+double oxenAmountToDouble({int amount}) =>
+    cryptoAmountToDouble(amount: amount, divider: oxenAmountDivider);
+
+double stringToOxenDouble({String amount}) =>
+    oxenAmountFormat.parse(amount) as double;
+
+int stringToOxenAmount({String amount}) => doubleToCryptoAmount(
+    amount: stringToOxenDouble(amount: amount), divider: oxenAmountDivider);

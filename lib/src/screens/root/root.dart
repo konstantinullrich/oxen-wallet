@@ -12,7 +12,6 @@ import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/domain/exchange/trade.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
 import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';

@@ -7,6 +7,7 @@ import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/openalias_record.dart';
 import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/oxen/oxen_transaction_creation_credentials.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
@@ -238,8 +239,7 @@ abstract class SendStoreBase with Store {
       } else {
         try {
           final dValue = double.parse(value);
-          final maxAvailable =
-              double.parse(availableBalance.replaceAll(',', '.'));
+          final maxAvailable = stringToOxenDouble(amount: availableBalance);
           isValid =
               (dValue <= maxAvailable && dValue <= maxValue && dValue > 0);
         } catch (e) {

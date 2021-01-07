@@ -41,7 +41,7 @@ class TransactionInfo {
 
   String _fiatAmount;
 
-  String amountFormatted() => '${formatAmount(oxenAmountToString(amount: amount))} OXEN';
+  String amountFormatted() => '${oxenAmountToString(amount: amount)} OXEN';
 
   String fiatAmount() => _fiatAmount ?? '';
 
