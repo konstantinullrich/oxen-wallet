@@ -1,23 +1,24 @@
 import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
-import 'package:flutter/foundation.dart';
-import 'package:oxen_wallet/src/oxen/account.dart';
+import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
 import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
 import 'package:oxen_wallet/src/domain/common/wallet.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
-import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount_raw.dart';
-import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/oxen/account.dart';
 import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
 import 'package:oxen_wallet/src/oxen/transaction_description.dart';
-import 'package:oxen_wallet/src/stores/price/price_store.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_item.dart';
 import 'package:oxen_wallet/src/stores/action_list/date_section_item.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_list_item.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 
 part 'action_list_store.g.dart';
 
@@ -97,6 +98,15 @@ abstract class ActionListBase with Store {
 
   @observable
   List<TransactionListItem> _transactions;
+
+  @computed
+  List<ActionListItem> get items {
+    final _items = <ActionListItem>[];
+
+    _items.addAll(transactionFilterStore.filtered(transactions: transactions));
+
+    return formattedItemsList(_items);
+  }
 
   @computed
   int get totalCount => transactions.length;

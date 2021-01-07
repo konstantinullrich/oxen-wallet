@@ -119,7 +119,7 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
     return Observer(
         key: _listObserverKey,
         builder: (_) {
-          final items = actionListStore.transactions ?? <String>[];
+          final items = actionListStore.items ?? <String>[];
           final itemsCount = items.length + 2;
 
           return ListView.builder(

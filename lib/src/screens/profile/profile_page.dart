@@ -80,7 +80,7 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                     color: Theme.of(context).primaryTextTheme.headline6.color),
                 text: S.current.settings_title,
                 onTap: () =>
-                    Navigator.of(context).pushNamed(Routes.walletList)),
+                    Navigator.of(context).pushNamed(Routes.settings)),
             NavListHeader(title: S.current.wallet_menu),
             /*
             TODO: Waiting for Implementation
