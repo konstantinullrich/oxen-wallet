@@ -6,7 +6,11 @@
 #include <unistd.h>
 #include <thread>
 // #include "OxenWalletListener.h"
+#ifdef ANDROID
+#include "../External/android/oxen/include/wallet2_api.h"
+#else
 #include "../External/ios/oxen/include/wallet2_api.h"
+#endif
 
 namespace Oxen = Wallet;
 
