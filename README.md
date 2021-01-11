@@ -16,7 +16,7 @@ The Oxen Wallet is a Fork of the Cake Wallet.
 
 3. Build the Oxen Static Libs and paste them into `oxen_coin/ios/External/android/oxen`\
     `wallet2_api.h` in the folder `/include`\
-    `libwallet_api.a` into their abi folder in `/lib`. For example: `/lib/x86`\
+    `libwallet_api.a` into their abi folder in `/lib`. For example: `/lib/arm64-v8a`\
     For iOS: extract to `oxen_coin/ios/External/ios/oxen` (and do not use an abi folder).
 
 4. Generate Launcher Icons
