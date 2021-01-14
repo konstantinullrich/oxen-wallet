@@ -772,7 +772,7 @@ extern "C"
     void on_startup(void)
     {
         Oxen::Utils::onStartup();
-        Oxen::WalletManagerFactory::setLogLevel(4);
+        Oxen::WalletManagerFactory::setLogLevel(0);
     }
 
     EXPORT
