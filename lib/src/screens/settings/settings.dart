@@ -58,7 +58,7 @@ class SettingsFormState extends State<SettingsForm> {
   final _emailUrl = 'mailto:team@oxen.io';
   final _telegramUrl = 'https:t.me/Oxen_Community';
   final _twitterUrl = 'https:twitter.com/Oxen_io';
-  final _githubUrl = 'https:github.com/loki-project';
+  final _githubUrl = 'https:github.com/oxen-io';
 
   final _items = <SettingsItem>[];
 
