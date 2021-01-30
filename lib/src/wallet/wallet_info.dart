@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
+import 'package:oxen_wallet/src/wallet/wallet_type.dart';
 
 part 'wallet_info.g.dart';
 

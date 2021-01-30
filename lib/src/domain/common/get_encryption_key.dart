@@ -3,20 +3,15 @@ import 'package:hive/hive.dart';
 
 Future<List<int>> getEncryptionKey(
     {String forKey, FlutterSecureStorage secureStorage}) async {
-  final stringifiedKey =
-      await secureStorage.read(key: 'transactionDescriptionsBoxKey');
+  final keyFromStorage = await secureStorage.read(key: forKey);
   List<int> key;
 
-  if (stringifiedKey == null) {
+  if (keyFromStorage == null) {
     key = Hive.generateSecureKey();
-    final keyStringified = key.join(',');
-    await secureStorage.write(
-        key: 'transactionDescriptionsBoxKey', value: keyStringified);
+    final keyToStorage = key.join(',');
+    await secureStorage.write(key: forKey, value: keyToStorage);
   } else {
-    key = stringifiedKey
-        .split(',')
-        .map((i) => int.parse(i))
-        .toList();
+    key = keyFromStorage.split(',').map((i) => int.parse(i)).toList();
   }
 
   return key;

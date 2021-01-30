@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:oxen_wallet/src/domain/common/digest_request.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:oxen_wallet/src/node/digest_request.dart';
 
 part 'node.g.dart';
 
@@ -27,24 +27,33 @@ class Node extends HiveObject {
   @HiveField(2)
   String password;
 
-  Future<bool> requestNode(String uri, {String login, String password}) async {
-    Map<String, dynamic> resBody;
+  Future<bool> isOnline() async {
+    final resBody = await sendRPCRequest('get_info');
+    return !(resBody['result']['offline'] as bool);
+  }
+
+  Future<Map<String, dynamic>> sendRPCRequest(String method,
+      {Map params}) async {
+    Map<String, dynamic> resultBody;
+
+    final requestBody = params != null
+        ? {'jsonrpc': '2.0', 'id': '0', 'method': method, 'params': params}
+        : {'jsonrpc': '2.0', 'id': '0', 'method': method};
 
     if (login != null && password != null) {
       final digestRequest = DigestRequest();
       final response = await digestRequest.request(
-          uri: uri, login: login, password: password);
-      resBody = response.data as Map<String, dynamic>;
+          uri: uri, login: login, password: password, requestBody: requestBody);
+      resultBody = response.data as Map<String, dynamic>;
     } else {
       final url = Uri.http(uri, '/json_rpc');
       final headers = {'Content-type': 'application/json'};
-      final body =
-          json.encode({'jsonrpc': '2.0', 'id': '0', 'method': 'get_info'});
+      final body = json.encode(requestBody);
       final response =
           await http.post(url.toString(), headers: headers, body: body);
-      resBody = json.decode(response.body) as Map<String, dynamic>;
+      resultBody = json.decode(response.body) as Map<String, dynamic>;
     }
 
-    return !(resBody['result']['offline'] as bool);
+    return resultBody;
   }
 }

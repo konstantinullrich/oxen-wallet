@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:mobx/mobx.dart';
 import 'package:hive/hive.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
-import 'package:oxen_wallet/src/domain/common/node_list.dart';
+import 'package:oxen_wallet/src/node/node.dart';
+import 'package:oxen_wallet/src/node/node_list.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 
 part 'node_list_store.g.dart';
@@ -63,8 +63,7 @@ abstract class NodeListBase with Store {
 
   Future<bool> isNodeOnline(Node node) async {
     try {
-      return await node.requestNode(node.uri,
-          login: node.login, password: node.password);
+      return await node.isOnline();
     } catch (e) {
       return false;
     }

@@ -1,7 +1,7 @@
-import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
 import 'package:oxen_coin/structs/transaction_info_row.dart';
 import 'package:oxen_wallet/src/util/parseBoolFromString.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_direction.dart';
+import 'package:oxen_wallet/src/wallet/transaction/transaction_direction.dart';
 import 'package:oxen_wallet/src/domain/common/format_amount.dart';
 
 class TransactionInfo {

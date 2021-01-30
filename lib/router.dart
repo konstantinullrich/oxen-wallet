@@ -13,12 +13,12 @@ import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
-import 'package:oxen_wallet/src/oxen/transaction_description.dart';
-import 'package:oxen_wallet/src/oxen/account.dart';
-import 'package:oxen_wallet/src/domain/common/mnemotic_item.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_info.dart';
-import 'package:oxen_wallet/src/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/node/node.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
+import 'package:oxen_wallet/src/wallet/oxen/account.dart';
+import 'package:oxen_wallet/src/wallet/mnemotic_item.dart';
+import 'package:oxen_wallet/src/wallet/transaction/transaction_info.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 
 // MARK: Import stores
 

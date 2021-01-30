@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:oxen_coin/wallet_manager.dart' as oxen_wallet_manager;
-import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
-import 'package:oxen_wallet/src/domain/common/wallets_manager.dart';
-import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
+import 'package:oxen_wallet/src/wallet/wallet_info.dart';
+import 'package:oxen_wallet/src/wallet/wallet_type.dart';
+import 'package:oxen_wallet/src/wallet/wallets_manager.dart';
+import 'package:oxen_wallet/src/wallet/wallet.dart';
+import 'package:oxen_wallet/src/wallet/wallet_description.dart';
 
-import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_wallet.dart';
 import 'package:oxen_wallet/devtools.dart';
 
 Future<String> pathForWallet({String name}) async {

@@ -6,7 +6,7 @@ import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_description.dart';
+import 'package:oxen_wallet/src/wallet/wallet_description.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:oxen_wallet/src/stores/wallet_list/wallet_list_store.dart';

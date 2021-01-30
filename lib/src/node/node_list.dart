@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:yaml/yaml.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/node/node.dart';
 
 Future<List<Node>> loadDefaultNodes() async {
   final nodesRaw = await rootBundle.loadString('assets/node_list.yml');

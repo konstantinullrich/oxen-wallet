@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:oxen_wallet/src/domain/crypto_amount_format.dart';
+import 'package:oxen_wallet/src/wallet/crypto_amount_format.dart';
 
 const oxenAmountLength = 12;
 const oxenAmountDivider = 1000000000;

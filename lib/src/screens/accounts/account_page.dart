@@ -6,7 +6,7 @@ import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/src/oxen/account.dart';
+import 'package:oxen_wallet/src/wallet/oxen/account.dart';
 import 'package:oxen_wallet/palette.dart';
 
 class AccountPage extends BasePage {

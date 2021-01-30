@@ -9,7 +9,7 @@ import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
-import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/settings/attributes.dart';
