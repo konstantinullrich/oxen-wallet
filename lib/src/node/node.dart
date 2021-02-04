@@ -34,6 +34,9 @@ class Node extends HiveObject {
 
   Future<Map<String, dynamic>> sendRPCRequest(String method,
       {Map params}) async {
+
+
+
     Map<String, dynamic> resultBody;
 
     final requestBody = params != null
@@ -49,8 +52,9 @@ class Node extends HiveObject {
       final url = Uri.http(uri, '/json_rpc');
       final headers = {'Content-type': 'application/json'};
       final body = json.encode(requestBody);
+      print('Node Port: ${url.port}');
       final response =
-          await http.post(url.toString(), headers: headers, body: body);
+          await http.post(url, headers: headers, body: body);
       resultBody = json.decode(response.body) as Map<String, dynamic>;
     }
 

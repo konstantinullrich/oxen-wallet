@@ -1,23 +1,21 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
-import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/node/node.dart';
 import 'package:oxen_wallet/src/node/sync_status.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/start_updating_price.dart';
-import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:oxen_wallet/src/stores/login/login_store.dart';
-import 'package:oxen_wallet/src/stores/price/price_store.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/src/stores/login/login_store.dart';
 
 Timer _reconnectionTimer;
 ReactionDisposer _connectToNodeDisposer;
 ReactionDisposer _onSyncStatusChangeDisposer;
 ReactionDisposer _onCurrentWalletChangeDisposer;
-ReactionDisposer _onAuthenticationChangeDisposer;
 
 void setReactions(
     {@required SettingsStore settingsStore,
@@ -36,26 +34,10 @@ void setReactions(
       walletStore: walletStore,
       settingsStore: settingsStore,
       priceStore: priceStore);
-  onAuthenticationChange(
-    authenticationStore: authenticationStore,
-    loginStore: loginStore
-  );
   autorun((_) async {
     if (authenticationStore.state == AuthenticationState.allowed) {
-      // await loginStore.loadCurrentWallet();
-      authenticationStore.state = AuthenticationState.readyToLogin;
-    }
-  });
-}
-
-void onAuthenticationChange(
-    {AuthenticationStore authenticationStore, LoginStore loginStore}) {
-  _onAuthenticationChangeDisposer?.call();
-
-  _onAuthenticationChangeDisposer = reaction((_) => authenticationStore.state,
-      (AuthenticationState authenticationState) async {
-    if (authenticationState == AuthenticationState.authenticated) {
       await loginStore.loadCurrentWallet();
+      authenticationStore.state = AuthenticationState.readyToLogin;
     }
   });
 }

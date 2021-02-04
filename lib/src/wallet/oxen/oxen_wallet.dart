@@ -235,6 +235,14 @@ class OxenWallet extends Wallet {
       {Node node, bool useSSL = false, bool isLightWallet = false}) async {
     try {
       _syncStatus.value = ConnectingSyncStatus();
+
+      // Check if node is online to avoid crash
+      final nodeIsOnline = await node.isOnline();
+      if (!nodeIsOnline) {
+        _syncStatus.value = FailedSyncStatus();
+        return;
+      }
+
       await oxen_wallet.setupNode(
           address: node.uri,
           login: node.login,
@@ -369,8 +377,6 @@ class OxenWallet extends Wallet {
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
-    final currHeight = getCurrentHeight();
-
     await askForUpdateTransactionHistory();
     await askForUpdateBalance();
 
