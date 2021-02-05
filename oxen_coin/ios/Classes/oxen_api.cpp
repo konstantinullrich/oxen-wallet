@@ -485,7 +485,7 @@ extern "C"
     EXPORT
     int32_t stake_count() {
         auto* stakes = m_wallet->listCurrentStakes();
-        int32_t count = stakes->size();
+        int32_t count = static_cast<int32_t>(stakes->size());
         delete stakes;
         return count;
     }
@@ -657,7 +657,7 @@ extern "C"
     }
 
     EXPORT
-    int64_t *subaddrress_get_all()
+    int64_t *subaddress_get_all()
     {
         std::vector<Oxen::SubaddressRow *> _subaddresses = m_subaddress->getAll();
         size_t size = _subaddresses.size();
@@ -674,10 +674,10 @@ extern "C"
     }
 
     EXPORT
-    int32_t subaddrress_size()
+    int32_t subaddress_size()
     {
         std::vector<Oxen::SubaddressRow *> _subaddresses = m_subaddress->getAll();
-        return _subaddresses.size();
+        return static_cast<int32_t>(_subaddresses.size());
     }
 
     EXPORT

@@ -8,22 +8,22 @@ import 'package:oxen_coin/util/signatures.dart';
 import 'package:oxen_coin/util/types.dart';
 
 final subaddressSizeNative = oxenApi
-    .lookup<NativeFunction<subaddrress_size>>('subaddrress_size')
+    .lookup<NativeFunction<subaddress_size>>('subaddress_size')
     .asFunction<SubaddressSize>();
 
 final subaddressRefreshNative = oxenApi
-    .lookup<NativeFunction<subaddrress_refresh>>('subaddress_refresh')
+    .lookup<NativeFunction<subaddress_refresh>>('subaddress_refresh')
     .asFunction<SubaddressRefresh>();
 
-final subaddrressGetAllNative = oxenApi
-    .lookup<NativeFunction<subaddress_get_all>>('subaddrress_get_all')
+final subaddressGetAllNative = oxenApi
+    .lookup<NativeFunction<subaddress_get_all>>('subaddress_get_all')
     .asFunction<SubaddressGetAll>();
 
-final subaddrressAddNewNative = oxenApi
+final subaddressAddNewNative = oxenApi
     .lookup<NativeFunction<subaddress_add_new>>('subaddress_add_row')
     .asFunction<SubaddressAddNew>();
 
-final subaddrressSetLabelNative = oxenApi
+final subaddressSetLabelNative = oxenApi
     .lookup<NativeFunction<subaddress_set_label>>('subaddress_set_label')
     .asFunction<SubaddressSetLabel>();
 
@@ -32,7 +32,7 @@ void refreshSubaddresses({int accountIndex}) =>
 
 List<SubaddressRow> getAllSubaddresses() {
   final size = subaddressSizeNative();
-  final subaddressAddressesPointer = subaddrressGetAllNative();
+  final subaddressAddressesPointer = subaddressGetAllNative();
   final subaddressAddresses = subaddressAddressesPointer.asTypedList(size);
 
   return subaddressAddresses
@@ -42,7 +42,7 @@ List<SubaddressRow> getAllSubaddresses() {
 
 void addSubaddressSync({int accountIndex, String label}) {
   final labelPointer = Utf8.toUtf8(label);
-  subaddrressAddNewNative(accountIndex, labelPointer);
+  subaddressAddNewNative(accountIndex, labelPointer);
   free(labelPointer);
 }
 
@@ -50,7 +50,7 @@ void setLabelForSubaddressSync(
     {int accountIndex, int addressIndex, String label}) {
   final labelPointer = Utf8.toUtf8(label);
 
-  subaddrressSetLabelNative(accountIndex, addressIndex, labelPointer);
+  subaddressSetLabelNative(accountIndex, addressIndex, labelPointer);
   free(labelPointer);
 }
 

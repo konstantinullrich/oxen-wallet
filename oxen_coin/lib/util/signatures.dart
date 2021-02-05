@@ -62,9 +62,9 @@ typedef is_needed_to_refresh = Int8 Function();
 
 typedef is_new_transaction_exist = Int8 Function();
 
-typedef subaddrress_size = Int32 Function();
+typedef subaddress_size = Int32 Function();
 
-typedef subaddrress_refresh = Void Function(Int32);
+typedef subaddress_refresh = Void Function(Int32);
 
 typedef subaddress_get_all = Pointer<Int64> Function();
 
