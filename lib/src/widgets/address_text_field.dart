@@ -4,7 +4,7 @@ import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
-import 'package:oxen_wallet/src/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 
 enum AddressTextFieldOption { qrCode, addressBook, subaddressList }
 

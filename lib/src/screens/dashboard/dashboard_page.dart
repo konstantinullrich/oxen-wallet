@@ -6,7 +6,7 @@ import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:oxen_wallet/src/domain/common/sync_status.dart';
+import 'package:oxen_wallet/src/node/sync_status.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/dashboard/date_section_row.dart';
 import 'package:oxen_wallet/src/screens/dashboard/transaction_row.dart';

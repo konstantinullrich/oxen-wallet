@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/node/node.dart';
 import 'package:mobx/mobx.dart';
-import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/oxen/account.dart';
-import 'package:oxen_wallet/src/oxen/oxen_wallet.dart';
-import 'package:oxen_wallet/src/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/wallet/wallet.dart';
+import 'package:oxen_wallet/src/wallet/oxen/account.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_wallet.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';

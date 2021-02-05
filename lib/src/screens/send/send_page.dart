@@ -18,9 +18,9 @@ import 'package:oxen_wallet/src/stores/send/sending_state.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:oxen_wallet/src/oxen/calculate_estimated_fee.dart';
+import 'package:oxen_wallet/src/wallet/oxen/calculate_estimated_fee.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/domain/common/sync_status.dart';
+import 'package:oxen_wallet/src/node/sync_status.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 
 class SendPage extends BasePage {

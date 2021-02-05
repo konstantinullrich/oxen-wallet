@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:oxen_wallet/src/oxen/oxen_balance.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_balance.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/common/balance.dart';
+import 'package:oxen_wallet/src/wallet/wallet.dart';
+import 'package:oxen_wallet/src/wallet/balance.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/calculate_fiat_amount.dart';

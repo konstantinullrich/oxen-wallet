@@ -5,23 +5,23 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_coin/transaction_history.dart' as transaction_history;
 import 'package:oxen_coin/wallet.dart' as oxen_wallet;
-import 'package:oxen_wallet/src/domain/common/balance.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
-import 'package:oxen_wallet/src/domain/common/pending_transaction.dart';
-import 'package:oxen_wallet/src/domain/common/sync_status.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_creation_credentials.dart';
-import 'package:oxen_wallet/src/domain/common/transaction_history.dart';
-import 'package:oxen_wallet/src/domain/common/wallet.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_info.dart';
-import 'package:oxen_wallet/src/domain/common/wallet_type.dart';
-import 'package:oxen_wallet/src/oxen/account.dart';
-import 'package:oxen_wallet/src/oxen/account_list.dart';
-import 'package:oxen_wallet/src/oxen/oxen_amount_format.dart';
-import 'package:oxen_wallet/src/oxen/oxen_balance.dart';
-import 'package:oxen_wallet/src/oxen/oxen_transaction_creation_credentials.dart';
-import 'package:oxen_wallet/src/oxen/oxen_transaction_history.dart';
-import 'package:oxen_wallet/src/oxen/subaddress.dart';
-import 'package:oxen_wallet/src/oxen/subaddress_list.dart';
+import 'package:oxen_wallet/src/node/node.dart';
+import 'package:oxen_wallet/src/node/sync_status.dart';
+import 'package:oxen_wallet/src/wallet/balance.dart';
+import 'package:oxen_wallet/src/wallet/oxen/account.dart';
+import 'package:oxen_wallet/src/wallet/oxen/account_list.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_balance.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress_list.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_history.dart';
+import 'package:oxen_wallet/src/wallet/transaction/pending_transaction.dart';
+import 'package:oxen_wallet/src/wallet/transaction/transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/wallet/transaction/transaction_history.dart';
+import 'package:oxen_wallet/src/wallet/wallet.dart';
+import 'package:oxen_wallet/src/wallet/wallet_info.dart';
+import 'package:oxen_wallet/src/wallet/wallet_type.dart';
 import 'package:rxdart/rxdart.dart';
 
 const oxenBlockSize = 1000;
@@ -235,6 +235,14 @@ class OxenWallet extends Wallet {
       {Node node, bool useSSL = false, bool isLightWallet = false}) async {
     try {
       _syncStatus.value = ConnectingSyncStatus();
+
+      // Check if node is online to avoid crash
+      final nodeIsOnline = await node.isOnline();
+      if (!nodeIsOnline) {
+        _syncStatus.value = FailedSyncStatus();
+        return;
+      }
+
       await oxen_wallet.setupNode(
           address: node.uri,
           login: node.login,
@@ -369,8 +377,6 @@ class OxenWallet extends Wallet {
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
-    final currHeight = getCurrentHeight();
-
     await askForUpdateTransactionHistory();
     await askForUpdateBalance();
 

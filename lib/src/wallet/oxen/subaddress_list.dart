@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:oxen_coin/subaddress_list.dart' as subaddress_list;
-import 'package:oxen_wallet/src/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 
 class SubaddressList {
   SubaddressList() {

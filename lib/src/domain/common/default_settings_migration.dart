@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:oxen_wallet/src/domain/common/node.dart';
+import 'package:oxen_wallet/src/node/node.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
-import 'package:oxen_wallet/src/domain/common/node_list.dart';
-import 'package:oxen_wallet/src/oxen/transaction_priority.dart';
+import 'package:oxen_wallet/src/node/node_list.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
 
 Future defaultSettingsMigration(
     {@required int version,

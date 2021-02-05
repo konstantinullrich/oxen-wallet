@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/oxen/transaction_description.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
 import 'package:oxen_wallet/src/screens/dashboard/dashboard_page.dart';
 import 'package:oxen_wallet/src/stores/action_list/action_list_store.dart';
 import 'package:oxen_wallet/src/stores/action_list/transaction_filter_store.dart';
