@@ -51,7 +51,7 @@ class StakePageBodyState extends State<StakePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    print('Stake ${allStakes[0].getServiceNodeKey()}');
+    if (allStakes.isNotEmpty) print('Stake ${allStakes[0].getServiceNodeKey()}');
     return SingleChildScrollView(
         child: Column(
       children: <Widget>[

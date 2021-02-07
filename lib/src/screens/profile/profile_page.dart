@@ -10,31 +10,6 @@ import 'package:oxen_wallet/src/widgets/nav/nav_list_header.dart';
 class ProfilePage extends BasePage {
   final _bodyKey = GlobalKey();
 
-  // @override
-  // Widget middle(BuildContext context) {
-  //   final walletStore = Provider.of<WalletStore>(context);
-  //
-  //   return Observer(builder: (_) {
-  //     return Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: <Widget>[
-  //           Text(
-  //             walletStore.name,
-  //             style: TextStyle(
-  //                 color: Theme.of(context).primaryTextTheme.headline6.color),
-  //           ),
-  //           SizedBox(height: 5),
-  //           Text(
-  //             walletStore.account != null ? '${walletStore.account.label}' : '',
-  //             style: TextStyle(
-  //                 fontWeight: FontWeight.w400,
-  //                 fontSize: 10,
-  //                 color: Theme.of(context).primaryTextTheme.headline6.color),
-  //           ),
-  //         ]);
-  //   });
-  // }
-
   @override
   Widget trailing(BuildContext context) {
     return SizedBox(
