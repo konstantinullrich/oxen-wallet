@@ -100,7 +100,7 @@ abstract class SendStoreBase with Store {
 
   @action
   void setSendAll() {
-    cryptoAmount = 'ALL';
+    cryptoAmount = S.current.all;
     fiatAmount = '';
   }
 
