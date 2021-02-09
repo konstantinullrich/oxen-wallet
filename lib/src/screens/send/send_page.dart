@@ -1,27 +1,27 @@
-import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
-import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/src/widgets/address_text_field.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
+import 'package:oxen_wallet/src/node/sync_status.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
-import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/stores/send/send_store.dart';
 import 'package:oxen_wallet/src/stores/send/sending_state.dart';
-import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
-import 'package:oxen_wallet/src/wallet/oxen/calculate_estimated_fee.dart';
-import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/node/sync_status.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/wallet/oxen/calculate_estimated_fee.dart';
+import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:provider/provider.dart';
 
 class SendPage extends BasePage {
   @override
@@ -56,7 +56,7 @@ class SendFormState extends State<SendForm> {
   @override
   void initState() {
     _focusNode.addListener(() {
-      if (!_focusNode.hasFocus &&_addressController.text.isNotEmpty) {
+      if (!_focusNode.hasFocus && _addressController.text.isNotEmpty) {
         getOpenaliasRecord(context);
       }
     });
@@ -66,7 +66,8 @@ class SendFormState extends State<SendForm> {
 
   Future<void> getOpenaliasRecord(BuildContext context) async {
     final sendStore = Provider.of<SendStore>(context);
-    final isOpenalias = await sendStore.isOpenaliasRecord(_addressController.text);
+    final isOpenalias =
+        await sendStore.isOpenaliasRecord(_addressController.text);
 
     if (isOpenalias) {
       _addressController.text = sendStore.recordAddress;
@@ -76,7 +77,8 @@ class SendFormState extends State<SendForm> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text(S.of(context).openalias_alert_title),
-              content: Text(S.of(context).openalias_alert_content(sendStore.recordName)),
+              content: Text(
+                  S.of(context).openalias_alert_content(sendStore.recordName)),
               actions: <Widget>[
                 FlatButton(
                     child: Text(S.of(context).ok),
@@ -149,7 +151,7 @@ class SendFormState extends State<SendForm> {
                       final availableBalance =
                           savedDisplayMode == BalanceDisplayMode.hiddenBalance
                               ? '---'
-                              : balanceStore.unlockedBalance;
+                              : balanceStore.unlockedBalanceString;
 
                       return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -224,8 +226,7 @@ class SendFormState extends State<SendForm> {
                             signed: false, decimal: true),
                         inputFormatters: [
                           FilteringTextInputFormatter.deny(
-                              RegExp('[\\-|\\ |\\,]')
-                          )
+                              RegExp('[\\-|\\ |\\,]'))
                         ],
                         decoration: InputDecoration(
                             prefixIcon: Padding(
@@ -285,8 +286,7 @@ class SendFormState extends State<SendForm> {
                             signed: false, decimal: true),
                         inputFormatters: [
                           FilteringTextInputFormatter.deny(
-                              RegExp('[\\-|\\ |\\,]')
-                          )
+                              RegExp('[\\-|\\ |\\,]'))
                         ],
                         decoration: InputDecoration(
                             prefixIcon: Padding(
@@ -390,8 +390,7 @@ class SendFormState extends State<SendForm> {
                                           Navigator.of(auth.context).pop();
 
                                           sendStore.createTransaction(
-                                              address: _addressController.text
-                                          );
+                                              address: _addressController.text);
                                         });
                                       }),
                                   FlatButton(

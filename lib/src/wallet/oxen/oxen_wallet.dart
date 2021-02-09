@@ -10,7 +10,6 @@ import 'package:oxen_wallet/src/node/sync_status.dart';
 import 'package:oxen_wallet/src/wallet/balance.dart';
 import 'package:oxen_wallet/src/wallet/oxen/account.dart';
 import 'package:oxen_wallet/src/wallet/oxen/account_list.dart';
-import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/oxen_balance.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress_list.dart';
@@ -170,12 +169,10 @@ class OxenWallet extends Wallet {
   Future<String> getSeed() async => oxen_wallet.getSeed();
 
   @override
-  Future<String> getFullBalance() async => oxenAmountToString(
-      amount: oxen_wallet.getFullBalance(accountIndex: _account.value.id));
+  Future<int> getFullBalance() async => oxen_wallet.getFullBalance(accountIndex: _account.value.id);
 
   @override
-  Future<String> getUnlockedBalance() async => oxenAmountToString(
-      amount: oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id));
+  Future<int> getUnlockedBalance() async => oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
 
   @override
   int getCurrentHeight() => oxen_wallet.getCurrentHeight();

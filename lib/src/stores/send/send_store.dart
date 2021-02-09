@@ -7,7 +7,6 @@ import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/openalias_record.dart';
 import 'package:oxen_wallet/src/wallet/transaction/pending_transaction.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_creation_credentials.dart';
 import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
@@ -101,7 +100,7 @@ abstract class SendStoreBase with Store {
 
   @action
   void setSendAll() {
-    cryptoAmount = 'ALL';
+    cryptoAmount = S.current.all;
     fiatAmount = '';
   }
 
@@ -228,7 +227,7 @@ abstract class SendStoreBase with Store {
     errorMessage = isValid ? null : S.current.error_text_address;
   }
 
-  void validateOXEN(String value, String availableBalance) {
+  void validateOXEN(String value, int availableBalance) {
     const maxValue = 18446744.073709551616;
     const pattern = '^([0-9]+([.][0-9]{0,12})?|[.][0-9]{1,12})\$|ALL';
     final regExp = RegExp(pattern);
@@ -239,7 +238,7 @@ abstract class SendStoreBase with Store {
       } else {
         try {
           final dValue = double.parse(value);
-          final maxAvailable = stringToOxenDouble(amount: availableBalance);
+          final maxAvailable = availableBalance;
           isValid =
               (dValue <= maxAvailable && dValue <= maxValue && dValue > 0);
         } catch (e) {

@@ -16,8 +16,7 @@ class SettingsSwitchListRow extends StatelessWidget {
     final settingsStore = Provider.of<SettingsStore>(context);
     final _themeChanger = Provider.of<ThemeChanger>(context);
 
-    if (settingsStore.itemHeaders[title] ==
-        S.of(context).settings_save_recipient_address) {
+    if (title == S.of(context).settings_save_recipient_address) {
       return Observer(
           builder: (_) => StandartSwitch(
               value: settingsStore.shouldSaveRecipientAddress,
@@ -28,8 +27,7 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
-    if (settingsStore.itemHeaders[title] ==
-        S.of(context).settings_allow_biometrical_authentication) {
+    if (title == S.of(context).settings_allow_biometrical_authentication) {
       return Observer(
           builder: (_) => StandartSwitch(
               value: settingsStore.allowBiometricAuthentication,
@@ -41,7 +39,7 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
-    if (settingsStore.itemHeaders[title] == S.of(context).settings_dark_mode) {
+    if (title == S.of(context).settings_dark_mode) {
       return Observer(
           builder: (_) => StandartSwitch(
               value: settingsStore.isDarkTheme,
@@ -54,8 +52,7 @@ class SettingsSwitchListRow extends StatelessWidget {
     }
 
 
-    if (settingsStore.itemHeaders[title] ==
-        S.of(context).settings_enable_fiat_currency) {
+    if (title == S.of(context).settings_enable_fiat_currency) {
       return Observer(
           builder: (_) => StandartSwitch(
               value: settingsStore.enableFiatCurrency,
@@ -71,14 +68,12 @@ class SettingsSwitchListRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final settingsStore = Provider.of<SettingsStore>(context);
-
     return Container(
       color: Theme.of(context).accentTextTheme.headline5.backgroundColor,
       child: ListTile(
           contentPadding: EdgeInsets.only(left: 20.0, right: 20.0),
           title: Observer(
-            builder: (_) => Text(settingsStore.itemHeaders[title],
+            builder: (_) => Text(title,
                 style: TextStyle(
                     fontSize: 16.0,
                     color: Theme.of(context).primaryTextTheme.headline6.color)),

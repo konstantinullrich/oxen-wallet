@@ -31,37 +31,20 @@ final dates = {
   '2020-08': 589403,
   '2020-09': 611688,
   '2020-10': 633162,
-  '2020-11': 655439
+  '2020-11': 655439,
+  '2020-12': 677039,
+  '2021-01': 699359,
+  '2021-02': 721679
 };
 
 int getHeightByDate({DateTime date}) {
-  final raw = '${date.year}-${date.month}';
-  var endHeight = dates[raw] ?? 0;
-  var preLastYear = date.year;
-  var preLastMonth = date.month - 1;
+  final raw = '${date.year}-${date.month < 10 ? '0${date.month}' : date.month}';
+  final firstDate = dateFormat.parse(dates.keys.first);
+  var height = dates[raw] ?? 0;
 
-  if (endHeight <= 0) {
-    endHeight = dates.values.toList()[dates.length - 1];
-    final preLastDate =
-        dateFormat.parse(dates.keys.elementAt(dates.keys.length - 2));
-    preLastYear = preLastDate.year;
-    preLastMonth = preLastDate.month;
-  } else {
-    preLastYear = date.year;
-    preLastMonth = date.month - 1;
+  if (height <= 0 && date.isAfter(firstDate)) {
+    height = dates.values.last;
   }
-
-  if (preLastMonth <= 0) {
-    preLastMonth = 12;
-    preLastYear -= 1;
-  }
-
-  final startRaw = '$preLastYear-$preLastMonth';
-  final startHeight = dates[startRaw];
-  final diff = endHeight - startHeight;
-  final heightPerDay = diff / 30;
-  final daysHeight = date.day * heightPerDay.round();
-  final height = endHeight + daysHeight;
 
   return height;
 }

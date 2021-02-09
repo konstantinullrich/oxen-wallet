@@ -1645,6 +1645,16 @@ class S {
     );
   }
 
+  /// `Decimals`
+  String get settings_balance_detail {
+    return Intl.message(
+      'Decimals',
+      name: 'settings_balance_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Currency`
   String get settings_currency {
     return Intl.message(
@@ -1765,26 +1775,6 @@ class S {
     );
   }
 
-  /// `Only trades`
-  String get settings_only_trades {
-    return Intl.message(
-      'Only trades',
-      name: 'settings_only_trades',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Only transactions`
-  String get settings_only_transactions {
-    return Intl.message(
-      'Only transactions',
-      name: 'settings_only_transactions',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `None`
   String get settings_none {
     return Intl.message(
@@ -1830,6 +1820,46 @@ class S {
     return Intl.message(
       'PIN is incorrect',
       name: 'pin_is_incorrect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `9 - Ultra`
+  String get amount_detail_ultra {
+    return Intl.message(
+      '9 - Ultra',
+      name: 'amount_detail_ultra',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `0 - None`
+  String get amount_detail_none {
+    return Intl.message(
+      '0 - None',
+      name: 'amount_detail_none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4 - Detailed`
+  String get amount_detail_detailed {
+    return Intl.message(
+      '4 - Detailed',
+      name: 'amount_detail_detailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2 - Normal`
+  String get amount_detail_normal {
+    return Intl.message(
+      '2 - Normal',
+      name: 'amount_detail_normal',
       desc: '',
       args: [],
     );

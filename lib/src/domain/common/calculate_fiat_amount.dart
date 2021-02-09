@@ -1,9 +1,10 @@
-String calculateFiatAmount({double price, String cryptoAmount}) {
+import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
+
+String calculateFiatAmount({double price, int cryptoAmount}) {
   if (price == null || cryptoAmount == null) {
     return '0.00';
   }
-  final _amount = double.parse(cryptoAmount.replaceAll(',', '.'));
-  final result = price * _amount;
+  final result = price * oxenAmountToDouble(cryptoAmount);
 
   if (result == 0.0) {
     return '0.00';

@@ -1,5 +1,11 @@
 -
-  version: 1.0.1
+  version: 1.0.3
+  changes:
+    - Face ID is now working correclty
+    - Support OpenAlias
+    - Dynamic Decimals Wow!
+-
+  version: 1.0.2
   changes:
     - Some iOS fixes
 -

@@ -30,13 +30,13 @@ class OpenaliasRecord {
           for (var element in txtRecord) {
             var record = element.data;
 
-            if (record.contains('oa1:xmr') && record.contains('recipient_address')) {
+            if (record.contains('oa1:oxen') && record.contains('recipient_address')) {
               record = record.replaceAll('"', '');
 
               final dataList = record.split(';');
 
               address = dataList.where((item) => (item.contains('recipient_address')))
-                  .toString().replaceAll('oa1:xmr recipient_address=', '')
+                  .toString().replaceAll('oa1:oxen recipient_address=', '')
                   .replaceAll('(', '').replaceAll(')', '').trim();
 
               final recipientName = dataList.where((item) => (item.contains('recipient_name'))).toString()

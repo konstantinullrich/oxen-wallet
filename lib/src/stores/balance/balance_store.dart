@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/oxen_balance.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/foundation.dart';
@@ -38,10 +39,28 @@ abstract class BalanceStoreBase with Store {
   }
 
   @observable
-  String fullBalance;
+  int fullBalance;
 
   @observable
-  String unlockedBalance;
+  int unlockedBalance;
+
+  @computed
+  String get fullBalanceString {
+    if (fullBalance == null) {
+      return oxenAmountToString(0, detail: _settingsStore.balanceDetail);
+    }
+
+    return oxenAmountToString(fullBalance, detail: _settingsStore.balanceDetail);
+  }
+
+  @computed
+  String get unlockedBalanceString {
+    if (unlockedBalance == null) {
+      return oxenAmountToString(0, detail: _settingsStore.balanceDetail);
+    }
+
+    return oxenAmountToString(unlockedBalance, detail: _settingsStore.balanceDetail);
+  }
 
   @computed
   String get fiatFullBalance {
