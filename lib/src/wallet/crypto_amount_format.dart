@@ -13,9 +13,9 @@ class AmountDetail {
     AmountDetail.none
   ];
   static const AmountDetail ultra = AmountDetail(0, 9);
-  static const AmountDetail none = AmountDetail(1, 0);
-  static const AmountDetail detailed = AmountDetail(2, 4);
-  static const AmountDetail normal = AmountDetail(3, 2);
+  static const AmountDetail detailed = AmountDetail(1, 4);
+  static const AmountDetail normal = AmountDetail(2, 2);
+  static const AmountDetail none = AmountDetail(3, 0);
 
   static AmountDetail deserialize(int index) {
     return all.firstWhere((element) => element.index == index,
@@ -28,11 +28,11 @@ class AmountDetail {
       case (0):
         return S.current.amount_detail_ultra;
       case (1):
-        return S.current.amount_detail_none;
-      case (2):
         return S.current.amount_detail_detailed;
-      case (3):
+      case (2):
         return S.current.amount_detail_normal;
+      case (3):
+        return S.current.amount_detail_none;
       default:
         return '';
     }
