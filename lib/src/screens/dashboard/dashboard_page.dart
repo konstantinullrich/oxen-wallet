@@ -240,15 +240,16 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
 
                                       if (displayMode ==
                                           BalanceDisplayMode.availableBalance) {
-                                        balance =
-                                            balanceStore.unlockedBalance ??
-                                                '0.0';
+                                        balance = balanceStore
+                                                .unlockedBalanceString ??
+                                            '0.0';
                                       }
 
                                       if (displayMode ==
                                           BalanceDisplayMode.fullBalance) {
                                         balance =
-                                            balanceStore.fullBalance ?? '0.0';
+                                            balanceStore.fullBalanceString ??
+                                                '0.0';
                                       }
 
                                       return Text(

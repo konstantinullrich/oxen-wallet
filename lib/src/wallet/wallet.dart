@@ -36,9 +36,9 @@ abstract class Wallet {
 
   Future<Map<String, String>> getKeys();
 
-  Future<String> getFullBalance();
+  Future<int> getFullBalance();
 
-  Future<String> getUnlockedBalance();
+  Future<int> getUnlockedBalance();
 
   int getCurrentHeight();
 

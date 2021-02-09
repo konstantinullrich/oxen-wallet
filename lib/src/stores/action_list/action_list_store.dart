@@ -88,7 +88,7 @@ abstract class ActionListBase with Store {
 
     _transactions.forEach((item) {
       final amount = calculateFiatAmountRaw(
-          cryptoAmount: oxenAmountToDouble(amount: item.transaction.amount),
+          cryptoAmount: oxenAmountToDouble(item.transaction.amount),
           price: price);
       item.transaction.changeFiatAmount(amount);
     });
@@ -123,7 +123,6 @@ abstract class ActionListBase with Store {
   StreamSubscription<List<TransactionInfo>> _onTransactionsChangeSubscription;
   StreamSubscription<Account> _onAccountChangeSubscription;
   StreamSubscription<BoxEvent> _onTransactionDescriptions;
-  StreamSubscription<BoxEvent> _onTradesChanged;
 
 //  @override
 //  void dispose() {

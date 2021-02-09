@@ -88,10 +88,10 @@ class WalletService extends Wallet {
   Future<Map<String, String>> getKeys() => _currentWallet.getKeys();
 
   @override
-  Future<String> getFullBalance() => _currentWallet.getFullBalance();
+  Future<int> getFullBalance() => _currentWallet.getFullBalance();
 
   @override
-  Future<String> getUnlockedBalance() => _currentWallet.getUnlockedBalance();
+  Future<int> getUnlockedBalance() => _currentWallet.getUnlockedBalance();
 
   @override
   int getCurrentHeight() => _currentWallet.getCurrentHeight();
