@@ -1,29 +1,30 @@
-import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:oxen_wallet/palette.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
-import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/src/screens/settings/attributes.dart';
 import 'package:oxen_wallet/src/screens/disclaimer/disclaimer_page.dart';
+import 'package:oxen_wallet/src/screens/settings/attributes.dart';
 import 'package:oxen_wallet/src/screens/settings/items/settings_item.dart';
-import 'package:oxen_wallet/src/screens/settings/items/item_headers.dart';
-import 'package:oxen_wallet/src/widgets/present_picker.dart';
-import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
+
 // Settings widgets
-import 'package:oxen_wallet/src/screens/settings/widgets/settings_header_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_link_list_row.dart';
+import 'package:oxen_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_switch_list_row.dart';
 import 'package:oxen_wallet/src/screens/settings/widgets/settings_text_list_row.dart';
-import 'package:oxen_wallet/src/screens/settings/widgets/settings_raw_widget_list_row.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/wallet/crypto_amount_format.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
+import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
+import 'package:oxen_wallet/src/widgets/nav/nav_list_header.dart';
+import 'package:oxen_wallet/src/widgets/present_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends BasePage {
   @override
@@ -68,14 +69,12 @@ class SettingsFormState extends State<SettingsForm> {
 
   void _setSettingsList() {
     final settingsStore = Provider.of<SettingsStore>(context);
-
-    settingsStore.setItemHeaders();
-
     _items.addAll([
-      SettingsItem(title: ItemHeaders.nodes, attribute: Attributes.header),
+      SettingsItem(
+          title: S.current.settings_nodes, attribute: Attributes.header),
       SettingsItem(
           onTaped: () => Navigator.of(context).pushNamed(Routes.nodeList),
-          title: ItemHeaders.currentNode,
+          title: S.current.settings_current_node,
           widget: Observer(
               builder: (_) => Text(
                     settingsStore.node == null ? '' : settingsStore.node.uri,
@@ -86,10 +85,11 @@ class SettingsFormState extends State<SettingsForm> {
                             Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
-      SettingsItem(title: ItemHeaders.wallets, attribute: Attributes.header),
+      SettingsItem(
+          title: S.current.settings_wallets, attribute: Attributes.header),
       SettingsItem(
           onTaped: () => _setBalance(context),
-          title: ItemHeaders.displayBalanceAs,
+          title: S.current.settings_display_balance_as,
           widget: Observer(
               builder: (_) => Text(
                     settingsStore.balanceDisplayMode.toString(),
@@ -100,10 +100,25 @@ class SettingsFormState extends State<SettingsForm> {
                             Theme.of(context).primaryTextTheme.subtitle2.color),
                   )),
           attribute: Attributes.widget),
-      SettingsItem(title: ItemHeaders.enableFiatCurrency, attribute: Attributes.switcher),
+      SettingsItem(
+          onTaped: () => _setBalanceDetail(context),
+          title: S.current.settings_balance_detail,
+          widget: Observer(
+              builder: (_) => Text(
+                settingsStore.balanceDetail.toString(),
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    color:
+                    Theme.of(context).primaryTextTheme.subtitle2.color),
+              )),
+          attribute: Attributes.widget),
+      SettingsItem(
+          title: S.current.settings_enable_fiat_currency,
+          attribute: Attributes.switcher),
       SettingsItem(
           onTaped: () => _setCurrency(context),
-          title: ItemHeaders.currency,
+          title: S.current.settings_currency,
           widget: Observer(
               builder: (_) => Text(
                     settingsStore.fiatCurrency.toString(),
@@ -116,7 +131,7 @@ class SettingsFormState extends State<SettingsForm> {
           attribute: Attributes.widget),
       SettingsItem(
           onTaped: () => _setTransactionPriority(context),
-          title: ItemHeaders.feePriority,
+          title: S.current.settings_fee_priority,
           widget: Observer(
               builder: (_) => Text(
                     settingsStore.transactionPriority.toString(),
@@ -128,9 +143,10 @@ class SettingsFormState extends State<SettingsForm> {
                   )),
           attribute: Attributes.widget),
       SettingsItem(
-          title: ItemHeaders.saveRecipientAddress,
+          title: S.current.settings_save_recipient_address,
           attribute: Attributes.switcher),
-      SettingsItem(title: ItemHeaders.personal, attribute: Attributes.header),
+      SettingsItem(
+          title: S.current.settings_personal, attribute: Attributes.header),
       SettingsItem(
           onTaped: () {
             Navigator.of(context).pushNamed(Routes.auth,
@@ -143,17 +159,19 @@ class SettingsFormState extends State<SettingsForm> {
                                     Navigator.of(context).pop())
                         : null);
           },
-          title: ItemHeaders.changePIN,
+          title: S.current.settings_change_pin,
           attribute: Attributes.arrow),
       SettingsItem(
           onTaped: () => Navigator.pushNamed(context, Routes.changeLanguage),
-          title: ItemHeaders.changeLanguage,
+          title: S.current.settings_change_language,
           attribute: Attributes.arrow),
       SettingsItem(
-          title: ItemHeaders.allowBiometricAuthentication,
+          title: S.current.settings_allow_biometrical_authentication,
           attribute: Attributes.switcher),
-      SettingsItem(title: ItemHeaders.darkMode, attribute: Attributes.switcher),
-      SettingsItem(title: ItemHeaders.support, attribute: Attributes.header),
+      SettingsItem(
+          title: S.current.settings_dark_mode, attribute: Attributes.switcher),
+      SettingsItem(
+          title: S.current.settings_support, attribute: Attributes.header),
       SettingsItem(
           onTaped: () => _launchUrl(_emailUrl),
           title: 'Email',
@@ -185,15 +203,15 @@ class SettingsFormState extends State<SettingsForm> {
                 CupertinoPageRoute<void>(
                     builder: (BuildContext context) => DisclaimerPage()));
           },
-          title: ItemHeaders.termsAndConditions,
+          title: S.current.settings_terms_and_conditions,
           attribute: Attributes.arrow),
       SettingsItem(
           onTaped: () => Navigator.pushNamed(context, Routes.faq),
-          title: ItemHeaders.faq,
+          title: S.current.faq,
           attribute: Attributes.arrow),
       SettingsItem(
           onTaped: () => Navigator.pushNamed(context, Routes.changelog),
-          title: ItemHeaders.changelog,
+          title: S.current.changelog,
           attribute: Attributes.arrow)
     ]);
     setState(() {});
@@ -215,9 +233,7 @@ class SettingsFormState extends State<SettingsForm> {
           text: item.title,
         );
       case Attributes.header:
-        return SettingsHeaderListRow(
-          title: item.title,
-        );
+        return NavListHeader(title: item.title);
       case Attributes.link:
         return SettingsLinktListRow(
           onTaped: item.onTaped,
@@ -245,7 +261,6 @@ class SettingsFormState extends State<SettingsForm> {
   @override
   Widget build(BuildContext context) {
     final settingsStore = Provider.of<SettingsStore>(context);
-    settingsStore.setItemHeaders();
 
     return SingleChildScrollView(
         child: Column(
@@ -290,11 +305,8 @@ class SettingsFormState extends State<SettingsForm> {
             }),
         ListTile(
           contentPadding: EdgeInsets.only(left: 20.0),
-          title: Text(
-            settingsStore.itemHeaders[ItemHeaders.version],
-            style: TextStyle(
-              fontSize: 14.0, color: Palette.wildDarkBlue)
-          ),
+          title: Text(S.current.version(settingsStore.currentVersion),
+              style: TextStyle(fontSize: 14.0, color: Palette.wildDarkBlue)),
         )
       ],
     ));
@@ -308,6 +320,15 @@ class SettingsFormState extends State<SettingsForm> {
     if (selectedDisplayMode != null) {
       await settingsStore.setCurrentBalanceDisplayMode(
           balanceDisplayMode: selectedDisplayMode);
+    }
+  }
+
+  Future<void> _setBalanceDetail(BuildContext context) async {
+    final settingsStore = Provider.of<SettingsStore>(context);
+    final balanceDetail = await presentPicker(context, AmountDetail.all);
+
+    if (balanceDetail != null) {
+      await settingsStore.setCurrentBalanceDetail(balanceDetail: balanceDetail);
     }
   }
 

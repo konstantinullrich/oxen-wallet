@@ -9,8 +9,8 @@ class PendingTransaction {
 
   PendingTransaction.fromTransactionDescription(
       PendingTransactionDescription transactionDescription)
-      : amount = oxenAmountToString(amount: transactionDescription.amount),
-        fee = oxenAmountToString(amount: transactionDescription.fee),
+      : amount = oxenAmountToString(transactionDescription.amount),
+        fee = oxenAmountToString(transactionDescription.fee),
         hash = transactionDescription.hash,
         _pointerAddress = transactionDescription.pointerAddress;
 

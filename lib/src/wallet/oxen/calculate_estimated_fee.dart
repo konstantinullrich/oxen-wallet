@@ -3,5 +3,5 @@ import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
 
 double calculateEstimatedFee({OxenTransactionPriority priority}) {
-  return oxenAmountToDouble(amount: estimateTransactionFee(priority.raw));
+  return oxenAmountToDouble(estimateTransactionFee(priority.raw));
 }
