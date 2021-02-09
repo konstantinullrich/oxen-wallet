@@ -12,7 +12,7 @@ class AmountDetail {
     AmountDetail.normal,
     AmountDetail.none
   ];
-  static const AmountDetail ultra = AmountDetail(0, 12);
+  static const AmountDetail ultra = AmountDetail(0, 9);
   static const AmountDetail none = AmountDetail(1, 0);
   static const AmountDetail detailed = AmountDetail(2, 4);
   static const AmountDetail normal = AmountDetail(3, 2);

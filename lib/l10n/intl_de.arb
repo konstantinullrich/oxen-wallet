@@ -211,7 +211,7 @@
   "settings_enable_fiat_currency": "In Fiat Währung umrechnen",
   "pin_is_incorrect" : "PIN ist falsch",
 
-  "amount_detail_ultra": "12 - Ultra",
+  "amount_detail_ultra": "9 - Ultra",
   "amount_detail_none": "0 - Keine",
   "amount_detail_detailed": "4 - Detailliert",
   "amount_detail_normal": "2 - Normal",

@@ -1825,10 +1825,10 @@ class S {
     );
   }
 
-  /// `12 - Ultra`
+  /// `9 - Ultra`
   String get amount_detail_ultra {
     return Intl.message(
-      '12 - Ultra',
+      '9 - Ultra',
       name: 'amount_detail_ultra',
       desc: '',
       args: [],

@@ -213,7 +213,7 @@
   "settings_enable_fiat_currency": "Enable Fiat Currency conversion",
   "pin_is_incorrect" : "PIN is incorrect",
 
-  "amount_detail_ultra": "12 - Ultra",
+  "amount_detail_ultra": "9 - Ultra",
   "amount_detail_none": "0 - None",
   "amount_detail_detailed": "4 - Detailed",
   "amount_detail_normal": "2 - Normal",

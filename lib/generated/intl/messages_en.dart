@@ -91,7 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "amount_detail_detailed" : MessageLookupByLibrary.simpleMessage("4 - Detailed"),
     "amount_detail_none" : MessageLookupByLibrary.simpleMessage("0 - None"),
     "amount_detail_normal" : MessageLookupByLibrary.simpleMessage("2 - Normal"),
-    "amount_detail_ultra" : MessageLookupByLibrary.simpleMessage("12 - Ultra"),
+    "amount_detail_ultra" : MessageLookupByLibrary.simpleMessage("9 - Ultra"),
     "amount_is_estimate" : MessageLookupByLibrary.simpleMessage("The receive amount is an estimate"),
     "amount_is_guaranteed" : MessageLookupByLibrary.simpleMessage("The receive amount is guaranteed"),
     "auth_store_ban_timeout" : MessageLookupByLibrary.simpleMessage("ban_timeout"),
