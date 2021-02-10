@@ -26,7 +26,7 @@ PODS:
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - SwiftProtobuf (1.10.0)
+  - SwiftProtobuf (1.15.0)
   - url_launcher (0.0.1):
     - Flutter
 
@@ -88,7 +88,7 @@ SPEC CHECKSUMS:
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  SwiftProtobuf: bfafffa9e26d1561c3bd0045e188c4fab5f527ae
+  SwiftProtobuf: 3320217e9d8fb75f36b40282e78c482640fd75dd
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
 PODFILE CHECKSUM: f10c0438b63bc24e6bbc207956dc27d16c4408f2
