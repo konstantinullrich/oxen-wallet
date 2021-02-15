@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/theme_changer.dart';
-import 'package:oxen_wallet/themes.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/widgets/standart_switch.dart';
+import 'package:oxen_wallet/theme_changer.dart';
+import 'package:oxen_wallet/themes.dart';
+import 'package:provider/provider.dart';
 
 class SettingsSwitchListRow extends StatelessWidget {
   SettingsSwitchListRow({@required this.title});
@@ -51,7 +51,6 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
-
     if (title == S.of(context).settings_enable_fiat_currency) {
       return Observer(
           builder: (_) => StandartSwitch(
@@ -72,12 +71,10 @@ class SettingsSwitchListRow extends StatelessWidget {
       color: Theme.of(context).accentTextTheme.headline5.backgroundColor,
       child: ListTile(
           contentPadding: EdgeInsets.only(left: 20.0, right: 20.0),
-          title: Observer(
-            builder: (_) => Text(title,
-                style: TextStyle(
-                    fontSize: 16.0,
-                    color: Theme.of(context).primaryTextTheme.headline6.color)),
-          ),
+          title: Text(title,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).primaryTextTheme.headline6.color)),
           trailing: _getSwitch(context)),
     );
   }

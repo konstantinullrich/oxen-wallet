@@ -46,7 +46,6 @@ class _WalletNameFormState extends State<WalletNameForm> {
 
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
-  String _generatedName;
 
   Future setName() async {
     final name = await generateName();
@@ -89,7 +88,7 @@ class _WalletNameFormState extends State<WalletNameForm> {
             padding: EdgeInsets.all(20),
             child: Image.asset('assets/images/oxen.png',
                 height: 124, width: 400),
-          ), // TODO: Wait for new Images
+          ),
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: Form(

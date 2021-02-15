@@ -355,16 +355,6 @@ class S {
     );
   }
 
-  /// `Trades`
-  String get trades {
-    return Intl.message(
-      'Trades',
-      name: 'trades',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Filters`
   String get filters {
     return Intl.message(
@@ -515,16 +505,6 @@ class S {
     );
   }
 
-  /// `Exchange`
-  String get exchange {
-    return Intl.message(
-      'Exchange',
-      name: 'exchange',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Clear`
   String get clear {
     return Intl.message(
@@ -532,66 +512,6 @@ class S {
       name: 'clear',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Change Exchange Provider`
-  String get change_exchange_provider {
-    return Intl.message(
-      'Change Exchange Provider',
-      name: 'change_exchange_provider',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You will send`
-  String get you_will_send {
-    return Intl.message(
-      'You will send',
-      name: 'you_will_send',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You will get`
-  String get you_will_get {
-    return Intl.message(
-      'You will get',
-      name: 'you_will_get',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The receive amount is guaranteed`
-  String get amount_is_guaranteed {
-    return Intl.message(
-      'The receive amount is guaranteed',
-      name: 'amount_is_guaranteed',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The receive amount is an estimate`
-  String get amount_is_estimate {
-    return Intl.message(
-      'The receive amount is an estimate',
-      name: 'amount_is_estimate',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Powered by {title}`
-  String powered_by(Object title) {
-    return Intl.message(
-      'Powered by $title',
-      name: 'powered_by',
-      desc: '',
-      args: [title],
     );
   }
 
@@ -605,91 +525,11 @@ class S {
     );
   }
 
-  /// `Estimated`
-  String get estimated {
-    return Intl.message(
-      'Estimated',
-      name: 'estimated',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Min: {value} {currency}`
-  String min_value(Object value, Object currency) {
-    return Intl.message(
-      'Min: $value $currency',
-      name: 'min_value',
-      desc: '',
-      args: [value, currency],
-    );
-  }
-
-  /// `Max: {value} {currency}`
-  String max_value(Object value, Object currency) {
-    return Intl.message(
-      'Max: $value $currency',
-      name: 'max_value',
-      desc: '',
-      args: [value, currency],
-    );
-  }
-
-  /// `Change Currency`
-  String get change_currency {
-    return Intl.message(
-      'Change Currency',
-      name: 'change_currency',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Copy ID`
-  String get copy_id {
-    return Intl.message(
-      'Copy ID',
-      name: 'copy_id',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please copy or write down the trade ID to continue.`
-  String get exchange_result_write_down_trade_id {
-    return Intl.message(
-      'Please copy or write down the trade ID to continue.',
-      name: 'exchange_result_write_down_trade_id',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Trade ID:\n{id}`
-  String trade_id(Object id) {
-    return Intl.message(
-      'Trade ID:\n$id',
-      name: 'trade_id',
-      desc: '',
-      args: [id],
-    );
-  }
-
   /// `Copied to Clipboard`
   String get copied_to_clipboard {
     return Intl.message(
       'Copied to Clipboard',
       name: 'copied_to_clipboard',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `I've saved the trade ID`
-  String get saved_the_trade_id {
-    return Intl.message(
-      'I\'ve saved the trade ID',
-      name: 'saved_the_trade_id',
       desc: '',
       args: [],
     );
@@ -725,81 +565,11 @@ class S {
     );
   }
 
-  /// `Payment ID: `
-  String get payment_id {
-    return Intl.message(
-      'Payment ID: ',
-      name: 'payment_id',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Status: `
   String get status {
     return Intl.message(
       'Status: ',
       name: 'status',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Offer expires in: `
-  String get offer_expires_in {
-    return Intl.message(
-      'Offer expires in: ',
-      name: 'offer_expires_in',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `This trade is powered by {provider}`
-  String trade_is_powered_by(Object provider) {
-    return Intl.message(
-      'This trade is powered by $provider',
-      name: 'trade_is_powered_by',
-      desc: '',
-      args: [provider],
-    );
-  }
-
-  /// `Copy Address`
-  String get copy_address {
-    return Intl.message(
-      'Copy Address',
-      name: 'copy_address',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `By pressing confirm, you will be sending {fetchingLabel} {from} from your wallet called {walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n`
-  String exchange_result_confirm(Object fetchingLabel, Object from, Object walletName) {
-    return Intl.message(
-      'By pressing confirm, you will be sending $fetchingLabel $from from your wallet called $walletName to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n',
-      name: 'exchange_result_confirm',
-      desc: '',
-      args: [fetchingLabel, from, walletName],
-    );
-  }
-
-  /// `Please send {fetchingLabel} {from} to the address shown above.\n\n`
-  String exchange_result_description(Object fetchingLabel, Object from) {
-    return Intl.message(
-      'Please send $fetchingLabel $from to the address shown above.\n\n',
-      name: 'exchange_result_description',
-      desc: '',
-      args: [fetchingLabel, from],
-    );
-  }
-
-  /// `*Please copy or write down your ID shown above.`
-  String get exchange_result_write_down_ID {
-    return Intl.message(
-      '*Please copy or write down your ID shown above.',
-      name: 'exchange_result_write_down_ID',
       desc: '',
       args: [],
     );
@@ -852,26 +622,6 @@ class S {
       name: 'transaction_sent',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Expired`
-  String get expired {
-    return Intl.message(
-      'Expired',
-      name: 'expired',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{minutes}m {seconds}s`
-  String time(Object minutes, Object seconds) {
-    return Intl.message(
-      '${minutes}m ${seconds}s',
-      name: 'time',
-      desc: '',
-      args: [minutes, seconds],
     );
   }
 
@@ -1475,31 +1225,11 @@ class S {
     );
   }
 
-  /// `Payment ID (optional)`
-  String get send_payment_id {
-    return Intl.message(
-      'Payment ID (optional)',
-      name: 'send_payment_id',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `ALL`
   String get all {
     return Intl.message(
       'ALL',
       name: 'all',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Minimum value of amount is 0.01`
-  String get send_error_minimum_value {
-    return Intl.message(
-      'Minimum value of amount is 0.01',
-      name: 'send_error_minimum_value',
       desc: '',
       args: [],
     );
@@ -1745,16 +1475,6 @@ class S {
     );
   }
 
-  /// `Trades`
-  String get settings_trades {
-    return Intl.message(
-      'Trades',
-      name: 'settings_trades',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Display on dashboard list`
   String get settings_display_on_dashboard_list {
     return Intl.message(
@@ -1990,96 +1710,6 @@ class S {
     return Intl.message(
       'Subaddress list',
       name: 'subaddress_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Trade Details`
-  String get trade_details_title {
-    return Intl.message(
-      'Trade Details',
-      name: 'trade_details_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `ID`
-  String get trade_details_id {
-    return Intl.message(
-      'ID',
-      name: 'trade_details_id',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `State`
-  String get trade_details_state {
-    return Intl.message(
-      'State',
-      name: 'trade_details_state',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Fetching`
-  String get trade_details_fetching {
-    return Intl.message(
-      'Fetching',
-      name: 'trade_details_fetching',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Provider`
-  String get trade_details_provider {
-    return Intl.message(
-      'Provider',
-      name: 'trade_details_provider',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Created at`
-  String get trade_details_created_at {
-    return Intl.message(
-      'Created at',
-      name: 'trade_details_created_at',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Pair`
-  String get trade_details_pair {
-    return Intl.message(
-      'Pair',
-      name: 'trade_details_pair',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{title} copied to Clipboard`
-  String trade_details_copied(Object title) {
-    return Intl.message(
-      '$title copied to Clipboard',
-      name: 'trade_details_copied',
-      desc: '',
-      args: [title],
-    );
-  }
-
-  /// `Trade history`
-  String get trade_history_title {
-    return Intl.message(
-      'Trade history',
-      name: 'trade_history_title',
       desc: '',
       args: [],
     );
@@ -2425,36 +2055,6 @@ class S {
     );
   }
 
-  /// `Trade for {provider} is not created. Amount is less then minimal: {min} {currency}`
-  String error_text_minimal_limit(Object provider, Object min, Object currency) {
-    return Intl.message(
-      'Trade for $provider is not created. Amount is less then minimal: $min $currency',
-      name: 'error_text_minimal_limit',
-      desc: '',
-      args: [provider, min, currency],
-    );
-  }
-
-  /// `Trade for {provider} is not created. Amount is more then maximum: {max} {currency}`
-  String error_text_maximum_limit(Object provider, Object max, Object currency) {
-    return Intl.message(
-      'Trade for $provider is not created. Amount is more then maximum: $max $currency',
-      name: 'error_text_maximum_limit',
-      desc: '',
-      args: [provider, max, currency],
-    );
-  }
-
-  /// `Trade for {provider} is not created. Limits loading failed`
-  String error_text_limits_loading_failed(Object provider) {
-    return Intl.message(
-      'Trade for $provider is not created. Limits loading failed',
-      name: 'error_text_limits_loading_failed',
-      desc: '',
-      args: [provider],
-    );
-  }
-
   /// `ban_timeout`
   String get auth_store_ban_timeout {
     return Intl.message(
@@ -2625,186 +2225,6 @@ class S {
     );
   }
 
-  /// `Trade for {title} is not created.`
-  String trade_for_not_created(Object title) {
-    return Intl.message(
-      'Trade for $title is not created.',
-      name: 'trade_for_not_created',
-      desc: '',
-      args: [title],
-    );
-  }
-
-  /// `Trade not created.`
-  String get trade_not_created {
-    return Intl.message(
-      'Trade not created.',
-      name: 'trade_not_created',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Trade {tradeId} of {title} not found.`
-  String trade_id_not_found(Object tradeId, Object title) {
-    return Intl.message(
-      'Trade $tradeId of $title not found.',
-      name: 'trade_id_not_found',
-      desc: '',
-      args: [tradeId, title],
-    );
-  }
-
-  /// `Trade not found.`
-  String get trade_not_found {
-    return Intl.message(
-      'Trade not found.',
-      name: 'trade_not_found',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Pending`
-  String get trade_state_pending {
-    return Intl.message(
-      'Pending',
-      name: 'trade_state_pending',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Confirming`
-  String get trade_state_confirming {
-    return Intl.message(
-      'Confirming',
-      name: 'trade_state_confirming',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Trading`
-  String get trade_state_trading {
-    return Intl.message(
-      'Trading',
-      name: 'trade_state_trading',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Traded`
-  String get trade_state_traded {
-    return Intl.message(
-      'Traded',
-      name: 'trade_state_traded',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Complete`
-  String get trade_state_complete {
-    return Intl.message(
-      'Complete',
-      name: 'trade_state_complete',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `To be created`
-  String get trade_state_to_be_created {
-    return Intl.message(
-      'To be created',
-      name: 'trade_state_to_be_created',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Unpaid`
-  String get trade_state_unpaid {
-    return Intl.message(
-      'Unpaid',
-      name: 'trade_state_unpaid',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Underpaid`
-  String get trade_state_underpaid {
-    return Intl.message(
-      'Underpaid',
-      name: 'trade_state_underpaid',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Paid unconfirmed`
-  String get trade_state_paid_unconfirmed {
-    return Intl.message(
-      'Paid unconfirmed',
-      name: 'trade_state_paid_unconfirmed',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Paid`
-  String get trade_state_paid {
-    return Intl.message(
-      'Paid',
-      name: 'trade_state_paid',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Btc sent`
-  String get trade_state_btc_sent {
-    return Intl.message(
-      'Btc sent',
-      name: 'trade_state_btc_sent',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Timeout`
-  String get trade_state_timeout {
-    return Intl.message(
-      'Timeout',
-      name: 'trade_state_timeout',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Created`
-  String get trade_state_created {
-    return Intl.message(
-      'Created',
-      name: 'trade_state_created',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Finished`
-  String get trade_state_finished {
-    return Intl.message(
-      'Finished',
-      name: 'trade_state_finished',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Change language`
   String get change_language {
     return Intl.message(
@@ -2904,6 +2324,26 @@ class S {
       args: [recipient_name],
     );
   }
+
+  /// `Dangerzone`
+  String get dangerzone {
+    return Intl.message(
+      'Dangerzone',
+      name: 'dangerzone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes, I'm sure!`
+  String get yes_im_sure {
+    return Intl.message(
+      'Yes, I\'m sure!',
+      name: 'yes_im_sure',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -2913,6 +2353,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'fr'),
     ];
   }
 

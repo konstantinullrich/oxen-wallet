@@ -39,7 +39,6 @@
   "incoming" : "Incoming",
   "outgoing" : "Outgoing",
   "transactions_by_date" : "Transactions by date",
-  "trades" : "Trades",
   "filters" : "Filters",
   "today" : "Today",
   "yesterday" : "Yesterday",
@@ -57,44 +56,20 @@
   "reload_fiat": "Reload Fiat data",
 
 
-  "exchange" : "Exchange",
   "clear" : "Clear",
-  "change_exchange_provider" : "Change Exchange Provider",
-  "you_will_send" : "You will send",
-  "you_will_get" : "You will get",
-  "amount_is_guaranteed" : "The receive amount is guaranteed",
-  "amount_is_estimate" : "The receive amount is an estimate",
-  "powered_by" : "Powered by {title}",
   "error" : "Error",
-  "estimated" : "Estimated",
-  "min_value" : "Min: {value} {currency}",
-  "max_value" : "Max: {value} {currency}",
-  "change_currency" : "Change Currency",
 
 
-  "copy_id" : "Copy ID",
-  "exchange_result_write_down_trade_id" : "Please copy or write down the trade ID to continue.",
-  "trade_id" : "Trade ID:\n{id}",
   "copied_to_clipboard" : "Copied to Clipboard",
-  "saved_the_trade_id" : "I've saved the trade ID",
   "fetching" : "Fetching",
   "id" : "ID: ",
   "amount" : "Amount: ",
-  "payment_id" : "Payment ID: ",
   "status" : "Status: ",
-  "offer_expires_in" : "Offer expires in: ",
-  "trade_is_powered_by" : "This trade is powered by {provider}",
-  "copy_address" : "Copy Address",
-  "exchange_result_confirm" : "By pressing confirm, you will be sending {fetchingLabel} {from} from your wallet called {walletName} to the address shown above. Or you can send from your external wallet to the above address/QR code.\n\nPlease press confirm to continue or go back to change the amounts.\n\n",
-  "exchange_result_description" : "Please send {fetchingLabel} {from} to the address shown above.\n\n",
-  "exchange_result_write_down_ID" : "*Please copy or write down your ID shown above.",
   "confirm" : "Confirm",
   "confirm_sending" : "Confirm sending",
   "commit_transaction_amount_fee" : "Commit transaction\nAmount: {amount}\nFee: {fee}",
   "sending" : "Sending",
   "transaction_sent" : "Transaction sent!",
-  "expired" : "Expired",
-  "time" : "{minutes}m {seconds}s",
   "send_oxen" : "Send OXEN",
 
   "faq" : "FAQ",
@@ -174,9 +149,7 @@
   "send_title" : "Send Oxen",
   "send_your_wallet" : "Your wallet",
   "send_oxen_address" : "Oxen address",
-  "send_payment_id" : "Payment ID (optional)",
   "all" : "ALL",
-  "send_error_minimum_value" : "Minimum value of amount is 0.01",
   "send_error_currency" : "Currency can only contain numbers",
   "send_estimated_fee" : "Estimated fee:",
   "send_priority" : "Currently the fee is set at {transactionPriority} priority.\nTransaction priority can be adjusted in the settings",
@@ -204,7 +177,6 @@
   "settings_allow_biometrical_authentication" : "Allow biometrical authentication",
   "settings_dark_mode" : "Dark mode",
   "settings_transactions" : "Transactions",
-  "settings_trades" : "Trades",
   "settings_display_on_dashboard_list" : "Display on dashboard list",
   "settings_all" : "ALL",
   "settings_none" : "None",
@@ -217,6 +189,7 @@
   "amount_detail_none": "0 - None",
   "amount_detail_detailed": "4 - Detailed",
   "amount_detail_normal": "2 - Normal",
+
 
   "setup_pin" : "Setup PIN",
   "enter_your_pin_again" : "Enter your pin again",
@@ -237,19 +210,6 @@
 
 
   "subaddress_title" : "Subaddress list",
-
-
-  "trade_details_title" : "Trade Details",
-  "trade_details_id" : "ID",
-  "trade_details_state" : "State",
-  "trade_details_fetching" : "Fetching",
-  "trade_details_provider" : "Provider",
-  "trade_details_created_at" : "Created at",
-  "trade_details_pair" : "Pair",
-  "trade_details_copied" : "{title} copied to Clipboard",
-
-
-  "trade_history_title" : "Trade history",
 
 
   "transaction_details_title" : "Transaction Details",
@@ -294,9 +254,6 @@
   "error_text_wallet_name" : "Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long",
   "error_text_keys" : "Wallet keys can only contain 64 chars in hex",
   "error_text_crypto_currency" : "The number of fraction digits\nmust be less or equal to 12",
-  "error_text_minimal_limit" : "Trade for {provider} is not created. Amount is less then minimal: {min} {currency}",
-  "error_text_maximum_limit" : "Trade for {provider} is not created. Amount is more then maximum: {max} {currency}",
-  "error_text_limits_loading_failed" : "Trade for {provider} is not created. Limits loading failed",
 
 
   "auth_store_ban_timeout" : "ban_timeout",
@@ -323,28 +280,6 @@
   "transaction_priority_slow" : "Slow",
   "transaction_priority_blink": "Blink",
 
-
-  "trade_for_not_created" : "Trade for {title} is not created.",
-  "trade_not_created" : "Trade not created.",
-  "trade_id_not_found" : "Trade {tradeId} of {title} not found.",
-  "trade_not_found" : "Trade not found.",
-
-
-  "trade_state_pending" : "Pending",
-  "trade_state_confirming" : "Confirming",
-  "trade_state_trading" : "Trading",
-  "trade_state_traded" : "Traded",
-  "trade_state_complete" : "Complete",
-  "trade_state_to_be_created" : "To be created",
-  "trade_state_unpaid" : "Unpaid",
-  "trade_state_underpaid" : "Underpaid",
-  "trade_state_paid_unconfirmed" : "Paid unconfirmed",
-  "trade_state_paid" : "Paid",
-  "trade_state_btc_sent" : "Btc sent",
-  "trade_state_timeout" : "Timeout",
-  "trade_state_created" : "Created",
-  "trade_state_finished" : "Finished",
-
   "change_language" : "Change language",
   "change_language_to" : "Change language to {language}?",
 
@@ -357,5 +292,8 @@
   "version" : "Version {currentVersion}",
 
   "openalias_alert_title" : "OXEN Recipient Detected",
-  "openalias_alert_content" : "You will be sending funds to\n{recipient_name}"
+  "openalias_alert_content" : "You will be sending funds to\n{recipient_name}",
+
+  "dangerzone": "Dangerzone",
+  "yes_im_sure": "Yes, I'm sure!"
 }
