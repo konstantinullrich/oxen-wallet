@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(language) => "Changez la langue en ${language}?";
 
+  static m3(amount, fee) => "Valider la transaction\nMontant: ${amount}\nFee: ${fee}";
+
   static m4(key) => "Clé ${key} dans le presse-papiers";
 
   static m5(state_error) => "Échec de l\'authentification. ${state_error}";
@@ -77,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language_to" : m2,
     "changelog" : MessageLookupByLibrary.simpleMessage("Journal des modifications"),
     "clear" : MessageLookupByLibrary.simpleMessage("clair"),
+    "commit_transaction_amount_fee" : m3,
     "confirm" : MessageLookupByLibrary.simpleMessage("confirmer"),
     "confirm_sending" : MessageLookupByLibrary.simpleMessage("confirmer l\'envoi"),
     "contact" : MessageLookupByLibrary.simpleMessage("Contact"),
@@ -250,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "transaction_details_transaction_id" : MessageLookupByLibrary.simpleMessage("ID Transaction"),
     "transaction_priority_blink" : MessageLookupByLibrary.simpleMessage("Blink"),
     "transaction_priority_slow" : MessageLookupByLibrary.simpleMessage("Lente"),
+    "transaction_sent" : MessageLookupByLibrary.simpleMessage("Transaction envoyé!"),
     "transactions" : MessageLookupByLibrary.simpleMessage("transactions"),
     "transactions_by_date" : MessageLookupByLibrary.simpleMessage("transactions par date"),
     "use" : MessageLookupByLibrary.simpleMessage("Basculer vers "),

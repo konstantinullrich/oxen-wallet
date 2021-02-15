@@ -1,4 +1,9 @@
 -
+  version: 1.0.4
+  changes:
+    - Add French Transation thanks to Nicolai K., Grégoire L.G and MtGox
+    - Add a waring before accesing the Keys and the Seed
+-
   version: 1.0.3
   changes:
     - Face ID is now working correclty

@@ -67,7 +67,9 @@
   "status" : "Statut: ",
   "confirm" : "confirmer",
   "confirm_sending" : "confirmer l'envoi",
+  "commit_transaction_amount_fee" : "Valider la transaction\nMontant: {amount}\nFee: {fee}",
   "sending" : "Envoyer",
+  "transaction_sent" : "Transaction envoyé!",
   "send_oxen" : "Envoyer OXEN",
 
   "faq" : "FAQ",
