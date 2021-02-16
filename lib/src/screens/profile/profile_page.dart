@@ -78,6 +78,7 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                 text: S.current.accounts,
                 onTap: () =>
                     Navigator.of(context).pushNamed(Routes.accountList)),
+            NavListHeader(title: S.current.dangerzone),
             NavListArrow(
                 leading: Icon(Icons.vpn_key_rounded,
                     color: Theme.of(context).primaryTextTheme.headline6.color),
@@ -87,7 +88,7 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                             AuthPageState auth) =>
                         isAuthenticatedSuccessfully
                             ? Navigator.of(auth.context)
-                                .popAndPushNamed(Routes.showKeys)
+                                .popAndPushNamed(Routes.dangerzoneKeys)
                             : null)),
             NavListArrow(
                 leading: Icon(Icons.vpn_key_rounded,
@@ -98,7 +99,7 @@ class ProfilePageBodyState extends State<ProfilePageBody> {
                             AuthPageState auth) =>
                         isAuthenticatedSuccessfully
                             ? Navigator.of(auth.context)
-                                .popAndPushNamed(Routes.seed)
+                                .popAndPushNamed(Routes.dangerzoneSeed)
                             : null)),
           ],
         ),

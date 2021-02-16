@@ -29,25 +29,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m4(key) => "Kopiert ${key} in die Zwischenablage";
 
-  static m5(state_error) => "Authentifizierung fehlgeschlagen. ${state_error}";
+  static m5(item, app_store) => "Geben sie NIEMALS ihren Oxen wallet ${item} in einer andere software oder website außer den OFFIZIELLEN Oxen wallets aus dem ${app_store}, der Oxen website, der dem Oxen GitHub.\nMöchtest du wirklich fortfahren?";
 
-  static m6(recipient_name) => "Sie senden Geld an\n${recipient_name}";
+  static m6(state_error) => "Authentifizierung fehlgeschlagen. ${state_error}";
 
-  static m7(name) => "Keine Route definiert für ${name}";
+  static m7(item) => "Geben sie NIEMALS ihren Oxen wallet ${item} weiter!";
 
-  static m8(transactionPriority) => "Derzeit ist die Priorität auf ${transactionPriority} festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden";
+  static m8(recipient_name) => "Sie senden Geld an\n${recipient_name}";
 
-  static m9(title) => "${title} in die Zwischenablage kopiert";
+  static m9(name) => "Keine Route definiert für ${name}";
 
-  static m10(currentVersion) => "Ausführung ${currentVersion}";
+  static m10(transactionPriority) => "Derzeit ist die Priorität auf ${transactionPriority} festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden";
 
-  static m11(wallet_name, error) => "Laden fehlgeschlagen ${wallet_name} Wallet. ${error}";
+  static m11(title) => "${title} in die Zwischenablage kopiert";
 
-  static m12(wallet_name, error) => "Fehler beim Entfernen ${wallet_name} Wallet. ${error}";
+  static m12(currentVersion) => "Ausführung ${currentVersion}";
 
-  static m13(wallet_name) => "Wallet ${wallet_name} wird geladen";
+  static m13(wallet_name, error) => "Laden fehlgeschlagen ${wallet_name} Wallet. ${error}";
 
-  static m14(wallet_name) => "Wallet ${wallet_name} entfernen";
+  static m14(wallet_name, error) => "Fehler beim Entfernen ${wallet_name} Wallet. ${error}";
+
+  static m15(wallet_name) => "Wallet ${wallet_name} wird geladen";
+
+  static m16(wallet_name) => "Wallet ${wallet_name} entfernen";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -90,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "copy" : MessageLookupByLibrary.simpleMessage("Kopieren"),
     "create_new" : MessageLookupByLibrary.simpleMessage("Neu erstellen"),
     "dangerzone" : MessageLookupByLibrary.simpleMessage("Gefahrenzone"),
+    "dangerzone_warning" : m5,
     "delete" : MessageLookupByLibrary.simpleMessage("Löschen"),
     "digit_pin" : MessageLookupByLibrary.simpleMessage("-stelliger PIN"),
     "edit" : MessageLookupByLibrary.simpleMessage("Bearbeiten"),
@@ -109,7 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_payment_id" : MessageLookupByLibrary.simpleMessage("Die Zahlungs-ID kann nur 16 bis 64 hexadezimale Zeichen enthalten"),
     "error_text_subaddress_name" : MessageLookupByLibrary.simpleMessage("Im Namen der Unteradresse könne die Symbole ` , \' \" nicht enthalten sein\nund muss zwischen 1 und 20 Zeichen lang sein"),
     "error_text_wallet_name" : MessageLookupByLibrary.simpleMessage("Der Walletname darf nur Buchstaben und Zahlen enthalten\nund muss zwischen 1 und 15 Zeichen lang sein"),
-    "failed_authentication" : m5,
+    "failed_authentication" : m6,
     "faq" : MessageLookupByLibrary.simpleMessage("FAQ"),
     "fetching" : MessageLookupByLibrary.simpleMessage("aktualisieren"),
     "filters" : MessageLookupByLibrary.simpleMessage("Filter"),
@@ -119,8 +124,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "id" : MessageLookupByLibrary.simpleMessage("ID: "),
     "incoming" : MessageLookupByLibrary.simpleMessage("Eingehend"),
     "incorrect_seed" : MessageLookupByLibrary.simpleMessage("Der eingegebene Text ist ungültig."),
+    "keys_title" : MessageLookupByLibrary.simpleMessage("Schlüssel"),
     "loading_your_wallet" : MessageLookupByLibrary.simpleMessage("Wallet wird geladen"),
     "login" : MessageLookupByLibrary.simpleMessage("Einloggen"),
+    "never_give_your" : m7,
     "new_subaddress_create" : MessageLookupByLibrary.simpleMessage("Erstellen"),
     "new_subaddress_label_name" : MessageLookupByLibrary.simpleMessage("Name"),
     "new_subaddress_title" : MessageLookupByLibrary.simpleMessage("Neue Unteradresse"),
@@ -133,7 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nodes_list_reset_to_default_message" : MessageLookupByLibrary.simpleMessage("Möchten Sie die Einstellungen wirklich auf die Standardeinstellungen zurücksetzen?"),
     "nothing_staked" : MessageLookupByLibrary.simpleMessage("Noch nichts gestaked"),
     "ok" : MessageLookupByLibrary.simpleMessage("OK"),
-    "openalias_alert_content" : m6,
+    "openalias_alert_content" : m8,
     "openalias_alert_title" : MessageLookupByLibrary.simpleMessage("OXEN-Empfänger erkannt"),
     "outgoing" : MessageLookupByLibrary.simpleMessage("Ausgehend"),
     "oxen_available_balance" : MessageLookupByLibrary.simpleMessage("OXEN verfügbares Guthaben"),
@@ -177,7 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "restore_wallet" : MessageLookupByLibrary.simpleMessage("Wallet wiederherstellen"),
     "restore_wallet_name" : MessageLookupByLibrary.simpleMessage("Walletname"),
     "restore_wallet_restore_description" : MessageLookupByLibrary.simpleMessage("Beschreibung zur Wiederherstellung des Wallets"),
-    "router_no_route" : m7,
+    "router_no_route" : m9,
     "save" : MessageLookupByLibrary.simpleMessage("Speichern"),
     "seed_language_chinese" : MessageLookupByLibrary.simpleMessage("Chinesisch"),
     "seed_language_choose" : MessageLookupByLibrary.simpleMessage("Bitte wählen Sie die Ausgangssprache"),
@@ -197,7 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "send_estimated_fee" : MessageLookupByLibrary.simpleMessage("Geschätzte Gebühr:"),
     "send_oxen" : MessageLookupByLibrary.simpleMessage("OXEN Senden"),
     "send_oxen_address" : MessageLookupByLibrary.simpleMessage("Oxen-Adresse"),
-    "send_priority" : m8,
+    "send_priority" : m10,
     "send_title" : MessageLookupByLibrary.simpleMessage("Senden Sie Oxen"),
     "send_your_wallet" : MessageLookupByLibrary.simpleMessage("Dein Wallet"),
     "sending" : MessageLookupByLibrary.simpleMessage("Senden"),
@@ -245,7 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "sync_status_syncronizing" : MessageLookupByLibrary.simpleMessage("SYNCHRONISIERUNG"),
     "today" : MessageLookupByLibrary.simpleMessage("Heute"),
     "transaction_details_amount" : MessageLookupByLibrary.simpleMessage("Betrag"),
-    "transaction_details_copied" : m9,
+    "transaction_details_copied" : m11,
     "transaction_details_date" : MessageLookupByLibrary.simpleMessage("Datum"),
     "transaction_details_height" : MessageLookupByLibrary.simpleMessage("Höhe"),
     "transaction_details_recipient_address" : MessageLookupByLibrary.simpleMessage("Empfängeradresse"),
@@ -257,16 +264,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "transactions" : MessageLookupByLibrary.simpleMessage("Transaktionen"),
     "transactions_by_date" : MessageLookupByLibrary.simpleMessage("Transaktionen nach Datum"),
     "use" : MessageLookupByLibrary.simpleMessage("Wechseln zu "),
-    "version" : m10,
+    "version" : m12,
     "view_key_private" : MessageLookupByLibrary.simpleMessage("Anzeige-Schlüssel (geheim)"),
     "view_key_public" : MessageLookupByLibrary.simpleMessage("Anzeige-Schlüssel (öffentlich)"),
     "wallet_keys" : MessageLookupByLibrary.simpleMessage("Wallet Schlüssel"),
     "wallet_list_create_new_wallet" : MessageLookupByLibrary.simpleMessage("Neues Wallet erstellen"),
-    "wallet_list_failed_to_load" : m11,
-    "wallet_list_failed_to_remove" : m12,
+    "wallet_list_failed_to_load" : m13,
+    "wallet_list_failed_to_remove" : m14,
     "wallet_list_load_wallet" : MessageLookupByLibrary.simpleMessage("Wallet laden"),
-    "wallet_list_loading_wallet" : m13,
-    "wallet_list_removing_wallet" : m14,
+    "wallet_list_loading_wallet" : m15,
+    "wallet_list_removing_wallet" : m16,
     "wallet_list_restore_wallet" : MessageLookupByLibrary.simpleMessage("Wallet wiederherstellen"),
     "wallet_list_title" : MessageLookupByLibrary.simpleMessage("Oxen Wallet"),
     "wallet_menu" : MessageLookupByLibrary.simpleMessage("Wallet-Menü"),

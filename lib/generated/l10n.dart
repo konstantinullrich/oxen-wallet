@@ -2344,6 +2344,36 @@ class S {
       args: [],
     );
   }
+
+  /// `NEVER give your Oxen wallet {item} to ANYONE!`
+  String never_give_your(Object item) {
+    return Intl.message(
+      'NEVER give your Oxen wallet $item to ANYONE!',
+      name: 'never_give_your',
+      desc: '',
+      args: [item],
+    );
+  }
+
+  /// `NEVER input your Oxen wallet {item} into any software or website other than the OFFICIAL Oxen wallets downloaded directly from the {app_store}, the Oxen website, or the Oxen GitHub.\nAre you sure you want to access your wallet {item}?`
+  String dangerzone_warning(Object item, Object app_store) {
+    return Intl.message(
+      'NEVER input your Oxen wallet $item into any software or website other than the OFFICIAL Oxen wallets downloaded directly from the $app_store, the Oxen website, or the Oxen GitHub.\nAre you sure you want to access your wallet $item?',
+      name: 'dangerzone_warning',
+      desc: '',
+      args: [item, app_store],
+    );
+  }
+
+  /// `Keys`
+  String get keys_title {
+    return Intl.message(
+      'Keys',
+      name: 'keys_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
