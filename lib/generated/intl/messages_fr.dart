@@ -29,7 +29,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m4(key) => "Clé ${key} dans le presse-papiers";
 
+  static m5(item, app_store) => "Ne JAMAIS saisir  vos identifiants de votre Wallet Oxen ${item} dans tout logiciel ou site Web autre que les portefeuilles OFFICIELS Oxen téléchargés directement à partir du ${app_store}, le site internet Oxen, ou Oxen sur GitHub.\nÊtes-vous sûr de vouloir accéder à votre portefeuille ${item}?";
+
   static m6(state_error) => "Échec de l\'authentification. ${state_error}";
+
+  static m7(item) => "Ne donnez JAMAIS votre Wallet Oxen à qui que ce soit! ${item} à qui que ce soit!";
 
   static m8(recipient_name) => "Vous envoyez de l\'argent à\n${recipient_name}";
 
@@ -90,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "copy" : MessageLookupByLibrary.simpleMessage("copier"),
     "create_new" : MessageLookupByLibrary.simpleMessage("Créer un nouveau portefeuille"),
     "dangerzone" : MessageLookupByLibrary.simpleMessage("zone de danger"),
+    "dangerzone_warning" : m5,
     "delete" : MessageLookupByLibrary.simpleMessage("effacer"),
     "digit_pin" : MessageLookupByLibrary.simpleMessage("-chiffre PIN"),
     "edit" : MessageLookupByLibrary.simpleMessage("Éditer"),
@@ -119,8 +124,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "id" : MessageLookupByLibrary.simpleMessage("ID: "),
     "incoming" : MessageLookupByLibrary.simpleMessage("entrant"),
     "incorrect_seed" : MessageLookupByLibrary.simpleMessage("Le texte saisi n\'est pas valide."),
+    "keys_title" : MessageLookupByLibrary.simpleMessage("Clés"),
     "loading_your_wallet" : MessageLookupByLibrary.simpleMessage("chargement du portefeuille"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
+    "never_give_your" : m7,
     "new_subaddress_create" : MessageLookupByLibrary.simpleMessage("Créer"),
     "new_subaddress_label_name" : MessageLookupByLibrary.simpleMessage("Nom"),
     "new_subaddress_title" : MessageLookupByLibrary.simpleMessage("Nouvelle sous-adresse"),

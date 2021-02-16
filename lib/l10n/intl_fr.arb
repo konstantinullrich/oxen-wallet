@@ -296,5 +296,8 @@
   "openalias_alert_content" : "Vous envoyez de l'argent à\n{recipient_name}",
 
   "dangerzone": "zone de danger",
-  "yes_im_sure": "Oui, je suis sûr!"
+  "yes_im_sure": "Oui, je suis sûr!",
+  "never_give_your": "Ne donnez JAMAIS votre Wallet Oxen à qui que ce soit! {item} à qui que ce soit!",
+  "dangerzone_warning": "Ne JAMAIS saisir  vos identifiants de votre Wallet Oxen {item} dans tout logiciel ou site Web autre que les portefeuilles OFFICIELS Oxen téléchargés directement à partir du {app_store}, le site internet Oxen, ou Oxen sur GitHub.\nÊtes-vous sûr de vouloir accéder à votre portefeuille {item}?",
+  "keys_title": "Clés"
 }
