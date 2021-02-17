@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 const Map<String, String> languages = {
   'en': 'English',
   'de': 'Deutsch (German)',
+  'fr': 'Français (French)',
   // 'es': 'Español (Spanish)',
   // 'hi': 'हिंदी (Hindi)',
   // 'ja': '日本 (Japanese)',

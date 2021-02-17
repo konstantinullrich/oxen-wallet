@@ -12,8 +12,10 @@ How to deploy the Oxen Wallet.
    ```
 
 3. Add the Oxen static libs
-   * The Oxen Android deps should be placed into `oxen_coin/ios/External/android`
-   * The Oxen iOS deps should be placed into `oxen_coin/ios/External/ios`
+   ```
+   ./tool/download-android-deps.sh https://oxen.rocks/oxen-io/oxen-core/oxen-stable-android-deps-LATEST.tar.xz
+   ./tool/download-ios-deps.sh https://oxen.rocks/oxen-io/oxen-core/oxen-stable-ios-deps-LATEST.tar.xz
+   ```
 
 4. Generate Launcher Icons
     ```

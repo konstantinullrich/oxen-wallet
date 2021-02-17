@@ -39,7 +39,6 @@
   "incoming" : "Eingehend",
   "outgoing" : "Ausgehend",
   "transactions_by_date" : "Transaktionen nach Datum",
-  "trades" : "Handel",
   "filters" : "Filter",
   "today" : "Heute",
   "yesterday" : "Gestern",
@@ -57,48 +56,25 @@
   "reload_fiat": "Fiat-Kurs neuladen",
 
 
-  "exchange" : "Austausch",
   "clear" : "Löschen",
-  "change_exchange_provider" : "Wechseln Sie den Exchange-Anbieter",
-  "you_will_send" : "Du wirst senden",
-  "you_will_get" : "Sie erhalten",
-  "amount_is_guaranteed" : "Der Empfangsbetrag ist garantiert",
-  "amount_is_estimate" : "Der empfangene Betrag ist eine Schätzung",
-  "powered_by" : "Unterstützt von {title}",
   "error" : "Error",
-  "estimated" : "Geschätzt",
-  "min_value" : "Mindest: {value} {currency}",
-  "max_value" : "Max: {value} {currency}",
-  "change_currency" : "Währung ändern",
 
 
-  "copy_id" : "ID kopieren",
-  "exchange_result_write_down_trade_id" : "Bitte kopieren oder notieren Sie die Handel-ID, um fortzufahren.",
-  "trade_id" : "Handel-ID:\n{id}",
   "copied_to_clipboard" : "In die Zwischenablage kopiert",
-  "saved_the_trade_id" : "Ich habe die Geschäfts-ID gespeichert",
-  "fetching" : "holen",
+  "fetching" : "aktualisieren",
   "id" : "ID: ",
   "amount" : "Menge: ",
-  "payment_id" : "Zahlungs ID: ",
   "status" : "Status: ",
-  "offer_expires_in" : "Angebot läuft ab in: ",
-  "trade_is_powered_by" : "Dieser Handel wird betrieben von {provider}",
-  "copy_address" : "Adresse kopieren",
-  "exchange_result_confirm" : "Durch Drücken von Bestätigen wird gesendet {fetchingLabel} {from} von Ihrer Brieftasche aus angerufen {walletName} an die oben angegebene Adresse. Oder Sie können von Ihrem externen Portemonnaie an die oben angegebene Adresse / QR-Code senden.\n\nBitte bestätigen Sie, um fortzufahren, oder gehen Sie zurück, um die Beträge zu änderns.\n\n",
-  "exchange_result_description" : "Bitte senden {fetchingLabel} {from} an die oben angegebene Adresse.\n\n'",
-  "exchange_result_write_down_ID" : "*Bitte kopieren oder notieren Sie Ihren oben gezeigten Ausweis.",
   "confirm" : "Bestätigen",
   "confirm_sending" : "Bestätigen Sie das Senden",
   "commit_transaction_amount_fee" : "Transaktion festschreiben\nMenge: {amount}\nGebühr: {fee}",
   "sending" : "Senden",
   "transaction_sent" : "Transaktion gesendet!",
-  "expired" : "Abgelaufen",
-  "time" : "{minutes}m {seconds}s",
   "send_oxen" : "OXEN Senden",
 
   "faq" : "FAQ",
   "changelog" : "Änderungsprotokoll",
+
 
   "enter_your_pin" : "PIN eingeben",
   "loading_your_wallet" : "Wallet wird geladen",
@@ -173,13 +149,12 @@
   "send_title" : "Senden Sie Oxen",
   "send_your_wallet" : "Dein Wallet",
   "send_oxen_address" : "Oxen-Adresse",
-  "send_payment_id" : "Zahlungs ID (wahlweise)",
   "all" : "ALLE",
-  "send_error_minimum_value" : "Der Mindestbetrag beträgt 0,01",
   "send_error_currency" : "Die Währung kann nur Zahlen enthalten",
   "send_estimated_fee" : "Geschätzte Gebühr:",
   "send_priority" : "Derzeit ist die Priorität auf {transactionPriority} festgelegt.\nDie Transaktionspriorität kann in den Einstellungen angepasst werden",
   "send_creating_transaction" : "Transaktion erstellen",
+
 
   "stakes": "Stakes",
   "your_contributions" : "Deine Anteile",
@@ -202,7 +177,6 @@
   "settings_allow_biometrical_authentication" : "Biometrische Authentifizierung",
   "settings_dark_mode" : "Dunkler Modus",
   "settings_transactions" : "Transaktionen",
-  "settings_trades" : "Handel",
   "settings_display_on_dashboard_list" : "Anzeige in der Dashboard-Liste",
   "settings_all" : "ALLE",
   "settings_none" : "Keiner",
@@ -215,6 +189,7 @@
   "amount_detail_none": "0 - Keine",
   "amount_detail_detailed": "4 - Detailliert",
   "amount_detail_normal": "2 - Normal",
+
 
   "setup_pin" : "PIN einrichten",
   "enter_your_pin_again" : "Geben Sie Ihre PIN erneut ein",
@@ -235,19 +210,6 @@
 
 
   "subaddress_title" : "Unteradressenliste",
-
-
-  "trade_details_title" : "Handel Einzelheiten",
-  "trade_details_id" : "ID",
-  "trade_details_state" : "Zustand",
-  "trade_details_fetching" : "Holen",
-  "trade_details_provider" : "Anbieter",
-  "trade_details_created_at" : "Hergestellt in",
-  "trade_details_pair" : "Paar",
-  "trade_details_copied" : "{title} in die Zwischenablage kopiert",
-
-
-  "trade_history_title" : "Handelsgeschichte",
 
 
   "transaction_details_title" : "Transaktionsdetails",
@@ -292,9 +254,6 @@
   "error_text_wallet_name" : "Der Walletname darf nur Buchstaben und Zahlen enthalten\nund muss zwischen 1 und 15 Zeichen lang sein",
   "error_text_keys" : "Walletschlüssel können nur 64 hexadezimale Zeichen enthalten",
   "error_text_crypto_currency" : "Die Anzahl der Nachkommastellen\nmuss kleiner oder gleich 12 sein.",
-  "error_text_minimal_limit" : "Handel für {provider} wird nicht erstellt. Menge ist weniger als minimal: {min} {currency}",
-  "error_text_maximum_limit" : "Handel für {provider} wird nicht erstellt. Menge ist mehr als maximal: {max} {currency}",
-  "error_text_limits_loading_failed" : "Handel für {provider} wird nicht erstellt. Das Laden der Limits ist fehlgeschlagen",
 
 
   "auth_store_ban_timeout" : "Auszeit verbieten",
@@ -321,28 +280,6 @@
   "transaction_priority_slow" : "Langsam",
   "transaction_priority_blink": "Blink",
 
-
-  "trade_for_not_created" : "Handel für {title} wird nicht erstellt.",
-  "trade_not_created" : "Handel nicht angelegt.",
-  "trade_id_not_found" : "Handel {tradeId} von {title} nicht gefunden.",
-  "trade_not_found" : "Handel nicht gefunden.",
-
-
-  "trade_state_pending" : "Steht aus",
-  "trade_state_confirming" : "Bestätigung",
-  "trade_state_trading" : "Handel",
-  "trade_state_traded" : "Handeln",
-  "trade_state_complete" : "Komplett",
-  "trade_state_to_be_created" : "Geschaffen werden",
-  "trade_state_unpaid" : "Unbezahlt",
-  "trade_state_underpaid" : "Unterbezahlt",
-  "trade_state_paid_unconfirmed" : "Unbestätigt bezahlt",
-  "trade_state_paid" : "Bezahlt",
-  "trade_state_btc_sent" : "geschickt",
-  "trade_state_timeout" : "Auszeit",
-  "trade_state_created" : "Erstellt",
-  "trade_state_finished" : "Fertig",
-
   "change_language" : "Sprache ändern",
   "change_language_to" : "Ändern Sie die Sprache zu {language}?",
   
@@ -355,5 +292,11 @@
   "version" : "Ausführung {currentVersion}",
 
   "openalias_alert_title" : "OXEN-Empfänger erkannt",
-  "openalias_alert_content" : "Sie senden Geld an\n{recipient_name}"
+  "openalias_alert_content" : "Sie senden Geld an\n{recipient_name}",
+
+  "dangerzone": "Gefahrenzone",
+  "yes_im_sure": "Ja, Ich bin mir sicher!",
+  "never_give_your": "Geben sie NIEMALS ihren Oxen wallet {item} weiter!",
+  "dangerzone_warning": "Geben sie NIEMALS ihren Oxen wallet {item} in einer andere software oder website außer den OFFIZIELLEN Oxen wallets aus dem {app_store}, der Oxen website, der dem Oxen GitHub.\nMöchtest du wirklich fortfahren?",
+  "keys_title": "Schlüssel"
 }

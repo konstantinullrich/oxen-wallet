@@ -30,7 +30,9 @@ class Routes {
   static const addressBook = '/address_book';
   static const pickerAddressBook = '/picker_address_book';
   static const addressBookAddContact = '/address_book_add_contact';
-  static const showKeys = '/show_keys';
+  static const dangerzoneKeys = '/dangerzone/keys';
+  static const dangerzoneSeed = '/dangerzone/seed';
+  static const showKeys = '/dangerzone/show/keys';
   static const subaddressList = '/subaddress_list';
   static const restoreWalletFromSeedDetails = '/restore_from_seed_details';
   static const settings = '/settings';
