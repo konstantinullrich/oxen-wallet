@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class SettingsTextListRow extends StatelessWidget {
   SettingsTextListRow({@required this.onTaped, this.title, this.widget});
@@ -18,16 +17,12 @@ class SettingsTextListRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Flexible(
-              child: Observer(
-                  builder: (_) => Text(
-                        title,
-                        style: TextStyle(
-                            fontSize: 16.0,
-                            color: Theme.of(context)
-                                .primaryTextTheme
-                                .headline6
-                                .color),
-                      )),
+              child: Text(
+                title,
+                style: TextStyle(
+                    fontSize: 16.0,
+                    color: Theme.of(context).primaryTextTheme.headline6.color),
+              ),
             ),
             Flexible(child: widget)
           ],
