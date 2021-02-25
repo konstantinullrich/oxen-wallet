@@ -19,8 +19,8 @@ import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/wallet/oxen/calculate_estimated_fee.dart';
 import 'package:oxen_wallet/src/widgets/address_text_field.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_wallet/src/widgets/slide_to_act.dart';
 import 'package:provider/provider.dart';
 
 class SendPage extends BasePage {
@@ -105,7 +105,7 @@ class SendFormState extends State<SendForm> {
         content: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 38, right: 30),
+              padding: EdgeInsets.only(left: 18, right: 18),
               decoration: BoxDecoration(
                   color: Theme.of(context).backgroundColor,
                   boxShadow: [
@@ -182,7 +182,7 @@ class SendFormState extends State<SendForm> {
               key: _formKey,
               child: Container(
                 padding:
-                    EdgeInsets.only(left: 38, right: 33, top: 10, bottom: 30),
+                    EdgeInsets.only(left: 18, right: 18, top: 10, bottom: 30),
                 child: Column(children: <Widget>[
                   AddressTextField(
                     controller: _addressController,
@@ -229,16 +229,19 @@ class SendFormState extends State<SendForm> {
                               RegExp('[\\-|\\ |\\,]'))
                         ],
                         decoration: InputDecoration(
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.only(top: 12),
-                              child: Text('OXEN:',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Theme.of(context)
-                                        .accentTextTheme
-                                        .overline
-                                        .color,
-                                  )),
+                            prefixIcon: SizedBox(
+                              width: 75,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 8, top: 12),
+                                child: Text('OXEN:',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Theme.of(context)
+                                          .accentTextTheme
+                                          .overline
+                                          .color,
+                                    )),
+                              ),
                             ),
                             suffixIcon: Container(
                               width: 1,
@@ -259,13 +262,20 @@ class SendFormState extends State<SendForm> {
                                 fontSize: 18.0,
                                 color: Theme.of(context).hintColor),
                             hintText: '0.0000',
-                            focusedBorder: UnderlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: OxenPalette.teal, width: 2.0)),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
-                                    width: 1.0))),
+                                    width: 1.0)),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: OxenPalette.red, width: 1.0)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: OxenPalette.red, width: 1.0)),
+                            errorStyle: TextStyle(color: OxenPalette.red)),
                         validator: (value) {
                           sendStore.validateOXEN(
                               value, balanceStore.unlockedBalance);
@@ -289,29 +299,39 @@ class SendFormState extends State<SendForm> {
                               RegExp('[\\-|\\ |\\,]'))
                         ],
                         decoration: InputDecoration(
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.only(top: 12),
-                              child: Text(
-                                  '${settingsStore.fiatCurrency.toString()}:',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Theme.of(context)
-                                        .accentTextTheme
-                                        .overline
-                                        .color,
-                                  )),
+                            prefixIcon: SizedBox(
+                              width: 75,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 8, top: 12),
+                                child: Text(
+                                    '${settingsStore.fiatCurrency.toString()}:',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Theme.of(context)
+                                          .accentTextTheme
+                                          .overline
+                                          .color,
+                                    )),
+                              ),
                             ),
                             hintStyle: TextStyle(
                                 fontSize: 18.0,
                                 color: Theme.of(context).hintColor),
                             hintText: '0.00',
-                            focusedBorder: UnderlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: OxenPalette.teal, width: 2.0)),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Theme.of(context).focusColor,
-                                    width: 1.0)))),
+                                    width: 1.0)),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: OxenPalette.red, width: 1.0)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: OxenPalette.red, width: 1.0)),
+                            errorStyle: TextStyle(color: OxenPalette.red))),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0, bottom: 10),
@@ -360,55 +380,36 @@ class SendFormState extends State<SendForm> {
           ],
         ),
         bottomSection: Observer(builder: (_) {
-          return LoadingPrimaryButton(
-              onPressed: syncStore.status is SyncedSyncStatus
-                  ? () async {
-                      // Hack. Don't ask me.
-                      FocusScope.of(context).requestFocus(FocusNode());
+          return SlideToAct(
+            text: S.of(context).send_title,
+            outerColor: Theme.of(context).primaryTextTheme.subtitle2.color,
+            innerColor: OxenPalette.teal,
+            onSubmit: syncStore.status is SyncedSyncStatus
+                ? () async {
+                    if (_formKey.currentState.validate()) {
+                      var isSuccessful = false;
 
-                      if (_formKey.currentState.validate()) {
-                        await showDialog<void>(
-                            context: context,
-                            builder: (dialogContext) {
-                              return AlertDialog(
-                                title: Text(
-                                    S.of(context).send_creating_transaction),
-                                content: Text(S.of(context).confirm_sending),
-                                actions: <Widget>[
-                                  FlatButton(
-                                      child: Text(S.of(context).send),
-                                      onPressed: () async {
-                                        await Navigator.of(dialogContext)
-                                            .popAndPushNamed(Routes.auth,
-                                                arguments: (bool
-                                                        isAuthenticatedSuccessfully,
-                                                    AuthPageState auth) {
-                                          if (!isAuthenticatedSuccessfully) {
-                                            return;
-                                          }
+                      await Navigator.of(context).pushNamed(Routes.auth,
+                          arguments: (bool isAuthenticatedSuccessfully,
+                              AuthPageState auth) async {
+                        if (!isAuthenticatedSuccessfully) {
+                          isSuccessful = false;
+                          return;
+                        }
 
-                                          Navigator.of(auth.context).pop();
+                        await sendStore.createTransaction(
+                            address: _addressController.text);
 
-                                          sendStore.createTransaction(
-                                              address: _addressController.text);
-                                        });
-                                      }),
-                                  FlatButton(
-                                      child: Text(S.of(context).cancel),
-                                      onPressed: () =>
-                                          Navigator.of(context).pop())
-                                ],
-                              );
-                            });
-                      }
+                        Navigator.of(auth.context).pop();
+                        isSuccessful = true;
+                      });
+                      return isSuccessful;
+                    } else {
+                      return false;
                     }
-                  : null,
-              text: S.of(context).send,
-              color: Theme.of(context).accentTextTheme.button.backgroundColor,
-              borderColor:
-                  Theme.of(context).accentTextTheme.button.decorationColor,
-              isLoading: sendStore.state is CreatingTransaction ||
-                  sendStore.state is TransactionCommitting);
+                  }
+                : null,
+          );
         }));
   }
 
