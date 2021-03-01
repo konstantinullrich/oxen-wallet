@@ -3,6 +3,7 @@
   changes:
     - Add French Transation thanks to Nicolai K., Grégoire L.G and MtGox
     - Add a waring before accesing the Keys and the Seed
+    - New Sending Page
 -
   version: 1.0.3
   changes:
