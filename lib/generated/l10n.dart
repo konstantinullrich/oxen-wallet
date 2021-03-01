@@ -1276,10 +1276,20 @@ class S {
   }
 
   /// `Stakes`
-  String get stakes {
+  String get title_stakes {
     return Intl.message(
       'Stakes',
-      name: 'stakes',
+      name: 'title_stakes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Stake`
+  String get title_new_stake {
+    return Intl.message(
+      'New Stake',
+      name: 'title_new_stake',
       desc: '',
       args: [],
     );
@@ -1320,6 +1330,26 @@ class S {
     return Intl.message(
       'Nothing staked yet',
       name: 'nothing_staked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service Node Key`
+  String get service_node_key {
+    return Intl.message(
+      'Service Node Key',
+      name: 'service_node_key',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stake Oxen`
+  String get stake_oxen {
+    return Intl.message(
+      'Stake Oxen',
+      name: 'stake_oxen',
       desc: '',
       args: [],
     );
@@ -2050,6 +2080,16 @@ class S {
     return Intl.message(
       'The number of fraction digits\nmust be less or equal to 12',
       name: 'error_text_crypto_currency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A Service Node key can only contain 64 chars in hex`
+  String get error_text_service_node {
+    return Intl.message(
+      'A Service Node key can only contain 64 chars in hex',
+      name: 'error_text_service_node',
       desc: '',
       args: [],
     );

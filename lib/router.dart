@@ -43,6 +43,7 @@ import 'package:oxen_wallet/src/screens/settings/change_language.dart';
 import 'package:oxen_wallet/src/screens/settings/settings.dart';
 import 'package:oxen_wallet/src/screens/setup_pin_code/setup_pin_code.dart';
 import 'package:oxen_wallet/src/screens/show_keys/show_keys_page.dart';
+import 'package:oxen_wallet/src/screens/stake/new_stake_page.dart';
 import 'package:oxen_wallet/src/screens/stake/stake_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/new_subaddress_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/subaddress_list_page.dart';
@@ -435,6 +436,25 @@ class Router {
 
       case Routes.stake:
         return CupertinoPageRoute<void>(builder: (_) => StakePage());
+
+      case Routes.newStake:
+        return MaterialPageRoute<void>(
+            builder: (_) => MultiProvider(providers: [
+                  ProxyProvider<SettingsStore, BalanceStore>(
+                    update: (_, settingsStore, __) => BalanceStore(
+                        walletService: walletService,
+                        settingsStore: settingsStore,
+                        priceStore: priceStore),
+                  ),
+                  Provider(
+                    create: (_) => SyncStore(walletService: walletService),
+                  ),
+                  Provider(
+                      create: (_) => SendStore(
+                          walletService: walletService,
+                          priceStore: priceStore,
+                          transactionDescriptions: transactionDescriptions)),
+                ], child: NewStakePage()));
 
       default:
         return MaterialPageRoute<void>(

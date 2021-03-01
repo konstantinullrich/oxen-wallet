@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
 import 'package:oxen_coin/stake.dart';
-import 'package:oxen_coin/structs/stake_row.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
-// import 'package:oxen_wallet/routes.dart';
+
+import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/wallet/crypto_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
@@ -91,8 +92,8 @@ class StakePageBodyState extends State<StakePageBody> {
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.arrow_upward_rounded),
-                  onPressed: () {}  // ToDo: Direct to Stake More
-                      // => Navigator.of(context, rootNavigator: true).pushNamed(Routes.send),
+                  onPressed: () => Navigator.of(context, rootNavigator: true)
+                      .pushNamed(Routes.newStake),
                 ),
                 Text(allStakes.isEmpty
                     ? S.current.start_staking
@@ -118,8 +119,8 @@ class StakePageBodyState extends State<StakePageBody> {
                           value: stake.ownedPercentage),
                       text: nodeName,
                       onTap: () {} // ToDo: Direct to Service Node Page
-                          //Navigator.of(context).pushNamed(Routes.accountList)
-                  );
+                      //Navigator.of(context).pushNamed(Routes.accountList)
+                      );
                 }),
         ],
       ),

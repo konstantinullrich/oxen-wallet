@@ -238,7 +238,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "spend_key_private" : MessageLookupByLibrary.simpleMessage("Clé de dépense (secret)"),
     "spend_key_public" : MessageLookupByLibrary.simpleMessage("Clé de dépense (publique)"),
     "stake_more" : MessageLookupByLibrary.simpleMessage("Staker plus"),
-    "stakes" : MessageLookupByLibrary.simpleMessage("Stakes"),
     "start_staking" : MessageLookupByLibrary.simpleMessage("Commencer le staking"),
     "status" : MessageLookupByLibrary.simpleMessage("Statut: "),
     "subaddress_title" : MessageLookupByLibrary.simpleMessage("Liste des sous-adresses"),

@@ -156,11 +156,15 @@
   "send_creating_transaction" : "Creating transaction",
 
 
-  "stakes": "Stakes",
+  "title_stakes": "Stakes",
+  "title_new_stake": "New Stake",
   "your_contributions" : "Your Contributions",
   "start_staking" : "Start staking",
   "stake_more" : "Stake more",
   "nothing_staked" : "Nothing staked yet",
+  "service_node_key": "Service Node Key",
+  "stake_oxen": "Stake Oxen",
+
 
   "settings_title" : "Settings",
   "settings_nodes" : "Nodes",
@@ -254,6 +258,7 @@
   "error_text_wallet_name" : "Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long",
   "error_text_keys" : "Wallet keys can only contain 64 chars in hex",
   "error_text_crypto_currency" : "The number of fraction digits\nmust be less or equal to 12",
+  "error_text_service_node" : "A Service Node key can only contain 64 chars in hex",
 
 
   "auth_store_ban_timeout" : "ban_timeout",
