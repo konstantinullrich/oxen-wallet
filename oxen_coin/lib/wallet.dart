@@ -1,23 +1,13 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:oxen_coin/oxen_api.dart';
-import 'package:oxen_coin/util/convert_utf8_to_string.dart';
-import 'package:oxen_coin/util/signatures.dart';
-import 'package:oxen_coin/util/types.dart';
-import 'package:oxen_coin/exceptions/setup_wallet_exception.dart';
-
-// Listener event types constants
-
-const newBlockEvent = 0;
-const refreshedEvent = 1;
-const updatedEvent = 2;
-const moneyReceivedEvent = 3;
-const moneySpentEvent = 4;
-const unconfirmedMoneyReceivedEvent = 5;
+import 'package:oxen_coin/src/exceptions/setup_wallet_exception.dart';
+import 'package:oxen_coin/src/native/wallet.dart' as oxen_wallet;
+import 'package:oxen_coin/src/util/convert_utf8_to_string.dart';
 
 int _boolToInt(bool value) => value ? 1 : 0;
 
@@ -26,130 +16,32 @@ final statusSyncChannel =
 
 final oxenMethodChannel = MethodChannel('oxen_coin');
 
-final getFileNameNative = oxenApi
-    .lookup<NativeFunction<get_filename>>('get_filename')
-    .asFunction<GetFilename>();
+int getSyncingHeight() => oxen_wallet.getSyncingHeightNative();
 
-final getSeedNative =
-    oxenApi.lookup<NativeFunction<get_seed>>('seed').asFunction<GetSeed>();
+bool isNeededToRefresh() => oxen_wallet.isNeededToRefreshNative() != 0;
 
-final getAddressNative = oxenApi
-    .lookup<NativeFunction<get_address>>('get_address')
-    .asFunction<GetAddress>();
+bool isNewTransactionExist() => oxen_wallet.isNewTransactionExistNative() != 0;
 
-final getFullBalanceNative = oxenApi
-    .lookup<NativeFunction<get_full_balanace>>('get_full_balance')
-    .asFunction<GetFullBalance>();
+String getFilename() =>
+    convertUTF8ToString(pointer: oxen_wallet.getFileNameNative());
 
-final getUnlockedBalanceNative = oxenApi
-    .lookup<NativeFunction<get_unlocked_balanace>>('get_unlocked_balance')
-    .asFunction<GetUnlockedBalance>();
-
-final getCurrentHeightNative = oxenApi
-    .lookup<NativeFunction<get_current_height>>('get_current_height')
-    .asFunction<GetCurrentHeight>();
-
-final getNodeHeightNative = oxenApi
-    .lookup<NativeFunction<get_node_height>>('get_node_height')
-    .asFunction<GetNodeHeight>();
-
-final isConnectedNative = oxenApi
-    .lookup<NativeFunction<is_connected>>('is_connected')
-    .asFunction<IsConnected>();
-
-final setupNodeNative = oxenApi
-    .lookup<NativeFunction<setup_node>>('setup_node')
-    .asFunction<SetupNode>();
-
-final startRefreshNative = oxenApi
-    .lookup<NativeFunction<start_refresh>>('start_refresh')
-    .asFunction<StartRefresh>();
-
-final connecToNodeNative = oxenApi
-    .lookup<NativeFunction<connect_to_node>>('connect_to_node')
-    .asFunction<ConnectToNode>();
-
-final setRefreshFromBlockHeightNative = oxenApi
-    .lookup<NativeFunction<set_refresh_from_block_height>>(
-        'set_refresh_from_block_height')
-    .asFunction<SetRefreshFromBlockHeight>();
-
-final setRecoveringFromSeedNative = oxenApi
-    .lookup<NativeFunction<set_recovering_from_seed>>(
-        'set_recovering_from_seed')
-    .asFunction<SetRecoveringFromSeed>();
-
-final storeNative =
-    oxenApi.lookup<NativeFunction<store_c>>('store').asFunction<Store>();
-
-final setListenerNative = oxenApi.lookupFunction<
-    Void Function(), void Function()>('set_listener');
-
-final getSyncingHeightNative = oxenApi
-    .lookup<NativeFunction<get_syncing_height>>('get_syncing_height')
-    .asFunction<GetSyncingHeight>();
-
-final isNeededToRefreshNative = oxenApi
-    .lookup<NativeFunction<is_needed_to_refresh>>('is_needed_to_refresh')
-    .asFunction<IsNeededToRefresh>();
-
-final isNewTransactionExistNative = oxenApi
-    .lookup<NativeFunction<is_new_transaction_exist>>(
-        'is_new_transaction_exist')
-    .asFunction<IsNewTransactionExist>();
-
-final getSecretViewKeyNative = oxenApi
-    .lookup<NativeFunction<secret_view_key>>('secret_view_key')
-    .asFunction<SecretViewKey>();
-
-final getPublicViewKeyNative = oxenApi
-    .lookup<NativeFunction<public_view_key>>('public_view_key')
-    .asFunction<PublicViewKey>();
-
-final getSecretSpendKeyNative = oxenApi
-    .lookup<NativeFunction<secret_spend_key>>('secret_spend_key')
-    .asFunction<SecretSpendKey>();
-
-final getPublicSpendKeyNative = oxenApi
-    .lookup<NativeFunction<secret_view_key>>('public_spend_key')
-    .asFunction<PublicSpendKey>();
-
-final closeCurrentWalletNative = oxenApi
-    .lookup<NativeFunction<close_current_wallet>>('close_current_wallet')
-    .asFunction<CloseCurrentWallet>();
-
-final onStartupNative = oxenApi
-    .lookup<NativeFunction<on_startup>>('on_startup')
-    .asFunction<OnStartup>();
-
-final rescanBlockchainAsyncNative = oxenApi
-    .lookup<NativeFunction<rescan_blockchain>>('rescan_blockchain')
-    .asFunction<RescanBlockchainAsync>();
-
-int getSyncingHeight() => getSyncingHeightNative();
-
-bool isNeededToRefresh() => isNeededToRefreshNative() != 0;
-
-bool isNewTransactionExist() => isNewTransactionExistNative() != 0;
-
-String getFilename() => convertUTF8ToString(pointer: getFileNameNative());
-
-String getSeed() => convertUTF8ToString(pointer: getSeedNative());
+String getSeed() => convertUTF8ToString(pointer: oxen_wallet.getSeedNative());
 
 String getAddress({int accountIndex = 0, int addressIndex = 0}) =>
-    convertUTF8ToString(pointer: getAddressNative(accountIndex, addressIndex));
+    convertUTF8ToString(
+        pointer: oxen_wallet.getAddressNative(accountIndex, addressIndex));
 
 int getFullBalance({int accountIndex = 0}) =>
-    getFullBalanceNative(accountIndex);
+    oxen_wallet.getFullBalanceNative(accountIndex);
 
 int getUnlockedBalance({int accountIndex = 0}) =>
-    getUnlockedBalanceNative(accountIndex);
+    oxen_wallet.getUnlockedBalanceNative(accountIndex);
 
-int getCurrentHeight() => getCurrentHeightNative();
+int getCurrentHeight() => oxen_wallet.getCurrentHeightNative();
 
-int getNodeHeightSync() => getNodeHeightNative();
+int getNodeHeightSync() => oxen_wallet.getNodeHeightNative();
 
-bool isConnectedSync() => isConnectedNative() != 0;
+bool isConnectedSync() => oxen_wallet.isConnectedNative() != 0;
 
 bool setupNodeSync(
     {String address,
@@ -170,7 +62,7 @@ bool setupNodeSync(
   }
 
   final errorMessagePointer = allocate<Utf8>();
-  final isSetupNode = setupNodeNative(
+  final isSetupNode = oxen_wallet.setupNodeNative(
           addressPointer,
           loginPointer,
           passwordPointer,
@@ -191,35 +83,29 @@ bool setupNodeSync(
   return isSetupNode;
 }
 
-void startRefreshSync() => startRefreshNative();
+void startRefreshSync() => oxen_wallet.startRefreshNative();
 
-Future<bool> connectToNode() async => connecToNodeNative() != 0;
+Future<bool> connectToNode() async => oxen_wallet.connecToNodeNative() != 0;
 
 void setRefreshFromBlockHeight({int height}) =>
-    setRefreshFromBlockHeightNative(height);
+    oxen_wallet.setRefreshFromBlockHeightNative(height);
 
 void setRecoveringFromSeed({bool isRecovery}) =>
-    setRecoveringFromSeedNative(_boolToInt(isRecovery));
+    oxen_wallet.setRecoveringFromSeedNative(_boolToInt(isRecovery));
 
-void storeSync() {
-  final pathPointer = Utf8.toUtf8('');
-  storeNative(pathPointer);
-  free(pathPointer);
-}
-
-void closeCurrentWallet() => closeCurrentWalletNative();
+void closeCurrentWallet() => oxen_wallet.closeCurrentWalletNative();
 
 String getSecretViewKey() =>
-    convertUTF8ToString(pointer: getSecretViewKeyNative());
+    convertUTF8ToString(pointer: oxen_wallet.getSecretViewKeyNative());
 
 String getPublicViewKey() =>
-    convertUTF8ToString(pointer: getPublicViewKeyNative());
+    convertUTF8ToString(pointer: oxen_wallet.getPublicViewKeyNative());
 
 String getSecretSpendKey() =>
-    convertUTF8ToString(pointer: getSecretSpendKeyNative());
+    convertUTF8ToString(pointer: oxen_wallet.getSecretSpendKeyNative());
 
 String getPublicSpendKey() =>
-    convertUTF8ToString(pointer: getPublicSpendKeyNative());
+    convertUTF8ToString(pointer: oxen_wallet.getPublicSpendKeyNative());
 
 class SyncListener {
   SyncListener(this.onNewBlock, this.onNewTransaction) {
@@ -250,39 +136,39 @@ class SyncListener {
     _initialSyncHeight = 0;
     _updateSyncInfoTimer ??=
         Timer.periodic(Duration(milliseconds: 1200), (_) async {
-          if (isNewTransactionExist()) {
-            onNewTransaction?.call();
-          }
+      if (isNewTransactionExist()) {
+        onNewTransaction?.call();
+      }
 
-          var syncHeight = getSyncingHeight();
+      var syncHeight = getSyncingHeight();
 
-          if (syncHeight <= 0) {
-            syncHeight = getCurrentHeight();
-          }
+      if (syncHeight <= 0) {
+        syncHeight = getCurrentHeight();
+      }
 
-          if (_initialSyncHeight <= 0) {
-            _initialSyncHeight = syncHeight;
-          }
+      if (_initialSyncHeight <= 0) {
+        _initialSyncHeight = syncHeight;
+      }
 
-          final bchHeight = await getNodeHeightOrUpdate(syncHeight);
+      final bchHeight = await getNodeHeightOrUpdate(syncHeight);
 
-          if (_lastKnownBlockHeight == syncHeight || syncHeight == null) {
-            return;
-          }
+      if (_lastKnownBlockHeight == syncHeight || syncHeight == null) {
+        return;
+      }
 
-          _lastKnownBlockHeight = syncHeight;
-          final track = bchHeight - _initialSyncHeight;
-          final diff = track - (bchHeight - syncHeight);
-          final ptc = diff <= 0 ? 0.0 : diff / track;
-          final left = bchHeight - syncHeight;
+      _lastKnownBlockHeight = syncHeight;
+      final track = bchHeight - _initialSyncHeight;
+      final diff = track - (bchHeight - syncHeight);
+      final ptc = diff <= 0 ? 0.0 : diff / track;
+      final left = bchHeight - syncHeight;
 
-          if (syncHeight < 0 || left < 0) {
-            return;
-          }
+      if (syncHeight < 0 || left < 0) {
+        return;
+      }
 
-          // 1. Actual new height; 2. Blocks left to finish; 3. Progress in percents;
-          onNewBlock?.call(syncHeight, left, ptc);
-        });
+      // 1. Actual new height; 2. Blocks left to finish; 3. Progress in percents;
+      onNewBlock?.call(syncHeight, left, ptc);
+    });
   }
 
   void stop() => _updateSyncInfoTimer?.cancel();
@@ -291,13 +177,13 @@ class SyncListener {
 SyncListener setListeners(void Function(int, int, double) onNewBlock,
     void Function() onNewTransaction) {
   final listener = SyncListener(onNewBlock, onNewTransaction);
-  setListenerNative();
+  oxen_wallet.setListenerNative();
   return listener;
 }
 
-void onStartup() => onStartupNative();
+void onStartup() => oxen_wallet.onStartupNative();
 
-void _storeSync(Object _) => storeSync();
+void _storeSync(Object _) => oxen_wallet.storeSync();
 
 bool _setupNodeSync(Map args) {
   final address = args['address'] as String;
@@ -340,4 +226,4 @@ Future<bool> isConnected() => compute(_isConnected, 0);
 
 Future<int> getNodeHeight() => compute(_getNodeHeight, 0);
 
-void rescanBlockchainAsync() => rescanBlockchainAsyncNative();
+void rescanBlockchainAsync() => oxen_wallet.rescanBlockchainAsyncNative();

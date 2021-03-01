@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:oxen_coin/structs/pending_transaction.dart';
-import 'package:oxen_coin/structs/ut8_box.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
+import 'package:oxen_coin/src/structs/ut8_box.dart';
 
 typedef create_wallet = Int8 Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Int32, Pointer<Utf8>);

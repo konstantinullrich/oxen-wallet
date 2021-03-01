@@ -6,6 +6,7 @@ import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
+import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
 
 enum AddressTextFieldOption { qrCode, addressBook, subaddressList }
 
@@ -36,84 +37,66 @@ class AddressTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
+    return OxenTextField(
       enabled: isActive,
       controller: controller,
       focusNode: focusNode,
-      decoration: InputDecoration(
-        suffixIcon: Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: SizedBox(
-              width: prefixIconWidth * options.length +
-                  (spaceBetweenPrefixIcons * options.length),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(width: 5),
-                  if (options.contains(AddressTextFieldOption.qrCode)) ...[
-                    Container(
-                        width: prefixIconWidth,
-                        height: prefixIconHeight,
-                        child: InkWell(
-                          onTap: () async => _presentQRScanner(context),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Palette.wildDarkBlueWithOpacity,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                              child: Icon(Icons.qr_code_outlined)),
-                        ))
-                  ],
-                  if (options.contains(AddressTextFieldOption.addressBook)) ...[
-                    Container(
-                        width: prefixIconWidth,
-                        height: prefixIconHeight,
-                        child: InkWell(
-                          onTap: () async => _presetAddressBookPicker(context),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Palette.wildDarkBlueWithOpacity,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                              child: Icon(Icons.contacts_rounded)),
-                        ))
-                  ],
-                  if (options
-                      .contains(AddressTextFieldOption.subaddressList)) ...[
-                    Container(
-                        width: prefixIconWidth,
-                        height: prefixIconHeight,
-                        child: InkWell(
-                          onTap: () async =>
-                              _presetSubaddressListPicker(context),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: Palette.wildDarkBlueWithOpacity,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                              child: Icon(Icons.arrow_downward_rounded)),
-                        ))
-                  ],
+      suffixIcon: Padding(
+          padding: EdgeInsets.only(right: 10),
+          child: SizedBox(
+            width: prefixIconWidth * options.length +
+                (spaceBetweenPrefixIcons * options.length),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(width: 5),
+                if (options.contains(AddressTextFieldOption.qrCode)) ...[
+                  Container(
+                      width: prefixIconWidth,
+                      height: prefixIconHeight,
+                      child: InkWell(
+                        onTap: () async => _presentQRScanner(context),
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Palette.wildDarkBlueWithOpacity,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8))),
+                            child: Icon(Icons.qr_code_outlined)),
+                      ))
                 ],
-              ),
-            )),
-        hintStyle: TextStyle(color: Theme.of(context).hintColor),
-        hintText: placeholder ?? S.current.widgets_address,
-          focusedBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: OxenPalette.teal, width: 2.0)),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Theme.of(context).focusColor, width: 1.0)),
-          errorBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: OxenPalette.red, width: 1.0)),
-          focusedErrorBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: OxenPalette.red, width: 1.0)),
-          errorStyle: TextStyle(color: OxenPalette.red),
-      ),
+                if (options.contains(AddressTextFieldOption.addressBook)) ...[
+                  Container(
+                      width: prefixIconWidth,
+                      height: prefixIconHeight,
+                      child: InkWell(
+                        onTap: () async => _presetAddressBookPicker(context),
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Palette.wildDarkBlueWithOpacity,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8))),
+                            child: Icon(Icons.contacts_rounded)),
+                      ))
+                ],
+                if (options
+                    .contains(AddressTextFieldOption.subaddressList)) ...[
+                  Container(
+                      width: prefixIconWidth,
+                      height: prefixIconHeight,
+                      child: InkWell(
+                        onTap: () async => _presetSubaddressListPicker(context),
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Palette.wildDarkBlueWithOpacity,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8))),
+                            child: Icon(Icons.arrow_downward_rounded)),
+                      ))
+                ],
+              ],
+            ),
+          )),
+      hintText: placeholder ?? S.current.widgets_address,
       validator: validator,
     );
   }

@@ -1,4 +1,4 @@
-import 'package:oxen_coin/structs/subaddress_row.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
 
 class Subaddress {
   Subaddress({this.id, this.address, this.label});

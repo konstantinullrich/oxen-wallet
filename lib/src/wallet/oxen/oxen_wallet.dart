@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import 'package:oxen_coin/transaction_history.dart' as transaction_history;
 import 'package:oxen_coin/wallet.dart' as oxen_wallet;
+import 'package:oxen_coin/transaction_history.dart' as transaction_history;
 import 'package:oxen_wallet/src/node/node.dart';
 import 'package:oxen_wallet/src/node/sync_status.dart';
 import 'package:oxen_wallet/src/wallet/balance.dart';
@@ -291,6 +291,11 @@ class OxenWallet extends Wallet {
     return _cachedBlockchainHeight;
   }
 
+  Future<PendingTransaction> createStake(TransactionCreationCredentials credentials) async {
+    final _credentials = credentials as OxenTransactionCreationCredentials;
+    // final transactionDescription = await sta
+  }
+
   @override
   Future<PendingTransaction> createTransaction(
       TransactionCreationCredentials credentials) async {
@@ -304,6 +309,7 @@ class OxenWallet extends Wallet {
     return PendingTransaction.fromTransactionDescription(
         transactionDescription);
   }
+
 
   @override
   Future rescan({int restoreHeight = 0}) async {
