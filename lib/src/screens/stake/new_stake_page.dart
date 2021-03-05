@@ -247,7 +247,7 @@ class NewStakeFormState extends State<NewStakeForm> {
                           return;
                         }
 
-                        await sendStore.createTransaction(
+                        await sendStore.createStake(
                             address: _addressController.text);
 
                         Navigator.of(auth.context).pop();

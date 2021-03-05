@@ -1,5 +1,4 @@
 import 'package:encrypt/encrypt.dart';
-import 'package:password/password.dart';
 import 'package:oxen_wallet/.secrets.g.dart' as secrets;
 
 String encrypt({String source, String key, int keyLength = 16}) {
@@ -18,13 +17,6 @@ String decrypt({String source, String key, int keyLength = 16}) {
   final decrypted = encrypter.decrypt64(source, iv: iv);
 
   return decrypted;
-}
-
-String hash({String source}) {
-  final algorithm = PBKDF2();
-  final hash = Password.hash(source, algorithm);
-
-  return hash;
 }
 
 String encodedPinCode({String pin}) {

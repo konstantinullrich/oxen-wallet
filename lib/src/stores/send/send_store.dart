@@ -5,13 +5,14 @@ import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/openalias_record.dart';
-import 'package:oxen_wallet/src/wallet/transaction/pending_transaction.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_creation_credentials.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
 import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/send/sending_state.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_stake_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_creation_credentials.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
+import 'package:oxen_wallet/src/wallet/transaction/pending_transaction.dart';
 
 part 'send_store.g.dart';
 
@@ -56,6 +57,25 @@ abstract class SendStoreBase with Store {
   NumberFormat _cryptoNumberFormat;
   NumberFormat _fiatNumberFormat;
   String _lastRecipientAddress;
+
+  @action
+  Future createStake({String address, String amount}) async {
+    state = CreatingTransaction();
+
+    try {
+      final _amount = amount ??
+          (cryptoAmount == S.current.all
+              ? null
+              : cryptoAmount.replaceAll(',', '.'));
+      final credentials = OxenStakeTransactionCreationCredentials(
+          address: address, amount: _amount);
+
+      _pendingTransaction = await walletService.createStake(credentials);
+      state = TransactionCreatedSuccessfully();
+    } catch (e) {
+      state = SendingFailed(error: e.toString());
+    }
+  }
 
   @action
   Future createTransaction({String address, String amount}) async {

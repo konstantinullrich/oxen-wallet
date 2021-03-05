@@ -55,6 +55,9 @@ abstract class Wallet {
 
   Future startSync();
 
+  Future<PendingTransaction> createStake(
+      TransactionCreationCredentials credentials);
+
   Future<PendingTransaction> createTransaction(
       TransactionCreationCredentials credentials);
 

@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Picker<Item extends Object> extends StatelessWidget {
@@ -33,7 +34,11 @@ class Picker<Item extends Object> extends StatelessWidget {
                   child: Container(
                       width: double.infinity,
                       height: pickerHeight,
-                      color: Theme.of(context).backgroundColor,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).backgroundColor,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       child: ListView.separated(
                         itemCount: items.length + 1,
                         separatorBuilder: (_, index) => index == 0
@@ -46,7 +51,6 @@ class Picker<Item extends Object> extends StatelessWidget {
                             return Container(
                               height: 100,
                               width: double.infinity,
-                              color: Theme.of(context).backgroundColor,
                               child: Center(
                                 child: Text(
                                   title,
@@ -88,7 +92,7 @@ class Picker<Item extends Object> extends StatelessWidget {
                                     fontWeight: FontWeight.normal,
                                     fontFamily: 'Lato',
                                     color: index == selectedAtIndex
-                                        ? Color.fromRGBO(138, 80, 255, 1)
+                                        ? Color.fromRGBO(138, 80, 255, 1.0)
                                         : Theme.of(context)
                                             .primaryTextTheme
                                             .caption

@@ -118,6 +118,11 @@ class WalletService extends Wallet {
   TransactionHistory getHistory() => _currentWallet.getHistory();
 
   @override
+  Future<PendingTransaction> createStake(
+      TransactionCreationCredentials credentials) =>
+      _currentWallet.createStake(credentials);
+
+  @override
   Future<PendingTransaction> createTransaction(
           TransactionCreationCredentials credentials) =>
       _currentWallet.createTransaction(credentials);
