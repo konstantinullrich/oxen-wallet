@@ -114,6 +114,11 @@ typedef stake_create = Int8 Function(
     Pointer<Utf8Box> error,
     Pointer<PendingTransactionRaw> pendingTransaction);
 
+typedef can_request_unstake = Int8 Function(Pointer<Utf8> serviceNodeKey);
+
+typedef request_unstake = Int8 Function(Pointer<Utf8> serviceNodeKey,
+    Pointer<Utf8Box> error, Pointer<PendingTransactionRaw> pendingTransaction);
+
 typedef secret_view_key = Pointer<Utf8> Function();
 
 typedef public_view_key = Pointer<Utf8> Function();

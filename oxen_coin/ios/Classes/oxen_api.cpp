@@ -183,6 +183,20 @@ extern "C"
         }
     };
 
+    struct StakeUnlockResult
+    {
+      bool success;
+      char *msg;
+      Oxen::PendingTransaction *pendingTransaction;
+
+      StakeUnlockResult(bool _success, char *_msg,  Oxen::PendingTransaction *_pendingTransaction)
+      {
+        success = _success;
+        msg = _msg;
+        pendingTransaction = _pendingTransaction;
+      }
+    };
+
     Oxen::Wallet *m_wallet;
     Oxen::TransactionHistory *m_transaction_history;
     OxenWalletListener *m_listener;
@@ -526,6 +540,30 @@ extern "C"
 
         pendingTransaction = PendingTransactionRaw(transaction);
         return true;
+    }
+
+    EXPORT
+    bool can_request_stake_unlock(char *service_node_key)
+    {
+        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->requestStakeUnlock(service_node_key)};
+        return stakeUnlockResult->success();
+    }
+
+    EXPORT
+    bool request_stake_unlock(char *service_node_key, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+    {
+        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->requestStakeUnlock(service_node_key)};
+
+        if (stakeUnlockResult->success())
+        {
+            pendingTransaction = stakeUnlockResult->ptx();
+            return true;
+        }
+        else
+        {
+            error = Utf8Box(strdup(stakeUnlockResult->msg().c_str()));
+            return false;
+        }
     }
 
     EXPORT

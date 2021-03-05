@@ -18,7 +18,7 @@ version: 1.0.3+3
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.5"
+  flutter: ">=1.22.6"
 
 dependencies:
   flutter:
@@ -58,7 +58,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   encrypt: ^4.0.0
-  password: ^1.0.0
   basic_utils: ^1.0.8
 
 dev_dependencies:
@@ -95,6 +94,7 @@ flutter:
   assets:
     - assets/images/
     - assets/node_list.yml
+    - assets/testnet_node_list.yml
     - assets/changelog.yml
     - assets/text/
     - assets/faq/

@@ -20,20 +20,52 @@ final stakeCreateNative = oxenApi
     .lookup<NativeFunction<stake_create>>('stake_create')
     .asFunction<StakeCreate>();
 
-PendingTransactionDescription createStakeSync(String address, String amount) {
-  final addressPointer = Utf8.toUtf8(address);
+final canRequestUnstakeNative = oxenApi
+    .lookup<NativeFunction<can_request_unstake>>('can_request_stake_unlock')
+    .asFunction<CanRequestUnstake>();
+
+final requestUnstakeNative = oxenApi
+    .lookup<NativeFunction<request_unstake>>('request_stake_unlock')
+    .asFunction<RequestUnstake>();
+
+PendingTransactionDescription createStakeSync(
+    String serviceNodeKey, String amount) {
+  final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
   final amountPointer = amount != null ? Utf8.toUtf8(amount) : nullptr;
   final errorMessagePointer = allocate<Utf8Box>();
   final pendingTransactionRawPointer = allocate<PendingTransactionRaw>();
-  final created = stakeCreateNative(addressPointer, amountPointer,
+  final created = stakeCreateNative(serviceNodeKeyPointer, amountPointer,
           errorMessagePointer, pendingTransactionRawPointer) !=
       0;
 
-  free(addressPointer);
+  free(serviceNodeKeyPointer);
 
   if (amountPointer != nullptr) {
     free(amountPointer);
   }
+
+  if (!created) {
+    final message = errorMessagePointer.ref.getValue();
+    free(errorMessagePointer);
+    throw CreationTransactionException(message: message);
+  }
+
+  return PendingTransactionDescription(
+      amount: pendingTransactionRawPointer.ref.amount,
+      fee: pendingTransactionRawPointer.ref.fee,
+      hash: pendingTransactionRawPointer.ref.getHash(),
+      pointerAddress: pendingTransactionRawPointer.address);
+}
+
+PendingTransactionDescription requestUnstakeSync(String serviceNodeKey) {
+  final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
+  final errorMessagePointer = allocate<Utf8Box>();
+  final pendingTransactionRawPointer = allocate<PendingTransactionRaw>();
+  final created = requestUnstakeNative(serviceNodeKeyPointer,
+          errorMessagePointer, pendingTransactionRawPointer) !=
+      0;
+
+  free(serviceNodeKeyPointer);
 
   if (!created) {
     final message = errorMessagePointer.ref.getValue();

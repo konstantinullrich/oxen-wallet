@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
 import 'package:oxen_coin/oxen_coin_structs.dart';
 import 'package:oxen_coin/src/native/stake.dart' as stake_native;
@@ -17,12 +18,26 @@ List<StakeRow> getAllStakes() {
 }
 
 PendingTransactionDescription _createStakeSync(Map args) {
-  final address = args['address'] as String;
+  final serviceNodeKey = args['service_node_key'] as String;
   final amount = args['amount'] as String;
 
-  return stake_native.createStakeSync(address, amount);
+  return stake_native.createStakeSync(serviceNodeKey, amount);
 }
 
 Future<PendingTransactionDescription> createStake(
-        {String address, String amount}) =>
-    compute(_createStakeSync, {'address': address, 'amount': amount});
+        String serviceNodeKey, String amount) =>
+    compute(_createStakeSync,
+        {'service_node_key': serviceNodeKey, 'amount': amount});
+
+bool canRequestUnstake(String serviceNodeKey) {
+  final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
+  return stake_native.canRequestUnstakeNative(serviceNodeKeyPointer) != 0;
+}
+
+PendingTransactionDescription _requestUnstakeSync(Map args) {
+  final serviceNodeKey = args['service_node_key'] as String;
+  return stake_native.requestUnstakeSync(serviceNodeKey);
+}
+
+Future<PendingTransactionDescription> requestUnstake(String serviceNodeKey) =>
+    compute(_requestUnstakeSync, {'service_node_key': serviceNodeKey});
