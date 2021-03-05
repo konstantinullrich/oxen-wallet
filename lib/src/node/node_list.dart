@@ -1,10 +1,13 @@
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-import 'package:yaml/yaml.dart';
+import 'package:oxen_wallet/devtools.dart';
 import 'package:oxen_wallet/src/node/node.dart';
+import 'package:yaml/yaml.dart';
 
 Future<List<Node>> loadDefaultNodes() async {
-  final nodesRaw = await rootBundle.loadString('assets/node_list.yml');
+  final nodeListFileName =
+      isTestnet ? 'testnet_node_list.yml' : 'node_list.yml';
+  final nodesRaw = await rootBundle.loadString('assets/$nodeListFileName');
   final nodes = loadYaml(nodesRaw) as YamlList;
 
   return nodes.map((dynamic raw) {
