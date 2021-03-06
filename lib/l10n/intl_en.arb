@@ -164,6 +164,10 @@
   "nothing_staked" : "Nothing staked yet",
   "service_node_key": "Service Node Key",
   "stake_oxen": "Stake Oxen",
+  "title_confirm_unlock_stake": "Unlock Stake",
+  "body_confirm_unlock_stake": "Do you really want to unlock your stake from {serviceNodeKey}?",
+  "unlock_stake_requested": "Stake unlock requested",
+  "unable_unlock_stake": "Unable to unlock stake",
 
 
   "settings_title" : "Settings",
@@ -284,6 +288,7 @@
 
   "transaction_priority_slow" : "Slow",
   "transaction_priority_blink": "Blink",
+
 
   "change_language" : "Change language",
   "change_language_to" : "Change language to {language}?",

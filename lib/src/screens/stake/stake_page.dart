@@ -114,14 +114,19 @@ class StakePageBodyState extends State<StakePageBody> {
                   final nodeName =
                       '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
 
-                  print('${stake.serviceNodeKey}: ${stake.amount}');
-                  print('${canRequestUnstake(stake.serviceNodeKey)}');
-
                   return Dismissible(
                       key: Key(stake.serviceNodeKey),
                       confirmDismiss: (direction) async {
+                        if (!canRequestUnstake(stake.serviceNodeKey)) {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(S.of(context).unable_unlock_stake),
+                            backgroundColor: Colors.red,
+                          ));
+                          return false;
+                        }
                         var isSuccessful = false;
                         var isAuthenticated = false;
+
                         await Navigator.of(context).pushNamed(Routes.auth,
                             arguments: (bool isAuthenticatedSuccessfully,
                                 AuthPageState auth) async {
@@ -134,8 +139,9 @@ class StakePageBodyState extends State<StakePageBody> {
                         if (isAuthenticated) {
                           await showConfirmOxenDialog(
                               context,
-                              'Confirm Unstake',
-                              'Do you really want to unsteak ${stake.serviceNodeKey}',
+                              S.of(context).title_confirm_unlock_stake,
+                              S.of(context).body_confirm_unlock_stake(
+                                  stake.serviceNodeKey),
                               onDismiss: (buildContext) {
                             isSuccessful = false;
                             Navigator.of(buildContext).pop();
@@ -149,6 +155,10 @@ class StakePageBodyState extends State<StakePageBody> {
                       },
                       onDismissed: (direction) async {
                         await submitStakeUnlock(stake.serviceNodeKey);
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(S.of(context).unlock_stake_requested),
+                          backgroundColor: Colors.green,
+                        ));
                       },
                       direction: DismissDirection.endToStart,
                       background: Container(
@@ -156,15 +166,11 @@ class StakePageBodyState extends State<StakePageBody> {
                           alignment: AlignmentDirectional.centerEnd,
                           color: OxenPalette.red,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               const Icon(
                                 Icons.arrow_downward_sharp,
                                 color: Colors.white,
-                              ),
-                              Text(
-                                S.of(context).delete,
-                                style: TextStyle(color: Colors.white),
                               )
                             ],
                           )),

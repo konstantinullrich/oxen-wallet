@@ -21,37 +21,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(status) => "${status} Blocks Remaining";
 
-  static m1(node) => "Are you sure to change current node to ${node}?";
+  static m1(serviceNodeKey) => "Do you really want to unlock your stake from ${serviceNodeKey}?";
 
-  static m2(language) => "Change language to ${language}?";
+  static m2(node) => "Are you sure to change current node to ${node}?";
 
-  static m3(amount, fee) => "Commit transaction\nAmount: ${amount}\nFee: ${fee}";
+  static m3(language) => "Change language to ${language}?";
 
-  static m4(key) => "Copied ${key} to Clipboard";
+  static m4(amount, fee) => "Commit transaction\nAmount: ${amount}\nFee: ${fee}";
 
-  static m5(item, app_store) => "NEVER input your Oxen wallet ${item} into any software or website other than the OFFICIAL Oxen wallets downloaded directly from the ${app_store}, the Oxen website, or the Oxen GitHub.\nAre you sure you want to access your wallet ${item}?";
+  static m5(key) => "Copied ${key} to Clipboard";
 
-  static m6(state_error) => "Failed authentication. ${state_error}";
+  static m6(item, app_store) => "NEVER input your Oxen wallet ${item} into any software or website other than the OFFICIAL Oxen wallets downloaded directly from the ${app_store}, the Oxen website, or the Oxen GitHub.\nAre you sure you want to access your wallet ${item}?";
 
-  static m7(item) => "NEVER give your Oxen wallet ${item} to ANYONE!";
+  static m7(state_error) => "Failed authentication. ${state_error}";
 
-  static m8(recipient_name) => "You will be sending funds to\n${recipient_name}";
+  static m8(item) => "NEVER give your Oxen wallet ${item} to ANYONE!";
 
-  static m9(name) => "No route defined for ${name}";
+  static m9(recipient_name) => "You will be sending funds to\n${recipient_name}";
 
-  static m10(transactionPriority) => "Currently the fee is set at ${transactionPriority} priority.\nTransaction priority can be adjusted in the settings";
+  static m10(name) => "No route defined for ${name}";
 
-  static m11(title) => "${title} copied to Clipboard";
+  static m11(transactionPriority) => "Currently the fee is set at ${transactionPriority} priority.\nTransaction priority can be adjusted in the settings";
 
-  static m12(currentVersion) => "Version ${currentVersion}";
+  static m12(title) => "${title} copied to Clipboard";
 
-  static m13(wallet_name, error) => "Failed to load ${wallet_name} wallet. ${error}";
+  static m13(currentVersion) => "Version ${currentVersion}";
 
-  static m14(wallet_name, error) => "Failed to remove ${wallet_name} wallet. ${error}";
+  static m14(wallet_name, error) => "Failed to load ${wallet_name} wallet. ${error}";
 
-  static m15(wallet_name) => "Loading ${wallet_name} wallet";
+  static m15(wallet_name, error) => "Failed to remove ${wallet_name} wallet. ${error}";
 
-  static m16(wallet_name) => "Removing ${wallet_name} wallet";
+  static m16(wallet_name) => "Loading ${wallet_name} wallet";
+
+  static m17(wallet_name) => "Removing ${wallet_name} wallet";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -76,25 +78,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "authentication" : MessageLookupByLibrary.simpleMessage("Authentication"),
     "available_balance" : MessageLookupByLibrary.simpleMessage("Available Balance"),
     "biometric_auth_reason" : MessageLookupByLibrary.simpleMessage("Scan your fingerprint to authenticate"),
+    "body_confirm_unlock_stake" : m1,
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "change" : MessageLookupByLibrary.simpleMessage("Change"),
-    "change_current_node" : m1,
+    "change_current_node" : m2,
     "change_language" : MessageLookupByLibrary.simpleMessage("Change language"),
-    "change_language_to" : m2,
+    "change_language_to" : m3,
     "changelog" : MessageLookupByLibrary.simpleMessage("Changelog"),
     "clear" : MessageLookupByLibrary.simpleMessage("Clear"),
-    "commit_transaction_amount_fee" : m3,
+    "commit_transaction_amount_fee" : m4,
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirm_sending" : MessageLookupByLibrary.simpleMessage("Confirm sending"),
     "contact" : MessageLookupByLibrary.simpleMessage("Contact"),
     "contact_name" : MessageLookupByLibrary.simpleMessage("Contact Name"),
     "continue_text" : MessageLookupByLibrary.simpleMessage("Continue"),
-    "copied_key_to_clipboard" : m4,
+    "copied_key_to_clipboard" : m5,
     "copied_to_clipboard" : MessageLookupByLibrary.simpleMessage("Copied to Clipboard"),
     "copy" : MessageLookupByLibrary.simpleMessage("Copy"),
     "create_new" : MessageLookupByLibrary.simpleMessage("Create new"),
     "dangerzone" : MessageLookupByLibrary.simpleMessage("Dangerzone"),
-    "dangerzone_warning" : m5,
+    "dangerzone_warning" : m6,
     "delete" : MessageLookupByLibrary.simpleMessage("Delete"),
     "digit_pin" : MessageLookupByLibrary.simpleMessage("-digit PIN"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
@@ -115,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_service_node" : MessageLookupByLibrary.simpleMessage("A Service Node key can only contain 64 chars in hex"),
     "error_text_subaddress_name" : MessageLookupByLibrary.simpleMessage("Subaddress name can\'t contain ` , \' \" symbols\nand must be between 1 and 20 characters long"),
     "error_text_wallet_name" : MessageLookupByLibrary.simpleMessage("Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long"),
-    "failed_authentication" : m6,
+    "failed_authentication" : m7,
     "faq" : MessageLookupByLibrary.simpleMessage("FAQ"),
     "fetching" : MessageLookupByLibrary.simpleMessage("Fetching"),
     "filters" : MessageLookupByLibrary.simpleMessage("Filters"),
@@ -128,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "keys_title" : MessageLookupByLibrary.simpleMessage("Keys"),
     "loading_your_wallet" : MessageLookupByLibrary.simpleMessage("Loading your wallet"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
-    "never_give_your" : m7,
+    "never_give_your" : m8,
     "new_subaddress_create" : MessageLookupByLibrary.simpleMessage("Create"),
     "new_subaddress_label_name" : MessageLookupByLibrary.simpleMessage("Label name"),
     "new_subaddress_title" : MessageLookupByLibrary.simpleMessage("New subaddress"),
@@ -141,7 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "nodes_list_reset_to_default_message" : MessageLookupByLibrary.simpleMessage("Are you sure that you want to reset settings to default?"),
     "nothing_staked" : MessageLookupByLibrary.simpleMessage("Nothing staked yet"),
     "ok" : MessageLookupByLibrary.simpleMessage("OK"),
-    "openalias_alert_content" : m8,
+    "openalias_alert_content" : m9,
     "openalias_alert_title" : MessageLookupByLibrary.simpleMessage("OXEN Recipient Detected"),
     "outgoing" : MessageLookupByLibrary.simpleMessage("Outgoing"),
     "oxen_available_balance" : MessageLookupByLibrary.simpleMessage("OXEN Available Balance"),
@@ -185,7 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "restore_wallet" : MessageLookupByLibrary.simpleMessage("Restore wallet"),
     "restore_wallet_name" : MessageLookupByLibrary.simpleMessage("Wallet name"),
     "restore_wallet_restore_description" : MessageLookupByLibrary.simpleMessage("Wallet restore description"),
-    "router_no_route" : m9,
+    "router_no_route" : m10,
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "seed_language_chinese" : MessageLookupByLibrary.simpleMessage("Chinese"),
     "seed_language_choose" : MessageLookupByLibrary.simpleMessage("Please choose seed language"),
@@ -205,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "send_estimated_fee" : MessageLookupByLibrary.simpleMessage("Estimated fee:"),
     "send_oxen" : MessageLookupByLibrary.simpleMessage("Send OXEN"),
     "send_oxen_address" : MessageLookupByLibrary.simpleMessage("Oxen address"),
-    "send_priority" : m10,
+    "send_priority" : m11,
     "send_title" : MessageLookupByLibrary.simpleMessage("Send Oxen"),
     "send_your_wallet" : MessageLookupByLibrary.simpleMessage("Your wallet"),
     "sending" : MessageLookupByLibrary.simpleMessage("Sending"),
@@ -252,11 +255,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "sync_status_starting_sync" : MessageLookupByLibrary.simpleMessage("STARTING SYNC"),
     "sync_status_syncronized" : MessageLookupByLibrary.simpleMessage("SYNCHRONIZED"),
     "sync_status_syncronizing" : MessageLookupByLibrary.simpleMessage("SYNCHRONIZING"),
+    "title_confirm_unlock_stake" : MessageLookupByLibrary.simpleMessage("Unlock Stake"),
     "title_new_stake" : MessageLookupByLibrary.simpleMessage("New Stake"),
     "title_stakes" : MessageLookupByLibrary.simpleMessage("Stakes"),
     "today" : MessageLookupByLibrary.simpleMessage("Today"),
     "transaction_details_amount" : MessageLookupByLibrary.simpleMessage("Amount"),
-    "transaction_details_copied" : m11,
+    "transaction_details_copied" : m12,
     "transaction_details_date" : MessageLookupByLibrary.simpleMessage("Date"),
     "transaction_details_height" : MessageLookupByLibrary.simpleMessage("Height"),
     "transaction_details_recipient_address" : MessageLookupByLibrary.simpleMessage("Recipient address"),
@@ -267,17 +271,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "transaction_sent" : MessageLookupByLibrary.simpleMessage("Transaction sent!"),
     "transactions" : MessageLookupByLibrary.simpleMessage("Transactions"),
     "transactions_by_date" : MessageLookupByLibrary.simpleMessage("Transactions by date"),
+    "unable_unlock_stake" : MessageLookupByLibrary.simpleMessage("Unable to unlock stake"),
+    "unlock_stake_requested" : MessageLookupByLibrary.simpleMessage("Stake unlock requested"),
     "use" : MessageLookupByLibrary.simpleMessage("Switch to "),
-    "version" : m12,
+    "version" : m13,
     "view_key_private" : MessageLookupByLibrary.simpleMessage("View key (private)"),
     "view_key_public" : MessageLookupByLibrary.simpleMessage("View key (public)"),
     "wallet_keys" : MessageLookupByLibrary.simpleMessage("Wallet keys"),
     "wallet_list_create_new_wallet" : MessageLookupByLibrary.simpleMessage("Create New Wallet"),
-    "wallet_list_failed_to_load" : m13,
-    "wallet_list_failed_to_remove" : m14,
+    "wallet_list_failed_to_load" : m14,
+    "wallet_list_failed_to_remove" : m15,
     "wallet_list_load_wallet" : MessageLookupByLibrary.simpleMessage("Load wallet"),
-    "wallet_list_loading_wallet" : m15,
-    "wallet_list_removing_wallet" : m16,
+    "wallet_list_loading_wallet" : m16,
+    "wallet_list_removing_wallet" : m17,
     "wallet_list_restore_wallet" : MessageLookupByLibrary.simpleMessage("Restore Wallet"),
     "wallet_list_title" : MessageLookupByLibrary.simpleMessage("Oxen Wallet"),
     "wallet_menu" : MessageLookupByLibrary.simpleMessage("Menu"),

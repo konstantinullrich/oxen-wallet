@@ -1355,6 +1355,46 @@ class S {
     );
   }
 
+  /// `Unlock Stake`
+  String get title_confirm_unlock_stake {
+    return Intl.message(
+      'Unlock Stake',
+      name: 'title_confirm_unlock_stake',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you really want to unlock your stake from {serviceNodeKey}?`
+  String body_confirm_unlock_stake(Object serviceNodeKey) {
+    return Intl.message(
+      'Do you really want to unlock your stake from $serviceNodeKey?',
+      name: 'body_confirm_unlock_stake',
+      desc: '',
+      args: [serviceNodeKey],
+    );
+  }
+
+  /// `Stake unlock requested`
+  String get unlock_stake_requested {
+    return Intl.message(
+      'Stake unlock requested',
+      name: 'unlock_stake_requested',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to unlock stake`
+  String get unable_unlock_stake {
+    return Intl.message(
+      'Unable to unlock stake',
+      name: 'unable_unlock_stake',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settings_title {
     return Intl.message(

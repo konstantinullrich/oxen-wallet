@@ -162,6 +162,7 @@
   "stake_more" : "Staker plus",
   "nothing_staked" : "Aucune contribution pour le moment",
 
+
   "settings_title" : "Paramètres",
   "settings_nodes" : "Node",
   "settings_current_node" : "Node actuel",

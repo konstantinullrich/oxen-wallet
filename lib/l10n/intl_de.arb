@@ -164,6 +164,10 @@
   "nothing_staked" : "Noch nichts gestaked",
   "service_node_key": "Service Node Schlüssel",
   "stake_oxen": "Oxen staken",
+  "title_confirm_unlock_stake": "Stake entsperren",
+  "body_confirm_unlock_stake": "Möchtest du wirkklich dein Stake von {serviceNodeKey} entsperren?",
+  "unlock_stake_requested": "Stake Entsperrung angefragt",
+  "unable_unlock_stake": "Stake Entsperrung nicht möglich",
 
 
   "settings_title" : "Einstellungen",
