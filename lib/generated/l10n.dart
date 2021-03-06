@@ -1515,11 +1515,11 @@ class S {
     );
   }
 
-  /// `Allow biometrical authentication`
-  String get settings_allow_biometrical_authentication {
+  /// `Allow biometric authentication`
+  String get settings_allow_biometric_authentication {
     return Intl.message(
-      'Allow biometrical authentication',
-      name: 'settings_allow_biometrical_authentication',
+      'Allow biometric authentication',
+      name: 'settings_allow_biometric_authentication',
       desc: '',
       args: [],
     );
@@ -2216,20 +2216,20 @@ class S {
   }
 
   /// `SYNCHRONIZING`
-  String get sync_status_syncronizing {
+  String get sync_status_synchronizing {
     return Intl.message(
       'SYNCHRONIZING',
-      name: 'sync_status_syncronizing',
+      name: 'sync_status_synchronizing',
       desc: '',
       args: [],
     );
   }
 
   /// `SYNCHRONIZED`
-  String get sync_status_syncronized {
+  String get sync_status_synchronized {
     return Intl.message(
       'SYNCHRONIZED',
-      name: 'sync_status_syncronized',
+      name: 'sync_status_synchronized',
       desc: '',
       args: [],
     );

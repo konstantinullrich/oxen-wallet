@@ -182,7 +182,7 @@
   "settings_personal" : "personnel",
   "settings_change_pin" : "changer le code PIN",
   "settings_change_language" : "changer de langue",
-  "settings_allow_biometrical_authentication" : "Authentification biométrique",
+  "settings_allow_biometric_authentication" : "Authentification biométrique",
   "settings_dark_mode" : "Mode Sombre",
   "settings_transactions" : "Transactions",
   "settings_display_on_dashboard_list" : "Afficher dans la liste du tableau de bord",
@@ -277,8 +277,8 @@
   "hidden_balance" : "solde caché",
 
 
-  "sync_status_syncronizing" : "SYNCHRONISATION",
-  "sync_status_syncronized" : "SYNCHRONISÉ",
+  "sync_status_synchronizing" : "SYNCHRONISATION",
+  "sync_status_synchronized" : "SYNCHRONISÉ",
   "sync_status_not_connected" : "PAS CONNECTÉ",
   "sync_status_starting_sync" : "DÉBUT DE LA SYNCHRONISATION",
   "sync_status_failed_connect" : "ÉCHEC DE LA CONNEXION AU NODE",

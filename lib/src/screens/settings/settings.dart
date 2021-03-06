@@ -166,7 +166,7 @@ class SettingsFormState extends State<SettingsForm> {
           title: S.current.settings_change_language,
           attribute: Attributes.arrow),
       SettingsItem(
-          title: S.current.settings_allow_biometrical_authentication,
+          title: S.current.settings_allow_biometric_authentication,
           attribute: Attributes.switcher),
       SettingsItem(
           title: S.current.settings_dark_mode, attribute: Attributes.switcher),

@@ -182,7 +182,7 @@
   "settings_personal" : "Persönlich",
   "settings_change_pin" : "PIN ändern",
   "settings_change_language" : "Sprache ändern",
-  "settings_allow_biometrical_authentication" : "Biometrische Authentifizierung",
+  "settings_allow_biometric_authentication" : "Biometrische Authentifizierung",
   "settings_dark_mode" : "Dunkler Modus",
   "settings_transactions" : "Transaktionen",
   "settings_display_on_dashboard_list" : "Anzeige in der Dashboard-Liste",
@@ -277,8 +277,8 @@
   "hidden_balance" : "Verstecktes Guthaben",
 
 
-  "sync_status_syncronizing" : "SYNCHRONISIERUNG",
-  "sync_status_syncronized" : "SYNCHRONISIERT",
+  "sync_status_synchronizing" : "SYNCHRONISIERUNG",
+  "sync_status_synchronized" : "SYNCHRONISIERT",
   "sync_status_not_connected" : "NICHT VERBUNDEN",
   "sync_status_starting_sync" : "STARTEN DER SYNCHRONISIERUNG",
   "sync_status_failed_connect" : "Verbindung zum Knoten fehlgeschlagen",
