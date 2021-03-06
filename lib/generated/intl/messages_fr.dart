@@ -21,6 +21,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(status) => "${status} blocs restants";
 
+  static m1(serviceNodeKey) => "Voulez-vous vraiment débloquer votre mise de${serviceNodeKey}?";
+
   static m2(node) => "Voulez-vous vraiment changer le Node actuel vers ${node}?";
 
   static m3(language) => "Changez la langue en ${language}?";
@@ -76,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "authentication" : MessageLookupByLibrary.simpleMessage("Authentification"),
     "available_balance" : MessageLookupByLibrary.simpleMessage("Solde disponible"),
     "biometric_auth_reason" : MessageLookupByLibrary.simpleMessage("Scannez votre empreinte digitale pour l\'authentification"),
+    "body_confirm_unlock_stake" : m1,
     "cancel" : MessageLookupByLibrary.simpleMessage("Annuler"),
     "change" : MessageLookupByLibrary.simpleMessage("Changement"),
     "change_current_node" : m2,
@@ -112,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_node_port" : MessageLookupByLibrary.simpleMessage("Le port du Node ne peut contenir que des nombres compris entre 0 et 65535"),
     "error_text_oxen" : MessageLookupByLibrary.simpleMessage("La valeur OXEN ne peut pas dépasser le solde disponible.\nLe nombre de décimales doit être inférieur ou égal à 12"),
     "error_text_payment_id" : MessageLookupByLibrary.simpleMessage("L\'ID de paiement ne peut contenir que 16 à 64 caractères hexadécimaux"),
+    "error_text_service_node" : MessageLookupByLibrary.simpleMessage("Une clé de nœud de service ne peut contenir que 64 caractères maximum"),
     "error_text_subaddress_name" : MessageLookupByLibrary.simpleMessage("Au nom de la sous-adresse, les symboles ` , \' \" ne pas être inclus\net doit comporter entre 1 et 20 caractères"),
     "error_text_wallet_name" : MessageLookupByLibrary.simpleMessage("Le nom du portefeuille ne peut contenir que des lettres et des chiffres\net doit comporter entre 1 et 15 caractères"),
     "failed_authentication" : m7,
@@ -209,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "send_your_wallet" : MessageLookupByLibrary.simpleMessage("Votre portefeuille"),
     "sending" : MessageLookupByLibrary.simpleMessage("Envoyer"),
     "sent" : MessageLookupByLibrary.simpleMessage("expédié"),
+    "service_node_key" : MessageLookupByLibrary.simpleMessage("Clé de nœud de service"),
     "settings_all" : MessageLookupByLibrary.simpleMessage("TOUT"),
     "settings_allow_biometrical_authentication" : MessageLookupByLibrary.simpleMessage("Authentification biométrique"),
     "settings_balance_detail" : MessageLookupByLibrary.simpleMessage("Décimales"),
@@ -238,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "spend_key_private" : MessageLookupByLibrary.simpleMessage("Clé de dépense (secret)"),
     "spend_key_public" : MessageLookupByLibrary.simpleMessage("Clé de dépense (publique)"),
     "stake_more" : MessageLookupByLibrary.simpleMessage("Staker plus"),
+    "stake_oxen" : MessageLookupByLibrary.simpleMessage("Stake Oxen"),
     "start_staking" : MessageLookupByLibrary.simpleMessage("Commencer le staking"),
     "status" : MessageLookupByLibrary.simpleMessage("Statut: "),
     "subaddress_title" : MessageLookupByLibrary.simpleMessage("Liste des sous-adresses"),
@@ -249,6 +255,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "sync_status_starting_sync" : MessageLookupByLibrary.simpleMessage("DÉBUT DE LA SYNCHRONISATION"),
     "sync_status_syncronized" : MessageLookupByLibrary.simpleMessage("SYNCHRONISÉ"),
     "sync_status_syncronizing" : MessageLookupByLibrary.simpleMessage("SYNCHRONISATION"),
+    "title_confirm_unlock_stake" : MessageLookupByLibrary.simpleMessage("Déverrouiller Stake"),
+    "title_new_stake" : MessageLookupByLibrary.simpleMessage("Nouveau Stake"),
+    "title_stakes" : MessageLookupByLibrary.simpleMessage("Stakes"),
     "today" : MessageLookupByLibrary.simpleMessage("aujourd\'hui"),
     "transaction_details_amount" : MessageLookupByLibrary.simpleMessage("Montant"),
     "transaction_details_copied" : m12,
@@ -262,6 +271,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "transaction_sent" : MessageLookupByLibrary.simpleMessage("Transaction envoyé!"),
     "transactions" : MessageLookupByLibrary.simpleMessage("transactions"),
     "transactions_by_date" : MessageLookupByLibrary.simpleMessage("transactions par date"),
+    "unable_unlock_stake" : MessageLookupByLibrary.simpleMessage("Impossible de déverrouiller le Stake"),
+    "unlock_stake_requested" : MessageLookupByLibrary.simpleMessage("Déverrouillage du Stake demandé"),
     "use" : MessageLookupByLibrary.simpleMessage("Basculer vers "),
     "version" : m13,
     "view_key_private" : MessageLookupByLibrary.simpleMessage("Clé d\'observation (secret)"),
