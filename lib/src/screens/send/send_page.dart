@@ -19,6 +19,7 @@ import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/wallet/oxen/calculate_estimated_fee.dart';
 import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
 import 'package:oxen_wallet/src/widgets/slide_to_act.dart';
 import 'package:provider/provider.dart';
@@ -72,20 +73,9 @@ class SendFormState extends State<SendForm> {
     if (isOpenAlias) {
       _addressController.text = sendStore.recordAddress;
 
-      await showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text(S.of(context).openalias_alert_title),
-              content: Text(
-                  S.of(context).openalias_alert_content(sendStore.recordName)),
-              actions: <Widget>[
-                FlatButton(
-                    child: Text(S.of(context).ok),
-                    onPressed: () => Navigator.of(context).pop())
-              ],
-            );
-          });
+      await showSimpleOxenDialog(context, S.of(context).openalias_alert_title,
+          S.of(context).openalias_alert_content(sendStore.recordName),
+          onPressed: (_) => Navigator.of(context).pop());
     }
   }
 
@@ -151,11 +141,12 @@ class SendFormState extends State<SendForm> {
                             ]);
                       }),
                       Observer(builder: (context) {
-                        final savedDisplayMode = settingsStore.balanceDisplayMode;
+                        final savedDisplayMode =
+                            settingsStore.balanceDisplayMode;
                         final availableBalance =
-                        savedDisplayMode == BalanceDisplayMode.hiddenBalance
-                            ? '---'
-                            : balanceStore.unlockedBalanceString;
+                            savedDisplayMode == BalanceDisplayMode.hiddenBalance
+                                ? '---'
+                                : balanceStore.unlockedBalanceString;
 
                         return Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -186,7 +177,7 @@ class SendFormState extends State<SendForm> {
                 key: _formKey,
                 child: Container(
                   padding:
-                  EdgeInsets.only(left: 18, right: 18, top: 10, bottom: 30),
+                      EdgeInsets.only(left: 18, right: 18, top: 10, bottom: 30),
                   child: Column(children: <Widget>[
                     AddressTextField(
                       controller: _addressController,
@@ -419,9 +410,7 @@ class SendFormState extends State<SendForm> {
   }
 
   void _setEffects(BuildContext context) {
-    if (_effectsInstalled) {
-      return;
-    }
+    if (_effectsInstalled) return;
 
     final sendStore = Provider.of<SendStore>(context);
 
@@ -456,68 +445,34 @@ class SendFormState extends State<SendForm> {
     reaction((_) => sendStore.state, (SendingState state) {
       if (state is SendingFailed) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text(S.of(context).error),
-                  content: Text(state.error),
-                  actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
-                        onPressed: () => Navigator.of(context).pop())
-                  ],
-                );
-              });
+          showSimpleOxenDialog(context, S.of(context).error, state.error,
+              onPressed: (_) => Navigator.of(context).pop());
         });
       }
 
       if (state is TransactionCreatedSuccessfully) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text(S.of(context).confirm_sending),
-                  content: Text(S.of(context).commit_transaction_amount_fee(
-                      sendStore.pendingTransaction.amount,
-                      sendStore.pendingTransaction.fee)),
-                  actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          sendStore.commitTransaction();
-                        }),
-                    FlatButton(
-                      child: Text(S.of(context).cancel),
-                      onPressed: () => Navigator.of(context).pop(),
-                    )
-                  ],
-                );
-              });
+          showSimpleOxenDialog(
+              context,
+              S.of(context).confirm_sending,
+              S.of(context).commit_transaction_amount_fee(
+                  sendStore.pendingTransaction.amount,
+                  sendStore.pendingTransaction.fee), onPressed: (_) {
+            Navigator.of(context).pop();
+            sendStore.commitTransaction();
+          });
         });
       }
 
       if (state is TransactionCommitted) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text(S.of(context).sending),
-                  content: Text(S.of(context).transaction_sent),
-                  actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
-                        onPressed: () {
-                          _addressController.text = '';
-                          _cryptoAmountController.text = '';
-                          Navigator.of(context)..pop()..pop();
-                        })
-                  ],
-                );
-              });
+          showSimpleOxenDialog(
+              context, S.of(context).sending, S.of(context).transaction_sent,
+              onPressed: (_) {
+            _addressController.text = '';
+            _cryptoAmountController.text = '';
+            Navigator.of(context)..pop()..pop();
+          });
         });
       }
     });
