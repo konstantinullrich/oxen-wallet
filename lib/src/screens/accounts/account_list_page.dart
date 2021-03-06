@@ -81,9 +81,7 @@ class AccountListPage extends BasePage {
                                     .color),
                           ),
                           onTap: () {
-                            if (isCurrent) {
-                              return;
-                            }
+                            if (isCurrent) return;
 
                             walletStore.setAccount(account);
                             Navigator.of(context).pop();

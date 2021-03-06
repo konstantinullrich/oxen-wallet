@@ -113,6 +113,9 @@ class StakePageBodyState extends State<StakePageBody> {
                   final nodeName =
                       '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
 
+                  print('${stake.serviceNodeKey}: ${stake.amount}');
+                  print('${canRequestUnstake(stake.serviceNodeKey)}');
+
                   return NavListArrow(
                       leading: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(stakeColor),

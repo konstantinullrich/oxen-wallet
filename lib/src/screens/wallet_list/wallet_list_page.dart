@@ -83,7 +83,6 @@ class WalletListBodyState extends State<WalletListBody> {
                               ? null
                               : presetMenuForWallet(wallet, context),
                           child: Container(
-                              padding: EdgeInsets.only(left: 10.0, right: 10.0),
                               child: ListTile(
                                   title: Text(
                                     wallet.name,

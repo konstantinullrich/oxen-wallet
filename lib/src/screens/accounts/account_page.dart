@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/wallet/oxen/account.dart';
-import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:provider/provider.dart';
 
 class AccountPage extends BasePage {
   AccountPage({this.account});
@@ -50,63 +51,49 @@ class AccountFormState extends State<AccountForm> {
   Widget build(BuildContext context) {
     final accountListStore = Provider.of<AccountListStore>(context);
 
-    return Form(
-      key: _formKey,
-      child: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-                child: Center(
-              child: TextFormField(
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Theme.of(context).hintColor),
+    return ScrollableWithBottomSection(
+      contentPadding: EdgeInsets.all(20),
+      content: Form(
+          key: _formKey,
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: OxenTextField(
                     hintText: S.of(context).account,
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: OxenPalette.teal, width: 2.0)),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context).focusColor, width: 1.0))),
-                controller: _textController,
-                validator: (value) {
-                  accountListStore.validateAccountName(value);
-                  return accountListStore.errorMessage;
-                },
-              ),
-            )),
-            Observer(
-                builder: (_) => LoadingPrimaryButton(
-                      onPressed: () async {
-                        if (!_formKey.currentState.validate()) {
-                          return;
-                        }
+                    controller: _textController,
+                    validator: (value) {
+                      accountListStore.validateAccountName(value);
+                      return accountListStore.errorMessage;
+                    },
+                  ),
+                ),
+              ],
+            ),
+          )),
+      bottomSection: Observer(
+          builder: (_) => LoadingPrimaryButton(
+                onPressed: () async {
+                  if (!_formKey.currentState.validate()) {
+                    return;
+                  }
 
-                        if (widget.account != null) {
-                          await accountListStore.renameAccount(
-                              index: widget.account.id,
-                              label: _textController.text);
-                        } else {
-                          await accountListStore.addAccount(
-                              label: _textController.text);
-                        }
-                        Navigator.of(context).pop(_textController.text);
-                      },
-                      text:
-                          widget.account != null ? 'Rename' : S.of(context).add,
-                      color: Theme.of(context)
-                          .primaryTextTheme
-                          .button
-                          .backgroundColor,
-                      borderColor: Theme.of(context)
-                          .primaryTextTheme
-                          .button
-                          .decorationColor,
-                      isLoading: accountListStore.isAccountCreating,
-                    ))
-          ],
-        ),
-      ),
+                  if (widget.account != null) {
+                    await accountListStore.renameAccount(
+                        index: widget.account.id, label: _textController.text);
+                  } else {
+                    await accountListStore.addAccount(
+                        label: _textController.text);
+                  }
+                  Navigator.of(context).pop(_textController.text);
+                },
+                text: widget.account != null ? 'Rename' : S.of(context).add,
+                color:
+                    Theme.of(context).primaryTextTheme.button.backgroundColor,
+                borderColor:
+                    Theme.of(context).primaryTextTheme.button.decorationColor,
+                isLoading: accountListStore.isAccountCreating,
+              )),
     );
   }
 }

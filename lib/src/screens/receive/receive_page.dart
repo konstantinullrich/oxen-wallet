@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:esys_flutter_share/esys_flutter_share.dart';
-import 'package:provider/provider.dart';
-import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/receive/qr_image.dart';
 import 'package:oxen_wallet/src/stores/subaddress_list/subaddress_list_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:oxen_wallet/src/screens/receive/qr_image.dart';
-import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
+import 'package:provider/provider.dart';
 
 class ReceivePage extends BasePage {
   @override
@@ -154,33 +155,18 @@ class ReceiveBodyState extends State<ReceiveBody> {
                   Expanded(
                       child: Form(
                           key: _formKey,
-                          child: TextFormField(
+                          child: OxenTextField(
                             keyboardType:
                                 TextInputType.numberWithOptions(decimal: true),
                             inputFormatters: [
                               FilteringTextInputFormatter.deny(
-                                  RegExp('[\\-|\\ |\\,]')
-                              )
+                                  RegExp('[\\-|\\ |\\,]'))
                             ],
-                            style: TextStyle(
-                              fontSize: 14.0,
-                            ),
-                            decoration: InputDecoration(
-                                hintStyle: TextStyle(
-                                    color: Theme.of(context).hintColor),
-                                hintText: S.of(context).amount,
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: OxenPalette.teal, width: 2.0)),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Theme.of(context).focusColor,
-                                        width: 1.0))),
+                            hintText: S.of(context).amount,
                             validator: (value) {
                               walletStore.validateAmount(value);
                               return walletStore.errorMessage;
                             },
-                            autovalidate: true,
                             controller: amountController,
                           )))
                 ],

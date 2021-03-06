@@ -49,7 +49,7 @@ import 'package:oxen_wallet/src/screens/subaddress/new_subaddress_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/subaddress_list_page.dart';
 import 'package:oxen_wallet/src/screens/transaction_details/transaction_details_page.dart';
 import 'package:oxen_wallet/src/screens/wallet_list/wallet_list_page.dart';
-import 'package:oxen_wallet/src/screens/welcome/create_welcome_page.dart';
+import 'package:oxen_wallet/src/screens/welcome/welcome_page.dart';
 import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/stores/auth/auth_store.dart';
@@ -96,7 +96,7 @@ class Router {
       Box<TransactionDescription> transactionDescriptions}) {
     switch (settings.name) {
       case Routes.welcome:
-        return MaterialPageRoute<void>(builder: (_) => createWelcomePage());
+        return MaterialPageRoute<void>(builder: (_) => WelcomePage());
 
       case Routes.newWalletFromWelcome:
         return CupertinoPageRoute<void>(

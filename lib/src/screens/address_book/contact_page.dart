@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
-import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:oxen_wallet/palette.dart';
+import 'package:provider/provider.dart';
 
 class ContactPage extends BasePage {
   ContactPage({this.contact});
@@ -38,17 +38,17 @@ class ContactFormState extends State<ContactForm> {
   final _currencyTypeController = TextEditingController();
   final _addressController = TextEditingController();
 
-  CryptoCurrency _selectectCrypto = CryptoCurrency.oxen;
+  CryptoCurrency _selectedCrypto = CryptoCurrency.oxen;
 
   @override
   void initState() {
     super.initState();
     if (widget.contact == null) {
-      _currencyTypeController.text = _selectectCrypto.toString();
+      _currencyTypeController.text = _selectedCrypto.toString();
     } else {
-      _selectectCrypto = widget.contact.type;
+      _selectedCrypto = widget.contact.type;
       _contactNameController.text = widget.contact.name;
-      _currencyTypeController.text = _selectectCrypto.toString();
+      _currencyTypeController.text = _selectedCrypto.toString();
       _addressController.text = widget.contact.address;
     }
   }
@@ -68,6 +68,7 @@ class ContactFormState extends State<ContactForm> {
     await showDialog<void>(
         context: context,
         builder: (BuildContext context) {
+          // ToDo: Replace with OxenDialog
           return AlertDialog(
             title: Text(S.of(context).please_select),
             backgroundColor: Theme.of(context).backgroundColor,
@@ -96,13 +97,11 @@ class ContactFormState extends State<ContactForm> {
             ),
             actions: <Widget>[
               FlatButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                  onPressed: () => Navigator.pop(context),
                   child: Text(S.of(context).cancel)),
               FlatButton(
                   onPressed: () {
-                    _selectectCrypto = selectedCurrency;
+                    _selectedCrypto = selectedCurrency;
                     _currencyTypeController.text = currencyType;
                     Navigator.of(context).pop();
                   },
@@ -122,19 +121,8 @@ class ContactFormState extends State<ContactForm> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              TextFormField(
-                style: TextStyle(
-                    fontSize: 14.0,
-                    color: Theme.of(context).primaryTextTheme.headline5.color),
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                    hintText: S.of(context).contact_name,
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: OxenPalette.teal, width: 2.0)),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context).focusColor, width: 1.0))),
+              OxenTextField(
+                hintText: S.of(context).contact_name,
                 controller: _contactNameController,
                 validator: (value) {
                   addressBookStore.validateContactName(value);
@@ -146,21 +134,7 @@ class ContactFormState extends State<ContactForm> {
                 child: InkWell(
                   onTap: () => _setCurrencyType(context),
                   child: IgnorePointer(
-                    child: TextFormField(
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Theme.of(context)
-                              .primaryTextTheme
-                              .headline5
-                              .color),
-                      decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: OxenPalette.teal, width: 2.0)),
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).focusColor,
-                                  width: 1.0))),
+                    child: OxenTextField(
                       controller: _currencyTypeController,
                     ),
                   ),
@@ -172,7 +146,7 @@ class ContactFormState extends State<ContactForm> {
                 options: [AddressTextFieldOption.qrCode],
                 validator: (value) {
                   addressBookStore.validateAddress(value,
-                      cryptoCurrency: _selectectCrypto);
+                      cryptoCurrency: _selectedCrypto);
                   return addressBookStore.errorMessage;
                 },
               )
@@ -185,10 +159,10 @@ class ContactFormState extends State<ContactForm> {
               child: PrimaryButton(
                   onPressed: () {
                     setState(() {
-                      _selectectCrypto = CryptoCurrency.xmr;
+                      _selectedCrypto = CryptoCurrency.xmr;
                       _contactNameController.text = '';
                       _currencyTypeController.text =
-                          _selectectCrypto.toString();
+                          _selectedCrypto.toString();
                       _addressController.text = '';
                     });
                   },
@@ -202,23 +176,21 @@ class ContactFormState extends State<ContactForm> {
             Expanded(
                 child: PrimaryButton(
                     onPressed: () async {
-                      if (!_formKey.currentState.validate()) {
-                        return;
-                      }
+                      if (!_formKey.currentState.validate()) return;
 
                       try {
                         if (widget.contact == null) {
                           final newContact = Contact(
                               name: _contactNameController.text,
                               address: _addressController.text,
-                              type: _selectectCrypto);
+                              type: _selectedCrypto);
 
                           await addressBookStore.add(contact: newContact);
                         } else {
                           widget.contact.name = _contactNameController.text;
                           widget.contact.address = _addressController.text;
                           widget.contact
-                              .updateCryptoCurrency(currency: _selectectCrypto);
+                              .updateCryptoCurrency(currency: _selectedCrypto);
 
                           await addressBookStore.update(
                               contact: widget.contact);
