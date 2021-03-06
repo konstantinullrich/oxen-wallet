@@ -114,7 +114,7 @@ typedef StakeCreate = int Function(
 
 typedef CanRequestUnstake = int Function(Pointer<Utf8> serviceNodeKey);
 
-typedef RequestUnstake = int Function(Pointer<Utf8> serviceNodeKey,
+typedef SubmitStakeUnlock = int Function(Pointer<Utf8> serviceNodeKey,
     Pointer<Utf8Box> error, Pointer<PendingTransactionRaw> pendingTransaction);
 
 typedef SecretViewKey = Pointer<Utf8> Function();

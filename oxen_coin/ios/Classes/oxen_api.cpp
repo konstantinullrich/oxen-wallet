@@ -545,12 +545,12 @@ extern "C"
     EXPORT
     bool can_request_stake_unlock(char *service_node_key)
     {
-        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->requestStakeUnlock(service_node_key)};
+        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->canRequestStakeUnlock(service_node_key)};
         return stakeUnlockResult->success();
     }
 
     EXPORT
-    bool request_stake_unlock(char *service_node_key, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+    bool submit_stake_unlock(char *service_node_key, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
     {
         std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->requestStakeUnlock(service_node_key)};
 

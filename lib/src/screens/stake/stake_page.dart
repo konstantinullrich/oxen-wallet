@@ -4,13 +4,14 @@ import 'package:oxen_coin/oxen_coin_structs.dart';
 import 'package:oxen_coin/stake.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
-
 import 'package:oxen_wallet/routes.dart';
+import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/wallet/crypto_amount_format.dart';
 import 'package:oxen_wallet/src/wallet/oxen/oxen_amount_format.dart';
-import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
 import 'package:oxen_wallet/src/widgets/nav/nav_list_header.dart';
+import 'package:oxen_wallet/src/widgets/nav/nav_list_trailing.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
 
 extension StakeParsing on StakeRow {
   double get ownedPercentage {
@@ -86,7 +87,7 @@ class StakePageBodyState extends State<StakePageBody> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.symmetric(vertical: 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -116,14 +117,64 @@ class StakePageBodyState extends State<StakePageBody> {
                   print('${stake.serviceNodeKey}: ${stake.amount}');
                   print('${canRequestUnstake(stake.serviceNodeKey)}');
 
-                  return NavListArrow(
-                      leading: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(stakeColor),
-                          value: stake.ownedPercentage),
-                      text: nodeName,
-                      onTap: () {} // ToDo: Direct to Service Node Page
-                      //Navigator.of(context).pushNamed(Routes.accountList)
-                      );
+                  return Dismissible(
+                      key: Key(stake.serviceNodeKey),
+                      confirmDismiss: (direction) async {
+                        var isSuccessful = false;
+                        var isAuthenticated = false;
+                        await Navigator.of(context).pushNamed(Routes.auth,
+                            arguments: (bool isAuthenticatedSuccessfully,
+                                AuthPageState auth) async {
+                          if (isAuthenticatedSuccessfully) {
+                            isAuthenticated = true;
+                            Navigator.of(auth.context).pop();
+                          }
+                        });
+
+                        if (isAuthenticated) {
+                          await showConfirmOxenDialog(
+                              context,
+                              'Confirm Unstake',
+                              'Do you really want to unsteak ${stake.serviceNodeKey}',
+                              onDismiss: (buildContext) {
+                            isSuccessful = false;
+                            Navigator.of(buildContext).pop();
+                          }, onConfirm: (buildContext) {
+                            isSuccessful = true;
+                            Navigator.of(buildContext).pop();
+                          });
+                        }
+
+                        return isSuccessful;
+                      },
+                      onDismissed: (direction) async {
+                        await submitStakeUnlock(stake.serviceNodeKey);
+                      },
+                      direction: DismissDirection.endToStart,
+                      background: Container(
+                          padding: EdgeInsets.only(right: 10.0),
+                          alignment: AlignmentDirectional.centerEnd,
+                          color: OxenPalette.red,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              const Icon(
+                                Icons.arrow_downward_sharp,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                S.of(context).delete,
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          )),
+                      child: NavListTrailing(
+                        leading: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(stakeColor),
+                            value: stake.ownedPercentage),
+                        text: nodeName,
+                      ));
                 }),
         ],
       ),

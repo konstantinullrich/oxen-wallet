@@ -24,9 +24,9 @@ final canRequestUnstakeNative = oxenApi
     .lookup<NativeFunction<can_request_unstake>>('can_request_stake_unlock')
     .asFunction<CanRequestUnstake>();
 
-final requestUnstakeNative = oxenApi
-    .lookup<NativeFunction<request_unstake>>('request_stake_unlock')
-    .asFunction<RequestUnstake>();
+final submitStakeUnlockNative = oxenApi
+    .lookup<NativeFunction<submit_stake_unlock>>('submit_stake_unlock')
+    .asFunction<SubmitStakeUnlock>();
 
 PendingTransactionDescription createStakeSync(
     String serviceNodeKey, String amount) {
@@ -57,11 +57,11 @@ PendingTransactionDescription createStakeSync(
       pointerAddress: pendingTransactionRawPointer.address);
 }
 
-PendingTransactionDescription requestUnstakeSync(String serviceNodeKey) {
+PendingTransactionDescription submitStakeUnlockSync(String serviceNodeKey) {
   final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
   final errorMessagePointer = allocate<Utf8Box>();
   final pendingTransactionRawPointer = allocate<PendingTransactionRaw>();
-  final created = requestUnstakeNative(serviceNodeKeyPointer,
+  final created = submitStakeUnlockNative(serviceNodeKeyPointer,
           errorMessagePointer, pendingTransactionRawPointer) !=
       0;
 

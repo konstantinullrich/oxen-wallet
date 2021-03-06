@@ -34,10 +34,10 @@ bool canRequestUnstake(String serviceNodeKey) {
   return stake_native.canRequestUnstakeNative(serviceNodeKeyPointer) != 0;
 }
 
-PendingTransactionDescription _requestUnstakeSync(Map args) {
+PendingTransactionDescription _submitStakeUnlockSync(Map args) {
   final serviceNodeKey = args['service_node_key'] as String;
-  return stake_native.requestUnstakeSync(serviceNodeKey);
+  return stake_native.submitStakeUnlockSync(serviceNodeKey);
 }
 
-Future<PendingTransactionDescription> requestUnstake(String serviceNodeKey) =>
-    compute(_requestUnstakeSync, {'service_node_key': serviceNodeKey});
+Future<PendingTransactionDescription> submitStakeUnlock(String serviceNodeKey) =>
+    compute(_submitStakeUnlockSync, {'service_node_key': serviceNodeKey});

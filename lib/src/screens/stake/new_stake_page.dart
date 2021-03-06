@@ -234,7 +234,7 @@ class NewStakeFormState extends State<NewStakeForm> {
             text: S.of(context).stake_oxen,
             outerColor: Theme.of(context).primaryTextTheme.subtitle2.color,
             innerColor: OxenPalette.teal,
-            onSubmit: syncStore.status is SyncedSyncStatus
+            onFutureSubmit: syncStore.status is SyncedSyncStatus
                 ? () async {
                     if (_formKey.currentState.validate()) {
                       var isSuccessful = false;

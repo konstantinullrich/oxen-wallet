@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-
 class SlideToAct extends StatefulWidget {
   const SlideToAct({
     Key key,
@@ -17,6 +16,7 @@ class SlideToAct extends StatefulWidget {
     this.reversed = false,
     this.alignment = Alignment.center,
     this.submittedIcon,
+    this.onFutureSubmit,
     this.onSubmit,
     this.child,
     this.innerColor,
@@ -54,8 +54,8 @@ class SlideToAct extends StatefulWidget {
   final double borderRadius;
 
   /// Callback called on submit
-  /// If this is null the component will not animate to complete
-  final Future<bool> Function() onSubmit;
+  final Future Function() onFutureSubmit;
+  final VoidCallback onSubmit;
 
   /// Elevation of the component
   final double elevation;
@@ -80,8 +80,7 @@ class SlideToAct extends StatefulWidget {
 }
 
 /// Use a GlobalKey to access the state. This is the only way to call [SlideToActState.reset]
-class SlideToActState extends State<SlideToAct>
-    with TickerProviderStateMixin {
+class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
   final GlobalKey _containerKey = GlobalKey();
   final GlobalKey _sliderKey = GlobalKey();
   double _dx = 0;
@@ -100,6 +99,10 @@ class SlideToActState extends State<SlideToAct>
 
   @override
   Widget build(BuildContext context) {
+    if (widget.onSubmit != null && widget.onFutureSubmit != null) {
+      throw Exception('onSubmit and onFutureSubmit can\'t be used both');
+    }
+
     return Align(
       alignment: widget.alignment,
       child: Transform(
@@ -181,12 +184,15 @@ class SlideToActState extends State<SlideToAct>
                                 onHorizontalDragUpdate: onHorizontalDragUpdate,
                                 onHorizontalDragEnd: (details) async {
                                   _endDx = _dx;
-                                  if (_progress <= 0.8 ||
-                                      widget.onSubmit == null) {
+                                  if (_progress <= 0.8) {
                                     await _cancelAnimation();
                                   } else {
-                                      await widget.onSubmit();
-                                      await _cancelAnimation();
+                                    if (widget.onFutureSubmit != null) {
+                                      await widget.onFutureSubmit();
+                                    } else if (widget.onSubmit != null) {
+                                      widget.onSubmit();
+                                    }
+                                    await _cancelAnimation();
                                   }
                                 },
                                 child: Padding(

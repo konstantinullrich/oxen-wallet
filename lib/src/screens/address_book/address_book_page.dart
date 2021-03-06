@@ -27,9 +27,7 @@ class AddressBookPage extends BasePage {
 
   @override
   Widget trailing(BuildContext context) {
-    if (!isEditable) {
-      return null;
-    }
+    if (!isEditable) return null;
 
     final addressBookStore = Provider.of<AddressBookStore>(context);
 
@@ -174,7 +172,7 @@ class AddressBookPage extends BasePage {
   Color _getCurrencyBackgroundColor(CryptoCurrency currency) {
     Color color;
     switch (currency) {
-      case CryptoCurrency.xmr:
+      case CryptoCurrency.oxen:
         color = OxenPalette.tealWithOpacity;
         break;
       case CryptoCurrency.ada:

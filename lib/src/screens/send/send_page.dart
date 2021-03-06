@@ -380,7 +380,7 @@ class SendFormState extends State<SendForm> {
             text: S.of(context).send_title,
             outerColor: Theme.of(context).primaryTextTheme.subtitle2.color,
             innerColor: OxenPalette.teal,
-            onSubmit: syncStore.status is SyncedSyncStatus
+            onFutureSubmit: syncStore.status is SyncedSyncStatus
                 ? () async {
                     if (_formKey.currentState.validate()) {
                       var isSuccessful = false;

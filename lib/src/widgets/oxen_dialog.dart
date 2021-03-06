@@ -2,33 +2,55 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:oxen_wallet/src/widgets/slide_to_act.dart';
 
 Future showOxenDialog(BuildContext context, Widget child,
-    {VoidCallback onDismiss}) {
+    {void Function(BuildContext context) onDismiss}) {
   return showDialog<void>(
       builder: (_) => OxenDialog(body: child, onDismiss: onDismiss),
       context: context);
 }
 
 Future showSimpleOxenDialog(BuildContext context, String title, String body,
-    {void Function(BuildContext context) onPressed, VoidCallback onDismiss}) {
+    {void Function(BuildContext context) onPressed, void Function(BuildContext context) onDismiss}) {
   return showDialog<void>(
       builder: (_) => SimpleOxenDialog(title, body,
           onDismiss: onDismiss, onPressed: onPressed),
       context: context);
 }
 
+Future showConfirmOxenDialog(BuildContext context, String title, String body,
+    {void Function(BuildContext context) onConfirm,
+    Future Function(BuildContext context) onFutureConfirm,
+    void Function(BuildContext context) onDismiss}) {
+  return showDialog<void>(
+      builder: (_) => ConfirmOxenDialog(title, body,
+          onDismiss: onDismiss,
+          onConfirm: onConfirm,
+          onFutureConfirm: onFutureConfirm),
+      context: context);
+}
+
 class OxenDialog extends StatelessWidget {
   OxenDialog({this.body, this.onDismiss});
 
-  final VoidCallback onDismiss;
+  final void Function(BuildContext context) onDismiss;
   final Widget body;
+
+  void _onDismiss(BuildContext context) {
+    if (onDismiss == null) {
+      Navigator.of(context).pop();
+    } else {
+      onDismiss(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onDismiss ?? Navigator.of(context).pop(),
+      onTap: () => _onDismiss(context),
       child: Container(
         color: Colors.transparent,
         child: BackdropFilter(
@@ -61,7 +83,7 @@ class SimpleOxenDialog extends StatelessWidget {
   final String title;
   final String body;
   final void Function(BuildContext context) onPressed;
-  final VoidCallback onDismiss;
+  final void Function(BuildContext context) onDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +123,60 @@ class SimpleOxenDialog extends StatelessWidget {
                   onPressed: () {
                     if (onPressed != null) onPressed(context);
                   })
+            ],
+          ),
+        ));
+  }
+}
+
+class ConfirmOxenDialog extends StatelessWidget {
+  ConfirmOxenDialog(this.title, this.body,
+      {this.onFutureConfirm, this.onConfirm, this.onDismiss});
+
+  final String title;
+  final String body;
+  final Future Function(BuildContext context) onFutureConfirm;
+  final void Function(BuildContext context) onConfirm;
+  final void Function(BuildContext context) onDismiss;
+
+  @override
+  Widget build(BuildContext context) {
+    return OxenDialog(
+        onDismiss: onDismiss,
+        body: Container(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Text(title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 18,
+                          decoration: TextDecoration.none,
+                          color: Theme.of(context)
+                              .primaryTextTheme
+                              .caption
+                              .color))),
+              Padding(
+                  padding: EdgeInsets.only(top: 15, bottom: 30),
+                  child: Text(body,
+                      style: TextStyle(
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
+                          color: Theme.of(context)
+                              .primaryTextTheme
+                              .caption
+                              .color))),
+              SlideToAct(
+                text: S.of(context).ok,
+                outerColor: Theme.of(context).primaryTextTheme.subtitle2.color,
+                innerColor: OxenPalette.teal,
+                onFutureSubmit: onFutureConfirm != null
+                    ? () async => await onFutureConfirm(context)
+                    : null,
+                onSubmit: onConfirm != null ? () => onConfirm(context) : null,
+              )
             ],
           ),
         ));
