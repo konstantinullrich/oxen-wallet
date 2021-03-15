@@ -14,11 +14,12 @@ Future showOxenDialog(BuildContext context, Widget child,
 }
 
 Future showSimpleOxenDialog(BuildContext context, String title, String body,
-    {void Function(BuildContext context) onPressed,
+    {String buttonText,
+    void Function(BuildContext context) onPressed,
     void Function(BuildContext context) onDismiss}) {
   return showDialog<void>(
       builder: (_) => SimpleOxenDialog(title, body,
-          onDismiss: onDismiss, onPressed: onPressed),
+          buttonText: buttonText, onDismiss: onDismiss, onPressed: onPressed),
       context: context);
 }
 
@@ -79,10 +80,12 @@ class OxenDialog extends StatelessWidget {
 }
 
 class SimpleOxenDialog extends StatelessWidget {
-  SimpleOxenDialog(this.title, this.body, {this.onPressed, this.onDismiss});
+  SimpleOxenDialog(this.title, this.body,
+      {this.buttonText, this.onPressed, this.onDismiss});
 
   final String title;
   final String body;
+  final String buttonText;
   final void Function(BuildContext context) onPressed;
   final void Function(BuildContext context) onDismiss;
 
@@ -116,7 +119,7 @@ class SimpleOxenDialog extends StatelessWidget {
                               .caption
                               .color))),
               PrimaryButton(
-                  text: S.of(context).ok,
+                  text: buttonText ?? S.of(context).ok,
                   color:
                       Theme.of(context).primaryTextTheme.button.backgroundColor,
                   borderColor:

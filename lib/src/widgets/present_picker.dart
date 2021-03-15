@@ -13,7 +13,6 @@ Future<T> presentPicker<T extends Object>(
       context: context,
       builder: (BuildContext context) {
         return OxenDialog(
-            onDismiss: (context) => Navigator.of(context).pop(),
             body: Container(
               padding: EdgeInsets.all(30),
               child: Column(

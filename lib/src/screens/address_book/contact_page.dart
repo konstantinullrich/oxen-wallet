@@ -6,6 +6,7 @@ import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/widgets/address_text_field.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
 import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
@@ -68,46 +69,63 @@ class ContactFormState extends State<ContactForm> {
     await showDialog<void>(
         context: context,
         builder: (BuildContext context) {
-          // ToDo: Replace with OxenDialog
-          return AlertDialog(
-            title: Text(S.of(context).please_select),
-            backgroundColor: Theme.of(context).backgroundColor,
-            content: Container(
-              height: 150.0,
-              child: CupertinoPicker(
-                  backgroundColor: Theme.of(context).backgroundColor,
-                  itemExtent: 45.0,
-                  onSelectedItemChanged: (int index) {
-                    selectedCurrency = CryptoCurrency.all[index];
-                    currencyType = CryptoCurrency.all[index].toString();
-                  },
-                  children:
-                      List.generate(CryptoCurrency.all.length, (int index) {
-                    return Center(
-                      child: Text(
-                        CryptoCurrency.all[index].toString(),
+          return OxenDialog(
+              body: Container(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              children: [
+                Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(S.of(context).please_select,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
+                            fontSize: 18,
+                            decoration: TextDecoration.none,
                             color: Theme.of(context)
                                 .primaryTextTheme
                                 .caption
-                                .color),
-                      ),
-                    );
-                  })),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(S.of(context).cancel)),
-              FlatButton(
+                                .color))),
+                Padding(
+                  padding: EdgeInsets.only(top: 15, bottom: 30),
+                  child: Container(
+                    height: 150.0,
+                    child: CupertinoPicker(
+                        backgroundColor: Theme.of(context).backgroundColor,
+                        itemExtent: 45.0,
+                        onSelectedItemChanged: (int index) {
+                          selectedCurrency = CryptoCurrency.all[index];
+                          currencyType = CryptoCurrency.all[index].toString();
+                        },
+                        children: List.generate(CryptoCurrency.all.length,
+                            (int index) {
+                          return Center(
+                            child: Text(
+                              CryptoCurrency.all[index].toString(),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .primaryTextTheme
+                                      .caption
+                                      .color),
+                            ),
+                          );
+                        })),
+                  ),
+                ),
+                PrimaryButton(
+                  text: S.of(context).ok,
+                  color:
+                      Theme.of(context).primaryTextTheme.button.backgroundColor,
+                  borderColor:
+                      Theme.of(context).primaryTextTheme.button.decorationColor,
                   onPressed: () {
                     _selectedCrypto = selectedCurrency;
                     _currencyTypeController.text = currencyType;
                     Navigator.of(context).pop();
                   },
-                  child: Text(S.of(context).ok))
-            ],
-          );
+                )
+              ],
+            ),
+          ));
         });
   }
 
@@ -161,8 +179,7 @@ class ContactFormState extends State<ContactForm> {
                     setState(() {
                       _selectedCrypto = CryptoCurrency.xmr;
                       _contactNameController.text = '';
-                      _currencyTypeController.text =
-                          _selectedCrypto.toString();
+                      _currencyTypeController.text = _selectedCrypto.toString();
                       _addressController.text = '';
                     });
                   },

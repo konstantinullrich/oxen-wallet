@@ -1,15 +1,16 @@
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/crypto_currency.dart';
-import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
+import 'package:provider/provider.dart';
 
 class AddressBookPage extends BasePage {
   AddressBookPage({this.isEditable = true});
@@ -116,7 +117,8 @@ class AddressBookPage extends BasePage {
                     contact.name,
                     style: TextStyle(
                         fontSize: 16.0,
-                        color: Theme.of(context).primaryTextTheme.headline6.color),
+                        color:
+                            Theme.of(context).primaryTextTheme.headline6.color),
                   ),
                 );
 
@@ -238,54 +240,31 @@ class AddressBookPage extends BasePage {
   }
 
   Future<bool> showAlertDialog(BuildContext context) async {
-    return await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text(
-              'Remove contact',
-              textAlign: TextAlign.center,
-            ),
-            content: const Text(
-              'Are you sure that you want to remove selected contact?',
-              textAlign: TextAlign.center,
-            ),
-            actions: <Widget>[
-              FlatButton(
-                  onPressed: () => Navigator.of(context).pop( false),
-                  child: const Text('Cancel')),
-              FlatButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text('Remove')),
-            ],
-          );
+    var result = false;
+    await showConfirmOxenDialog(context, 'Remove contact',
+        'Are you sure that you want to remove selected contact?',
+        onDismiss: (context) => Navigator.pop(context, false),
+        onConfirm: (context) {
+          result = true;
+          Navigator.pop(context, true);
+          return true;
         });
+    return result;
   }
 
   Future<bool> showNameAndAddressDialog(
       BuildContext context, String name, String address) async {
-    return await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              name,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            content: Text(
-              address,
-              textAlign: TextAlign.center,
-            ),
-            actions: <Widget>[
-              FlatButton(
-                  onPressed: () => Navigator.of(context).pop(false),
-                  child: Text('Cancel')),
-              FlatButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: Text('Copy'))
-            ],
-          );
-        });
+    var result = false;
+    await showSimpleOxenDialog(
+      context,
+      name,
+      address,
+      buttonText: 'Copy',
+      onPressed: (context) {
+        result = true;
+        Navigator.of(context).pop(true);
+      },
+    );
+    return result;
   }
 }
