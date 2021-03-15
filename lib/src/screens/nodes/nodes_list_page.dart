@@ -8,6 +8,7 @@ import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/nodes/node_indicator.dart';
 import 'package:oxen_wallet/src/stores/node_list/node_list_store.dart';
 import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
 import 'package:provider/provider.dart';
 
 class NodeListPage extends BasePage {
@@ -28,33 +29,16 @@ class NodeListPage extends BasePage {
           minWidth: double.minPositive,
           child: FlatButton(
               onPressed: () async {
-                await showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text(
-                          S.of(context).node_reset_settings_title,
-                          textAlign: TextAlign.center,
-                        ),
-                        content: Text(
-                          S.of(context).nodes_list_reset_to_default_message,
-                          textAlign: TextAlign.center,
-                        ),
-                        actions: <Widget>[
-                          FlatButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(S.of(context).cancel)),
-                          FlatButton(
-                              onPressed: () async {
-                                Navigator.pop(context);
-                                await nodeList.reset();
-                                await settings.setCurrentNodeToDefault();
-                              },
-                              child: Text(S.of(context).reset))
-                        ],
-                      );
+                await showConfirmOxenDialog(
+                    context,
+                    S.of(context).node_reset_settings_title,
+                    S.of(context).nodes_list_reset_to_default_message,
+                    onDismiss: (context) => Navigator.pop(context),
+                    onFutureConfirm: (context) async {
+                      Navigator.pop(context);
+                      await nodeList.reset();
+                      await settings.setCurrentNodeToDefault();
+                      return true;
                     });
               },
               child: Text(
@@ -149,30 +133,13 @@ class NodeListPageBodyState extends State<NodeListPageBody> {
                               }),
                           onTap: () async {
                             if (!isCurrent) {
-                              await showDialog<void>(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      content: Text(
-                                        S
-                                            .of(context)
-                                            .change_current_node(node.uri),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      actions: <Widget>[
-                                        FlatButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            child: Text(S.of(context).cancel)),
-                                        FlatButton(
-                                            onPressed: () async {
-                                              Navigator.of(context).pop();
-                                              await settings.setCurrentNode(
-                                                  node: node);
-                                            },
-                                            child: Text(S.of(context).change)),
-                                      ],
-                                    );
+                              await showSimpleOxenDialog(context, '',
+                                  S.of(context).change_current_node(node.uri),
+                                  onDismiss: (context) =>
+                                      Navigator.pop(context),
+                                  onPressed: (context) async {
+                                    Navigator.of(context).pop();
+                                    await settings.setCurrentNode(node: node);
                                   });
                             }
                           },
@@ -183,30 +150,19 @@ class NodeListPageBodyState extends State<NodeListPageBody> {
                         : Dismissible(
                             key: Key('${node.key}'),
                             confirmDismiss: (direction) async {
-                              return await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(
-                                        S.of(context).remove_node,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      content: Text(
-                                        S.of(context).remove_node_message,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      actions: <Widget>[
-                                        FlatButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context, false),
-                                            child: Text(S.of(context).cancel)),
-                                        FlatButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context, true),
-                                            child: Text(S.of(context).remove)),
-                                      ],
-                                    );
+                              var result = false;
+                              await showConfirmOxenDialog(
+                                  context,
+                                  S.of(context).remove_node,
+                                  S.of(context).remove_node_message,
+                                  onDismiss: (context) =>
+                                      Navigator.pop(context, false),
+                                  onConfirm: (context) {
+                                    result = true;
+                                    Navigator.pop(context, true);
+                                    return true;
                                   });
+                              return result;
                             },
                             onDismissed: (direction) async =>
                                 await nodeList.remove(node: node),
