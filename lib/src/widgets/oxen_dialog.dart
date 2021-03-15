@@ -14,7 +14,8 @@ Future showOxenDialog(BuildContext context, Widget child,
 }
 
 Future showSimpleOxenDialog(BuildContext context, String title, String body,
-    {void Function(BuildContext context) onPressed, void Function(BuildContext context) onDismiss}) {
+    {void Function(BuildContext context) onPressed,
+    void Function(BuildContext context) onDismiss}) {
   return showDialog<void>(
       builder: (_) => SimpleOxenDialog(title, body,
           onDismiss: onDismiss, onPressed: onPressed),

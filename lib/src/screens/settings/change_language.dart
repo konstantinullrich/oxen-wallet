@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/src/domain/common/language.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
+import 'package:provider/provider.dart';
 
 class ChangeLanguage extends BasePage {
   @override
@@ -16,7 +17,8 @@ class ChangeLanguage extends BasePage {
     final currentLanguage = Provider.of<Language>(context);
 
     final currentColor = Theme.of(context).selectedRowColor;
-    final notCurrentColor = Theme.of(context).accentTextTheme.subtitle1.backgroundColor;
+    final notCurrentColor =
+        Theme.of(context).accentTextTheme.subtitle1.backgroundColor;
 
     return Container(
         padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -25,8 +27,7 @@ class ChangeLanguage extends BasePage {
           itemBuilder: (BuildContext context, int index) {
             final isCurrent = settingsStore.languageCode == null
                 ? false
-                : languages.keys.elementAt(index) ==
-                    settingsStore.languageCode;
+                : languages.keys.elementAt(index) == settingsStore.languageCode;
 
             return Container(
               margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -36,40 +37,25 @@ class ChangeLanguage extends BasePage {
                   languages.values.elementAt(index),
                   style: TextStyle(
                       fontSize: 16.0,
-                      color: Theme.of(context).primaryTextTheme.headline6.color),
+                      color:
+                          Theme.of(context).primaryTextTheme.headline6.color),
                 ),
                 onTap: () async {
                   if (!isCurrent) {
-                    await showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text(
-                              S.of(context).change_language,
-                              textAlign: TextAlign.center,
-                            ),
-                            content: Text(
-                              S.of(context).change_language_to(
-                                  languages.values.elementAt(index)),
-                              textAlign: TextAlign.center,
-                            ),
-                            actions: <Widget>[
-                              FlatButton(
-                                  onPressed: () => Navigator.of(context).pop(),
-                                  child: Text(S.of(context).cancel)),
-                              FlatButton(
-                                  onPressed: () {
-                                    settingsStore.saveLanguageCode(
-                                        languageCode:
-                                            languages.keys.elementAt(index));
-                                    currentLanguage.setCurrentLanguage(
-                                        languages.keys.elementAt(index));
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text(S.of(context).change)),
-                            ],
-                          );
-                        });
+                    await showSimpleOxenDialog(
+                      context,
+                      S.of(context).change_language,
+                      S.of(context).change_language_to(
+                          languages.values.elementAt(index)),
+                      onDismiss: (context) => Navigator.of(context).pop(),
+                      onPressed: (context) {
+                        settingsStore.saveLanguageCode(
+                            languageCode: languages.keys.elementAt(index));
+                        currentLanguage.setCurrentLanguage(
+                            languages.keys.elementAt(index));
+                        Navigator.of(context).pop();
+                      },
+                    );
                   }
                 },
               ),
