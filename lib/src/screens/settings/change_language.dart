@@ -47,7 +47,6 @@ class ChangeLanguage extends BasePage {
                       S.of(context).change_language,
                       S.of(context).change_language_to(
                           languages.values.elementAt(index)),
-                      onDismiss: (context) => Navigator.of(context).pop(),
                       onPressed: (context) {
                         settingsStore.saveLanguageCode(
                             languageCode: languages.keys.elementAt(index));

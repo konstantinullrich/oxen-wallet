@@ -33,13 +33,12 @@ class NodeListPage extends BasePage {
                     context,
                     S.of(context).node_reset_settings_title,
                     S.of(context).nodes_list_reset_to_default_message,
-                    onDismiss: (context) => Navigator.pop(context),
                     onFutureConfirm: (context) async {
-                      Navigator.pop(context);
-                      await nodeList.reset();
-                      await settings.setCurrentNodeToDefault();
-                      return true;
-                    });
+                  Navigator.pop(context);
+                  await nodeList.reset();
+                  await settings.setCurrentNodeToDefault();
+                  return true;
+                });
               },
               child: Text(
                 S.of(context).reset,
@@ -135,12 +134,10 @@ class NodeListPageBodyState extends State<NodeListPageBody> {
                             if (!isCurrent) {
                               await showSimpleOxenDialog(context, '',
                                   S.of(context).change_current_node(node.uri),
-                                  onDismiss: (context) =>
-                                      Navigator.pop(context),
                                   onPressed: (context) async {
-                                    Navigator.of(context).pop();
-                                    await settings.setCurrentNode(node: node);
-                                  });
+                                Navigator.of(context).pop();
+                                await settings.setCurrentNode(node: node);
+                              });
                             }
                           },
                         ));

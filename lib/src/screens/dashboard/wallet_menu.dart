@@ -3,6 +3,7 @@ import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
 import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/widgets/oxen_dialog.dart';
 import 'package:provider/provider.dart';
 
 class WalletMenu {
@@ -33,27 +34,11 @@ class WalletMenu {
   Future<void> _presentReconnectAlert(BuildContext context) async {
     final walletStore = Provider.of<WalletStore>(context);
 
-    await showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              S.of(context).reconnection,
-              textAlign: TextAlign.center,
-            ),
-            content: Text(S.of(context).reconnect_alert_text),
-            actions: <Widget>[
-              FlatButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(S.of(context).cancel)),
-              FlatButton(
-                  onPressed: () {
-                    walletStore.reconnect();
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(S.of(context).ok))
-            ],
-          );
-        });
+    await showSimpleOxenDialog(
+        context, S.of(context).reconnection, S.of(context).reconnect_alert_text,
+        onPressed: (context) {
+      walletStore.reconnect();
+      Navigator.of(context).pop();
+    });
   }
 }
