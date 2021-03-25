@@ -23,7 +23,7 @@ Information We Collect Automatically When You Use the Services
   we can view and access:
 Apple may collect IP address where you downloaded the app, your name, phone number Apple ID, etc.
 
-Oxen does not programatically collect any data about your usage of the Oxen Mobile Wallet, we can
+Oxen does not programmatically collect any data about your usage of the Oxen Mobile Wallet, we can
 only view the statistics that Apple keeps.
 
 ### 3. Use of Information
