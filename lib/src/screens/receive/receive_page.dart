@@ -80,187 +80,194 @@ class ReceiveBodyState extends State<ReceiveBody> {
     });
 
     return SafeArea(
-        child: SingleChildScrollView(
-            child: Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(35.0),
-          color: Theme.of(context).backgroundColor,
-          child: Column(
-            children: <Widget>[
-              Observer(builder: (_) {
-                return Row(
-                  children: <Widget>[
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Flexible(
-                        flex: 2,
-                        child: AspectRatio(
-                          aspectRatio: 1.0,
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            color: Colors.white,
-                            child: QrImage(
-                              data: walletStore.subaddress.address +
-                                  walletStore.amountValue,
-                              backgroundColor: Colors.transparent,
+        child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: SingleChildScrollView(
+                child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(35.0),
+                  color: Theme.of(context).backgroundColor,
+                  child: Column(
+                    children: <Widget>[
+                      Observer(builder: (_) {
+                        return Row(
+                          children: <Widget>[
+                            Spacer(
+                              flex: 1,
                             ),
-                          ),
-                        )),
-                    Spacer(
-                      flex: 1,
-                    )
-                  ],
-                );
-              }),
-              Observer(builder: (_) {
-                return Row(
+                            Flexible(
+                                flex: 2,
+                                child: AspectRatio(
+                                  aspectRatio: 1.0,
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    color: Colors.white,
+                                    child: QrImage(
+                                      data: walletStore.subaddress.address +
+                                          walletStore.amountValue,
+                                      backgroundColor: Colors.transparent,
+                                    ),
+                                  ),
+                                )),
+                            Spacer(
+                              flex: 1,
+                            )
+                          ],
+                        );
+                      }),
+                      Observer(builder: (_) {
+                        return Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.all(20.0),
+                              child: Center(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Clipboard.setData(ClipboardData(
+                                        text: walletStore.subaddress.address));
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      content: Text(
+                                        S.of(context).copied_to_clipboard,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                    ));
+                                  },
+                                  child: Text(
+                                    walletStore.subaddress.address,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context)
+                                            .primaryTextTheme
+                                            .headline6
+                                            .color),
+                                  ),
+                                ),
+                              ),
+                            ))
+                          ],
+                        );
+                      }),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                              child: Form(
+                                  key: _formKey,
+                                  child: OxenTextField(
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            decimal: true),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.deny(
+                                          RegExp('[\\-|\\ |\\,]'))
+                                    ],
+                                    hintText: S.of(context).amount,
+                                    validator: (value) {
+                                      walletStore.validateAmount(value);
+                                      return walletStore.errorMessage;
+                                    },
+                                    controller: amountController,
+                                  )))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Row(
                   children: <Widget>[
                     Expanded(
                         child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Clipboard.setData(ClipboardData(
-                                text: walletStore.subaddress.address));
-                            Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text(
-                                S.of(context).copied_to_clipboard,
-                                style: TextStyle(color: Colors.white),
+                      color: Theme.of(context).accentTextTheme.headline5.color,
+                      child: Column(
+                        children: <Widget>[
+                          ListTile(
+                            title: Text(
+                              S.of(context).subaddresses,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline5
+                                      .color),
+                            ),
+                            trailing: Container(
+                              width: 28.0,
+                              height: 28.0,
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).selectedRowColor,
+                                  shape: BoxShape.circle),
+                              child: InkWell(
+                                onTap: () => Navigator.of(context)
+                                    .pushNamed(Routes.newSubaddress),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(14.0)),
+                                child: Icon(
+                                  Icons.add,
+                                  color: OxenPalette.teal,
+                                  size: 22.0,
+                                ),
                               ),
-                              backgroundColor: Colors.green,
-                            ));
-                          },
-                          child: Text(
-                            walletStore.subaddress.address,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w600,
-                                color: Theme.of(context)
-                                    .primaryTextTheme
-                                    .headline6
-                                    .color),
+                            ),
                           ),
-                        ),
+                          Divider(
+                            color: Theme.of(context).dividerTheme.color,
+                            height: 1.0,
+                          )
+                        ],
                       ),
                     ))
                   ],
-                );
-              }),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                      child: Form(
-                          key: _formKey,
-                          child: OxenTextField(
-                            keyboardType:
-                                TextInputType.numberWithOptions(decimal: true),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.deny(
-                                  RegExp('[\\-|\\ |\\,]'))
-                            ],
-                            hintText: S.of(context).amount,
-                            validator: (value) {
-                              walletStore.validateAmount(value);
-                              return walletStore.errorMessage;
-                            },
-                            controller: amountController,
-                          )))
-                ],
-              )
-            ],
-          ),
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-                child: Container(
-              color: Theme.of(context).accentTextTheme.headline5.color,
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    title: Text(
-                      S.of(context).subaddresses,
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          color: Theme.of(context)
-                              .primaryTextTheme
-                              .headline5
-                              .color),
-                    ),
-                    trailing: Container(
-                      width: 28.0,
-                      height: 28.0,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).selectedRowColor,
-                          shape: BoxShape.circle),
-                      child: InkWell(
-                        onTap: () => Navigator.of(context)
-                            .pushNamed(Routes.newSubaddress),
-                        borderRadius: BorderRadius.all(Radius.circular(14.0)),
-                        child: Icon(
-                          Icons.add,
-                          color: OxenPalette.teal,
-                          size: 22.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: Theme.of(context).dividerTheme.color,
-                    height: 1.0,
-                  )
-                ],
-              ),
-            ))
-          ],
-        ),
-        Observer(builder: (_) {
-          return ListView.separated(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: subaddressListStore.subaddresses.length,
-              separatorBuilder: (context, i) {
-                return Divider(
-                  color: Theme.of(context).dividerTheme.color,
-                  height: 1.0,
-                );
-              },
-              itemBuilder: (context, i) {
-                return Observer(builder: (_) {
-                  final subaddress = subaddressListStore.subaddresses[i];
-                  final isCurrent =
-                      walletStore.subaddress.address == subaddress.address;
-                  final label = subaddress.label.isNotEmpty
-                      ? subaddress.label
-                      : subaddress.address;
+                ),
+                Observer(builder: (_) {
+                  return ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: subaddressListStore.subaddresses.length,
+                      separatorBuilder: (context, i) {
+                        return Divider(
+                          color: Theme.of(context).dividerTheme.color,
+                          height: 1.0,
+                        );
+                      },
+                      itemBuilder: (context, i) {
+                        return Observer(builder: (_) {
+                          final subaddress =
+                              subaddressListStore.subaddresses[i];
+                          final isCurrent = walletStore.subaddress.address ==
+                              subaddress.address;
+                          final label = subaddress.label.isNotEmpty
+                              ? subaddress.label
+                              : subaddress.address;
 
-                  return InkWell(
-                    onTap: () => walletStore.setSubaddress(subaddress),
-                    child: Container(
-                      color: isCurrent ? currentColor : notCurrentColor,
-                      child: Column(children: <Widget>[
-                        ListTile(
-                          title: Text(
-                            label,
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                color: Theme.of(context)
-                                    .primaryTextTheme
-                                    .headline5
-                                    .color),
-                          ),
-                        )
-                      ]),
-                    ),
-                  );
-                });
-              });
-        })
-      ],
-    )));
+                          return InkWell(
+                            onTap: () => walletStore.setSubaddress(subaddress),
+                            child: Container(
+                              color: isCurrent ? currentColor : notCurrentColor,
+                              child: Column(children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                    label,
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Theme.of(context)
+                                            .primaryTextTheme
+                                            .headline5
+                                            .color),
+                                  ),
+                                )
+                              ]),
+                            ),
+                          );
+                        });
+                      });
+                })
+              ],
+            ))));
   }
 }
