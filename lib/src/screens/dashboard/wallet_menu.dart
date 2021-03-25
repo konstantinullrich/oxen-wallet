@@ -26,13 +26,13 @@ class WalletMenu {
         Navigator.of(context).pushNamed(Routes.rescan);
         break;
       case 2:
-        Provider.of<BalanceStore>(context).updateFiatBalance();
+        context.read<BalanceStore>().updateFiatBalance();
         break;
     }
   }
 
   Future<void> _presentReconnectAlert(BuildContext context) async {
-    final walletStore = Provider.of<WalletStore>(context);
+    final walletStore = context.read<WalletStore>();
 
     await showSimpleOxenDialog(
         context, S.of(context).reconnection, S.of(context).reconnect_alert_text,

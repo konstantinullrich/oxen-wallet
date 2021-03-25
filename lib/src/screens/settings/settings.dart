@@ -68,7 +68,7 @@ class SettingsFormState extends State<SettingsForm> {
   }
 
   void _setSettingsList() {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
     _items.addAll([
       SettingsItem(
           title: S.current.settings_nodes, attribute: Attributes.header),
@@ -313,7 +313,7 @@ class SettingsFormState extends State<SettingsForm> {
   }
 
   Future<void> _setBalance(BuildContext context) async {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
     final selectedDisplayMode =
         await presentPicker(context, BalanceDisplayMode.all);
 
@@ -324,7 +324,7 @@ class SettingsFormState extends State<SettingsForm> {
   }
 
   Future<void> _setBalanceDetail(BuildContext context) async {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
     final balanceDetail = await presentPicker(context, AmountDetail.all);
 
     if (balanceDetail != null) {
@@ -333,7 +333,7 @@ class SettingsFormState extends State<SettingsForm> {
   }
 
   Future<void> _setCurrency(BuildContext context) async {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
     final selectedCurrency = await presentPicker(context, FiatCurrency.all);
 
     if (selectedCurrency != null) {
@@ -342,7 +342,7 @@ class SettingsFormState extends State<SettingsForm> {
   }
 
   Future<void> _setTransactionPriority(BuildContext context) async {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
     final selectedPriority =
         await presentPicker(context, OxenTransactionPriority.all);
 
