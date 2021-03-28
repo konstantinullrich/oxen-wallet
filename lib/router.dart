@@ -38,6 +38,7 @@ import 'package:oxen_wallet/src/screens/restore/restore_wallet_from_seed_page.da
 import 'package:oxen_wallet/src/screens/restore/restore_wallet_options_page.dart';
 import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
 import 'package:oxen_wallet/src/screens/seed_language/seed_language_page.dart';
+import 'package:oxen_wallet/src/screens/send/qr_scan.dart';
 import 'package:oxen_wallet/src/screens/send/send_page.dart';
 import 'package:oxen_wallet/src/screens/settings/change_language.dart';
 import 'package:oxen_wallet/src/screens/settings/settings.dart';
@@ -220,6 +221,11 @@ class Router {
                           priceStore: priceStore,
                           transactionDescriptions: transactionDescriptions)),
                 ], child: SendPage()));
+
+      case Routes.sendQrScan:
+        return MaterialPageRoute<void>(
+            fullscreenDialog: true,
+            builder: (_) => QRScanPage());
 
       case Routes.receive:
         return CupertinoPageRoute<void>(

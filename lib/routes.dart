@@ -12,7 +12,8 @@ class Routes {
   static const restoreWalletFromSeed = '/restore_wallet_from_seed';
   static const restoreWalletFromKeys = '/restore_wallet_from_keys';
   static const dashboard = '/dashboard';
-  static const send = '/send';
+  static const send = '/wallet/send';
+  static const sendQrScan = '/wallet/send/qr';
   static const transactionDetails = '/transaction_info';
   static const receive = '/receive';
   static const newSubaddress = '/new_subaddress';

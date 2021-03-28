@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
@@ -43,7 +42,7 @@ class RootState extends State<Root> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.paused:
-        if (isQrScannerShown) return;
+        // if (isQrScannerShown) return;
 
         if (!_isInactive &&
                 _authenticationStore.state ==

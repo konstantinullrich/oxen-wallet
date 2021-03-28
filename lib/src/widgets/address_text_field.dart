@@ -4,7 +4,6 @@ import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/common/contact.dart';
-import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
 
@@ -102,24 +101,28 @@ class AddressTextField extends StatelessWidget {
   }
 
   Future<void> _presentQRScanner(BuildContext context) async {
-    try {
-      final code = await presentQRScanner();
-      final uri = Uri.parse(code);
-      var address = '';
+    final code = await Navigator.of(context, rootNavigator: true)
+        .pushNamed(Routes.sendQrScan);
 
-      if (uri == null) {
-        controller.text = code;
-        return;
+    if (code is String) {
+      try {
+        final uri = Uri.parse(code);
+        var address = '';
+
+        if (uri == null) {
+          controller.text = code;
+          return;
+        }
+
+        address = uri.path;
+        controller.text = address;
+
+        if (onURIScanned != null) {
+          onURIScanned(uri);
+        }
+      } catch (e) {
+        print('Error $e');
       }
-
-      address = uri.path;
-      controller.text = address;
-
-      if (onURIScanned != null) {
-        onURIScanned(uri);
-      }
-    } catch (e) {
-      print('Error $e');
     }
   }
 
