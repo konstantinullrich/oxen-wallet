@@ -1,11 +1,13 @@
 import 'dart:core';
+
 import 'package:flutter/services.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:oxen_coin/transaction_history.dart' as oxen_transaction_history;
 import 'package:oxen_wallet/src/wallet/transaction/transaction_history.dart';
 import 'package:oxen_wallet/src/wallet/transaction/transaction_info.dart';
+import 'package:rxdart/rxdart.dart';
 
-List<TransactionInfo> _getAllTransactions(dynamic _) => oxen_transaction_history.getAllTransactions()
+List<TransactionInfo> _getAllTransactions(dynamic _) => oxen_transaction_history
+    .getAllTransactions()
     .map((row) => TransactionInfo.fromRow(row))
     .toList();
 

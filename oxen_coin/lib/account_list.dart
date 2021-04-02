@@ -1,37 +1,14 @@
 import 'dart:ffi';
 
-import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
-import 'package:oxen_coin/oxen_api.dart';
-import 'package:oxen_coin/structs/account_row.dart';
-import 'package:oxen_coin/util/signatures.dart';
-import 'package:oxen_coin/util/types.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
+import 'package:oxen_coin/src/native/account_list.dart' as account_list;
 
-final accountSizeNative = oxenApi
-    .lookup<NativeFunction<account_size>>('account_size')
-    .asFunction<SubaddressSize>();
-
-final accountRefreshNative = oxenApi
-    .lookup<NativeFunction<account_refresh>>('account_refresh')
-    .asFunction<AccountRefresh>();
-
-final accountGetAllNative = oxenApi
-    .lookup<NativeFunction<account_get_all>>('account_get_all')
-    .asFunction<AccountGetAll>();
-
-final accountAddNewNative = oxenApi
-    .lookup<NativeFunction<account_add_new>>('account_add_row')
-    .asFunction<AccountAddNew>();
-
-final accountSetLabelNative = oxenApi
-    .lookup<NativeFunction<account_set_label>>('account_set_label_row')
-    .asFunction<AccountSetLabel>();
-
-void refreshAccounts() => accountRefreshNative();
+void refreshAccounts() => account_list.accountRefreshNative();
 
 List<AccountRow> getAllAccount() {
-  final size = accountSizeNative();
-  final accountAddressesPointer = accountGetAllNative();
+  final size = account_list.accountSizeNative();
+  final accountAddressesPointer = account_list.accountGetAllNative();
   final accountAddresses = accountAddressesPointer.asTypedList(size);
 
   return accountAddresses
@@ -39,25 +16,13 @@ List<AccountRow> getAllAccount() {
       .toList();
 }
 
-void addAccountSync({String label}) {
-  final labelPointer = Utf8.toUtf8(label);
-  accountAddNewNative(labelPointer);
-  free(labelPointer);
-}
-
-void setLabelForAccountSync({int accountIndex, String label}) {
-  final labelPointer = Utf8.toUtf8(label);
-  accountSetLabelNative(accountIndex, labelPointer);
-  free(labelPointer);
-}
-
-void _addAccount(String label) => addAccountSync(label: label);
+void _addAccount(String label) => account_list.addAccountSync(label: label);
 
 void _setLabelForAccount(Map<String, dynamic> args) {
   final label = args['label'] as String;
   final accountIndex = args['accountIndex'] as int;
 
-  setLabelForAccountSync(label: label, accountIndex: accountIndex);
+  account_list.setLabelForAccountSync(label: label, accountIndex: accountIndex);
 }
 
 Future<void> addAccount({String label}) async => compute(_addAccount, label);

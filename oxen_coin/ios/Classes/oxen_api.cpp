@@ -183,6 +183,20 @@ extern "C"
         }
     };
 
+    struct StakeUnlockResult
+    {
+      bool success;
+      char *msg;
+      Oxen::PendingTransaction *pendingTransaction;
+
+      StakeUnlockResult(bool _success, char *_msg,  Oxen::PendingTransaction *_pendingTransaction)
+      {
+        success = _success;
+        msg = _msg;
+        pendingTransaction = _pendingTransaction;
+      }
+    };
+
     Oxen::Wallet *m_wallet;
     Oxen::TransactionHistory *m_transaction_history;
     OxenWalletListener *m_listener;
@@ -506,26 +520,51 @@ extern "C"
         return stakes;
     }
 
-//    bool stake_create(char *service_node_key, char *amount, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
-//    {
-//        nice(19);
-//
-//        Oxen::PendingTransaction *transaction;
-//        std:string error_msg;
-//
-//        transaction = m_wallet->stakePending(std::string(service_node_key), std::string(amount), *error_msg);
-//
-//        int status = transaction->status().first;
-//
-//        if (status == Oxen::PendingTransaction::Status::Status_Error || status == Oxen::PendingTransaction::Status::Status_Critical)
-//        {
-//            error = Utf8Box(strdup(transaction->status().second.c_str()));
-//            return false;
-//        }
-//
-//        pendingTransaction = PendingTransactionRaw(transaction);
-//        return true;
-//    }
+    EXPORT
+    bool stake_create(char *service_node_key, char *amount, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+    {
+        nice(19);
+
+        Oxen::PendingTransaction *transaction;
+
+        uint64_t _amount = Oxen::Wallet::amountFromString(std::string(amount));
+        transaction = m_wallet->stakePending(std::string(service_node_key), _amount);
+
+        int status = transaction->status().first;
+
+        if (status == Oxen::PendingTransaction::Status::Status_Error || status == Oxen::PendingTransaction::Status::Status_Critical)
+        {
+            error = Utf8Box(strdup(transaction->status().second.c_str()));
+            return false;
+        }
+
+        pendingTransaction = PendingTransactionRaw(transaction);
+        return true;
+    }
+
+    EXPORT
+    bool can_request_stake_unlock(char *service_node_key)
+    {
+        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->canRequestStakeUnlock(service_node_key)};
+        return stakeUnlockResult->success();
+    }
+
+    EXPORT
+    bool submit_stake_unlock(char *service_node_key, Utf8Box &error, PendingTransactionRaw &pendingTransaction)
+    {
+        std::unique_ptr<Oxen::StakeUnlockResult> stakeUnlockResult{m_wallet->requestStakeUnlock(service_node_key)};
+
+        if (stakeUnlockResult->success())
+        {
+            pendingTransaction = stakeUnlockResult->ptx();
+            return true;
+        }
+        else
+        {
+            error = Utf8Box(strdup(stakeUnlockResult->msg().c_str()));
+            return false;
+        }
+    }
 
     EXPORT
     uint64_t transaction_estimate_fee(uint32_t priority, uint32_t recipients)

@@ -43,12 +43,13 @@ import 'package:oxen_wallet/src/screens/settings/change_language.dart';
 import 'package:oxen_wallet/src/screens/settings/settings.dart';
 import 'package:oxen_wallet/src/screens/setup_pin_code/setup_pin_code.dart';
 import 'package:oxen_wallet/src/screens/show_keys/show_keys_page.dart';
+import 'package:oxen_wallet/src/screens/stake/new_stake_page.dart';
 import 'package:oxen_wallet/src/screens/stake/stake_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/new_subaddress_page.dart';
 import 'package:oxen_wallet/src/screens/subaddress/subaddress_list_page.dart';
 import 'package:oxen_wallet/src/screens/transaction_details/transaction_details_page.dart';
 import 'package:oxen_wallet/src/screens/wallet_list/wallet_list_page.dart';
-import 'package:oxen_wallet/src/screens/welcome/create_welcome_page.dart';
+import 'package:oxen_wallet/src/screens/welcome/welcome_page.dart';
 import 'package:oxen_wallet/src/stores/account_list/account_list_store.dart';
 import 'package:oxen_wallet/src/stores/address_book/address_book_store.dart';
 import 'package:oxen_wallet/src/stores/auth/auth_store.dart';
@@ -95,7 +96,7 @@ class Router {
       Box<TransactionDescription> transactionDescriptions}) {
     switch (settings.name) {
       case Routes.welcome:
-        return MaterialPageRoute<void>(builder: (_) => createWelcomePage());
+        return MaterialPageRoute<void>(builder: (_) => WelcomePage());
 
       case Routes.newWalletFromWelcome:
         return CupertinoPageRoute<void>(
@@ -435,6 +436,25 @@ class Router {
 
       case Routes.stake:
         return CupertinoPageRoute<void>(builder: (_) => StakePage());
+
+      case Routes.newStake:
+        return MaterialPageRoute<void>(
+            builder: (_) => MultiProvider(providers: [
+                  ProxyProvider<SettingsStore, BalanceStore>(
+                    update: (_, settingsStore, __) => BalanceStore(
+                        walletService: walletService,
+                        settingsStore: settingsStore,
+                        priceStore: priceStore),
+                  ),
+                  Provider(
+                    create: (_) => SyncStore(walletService: walletService),
+                  ),
+                  Provider(
+                      create: (_) => SendStore(
+                          walletService: walletService,
+                          priceStore: priceStore,
+                          transactionDescriptions: transactionDescriptions)),
+                ], child: NewStakePage()));
 
       default:
         return MaterialPageRoute<void>(

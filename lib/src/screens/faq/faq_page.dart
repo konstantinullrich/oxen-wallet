@@ -49,7 +49,7 @@ class FaqPage extends BasePage {
   }
 
   String getFaqPath(BuildContext context) {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
 
     switch (settingsStore.languageCode) {
       case 'en':

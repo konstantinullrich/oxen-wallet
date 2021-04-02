@@ -27,7 +27,7 @@ class SettingsSwitchListRow extends StatelessWidget {
               }));
     }
 
-    if (title == S.of(context).settings_allow_biometrical_authentication) {
+    if (title == S.of(context).settings_allow_biometric_authentication) {
       return Observer(
           builder: (_) => StandartSwitch(
               value: settingsStore.allowBiometricAuthentication,

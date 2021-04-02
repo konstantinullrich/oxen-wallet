@@ -6,10 +6,7 @@ import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 
 class WelcomePage extends BasePage {
-  static const _aspectRatioImage = 1.26;
   static const _baseWidth = 411.43;
-  final _image = Image.asset('assets/images/welcomeImg.png');
-  final _logo = Image.asset('assets/images/oxen.png', width: 60, height: 60);
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +22,6 @@ class WelcomePage extends BasePage {
     final textScaleFactor = _screenWidth < _baseWidth ? 0.76 : 1.0;
 
     return Column(children: <Widget>[
-      // Stack(
-      //   alignment: Alignment.center,
-      //   children: <Widget>[
-      //     AspectRatio(
-      //         aspectRatio: _aspectRatioImage,
-      //         child: FittedBox(child: _image, fit: BoxFit.fill)),
-      //     Positioned(bottom: 0.0, child: _logo)
-      //   ],
-      // ),
       Expanded(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

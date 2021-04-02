@@ -1,6 +1,7 @@
 import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -86,7 +87,12 @@ abstract class SettingsStoreBase with Store {
         sharedPreferences.getBool(allowBiometricAuthenticationKey) ?? false;
     final enableFiatCurrency =
         sharedPreferences.getBool(enableFiatCurrencyKey) ?? false;
-    final savedDarkTheme = sharedPreferences.getBool(currentDarkTheme) ?? false;
+
+    final initialCurrentDarkMode =
+        SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
+    final savedDarkTheme =
+        sharedPreferences.getBool(currentDarkTheme) ?? initialCurrentDarkMode;
+
     final defaultPinLength = sharedPreferences.getInt(currentPinLength) ?? 4;
     final savedLanguageCode =
         sharedPreferences.getString(currentLanguageCode) ??
@@ -209,8 +215,7 @@ abstract class SettingsStoreBase with Store {
   }
 
   @action
-  Future setCurrentBalanceDetail(
-      {@required AmountDetail balanceDetail}) async {
+  Future setCurrentBalanceDetail({@required AmountDetail balanceDetail}) async {
     this.balanceDetail = balanceDetail;
     await _sharedPreferences.setInt(
         currentBalanceDetailKey, balanceDetail.index);

@@ -156,11 +156,19 @@
   "send_creating_transaction" : "Créer une transaction",
 
 
-  "stakes": "Stakes",
+  "title_stakes": "Stakes",
+  "title_new_stake": "Nouveau Stake",
   "your_contributions" : "Vos contributions",
   "start_staking" : "Commencer le staking",
   "stake_more" : "Staker plus",
   "nothing_staked" : "Aucune contribution pour le moment",
+  "service_node_key": "Clé de nœud de service",
+  "stake_oxen": "Stake Oxen",
+  "title_confirm_unlock_stake": "Déverrouiller Stake",
+  "body_confirm_unlock_stake": "Voulez-vous vraiment débloquer votre mise de{serviceNodeKey}?",
+  "unlock_stake_requested": "Déverrouillage du Stake demandé",
+  "unable_unlock_stake": "Impossible de déverrouiller le Stake",
+
 
   "settings_title" : "Paramètres",
   "settings_nodes" : "Node",
@@ -174,7 +182,7 @@
   "settings_personal" : "personnel",
   "settings_change_pin" : "changer le code PIN",
   "settings_change_language" : "changer de langue",
-  "settings_allow_biometrical_authentication" : "Authentification biométrique",
+  "settings_allow_biometric_authentication" : "Authentification biométrique",
   "settings_dark_mode" : "Mode Sombre",
   "settings_transactions" : "Transactions",
   "settings_display_on_dashboard_list" : "Afficher dans la liste du tableau de bord",
@@ -254,6 +262,7 @@
   "error_text_wallet_name" : "Le nom du portefeuille ne peut contenir que des lettres et des chiffres\net doit comporter entre 1 et 15 caractères",
   "error_text_keys" : "Les clés de portefeuille ne peuvent contenir que 64 caractères hexadécimaux",
   "error_text_crypto_currency" : "Le nombre de décimales\nm doit être inférieur ou égal à 12.",
+  "error_text_service_node" : "Une clé de nœud de service ne peut contenir que 64 caractères maximum",
 
 
   "auth_store_ban_timeout" : "Interdire le délai d'expiration",
@@ -268,8 +277,8 @@
   "hidden_balance" : "solde caché",
 
 
-  "sync_status_syncronizing" : "SYNCHRONISATION",
-  "sync_status_syncronized" : "SYNCHRONISÉ",
+  "sync_status_synchronizing" : "SYNCHRONISATION",
+  "sync_status_synchronized" : "SYNCHRONISÉ",
   "sync_status_not_connected" : "PAS CONNECTÉ",
   "sync_status_starting_sync" : "DÉBUT DE LA SYNCHRONISATION",
   "sync_status_failed_connect" : "ÉCHEC DE LA CONNEXION AU NODE",

@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:oxen_coin/structs/pending_transaction.dart';
-import 'package:oxen_coin/structs/ut8_box.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
+import 'package:oxen_coin/src/structs/ut8_box.dart';
 
 typedef create_wallet = Int8 Function(
     Pointer<Utf8>, Pointer<Utf8>, Pointer<Utf8>, Int32, Pointer<Utf8>);
@@ -113,6 +113,11 @@ typedef stake_create = Int8 Function(
     Pointer<Utf8> amount,
     Pointer<Utf8Box> error,
     Pointer<PendingTransactionRaw> pendingTransaction);
+
+typedef can_request_unstake = Int8 Function(Pointer<Utf8> serviceNodeKey);
+
+typedef submit_stake_unlock = Int8 Function(Pointer<Utf8> serviceNodeKey,
+    Pointer<Utf8Box> error, Pointer<PendingTransactionRaw> pendingTransaction);
 
 typedef secret_view_key = Pointer<Utf8> Function();
 

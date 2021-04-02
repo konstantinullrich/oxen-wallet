@@ -20,7 +20,7 @@ class ShowKeysPage extends BasePage {
     final walletKeysStore = Provider.of<WalletKeysStore>(context);
 
     return Container(
-        padding: EdgeInsets.only(top: 20.0, bottom: 20.0, left: 20, right: 20),
+        padding: EdgeInsets.only(top: 20.0, bottom: 20.0, left: 5, right: 5),
         child: Observer(
           builder: (_) {
             final keysMap = {
@@ -32,7 +32,7 @@ class ShowKeysPage extends BasePage {
 
             return ListView.separated(
                 separatorBuilder: (_, __) => Container(
-                    padding: EdgeInsets.only(left: 30.0, right: 20.0),
+                    padding: EdgeInsets.only(left: 10, right: 10),
                     child: Divider(
                         color: Theme.of(context).dividerTheme.color,
                         height: 1.0)),
@@ -43,7 +43,7 @@ class ShowKeysPage extends BasePage {
 
                   return ListTile(
                       contentPadding: EdgeInsets.only(
-                          top: 10, bottom: 10, left: 30, right: 20),
+                          top: 10, bottom: 10, left: 10, right: 10),
                       onTap: () {
                         Clipboard.setData(ClipboardData(
                             text: keysMap.values.elementAt(index)));
@@ -57,7 +57,7 @@ class ShowKeysPage extends BasePage {
                           duration: Duration(seconds: 1),
                         ));
                       },
-                      title: Text(key + ':', style: TextStyle(fontSize: 16.0)),
+                      title: Text('$key:', style: TextStyle(fontSize: 16.0)),
                       subtitle: Container(
                         padding: EdgeInsets.only(top: 5.0),
                         child: Text(value,

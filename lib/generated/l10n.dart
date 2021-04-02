@@ -1276,10 +1276,20 @@ class S {
   }
 
   /// `Stakes`
-  String get stakes {
+  String get title_stakes {
     return Intl.message(
       'Stakes',
-      name: 'stakes',
+      name: 'title_stakes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Stake`
+  String get title_new_stake {
+    return Intl.message(
+      'New Stake',
+      name: 'title_new_stake',
       desc: '',
       args: [],
     );
@@ -1320,6 +1330,66 @@ class S {
     return Intl.message(
       'Nothing staked yet',
       name: 'nothing_staked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service Node Key`
+  String get service_node_key {
+    return Intl.message(
+      'Service Node Key',
+      name: 'service_node_key',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stake Oxen`
+  String get stake_oxen {
+    return Intl.message(
+      'Stake Oxen',
+      name: 'stake_oxen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlock Stake`
+  String get title_confirm_unlock_stake {
+    return Intl.message(
+      'Unlock Stake',
+      name: 'title_confirm_unlock_stake',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you really want to unlock your stake from {serviceNodeKey}?`
+  String body_confirm_unlock_stake(Object serviceNodeKey) {
+    return Intl.message(
+      'Do you really want to unlock your stake from $serviceNodeKey?',
+      name: 'body_confirm_unlock_stake',
+      desc: '',
+      args: [serviceNodeKey],
+    );
+  }
+
+  /// `Stake unlock requested`
+  String get unlock_stake_requested {
+    return Intl.message(
+      'Stake unlock requested',
+      name: 'unlock_stake_requested',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to unlock stake`
+  String get unable_unlock_stake {
+    return Intl.message(
+      'Unable to unlock stake',
+      name: 'unable_unlock_stake',
       desc: '',
       args: [],
     );
@@ -1445,11 +1515,11 @@ class S {
     );
   }
 
-  /// `Allow biometrical authentication`
-  String get settings_allow_biometrical_authentication {
+  /// `Allow biometric authentication`
+  String get settings_allow_biometric_authentication {
     return Intl.message(
-      'Allow biometrical authentication',
-      name: 'settings_allow_biometrical_authentication',
+      'Allow biometric authentication',
+      name: 'settings_allow_biometric_authentication',
       desc: '',
       args: [],
     );
@@ -2055,6 +2125,16 @@ class S {
     );
   }
 
+  /// `A Service Node key can only contain 64 chars in hex`
+  String get error_text_service_node {
+    return Intl.message(
+      'A Service Node key can only contain 64 chars in hex',
+      name: 'error_text_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `ban_timeout`
   String get auth_store_ban_timeout {
     return Intl.message(
@@ -2136,20 +2216,20 @@ class S {
   }
 
   /// `SYNCHRONIZING`
-  String get sync_status_syncronizing {
+  String get sync_status_synchronizing {
     return Intl.message(
       'SYNCHRONIZING',
-      name: 'sync_status_syncronizing',
+      name: 'sync_status_synchronizing',
       desc: '',
       args: [],
     );
   }
 
   /// `SYNCHRONIZED`
-  String get sync_status_syncronized {
+  String get sync_status_synchronized {
     return Intl.message(
       'SYNCHRONIZED',
-      name: 'sync_status_syncronized',
+      name: 'sync_status_synchronized',
       desc: '',
       args: [],
     );

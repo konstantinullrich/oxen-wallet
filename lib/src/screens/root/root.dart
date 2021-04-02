@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:hive/hive.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:oxen_wallet/src/stores/price/price_store.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
 import 'package:oxen_wallet/src/domain/common/qr_scanner.dart';
 import 'package:oxen_wallet/src/domain/services/user_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
-import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
-import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
-import 'package:oxen_wallet/src/screens/dashboard/create_dashboard_page.dart';
 import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
-import 'package:oxen_wallet/src/screens/welcome/create_welcome_page.dart';
+import 'package:oxen_wallet/src/screens/auth/create_login_page.dart';
+import 'package:oxen_wallet/src/screens/dashboard/create_dashboard_page.dart';
+import 'package:oxen_wallet/src/screens/seed/create_seed_page.dart';
+import 'package:oxen_wallet/src/screens/welcome/welcome_page.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Root extends StatefulWidget {
   Root({Key key}) : super(key: key);
@@ -43,9 +43,7 @@ class RootState extends State<Root> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.paused:
-        if (isQrScannerShown) {
-          return;
-        }
+        if (isQrScannerShown) return;
 
         if (!_isInactive &&
                 _authenticationStore.state ==
@@ -80,9 +78,7 @@ class RootState extends State<Root> with WidgetsBindingObserver {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).pushNamed(Routes.unlock,
             arguments: (bool isAuthenticatedSuccessfully, AuthPageState auth) {
-          if (!isAuthenticatedSuccessfully) {
-            return;
-          }
+          if (!isAuthenticatedSuccessfully) return;
 
           setState(() {
             _postFrameCallback = false;
@@ -95,9 +91,7 @@ class RootState extends State<Root> with WidgetsBindingObserver {
 
     return Observer(builder: (_) {
       final state = _authenticationStore.state;
-      if (state == AuthenticationState.denied) {
-        return createWelcomePage();
-      }
+      if (state == AuthenticationState.denied)  return WelcomePage();
 
       if (state == AuthenticationState.readyToLogin) {
         return createLoginPage(

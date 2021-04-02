@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
+import 'package:oxen_coin/stake.dart' as oxen_stake;
 import 'package:oxen_coin/transaction_history.dart' as transaction_history;
 import 'package:oxen_coin/wallet.dart' as oxen_wallet;
 import 'package:oxen_wallet/src/node/node.dart';
@@ -13,6 +14,7 @@ import 'package:oxen_wallet/src/wallet/oxen/account_list.dart';
 import 'package:oxen_wallet/src/wallet/oxen/oxen_balance.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress.dart';
 import 'package:oxen_wallet/src/wallet/oxen/subaddress_list.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_stake_transaction_creation_credentials.dart';
 import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_creation_credentials.dart';
 import 'package:oxen_wallet/src/wallet/oxen/transaction/oxen_transaction_history.dart';
 import 'package:oxen_wallet/src/wallet/transaction/pending_transaction.dart';
@@ -169,10 +171,12 @@ class OxenWallet extends Wallet {
   Future<String> getSeed() async => oxen_wallet.getSeed();
 
   @override
-  Future<int> getFullBalance() async => oxen_wallet.getFullBalance(accountIndex: _account.value.id);
+  Future<int> getFullBalance() async =>
+      oxen_wallet.getFullBalance(accountIndex: _account.value.id);
 
   @override
-  Future<int> getUnlockedBalance() async => oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
+  Future<int> getUnlockedBalance() async =>
+      oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
 
   @override
   int getCurrentHeight() => oxen_wallet.getCurrentHeight();
@@ -289,6 +293,17 @@ class OxenWallet extends Wallet {
     }
 
     return _cachedBlockchainHeight;
+  }
+
+  @override
+  Future<PendingTransaction> createStake(
+      TransactionCreationCredentials credentials) async {
+    final _credentials = credentials as OxenStakeTransactionCreationCredentials;
+    final transactionDescription =
+        await oxen_stake.createStake(_credentials.address, _credentials.amount);
+
+    return PendingTransaction.fromTransactionDescription(
+        transactionDescription);
   }
 
   @override
