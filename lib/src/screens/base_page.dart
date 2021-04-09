@@ -14,7 +14,7 @@ abstract class BasePage extends StatelessWidget {
 
   Color get backgroundColor => Colors.white;
 
-  bool get resizeToAvoidBottomPadding => true;
+  bool get resizeToAvoidBottomInset => true;
 
   AppBarStyle get appBarStyle => AppBarStyle.regular;
 
@@ -108,7 +108,7 @@ abstract class BasePage extends StatelessWidget {
     return Scaffold(
         backgroundColor:
             _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor,
-        resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         appBar: appBar(context),
         body: SafeArea(child: body(context)),
         floatingActionButton: floatingActionButton(context),

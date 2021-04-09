@@ -14,7 +14,7 @@ Future<double> fetchPriceFor({CryptoCurrency crypto, FiatCurrency fiat}) async {
 
     final apiPath = '/api/price/$fiatStringed';
     final uri = Uri.https(fiatApiAuthority, apiPath);
-    final response = await get(uri.toString());
+    final response = await get(uri);
 
     if (response.statusCode != 200) {
       return 0.0;
