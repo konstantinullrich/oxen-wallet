@@ -12,7 +12,7 @@ class WelcomePage extends BasePage {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(child: body(context)));
   }
 

@@ -13,6 +13,7 @@
         android:label="Oxen Wallet"
         android:icon="@mipmap/ic_launcher"
         android:extractNativeLibs="true"
+        android:usesCleartextTraffic="true"
         tools:replace="android:extractNativeLibs">
         <activity
             android:name=".MainActivity"
