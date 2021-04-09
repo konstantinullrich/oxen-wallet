@@ -43,4 +43,5 @@ class Routes {
   static const changeLanguage = '/change_language';
   static const profile = '/profile';
   static const stake = '/stake';
+  static const newStake = '/stake/new';
 }

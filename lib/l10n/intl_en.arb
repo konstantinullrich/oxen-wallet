@@ -156,11 +156,19 @@
   "send_creating_transaction" : "Creating transaction",
 
 
-  "stakes": "Stakes",
+  "title_stakes": "Stakes",
+  "title_new_stake": "New Stake",
   "your_contributions" : "Your Contributions",
   "start_staking" : "Start staking",
   "stake_more" : "Stake more",
   "nothing_staked" : "Nothing staked yet",
+  "service_node_key": "Service Node Key",
+  "stake_oxen": "Stake Oxen",
+  "title_confirm_unlock_stake": "Unlock Stake",
+  "body_confirm_unlock_stake": "Do you really want to unlock your stake from {serviceNodeKey}?",
+  "unlock_stake_requested": "Stake unlock requested",
+  "unable_unlock_stake": "Unable to unlock stake",
+
 
   "settings_title" : "Settings",
   "settings_nodes" : "Nodes",
@@ -174,7 +182,7 @@
   "settings_personal" : "Personal",
   "settings_change_pin" : "Change PIN",
   "settings_change_language" : "Change language",
-  "settings_allow_biometrical_authentication" : "Allow biometrical authentication",
+  "settings_allow_biometric_authentication" : "Allow biometric authentication",
   "settings_dark_mode" : "Dark mode",
   "settings_transactions" : "Transactions",
   "settings_display_on_dashboard_list" : "Display on dashboard list",
@@ -254,6 +262,7 @@
   "error_text_wallet_name" : "Wallet name can only contain letters, numbers\nand must be between 1 and 15 characters long",
   "error_text_keys" : "Wallet keys can only contain 64 chars in hex",
   "error_text_crypto_currency" : "The number of fraction digits\nmust be less or equal to 12",
+  "error_text_service_node" : "A Service Node key can only contain 64 chars in hex",
 
 
   "auth_store_ban_timeout" : "ban_timeout",
@@ -268,8 +277,8 @@
   "hidden_balance" : "Hidden Balance",
 
 
-  "sync_status_syncronizing" : "SYNCHRONIZING",
-  "sync_status_syncronized" : "SYNCHRONIZED",
+  "sync_status_synchronizing" : "SYNCHRONIZING",
+  "sync_status_synchronized" : "SYNCHRONIZED",
   "sync_status_not_connected" : "NOT CONNECTED",
   "sync_status_starting_sync" : "STARTING SYNC",
   "sync_status_failed_connect" : "FAILED CONNECT TO THE NODE",
@@ -279,6 +288,7 @@
 
   "transaction_priority_slow" : "Slow",
   "transaction_priority_blink": "Blink",
+
 
   "change_language" : "Change language",
   "change_language_to" : "Change language to {language}?",

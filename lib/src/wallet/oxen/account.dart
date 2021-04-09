@@ -1,4 +1,4 @@
-import 'package:oxen_coin/structs/account_row.dart';
+import 'package:oxen_coin/oxen_coin_structs.dart';
 
 class Account {
   Account({this.id, this.label});

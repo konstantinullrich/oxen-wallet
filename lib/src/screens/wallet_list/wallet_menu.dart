@@ -30,7 +30,7 @@ class WalletMenu {
   }
 
   void action(int index, WalletDescription wallet, bool isCurrentWallet) {
-    final _walletListStore = Provider.of<WalletListStore>(context);
+    final _walletListStore = context.read<WalletListStore>();
 
     switch (index) {
       case 0:

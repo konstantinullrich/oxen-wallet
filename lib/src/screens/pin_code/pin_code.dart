@@ -54,7 +54,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
   }
 
   void setDefaultPinLength() {
-    final settingsStore = Provider.of<SettingsStore>(context);
+    final settingsStore = context.read<SettingsStore>();
 
     pinLength = settingsStore.defaultPinLength;
     changePinLength(pinLength);

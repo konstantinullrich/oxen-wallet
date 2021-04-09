@@ -1,14 +1,15 @@
-import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/stores/subaddress_creation/subaddress_creation_state.dart';
 import 'package:oxen_wallet/src/stores/subaddress_creation/subaddress_creation_store.dart';
+import 'package:oxen_wallet/src/widgets/oxen_text_field.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
-import 'package:oxen_wallet/src/screens/base_page.dart';
-import 'package:oxen_wallet/palette.dart';
+import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
+import 'package:provider/provider.dart';
 
 class NewSubaddressPage extends BasePage {
   @override
@@ -22,7 +23,8 @@ class NewSubaddressPage extends BasePage {
     final subaddressCreationStore =
         Provider.of<SubadrressCreationStore>(context);
 
-    reaction((_) => subaddressCreationStore.state, (SubaddressCreationState state) {
+    reaction((_) => subaddressCreationStore.state,
+        (SubaddressCreationState state) {
       if (state is SubaddressCreatedSuccessfully) {
         WidgetsBinding.instance
             .addPostFrameCallback((_) => Navigator.of(context).pop());
@@ -47,55 +49,35 @@ class NewSubaddressFormState extends State<NewSubaddressForm> {
     final subaddressCreationStore =
         Provider.of<SubadrressCreationStore>(context);
 
-    return Form(
-        key: _formKey,
-        child: Stack(children: <Widget>[
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(left: 35, right: 35),
-              child: TextFormField(
+    return ScrollableWithBottomSection(
+      contentPadding: EdgeInsets.all(20),
+      content: Form(
+          key: _formKey,
+          child: Stack(children: <Widget>[
+            Center(
+              child: OxenTextField(
                   controller: _labelController,
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                      hintText: S.of(context).new_subaddress_label_name,
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: OxenPalette.teal, width: 2.0)),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).focusColor,
-                              width: 1.0))),
+                  hintText: S.of(context).new_subaddress_label_name,
                   validator: (value) {
                     subaddressCreationStore.validateSubaddressName(value);
                     return subaddressCreationStore.errorMessage;
                   }),
             ),
-          ),
-          Positioned(
-              bottom: 20,
-              left: 20,
-              right: 20,
-              child: Observer(
-                builder: (_) => LoadingPrimaryButton(
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        await subaddressCreationStore.add(
-                            label: _labelController.text);
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    text: S.of(context).new_subaddress_create,
-                    color: Theme.of(context)
-                        .accentTextTheme
-                        .button
-                        .backgroundColor,
-                    borderColor: Theme.of(context)
-                        .accentTextTheme
-                        .button
-                        .decorationColor,
-                    isLoading:
-                        subaddressCreationStore.state is SubaddressIsCreating),
-              ))
-        ]));
+          ])),
+      bottomSection: Observer(
+        builder: (_) => LoadingPrimaryButton(
+            onPressed: () async {
+              if (_formKey.currentState.validate()) {
+                await subaddressCreationStore.add(label: _labelController.text);
+                Navigator.of(context).pop();
+              }
+            },
+            text: S.of(context).new_subaddress_create,
+            color: Theme.of(context).accentTextTheme.button.backgroundColor,
+            borderColor:
+                Theme.of(context).accentTextTheme.button.decorationColor,
+            isLoading: subaddressCreationStore.state is SubaddressIsCreating),
+      ),
+    );
   }
 }
