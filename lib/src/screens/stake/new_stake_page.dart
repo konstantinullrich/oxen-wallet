@@ -31,7 +31,7 @@ class NewStakePage extends BasePage {
   bool get isModalBackButton => true;
 
   @override
-  bool get resizeToAvoidBottomPadding => false;
+  bool get resizeToAvoidBottomInset => false;
 
   @override
   Widget body(BuildContext context) => NewStakeForm();
