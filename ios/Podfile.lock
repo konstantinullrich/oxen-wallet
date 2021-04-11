@@ -2,7 +2,6 @@ PODS:
   - barcode_scan (0.0.1):
     - Flutter
     - MTBBarcodeScanner
-    - SwiftProtobuf
   - devicelocale (0.0.1):
     - Flutter
   - esys_flutter_share (0.0.1):
@@ -22,11 +21,8 @@ PODS:
     - Flutter
   - path_provider (0.0.1):
     - Flutter
-  - share (0.0.1):
-    - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - SwiftProtobuf (1.15.0)
   - url_launcher (0.0.1):
     - Flutter
 
@@ -40,14 +36,12 @@ DEPENDENCIES:
   - oxen_coin (from `.symlinks/plugins/oxen_coin/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
-  - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
   trunk:
     - MTBBarcodeScanner
-    - SwiftProtobuf
 
 EXTERNAL SOURCES:
   barcode_scan:
@@ -68,27 +62,23 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
-  share:
-    :path: ".symlinks/plugins/share/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
-  barcode_scan: a5c27959edfafaa0c771905bad0b29d6d39e4479
-  devicelocale: feebbe5e7a30adb8c4f83185de1b50ff19b44f00
+  barcode_scan: 33f586d02270046fc6559135038b34b5754eaa4f
+  devicelocale: b22617f40038496deffba44747101255cee005b0
   esys_flutter_share: 403498dab005b36ce1f8d7aff377e81f0621b0b4
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
   local_auth: 25938960984c3a7f6e3253e3f8d962fdd16852bd
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   oxen_coin: a5a9e565bab069b0d5670ecb7bfd5d605b1c055a
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  SwiftProtobuf: 3320217e9d8fb75f36b40282e78c482640fd75dd
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
 PODFILE CHECKSUM: f10c0438b63bc24e6bbc207956dc27d16c4408f2
