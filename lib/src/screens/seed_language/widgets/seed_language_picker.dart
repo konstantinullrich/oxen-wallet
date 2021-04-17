@@ -15,7 +15,9 @@ class SeedLanguagePicker extends StatelessWidget {
     S.current.seed_language_japanese,
     S.current.seed_language_portuguese,
     S.current.seed_language_russian,
-    S.current.seed_language_spanish
+    S.current.seed_language_spanish,
+    S.current.seed_language_french,
+    S.current.seed_language_italian
   ];
 
   @override
@@ -43,7 +45,7 @@ class SeedLanguagePicker extends StatelessWidget {
   }
 
   Future<void> _setSeedLanguage(BuildContext context) async {
-    final seedLanguageStore = Provider.of<SeedLanguageStore>(context);
+    final seedLanguageStore = context.read<SeedLanguageStore>();
     var selectedSeedLanguage = await presentPicker(context, seedLocales);
 
     if (selectedSeedLanguage != null) {

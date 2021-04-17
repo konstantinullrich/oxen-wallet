@@ -1195,6 +1195,26 @@ class S {
     );
   }
 
+  /// `French`
+  String get seed_language_french {
+    return Intl.message(
+      'French',
+      name: 'seed_language_french',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Italian`
+  String get seed_language_italian {
+    return Intl.message(
+      'Italian',
+      name: 'seed_language_italian',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Send Oxen`
   String get send_title {
     return Intl.message(
