@@ -20,24 +20,22 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-        minWidth: double.infinity,
-        height: 56.0,
-        child: FlatButton(
-          onPressed: isDisabled
-              ? onDisabledPressed
-              : onPressed,
-          color: isDisabled ? Colors.transparent : color,
-          shape: RoundedRectangleBorder(
+    return TextButton(
+      onPressed: isDisabled ? onDisabledPressed : onPressed,
+      style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(Size(double.infinity, 56)),
+          backgroundColor: MaterialStateProperty.all(
+              isDisabled ? Colors.transparent : color),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
               side: BorderSide(color: borderColor),
-              borderRadius: BorderRadius.circular(10.0)),
-          child: Text(text,
-              style: TextStyle(
-                  fontSize: 16.0,
-                  color: isDisabled
-                      ? Palette.darkGrey
-                      : Theme.of(context).primaryTextTheme.button.color)),
-        ));
+              borderRadius: BorderRadius.circular(10.0)))),
+      child: Text(text,
+          style: TextStyle(
+              fontSize: 16.0,
+              color: isDisabled
+                  ? Palette.darkGrey
+                  : Theme.of(context).primaryTextTheme.button.color)),
+    );
   }
 }
 
@@ -59,22 +57,21 @@ class LoadingPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-        minWidth: double.infinity,
-        height: 56.0,
-        child: FlatButton(
-          onPressed: (isLoading || isDisabled) ? null : onPressed,
-          color: color,
-          shape: RoundedRectangleBorder(
+    return TextButton(
+      onPressed: (isLoading || isDisabled) ? null : onPressed,
+      style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(Size(double.infinity, 56)),
+          backgroundColor: MaterialStateProperty.all(color),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
               side: BorderSide(color: borderColor),
-              borderRadius: BorderRadius.circular(10.0)),
-          child: isLoading
-              ? CupertinoActivityIndicator(animating: true)
-              : Text(text,
-                  style: TextStyle(
-                      fontSize: 16.0,
-                      color: Theme.of(context).primaryTextTheme.button.color)),
-        ));
+              borderRadius: BorderRadius.circular(10.0)))),
+      child: isLoading
+          ? CupertinoActivityIndicator(animating: true)
+          : Text(text,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).primaryTextTheme.button.color)),
+    );
   }
 }
 
@@ -99,100 +96,35 @@ class PrimaryIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonTheme(
-        minWidth: double.infinity,
-        height: 56.0,
-        child: FlatButton(
-          onPressed: onPressed,
-          color: color,
-          shape: RoundedRectangleBorder(
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(Size(double.infinity, 56)),
+          backgroundColor: MaterialStateProperty.all(color),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
               side: BorderSide(color: borderColor),
-              borderRadius: BorderRadius.circular(10.0)),
-          child: Stack(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    width: 28.0,
-                    height: 56.0,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: iconBackgroundColor),
-                    child: Icon(iconData, color: iconColor, size: 22.0),
-                  ),
-                ],
-              ),
-              Container(
-                height: 56.0,
-                child: Center(
-                  child: Text(text,
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          color:
-                              Theme.of(context).primaryTextTheme.button.color)),
-                ),
-              )
-            ],
+              borderRadius: BorderRadius.circular(10.0)))),
+      child: Stack(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(left: 28),
+            width: 28.0,
+            height: 56.0,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle, color: iconBackgroundColor),
+            child: Icon(iconData, color: iconColor, size: 22.0),
           ),
-        ));
-  }
-}
-
-class PrimaryImageButton extends StatelessWidget {
-  const PrimaryImageButton(
-      {@required this.onPressed,
-      @required this.image,
-      @required this.text,
-      this.color = Palette.purple,
-      this.borderColor = Palette.deepPink,
-      this.iconColor = Colors.black});
-
-  final VoidCallback onPressed;
-  final Image image;
-  final Color color;
-  final Color borderColor;
-  final Color iconColor;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return ButtonTheme(
-        minWidth: double.infinity,
-        height: 58.0,
-        child: FlatButton(
-          onPressed: onPressed,
-          color: color,
-          shape: RoundedRectangleBorder(
-              side: BorderSide(color: borderColor),
-              borderRadius: BorderRadius.circular(12.0)),
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 28.0,
-                height: 56.0,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.transparent),
-                child: image,
-              ),
-              Expanded(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                    Container(
-                      height: 56.0,
-                      child: Center(
-                        child: Text(text,
-                            style: TextStyle(
-                                fontSize: 18.0,
-                                color: Theme.of(context)
-                                    .primaryTextTheme
-                                    .button
-                                    .color)),
-                      ),
-                    )
-                  ]))
-            ],
-          ),
-        ));
+          Container(
+            height: 56.0,
+            child: Center(
+              child: Text(text,
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      color: Theme.of(context).primaryTextTheme.button.color)),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

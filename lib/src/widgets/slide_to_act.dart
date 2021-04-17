@@ -201,6 +201,10 @@ class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
                                   child: Material(
                                     borderRadius: BorderRadius.circular(
                                         widget.borderRadius),
+                                    color: widget.innerColor ??
+                                        Theme.of(context)
+                                            .primaryIconTheme
+                                            .color,
                                     child: Container(
                                       padding: EdgeInsets.all(
                                           widget.sliderButtonIconPadding),
@@ -219,10 +223,6 @@ class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
                                         ),
                                       ),
                                     ),
-                                    color: widget.innerColor ??
-                                        Theme.of(context)
-                                            .primaryIconTheme
-                                            .color,
                                   ),
                                 ),
                               ),

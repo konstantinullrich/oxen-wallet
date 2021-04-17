@@ -1,12 +1,12 @@
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/stores/wallet/wallet_keys_store.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_keys_store.dart';
+import 'package:provider/provider.dart';
 
 class ShowKeysPage extends BasePage {
   @override
@@ -47,7 +47,7 @@ class ShowKeysPage extends BasePage {
                       onTap: () {
                         Clipboard.setData(ClipboardData(
                             text: keysMap.values.elementAt(index)));
-                        Scaffold.of(context).showSnackBar(SnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
                             S.of(context).copied_key_to_clipboard(key),
                             textAlign: TextAlign.center,

@@ -294,9 +294,9 @@ class NewStakeFormState extends State<NewStakeForm> {
                   title: Text(S.of(context).error),
                   content: Text(state.error),
                   actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
-                        onPressed: () => Navigator.of(context).pop())
+                    TextButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text(S.of(context).ok))
                   ],
                 );
               });
@@ -314,15 +314,15 @@ class NewStakeFormState extends State<NewStakeForm> {
                       sendStore.pendingTransaction.amount,
                       sendStore.pendingTransaction.fee)),
                   actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
+                    TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                           sendStore.commitTransaction();
-                        }),
-                    FlatButton(
-                      child: Text(S.of(context).cancel),
+                        },
+                        child: Text(S.of(context).ok)),
+                    TextButton(
                       onPressed: () => Navigator.of(context).pop(),
+                      child: Text(S.of(context).cancel)
                     )
                   ],
                 );
@@ -339,13 +339,13 @@ class NewStakeFormState extends State<NewStakeForm> {
                   title: Text(S.of(context).sending),
                   content: Text(S.of(context).transaction_sent),
                   actions: <Widget>[
-                    FlatButton(
-                        child: Text(S.of(context).ok),
+                    TextButton(
                         onPressed: () {
                           _addressController.text = '';
                           _cryptoAmountController.text = '';
                           Navigator.of(context)..pop()..pop();
-                        })
+                        },
+                        child: Text(S.of(context).ok))
                   ],
                 );
               });

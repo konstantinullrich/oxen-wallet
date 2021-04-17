@@ -22,47 +22,38 @@ final List<String> _englishWords =
 
 class SeedWidget extends StatefulWidget {
   SeedWidget({Key key, this.onMnemoticChange, this.onFinish, this.seedLanguage})
-      : super(key: key) {
-    switch (seedLanguage) {
-      case 'English':
-        words = _englishWords;
-        break;
-      case 'Chinese (simplified)':
-        words = ChineseSimplifiedMnemonics.words;
-        break;
-      case 'Dutch':
-        words = DutchMnemonics.words;
-        break;
-      case 'German':
-        words = GermanMnemonics.words;
-        break;
-      case 'Japanese':
-        words = JapaneseMnemonics.words;
-        break;
-      case 'Portuguese':
-        words = PortugueseMnemonics.words;
-        break;
-      case 'Russian':
-        words = RussianMnemonics.words;
-        break;
-      case 'Spanish':
-        words = SpanishMnemonics.words;
-        break;
-      case 'French':
-        words = FrenchMnemonics.words;
-        break;
-      case 'Italian':
-        words = ItalianMnemonics.words;
-        break;
-      default:
-        words = _englishWords;
-    }
-  }
+      : super(key: key);
 
   final Function(List<MnemoticItem>) onMnemoticChange;
   final Function() onFinish;
   final String seedLanguage;
-  List<String> words;
+
+  List<String> get words {
+    switch (seedLanguage) {
+      case 'English':
+        return _englishWords;
+      case 'Chinese (simplified)':
+        return ChineseSimplifiedMnemonics.words;
+      case 'Dutch':
+        return DutchMnemonics.words;
+      case 'German':
+        return GermanMnemonics.words;
+      case 'Japanese':
+        return JapaneseMnemonics.words;
+      case 'Portuguese':
+        return PortugueseMnemonics.words;
+      case 'Russian':
+        return RussianMnemonics.words;
+      case 'Spanish':
+        return SpanishMnemonics.words;
+      case 'French':
+        return FrenchMnemonics.words;
+      case 'Italian':
+        return ItalianMnemonics.words;
+      default:
+        return _englishWords;
+    }
+  }
 
   @override
   SeedWidgetState createState() => SeedWidgetState();

@@ -35,6 +35,12 @@ class TransactionRow extends StatelessWidget {
             Container(
               height: 27,
               width: 27,
+              decoration: BoxDecoration(
+                color: direction == TransactionDirection.incoming
+                    ? OxenPalette.limeWithOpacity
+                    : OxenPalette.lightRedWithOpacity,
+                shape: BoxShape.circle,
+              ),
               child: Icon(
                 direction == TransactionDirection.incoming
                     ? Icons.arrow_downward_rounded
@@ -42,12 +48,6 @@ class TransactionRow extends StatelessWidget {
                 color: direction == TransactionDirection.incoming
                     ? OxenPalette.lime
                     : OxenPalette.lightRed,
-              ),
-              decoration: BoxDecoration(
-                color: direction == TransactionDirection.incoming
-                    ? OxenPalette.limeWithOpacity
-                    : OxenPalette.lightRedWithOpacity,
-                shape: BoxShape.circle,
               ),
             ),
             Expanded(

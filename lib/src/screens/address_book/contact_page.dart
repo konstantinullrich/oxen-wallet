@@ -223,7 +223,7 @@ class ContactFormState extends State<ContactForm> {
                                   textAlign: TextAlign.center,
                                 ),
                                 actions: <Widget>[
-                                  FlatButton(
+                                  TextButton(
                                       onPressed: () =>
                                           Navigator.of(context).pop(),
                                       child: Text(S.of(context).ok))

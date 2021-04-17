@@ -27,7 +27,7 @@ class NodeListPage extends BasePage {
       children: <Widget>[
         ButtonTheme(
           minWidth: double.minPositive,
-          child: FlatButton(
+          child: TextButton(
               onPressed: () async {
                 await showConfirmOxenDialog(
                     context,
@@ -48,25 +48,17 @@ class NodeListPage extends BasePage {
               )),
         ),
         Container(
-            width: 28.0,
-            height: 28.0,
+            width: 28,
+            height: 28,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Theme.of(context).selectedRowColor),
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
-                ButtonTheme(
-                  minWidth: 28.0,
-                  height: 28.0,
-                  child: FlatButton(
-                      shape: CircleBorder(),
-                      onPressed: () async =>
-                          await Navigator.of(context).pushNamed(Routes.newNode),
-                      child: Offstage()),
-                )
-              ],
+            child: IconButton(
+              iconSize: 22,
+              padding: EdgeInsets.zero,
+              onPressed: () async =>
+                  await Navigator.of(context).pushNamed(Routes.newNode),
+              icon: Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
             )),
       ],
     );

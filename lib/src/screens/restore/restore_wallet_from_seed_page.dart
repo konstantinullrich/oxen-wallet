@@ -31,9 +31,9 @@ class RestoreWalletFromSeedPage extends BasePage {
       width: 80,
       height: 20,
       child: FlatButton(
-          child: Text(S.of(context).clear),
           padding: EdgeInsets.all(0),
-          onPressed: () => formKey?.currentState?.clear()));
+          onPressed: () => formKey?.currentState?.clear(),
+          child: Text(S.of(context).clear)));
 
   @override
   Widget body(BuildContext context) => RestoreFromSeedForm(key: formKey);

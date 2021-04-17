@@ -50,8 +50,8 @@ class _RestoreFromSeedDetailsFormState
                   content: Text(state.error),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text(S.of(context).ok),
                       onPressed: () => Navigator.of(context).pop(),
+                      child: Text(S.of(context).ok),
                     ),
                   ],
                 );

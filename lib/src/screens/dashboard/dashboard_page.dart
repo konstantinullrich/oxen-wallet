@@ -28,10 +28,10 @@ class DashboardPage extends BasePage {
   Widget leading(BuildContext context) {
     return SizedBox(
         width: 30,
-        child: FlatButton(
+        child: IconButton(
             padding: EdgeInsets.all(0),
             onPressed: () => _presentWalletMenu(context),
-            child: Icon(Icons.sync_rounded,
+            icon: Icon(Icons.sync_rounded,
                 color: Theme.of(context).primaryTextTheme.caption.color,
                 size: 30)));
   }
@@ -65,10 +65,10 @@ class DashboardPage extends BasePage {
   Widget trailing(BuildContext context) {
     return SizedBox(
       width: 30,
-      child: FlatButton(
+      child: IconButton(
           padding: EdgeInsets.all(0),
           onPressed: () => Navigator.of(context).pushNamed(Routes.profile),
-          child: Icon(Icons.account_circle_rounded,
+          icon: Icon(Icons.account_circle_rounded,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 30)),
     );
@@ -411,13 +411,6 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                   child:
                                       Text(S.of(context).transactions_by_date)),
                             ],
-                            child: Text(S.of(context).filters,
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Theme.of(context)
-                                        .primaryTextTheme
-                                        .subtitle2
-                                        .color)),
                             onSelected: (item) async {
                               if (item == 2) {
                                 final picked =
@@ -438,6 +431,13 @@ class DashboardPageBodyState extends State<DashboardPageBody> {
                                 }
                               }
                             },
+                            child: Text(S.of(context).filters,
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Theme.of(context)
+                                        .primaryTextTheme
+                                        .subtitle2
+                                        .color)),
                           )
                         ]),
                   );

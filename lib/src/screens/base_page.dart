@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oxen_wallet/src/widgets/nav_bar.dart';
-import 'package:provider/provider.dart';
-import 'package:oxen_wallet/themes.dart';
 import 'package:oxen_wallet/theme_changer.dart';
+import 'package:oxen_wallet/themes.dart';
+import 'package:provider/provider.dart';
 
 enum AppBarStyle { regular, withShadow }
 
@@ -25,18 +25,22 @@ abstract class BasePage extends StatelessWidget {
       return null;
     }
 
-    final _backButton = Icon(Icons.arrow_back_ios_rounded, size: 25);
-    final _closeButton = Icon(Icons.close_rounded, size: 25);
+    final _backButton = Icon(Icons.arrow_back_ios_rounded,
+        size: 25, color: Theme.of(context).primaryTextTheme.caption.color);
+    final _closeButton = Icon(Icons.close_rounded,
+        size: 25, color: Theme.of(context).primaryTextTheme.caption.color);
 
     return SizedBox(
       height: 37,
       width: isModalBackButton ? 37 : 20,
       child: ButtonTheme(
         minWidth: double.minPositive,
-        child: FlatButton(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            padding: EdgeInsets.all(0),
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        child: TextButton(
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+            ),
             onPressed: () => onClose(context),
             child: isModalBackButton ? _closeButton : _backButton),
       ),
@@ -113,7 +117,6 @@ abstract class BasePage extends StatelessWidget {
         body: SafeArea(child: body(context)),
         floatingActionButton: floatingActionButton(context),
         bottomNavigationBar: bottomNavigationBar(context),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat);
   }
 }

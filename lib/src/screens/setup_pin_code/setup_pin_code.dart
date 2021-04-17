@@ -52,7 +52,7 @@ class _SetupPinCodeFormState<WidgetType extends SetupPinCodeForm>
       state.clear();
     } else {
       if (listEquals<int>(state.pin, _originalPin)) {
-        final String pin = state.pin.fold('', (ac, val) => ac + '$val');
+        final pin = state.pin.fold<String>('', (ac, val) => ac + '$val');
         _userStore.set(password: pin);
         _settingsStore.setDefaultPinLength(pinLength: state.pinLength);
 
@@ -63,13 +63,13 @@ class _SetupPinCodeFormState<WidgetType extends SetupPinCodeForm>
               return AlertDialog(
                 content: Text(S.of(context).setup_successful),
                 actions: <Widget>[
-                  FlatButton(
-                    child: Text(S.of(context).ok),
+                  TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                       widget.onPinCodeSetup(context, pin);
                       reset();
                     },
+                    child: Text(S.of(context).ok)
                   ),
                 ],
               );
@@ -81,11 +81,11 @@ class _SetupPinCodeFormState<WidgetType extends SetupPinCodeForm>
               return AlertDialog(
                 content: Text(S.of(context).pin_is_incorrect),
                 actions: <Widget>[
-                  FlatButton(
-                    child: Text(S.of(context).ok),
+                  TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
+                    child: Text(S.of(context).ok)
                   ),
                 ],
               );

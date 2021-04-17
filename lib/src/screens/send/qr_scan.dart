@@ -11,7 +11,6 @@ class QRScanPage extends BasePage {
   @override
   bool get isModalBackButton => true;
 
-  @override
   bool get resizeToAvoidBottomPadding => false;
 
   @override

@@ -91,7 +91,7 @@ class TransactionDetailsFormState extends State<TransactionDetailsForm> {
             return GestureDetector(
               onTap: () {
                 Clipboard.setData(ClipboardData(text: item.value));
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
                         S.of(context).transaction_details_copied(item.title)),

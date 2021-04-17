@@ -118,7 +118,7 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
         ),
         Spacer(flex: 2),
         if (widget.hasLengthSwitcher) ...[
-          FlatButton(
+          TextButton(
               onPressed: () {
                 changePinLength(pinLength == PinCodeState.fourPinLength
                     ? PinCodeState.sixPinLength
@@ -159,11 +159,10 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                             return Container(
                               margin: EdgeInsets.only(
                                   left: marginLeft, right: marginRight),
-                              child: FlatButton(
+                              child: IconButton(
                                 onPressed: () => _pop(),
                                 color: Colors.transparent,
-                                shape: CircleBorder(),
-                                child: deleteIcon,
+                                icon: deleteIcon
                               ),
                             );
                           } else {
@@ -173,13 +172,11 @@ class PinCodeState<T extends PinCodeWidget> extends State<T> {
                           return Container(
                             margin: EdgeInsets.only(
                                 left: marginLeft, right: marginRight),
-                            child: FlatButton(
+                            child: IconButton(
                               onPressed: () => _push(index),
-                              color: Colors.transparent,
-                              shape: CircleBorder(),
-                              child: Text('$index',
+                              icon: Text('$index',
                                   style: TextStyle(
-                                      fontSize: 23.0, color: Palette.blueGrey)),
+                                      fontSize: 23.0, color: Palette.blueGrey))
                             ),
                           );
                         }),

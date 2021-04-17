@@ -129,7 +129,8 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                   onTap: () {
                                     Clipboard.setData(ClipboardData(
                                         text: walletStore.subaddress.address));
-                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
                                       content: Text(
                                         S.of(context).copied_to_clipboard,
                                         style: TextStyle(color: Colors.white),

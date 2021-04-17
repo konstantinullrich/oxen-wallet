@@ -1,20 +1,21 @@
-import 'package:provider/provider.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
-import 'package:oxen_wallet/src/stores/wallet_seed/wallet_seed_store.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/wallet_seed/wallet_seed_store.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
+import 'package:provider/provider.dart';
 
 class SeedPage extends BasePage {
   SeedPage({this.onCloseCallback});
 
   // static final image = Image.asset('assets/images/seed_image.png');
-  static final image = Image.asset('assets/images/oxen.png', height: 124, width: 400);
+  static final image =
+      Image.asset('assets/images/oxen.png', height: 124, width: 400);
 
   @override
   bool get isModalBackButton => true;
@@ -126,7 +127,8 @@ class SeedPage extends BasePage {
                                       onPressed: () {
                                         Clipboard.setData(
                                             ClipboardData(text: _seed));
-                                        Scaffold.of(context).showSnackBar(
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
                                           SnackBar(
                                             content: Text(S
                                                 .of(context)

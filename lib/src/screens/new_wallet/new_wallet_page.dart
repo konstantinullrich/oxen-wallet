@@ -1,21 +1,21 @@
-import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
-import 'package:oxen_wallet/src/stores/wallet_creation/wallet_creation_store.dart';
-import 'package:oxen_wallet/src/stores/wallet_creation/wallet_creation_state.dart';
+import 'package:oxen_wallet/palette.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/screens/seed_language/widgets/seed_language_picker.dart';
+import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:oxen_wallet/src/stores/wallet_creation/wallet_creation_state.dart';
+import 'package:oxen_wallet/src/stores/wallet_creation/wallet_creation_store.dart';
+import 'package:oxen_wallet/src/util/generate_name.dart';
 import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:oxen_wallet/src/widgets/scollable_with_bottom_section.dart';
-import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
-import 'package:oxen_wallet/src/screens/seed_language/widgets/seed_language_picker.dart';
-import 'package:oxen_wallet/src/util/generate_name.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewWalletPage extends BasePage {
   NewWalletPage(
@@ -71,9 +71,9 @@ class _WalletNameFormState extends State<WalletNameForm> {
                 return AlertDialog(
                   content: Text(state.error),
                   actions: <Widget>[
-                    FlatButton(
-                      child: Text(S.of(context).ok),
+                    TextButton(
                       onPressed: () => Navigator.of(context).pop(),
+                      child: Text(S.of(context).ok),
                     ),
                   ],
                 );
@@ -86,8 +86,8 @@ class _WalletNameFormState extends State<WalletNameForm> {
         content: Column(children: [
           Padding(
             padding: EdgeInsets.all(20),
-            child: Image.asset('assets/images/oxen.png',
-                height: 124, width: 400),
+            child:
+                Image.asset('assets/images/oxen.png', height: 124, width: 400),
           ),
           Padding(
             padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -115,14 +115,16 @@ class _WalletNameFormState extends State<WalletNameForm> {
                   },
                 )),
           ),
-          Padding(padding: EdgeInsets.only(bottom: 20),
+          Padding(
+            padding: EdgeInsets.only(bottom: 20),
             child: Text(
               S.of(context).seed_language_choose,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16.0),
             ),
           ),
-          Padding(padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: SeedLanguagePicker(),
           )
         ]),
@@ -131,7 +133,8 @@ class _WalletNameFormState extends State<WalletNameForm> {
             return LoadingPrimaryButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  walletCreationStore.create(name: nameController.text,
+                  walletCreationStore.create(
+                      name: nameController.text,
                       language: seedLanguageStore.selectedSeedLanguage);
                 }
               },

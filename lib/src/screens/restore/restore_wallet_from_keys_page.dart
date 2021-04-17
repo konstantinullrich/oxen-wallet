@@ -66,8 +66,8 @@ class _RestoreFromKeysFromState extends State<RestoreFromKeysFrom> {
                   content: Text(state.error),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text(S.of(context).ok),
                       onPressed: () => Navigator.of(context).pop(),
+                      child: Text(S.of(context).ok),
                     ),
                   ],
                 );

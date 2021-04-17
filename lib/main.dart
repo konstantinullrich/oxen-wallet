@@ -1,40 +1,41 @@
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_coin/wallet.dart' as oxen_wallet;
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/router.dart' as oxenroute;
-import 'theme_changer.dart';
-import 'themes.dart';
-import 'package:oxen_wallet/src/domain/common/get_encryption_key.dart';
-import 'package:oxen_wallet/src/domain/common/contact.dart';
-import 'package:oxen_wallet/src/node/node.dart';
-import 'package:oxen_wallet/src/wallet/wallet_info.dart';
-import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
-import 'package:oxen_wallet/src/reactions/set_reactions.dart';
-import 'package:oxen_wallet/src/stores/login/login_store.dart';
-import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
-import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
-import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
-import 'package:oxen_wallet/src/screens/root/root.dart';
-import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
-import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
-import 'package:oxen_wallet/src/stores/price/price_store.dart';
-import 'package:oxen_wallet/src/domain/services/user_service.dart';
-import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/common/balance_display_mode.dart';
+import 'package:oxen_wallet/src/domain/common/contact.dart';
 import 'package:oxen_wallet/src/domain/common/default_settings_migration.dart';
 import 'package:oxen_wallet/src/domain/common/fiat_currency.dart';
-import 'package:oxen_wallet/src/wallet/wallet_type.dart';
-import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
-import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/src/domain/common/get_encryption_key.dart';
 import 'package:oxen_wallet/src/domain/common/language.dart';
+import 'package:oxen_wallet/src/domain/services/user_service.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
+import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
+import 'package:oxen_wallet/src/node/node.dart';
+import 'package:oxen_wallet/src/reactions/set_reactions.dart';
+import 'package:oxen_wallet/src/screens/root/root.dart';
+import 'package:oxen_wallet/src/stores/authentication/authentication_store.dart';
+import 'package:oxen_wallet/src/stores/balance/balance_store.dart';
+import 'package:oxen_wallet/src/stores/login/login_store.dart';
+import 'package:oxen_wallet/src/stores/price/price_store.dart';
 import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:oxen_wallet/src/stores/settings/settings_store.dart';
+import 'package:oxen_wallet/src/stores/sync/sync_store.dart';
+import 'package:oxen_wallet/src/stores/wallet/wallet_store.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_description.dart';
+import 'package:oxen_wallet/src/wallet/oxen/transaction/transaction_priority.dart';
+import 'package:oxen_wallet/src/wallet/wallet_info.dart';
+import 'package:oxen_wallet/src/wallet/wallet_type.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'theme_changer.dart';
+import 'themes.dart';
 
 void main() async {
   try {
@@ -57,7 +58,7 @@ void main() async {
     final nodes = await Hive.openBox<Node>(Node.boxName);
     final transactionDescriptions = await Hive.openBox<TransactionDescription>(
         TransactionDescription.boxName,
-        encryptionKey: transactionDescriptionsBoxKey);
+        encryptionCipher: HiveAesCipher(transactionDescriptionsBoxKey));
     final walletInfoSource = await Hive.openBox<WalletInfo>(WalletInfo.boxName);
 
     final sharedPreferences = await SharedPreferences.getInstance();

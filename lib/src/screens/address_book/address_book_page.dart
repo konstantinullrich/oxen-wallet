@@ -28,32 +28,23 @@ class AddressBookPage extends BasePage {
 
   @override
   Widget trailing(BuildContext context) {
-    if (!isEditable) return null;
+    if (!isEditable) return Container();
 
-    final addressBookStore = Provider.of<AddressBookStore>(context);
+    final addressBookStore = context.read<AddressBookStore>();
 
     return Container(
-        width: 28.0,
-        height: 28.0,
+        width: 28,
+        height: 28,
         decoration: BoxDecoration(
             shape: BoxShape.circle, color: Theme.of(context).selectedRowColor),
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Icon(Icons.add, color: OxenPalette.teal, size: 22.0),
-            ButtonTheme(
-              minWidth: 28.0,
-              height: 28.0,
-              child: FlatButton(
-                  shape: CircleBorder(),
-                  onPressed: () async {
-                    await Navigator.of(context)
-                        .pushNamed(Routes.addressBookAddContact);
-                    await addressBookStore.updateContactList();
-                  },
-                  child: Offstage()),
-            )
-          ],
+        child: IconButton(
+          iconSize: 22,
+          padding: EdgeInsets.zero,
+          onPressed: () async {
+            await Navigator.of(context).pushNamed(Routes.addressBookAddContact);
+            await addressBookStore.updateContactList();
+          },
+          icon: Icon(Icons.add, color: OxenPalette.teal),
         ));
   }
 
@@ -88,7 +79,7 @@ class AddressBookPage extends BasePage {
                     if (isCopied) {
                       await Clipboard.setData(
                           ClipboardData(text: contact.address));
-                      Scaffold.of(context).showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('Copied to Clipboard'),
                           backgroundColor: Colors.green,
@@ -127,7 +118,6 @@ class AddressBookPage extends BasePage {
                     : Slidable(
                         key: Key('${contact.key}'),
                         actionPane: SlidableDrawerActionPane(),
-                        child: content,
                         secondaryActions: <Widget>[
                           IconSlideAction(
                             caption: 'Edit',
@@ -157,7 +147,6 @@ class AddressBookPage extends BasePage {
                           ),
                         ],
                         dismissal: SlidableDismissal(
-                          child: SlidableDrawerDismissal(),
                           onDismissed: (actionType) async {
                             await addressBookStore.delete(contact: contact);
                             await addressBookStore.updateContactList();
@@ -165,7 +154,9 @@ class AddressBookPage extends BasePage {
                           onWillDismiss: (actionType) async {
                             return await showAlertDialog(context);
                           },
+                          child: SlidableDrawerDismissal()
                         ),
+                        child: content
                       );
               }),
         ));
