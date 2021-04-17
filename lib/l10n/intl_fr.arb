@@ -144,6 +144,8 @@
   "seed_language_portuguese" : "Portugais",
   "seed_language_russian" : "Russe",
   "seed_language_spanish" : "Espagnol",
+  "seed_language_french" : "Français",
+  "seed_language_italian" : "Italien",
 
 
   "send_title" : "Envoyer des OXEN",
