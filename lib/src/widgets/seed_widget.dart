@@ -1,24 +1,28 @@
-import 'package:oxen_wallet/src/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/palette.dart';
-import 'package:oxen_wallet/src/wallet/oxen/mnemonics/english.dart';
-import 'package:oxen_wallet/src/wallet/oxen/mnemonics/english_old.dart';
+import 'package:oxen_wallet/src/wallet/mnemotic_item.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/chinese_simplified.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/dutch.dart';
+import 'package:oxen_wallet/src/wallet/oxen/mnemonics/english.dart';
+import 'package:oxen_wallet/src/wallet/oxen/mnemonics/english_old.dart';
+import 'package:oxen_wallet/src/wallet/oxen/mnemonics/french.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/german.dart';
+import 'package:oxen_wallet/src/wallet/oxen/mnemonics/italian.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/japanese.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/portuguese.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/russian.dart';
 import 'package:oxen_wallet/src/wallet/oxen/mnemonics/spanish.dart';
-import 'package:oxen_wallet/src/wallet/mnemotic_item.dart';
-import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/src/widgets/primary_button.dart';
 
-final List<String> _englishWords = EnglishMnemonics.words + EnglishOldMnemonics.words;
+final List<String> _englishWords =
+    EnglishMnemonics.words + EnglishOldMnemonics.words;
 
 class SeedWidget extends StatefulWidget {
-  SeedWidget({Key key, this.onMnemoticChange, this.onFinish, this.seedLanguage}) : super(key: key) {
+  SeedWidget({Key key, this.onMnemoticChange, this.onFinish, this.seedLanguage})
+      : super(key: key) {
     switch (seedLanguage) {
       case 'English':
         words = _englishWords;
@@ -43,6 +47,12 @@ class SeedWidget extends StatefulWidget {
         break;
       case 'Spanish':
         words = SpanishMnemonics.words;
+        break;
+      case 'French':
+        words = FrenchMnemonics.words;
+        break;
+      case 'Italian':
+        words = ItalianMnemonics.words;
         break;
       default:
         words = _englishWords;
@@ -82,8 +92,8 @@ class SeedWidgetState extends State<SeedWidget> {
   }
 
   void addMnemotic(String text) {
-    setState(() => items.add(MnemoticItem(
-        text: text.trim().toLowerCase(), dic: widget.words)));
+    setState(() => items
+        .add(MnemoticItem(text: text.trim().toLowerCase(), dic: widget.words)));
     _seedController.text = '';
 
     if (widget.onMnemoticChange != null) {
@@ -249,7 +259,8 @@ class SeedWidgetState extends State<SeedWidget> {
                   onTap: () => onMnemoticTap(item),
                   child: Container(
                       decoration: BoxDecoration(
-                          color: isValid ? Colors.transparent : OxenPalette.red),
+                          color:
+                              isValid ? Colors.transparent : OxenPalette.red),
                       margin: EdgeInsets.only(right: 7, bottom: 8),
                       child: Text(
                         item.toString(),
