@@ -1,16 +1,16 @@
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
+import 'package:oxen_wallet/routes.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_list_service.dart';
 import 'package:oxen_wallet/src/domain/services/wallet_service.dart';
 import 'package:oxen_wallet/src/screens/base_page.dart';
+import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
 import 'package:oxen_wallet/src/stores/wallet_restoration/wallet_restoration_store.dart';
 import 'package:oxen_wallet/src/widgets/seed_widget.dart';
-import 'package:oxen_wallet/src/stores/seed_language/seed_language_store.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RestoreWalletFromSeedPage extends BasePage {
   RestoreWalletFromSeedPage(
@@ -29,11 +29,12 @@ class RestoreWalletFromSeedPage extends BasePage {
   @override
   Widget trailing(BuildContext context) => SizedBox(
       width: 80,
-      height: 20,
-      child: FlatButton(
-          padding: EdgeInsets.all(0),
+      height: 35,
+      child: TextButton(
           onPressed: () => formKey?.currentState?.clear(),
-          child: Text(S.of(context).clear)));
+          child: Text(S.of(context).clear,
+              style: TextStyle(
+                  color: Theme.of(context).primaryTextTheme.caption.color))));
 
   @override
   Widget body(BuildContext context) => RestoreFromSeedForm(key: formKey);

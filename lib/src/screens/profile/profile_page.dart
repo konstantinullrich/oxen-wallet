@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oxen_wallet/generated/l10n.dart';
 import 'package:oxen_wallet/routes.dart';
-import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/screens/auth/auth_page.dart';
+import 'package:oxen_wallet/src/screens/base_page.dart';
 import 'package:oxen_wallet/src/widgets/nav/nav_list_arrow.dart';
 import 'package:oxen_wallet/src/widgets/nav/nav_list_header.dart';
 
@@ -14,12 +14,12 @@ class ProfilePage extends BasePage {
   Widget trailing(BuildContext context) {
     return SizedBox(
       width: 25,
-      child: FlatButton(
+      child: IconButton(
           padding: EdgeInsets.all(0),
           onPressed: () => Navigator.of(context).pushNamed(Routes.settings),
-          child: Icon(Icons.settings_rounded,
+          icon: Icon(Icons.settings_rounded,
               color: Theme.of(context).primaryTextTheme.caption.color,
-              size: 25)),
+              size: 25))
     );
   }
 

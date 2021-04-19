@@ -26,7 +26,7 @@ class AuthPageState extends State<AuthPage> {
   final _pinCodeKey = GlobalKey<PinCodeState>();
 
   void changeProcessText(String text) {
-    _key.currentState.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(text), backgroundColor: Colors.green));
   }
 
@@ -44,7 +44,7 @@ class AuthPageState extends State<AuthPage> {
                 (isAuth) {
               if (isAuth) {
                 authStore.biometricAuth();
-                _key.currentState.showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(S.of(context).authenticated),
                     backgroundColor: Colors.green,
@@ -62,7 +62,7 @@ class AuthPageState extends State<AuthPage> {
           if (widget.onAuthenticationFinished != null) {
             widget.onAuthenticationFinished(true, this);
           } else {
-            _key.currentState.showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(S.of(context).authenticated),
                 backgroundColor: Colors.green,
@@ -72,22 +72,22 @@ class AuthPageState extends State<AuthPage> {
         });
       }
 
-      if (state is AuthenticationInProgress) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          _key.currentState.showSnackBar(
-            SnackBar(
-              content: Text(S.of(context).authentication),
-              backgroundColor: Colors.green,
-            ),
-          );
-        });
-      }
+      // if (state is AuthenticationInProgress) {
+      //   WidgetsBinding.instance.addPostFrameCallback((_) {
+      //     ScaffoldMessenger.of(_key.currentContext).showSnackBar(
+      //       SnackBar(
+      //         content: Text(S.of(context).authentication),
+      //         backgroundColor: Colors.green,
+      //       ),
+      //     );
+      //   });
+      // }
 
       if (state is AuthenticationFailure) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _pinCodeKey.currentState.clear();
-          _key.currentState.hideCurrentSnackBar();
-          _key.currentState.showSnackBar(
+          ScaffoldMessenger.of(_key.currentContext).hideCurrentSnackBar();
+          ScaffoldMessenger.of(_key.currentContext).showSnackBar(
             SnackBar(
               content: Text(S.of(context).failed_authentication(state.error)),
               backgroundColor: Colors.red,
@@ -103,8 +103,8 @@ class AuthPageState extends State<AuthPage> {
       if (state is AuthenticationBanned) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _pinCodeKey.currentState.clear();
-          _key.currentState.hideCurrentSnackBar();
-          _key.currentState.showSnackBar(
+          ScaffoldMessenger.of(_key.currentContext).hideCurrentSnackBar();
+          ScaffoldMessenger.of(_key.currentContext).showSnackBar(
             SnackBar(
               content: Text(S.of(context).failed_authentication(state.error)),
               backgroundColor: Colors.red,

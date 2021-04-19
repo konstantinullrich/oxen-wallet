@@ -88,9 +88,9 @@ class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
 
   double get _progress => _dx == 0 ? 0 : _dx / _maxDx;
   double _endDx = 0;
-  double _dz = 1;
-  double _initialContainerWidth, _containerWidth;
-  double _checkAnimationDx = 0;
+  final double _dz = 1;
+  double _containerWidth;
+  final double _checkAnimationDx = 0;
   bool submitted = false;
   AnimationController _checkAnimationController,
       _shrinkAnimationController,
@@ -257,74 +257,6 @@ class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
     await _cancelAnimation();
   }
 
-  Future _checkAnimation() async {
-    _checkAnimationController.reset();
-
-    final animation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(CurvedAnimation(
-      parent: _checkAnimationController,
-      curve: Curves.slowMiddle,
-    ));
-
-    animation.addListener(() {
-      if (mounted) {
-        setState(() {
-          _checkAnimationDx = animation.value;
-        });
-      }
-    });
-    await _checkAnimationController.forward().orCancel;
-  }
-
-  Future _shrinkAnimation() async {
-    _shrinkAnimationController.reset();
-
-    final diff = _initialContainerWidth - widget.height;
-    final animation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(CurvedAnimation(
-      parent: _shrinkAnimationController,
-      curve: Curves.easeOutCirc,
-    ));
-
-    animation.addListener(() {
-      if (mounted) {
-        setState(() {
-          _containerWidth = _initialContainerWidth - (diff * animation.value);
-        });
-      }
-    });
-
-    setState(() {
-      submitted = true;
-    });
-    await _shrinkAnimationController.forward().orCancel;
-  }
-
-  Future _resizeAnimation() async {
-    _resizeAnimationController.reset();
-
-    final animation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(CurvedAnimation(
-      parent: _resizeAnimationController,
-      curve: Curves.easeInBack,
-    ));
-
-    animation.addListener(() {
-      if (mounted) {
-        setState(() {
-          _dz = 1 - animation.value;
-        });
-      }
-    });
-    await _resizeAnimationController.forward().orCancel;
-  }
-
   Future _cancelAnimation() async {
     _cancelAnimationController.reset();
     final animation = Tween<double>(
@@ -371,7 +303,6 @@ class SlideToActState extends State<SlideToAct> with TickerProviderStateMixin {
       final containerBox =
           _containerKey.currentContext.findRenderObject() as RenderBox;
       _containerWidth = containerBox.size.width;
-      _initialContainerWidth = _containerWidth;
 
       final sliderBox =
           _sliderKey.currentContext.findRenderObject() as RenderBox;

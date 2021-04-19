@@ -22,23 +22,23 @@ class ReceivePage extends BasePage {
 
   @override
   Widget trailing(BuildContext context) {
-    final walletStore = Provider.of<WalletStore>(context);
+    final walletStore = context.read<WalletStore>();
 
     return SizedBox(
       height: 37.0,
       width: 37.0,
       child: ButtonTheme(
         minWidth: double.minPositive,
-        child: FlatButton(
+        child: IconButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             padding: EdgeInsets.all(0),
             onPressed: () => Share.text(
                 'Share address', walletStore.subaddress.address, 'text/plain'),
-            child: Icon(
+            icon: Icon(
               Icons.share,
-              size: 30.0,
-            )),
+              size: 25
+            ))
       ),
     );
   }
