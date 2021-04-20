@@ -165,7 +165,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                             decimal: true),
                                     inputFormatters: [
                                       FilteringTextInputFormatter.deny(
-                                          RegExp('[\\-|\\ |\\,]'))
+                                          RegExp('[\\-|\\ ]'))
                                     ],
                                     hintText: S.of(context).amount,
                                     validator: (value) {

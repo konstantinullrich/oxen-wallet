@@ -221,7 +221,7 @@ class SendFormState extends State<SendForm> {
                               signed: false, decimal: true),
                           inputFormatters: [
                             FilteringTextInputFormatter.deny(
-                                RegExp('[\\-|\\ |\\,]'))
+                                RegExp('[\\-|\\ ]'))
                           ],
                           decoration: InputDecoration(
                               prefixIcon: SizedBox(
