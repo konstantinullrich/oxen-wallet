@@ -93,7 +93,7 @@ class SeedWidgetState extends State<SeedWidget> {
 
   void addMnemotic(String text) {
     setState(() => items
-        .add(MnemoticItem(text: text.trim().toLowerCase(), dic: widget.words)));
+        .add(MnemoticItem(text: text.trim(), dic: widget.words)));
     _seedController.text = '';
 
     if (widget.onMnemoticChange != null) {
