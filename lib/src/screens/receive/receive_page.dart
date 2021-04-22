@@ -95,9 +95,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                       Observer(builder: (_) {
                         return Row(
                           children: <Widget>[
-                            Spacer(
-                              flex: 1,
-                            ),
+                            Spacer(flex: 1),
                             Flexible(
                                 flex: 2,
                                 child: AspectRatio(
@@ -112,9 +110,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                     ),
                                   ),
                                 )),
-                            Spacer(
-                              flex: 1,
-                            )
+                            Spacer(flex: 1)
                           ],
                         );
                       }),
@@ -146,10 +142,10 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                         color: Theme.of(context)
                                             .primaryTextTheme
                                             .headline6
-                                            .color),
-                                  ),
-                                ),
-                              ),
+                                            .color)
+                                  )
+                                )
+                              )
                             ))
                           ],
                         );
@@ -161,18 +157,16 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                   key: _formKey,
                                   child: OxenTextField(
                                     keyboardType:
-                                        TextInputType.numberWithOptions(
-                                            decimal: true),
+                                        TextInputType.numberWithOptions(decimal: true),
                                     inputFormatters: [
-                                      FilteringTextInputFormatter.deny(
-                                          RegExp('[\\-|\\ ]'))
+                                      FilteringTextInputFormatter.deny(RegExp('[-, ]'))
                                     ],
                                     hintText: S.of(context).amount,
                                     validator: (value) {
                                       walletStore.validateAmount(value);
                                       return walletStore.errorMessage;
                                     },
-                                    controller: amountController,
+                                    controller: amountController
                                   )))
                         ],
                       )
