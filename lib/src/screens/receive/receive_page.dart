@@ -159,7 +159,7 @@ class ReceiveBodyState extends State<ReceiveBody> {
                                     keyboardType:
                                         TextInputType.numberWithOptions(decimal: true),
                                     inputFormatters: [
-                                      FilteringTextInputFormatter.deny(RegExp('[-, ]'))
+                                      FilteringTextInputFormatter.deny(RegExp('[- ]'))
                                     ],
                                     hintText: S.of(context).amount,
                                     validator: (value) {

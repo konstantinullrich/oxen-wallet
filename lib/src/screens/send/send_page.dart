@@ -220,7 +220,7 @@ class SendFormState extends State<SendForm> {
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: true),
                           inputFormatters: [
-                            FilteringTextInputFormatter.deny(RegExp('[-, ]'))
+                            FilteringTextInputFormatter.deny(RegExp('[- ]'))
                           ],
                           decoration: InputDecoration(
                               prefixIcon: SizedBox(
@@ -286,7 +286,7 @@ class SendFormState extends State<SendForm> {
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: true),
                           inputFormatters: [
-                            FilteringTextInputFormatter.deny(RegExp('[-, ]'))
+                            FilteringTextInputFormatter.deny(RegExp('[- ]'))
                           ],
                           decoration: InputDecoration(
                               prefixIcon: SizedBox(
