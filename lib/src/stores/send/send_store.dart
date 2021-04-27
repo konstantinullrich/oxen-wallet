@@ -247,9 +247,10 @@ abstract class SendStoreBase with Store {
     errorMessage = isValid ? null : S.current.error_text_address;
   }
 
-  void validateOXEN(String value, int availableBalance) {
+  void validateOXEN(String amount, int availableBalance) {
     const maxValue = 18446744.073709551616;
     const pattern = '^([0-9]+([.][0-9]{0,12})?|[.][0-9]{1,12})\$|ALL';
+    final value = amount.replaceAll(',', '.');
     final regExp = RegExp(pattern);
 
     if (regExp.hasMatch(value)) {
@@ -272,8 +273,9 @@ abstract class SendStoreBase with Store {
     errorMessage = isValid ? null : S.current.error_text_oxen;
   }
 
-  void validateFiat(String value, {double maxValue}) {
+  void validateFiat(String amount, {double maxValue}) {
     const minValue = 0.01;
+    final value = amount.replaceAll(',', '.');
 
     if (value.isEmpty && cryptoAmount == 'ALL') {
       isValid = true;

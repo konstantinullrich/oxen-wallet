@@ -10,7 +10,9 @@ const List<String> seedLanguages = [
   'Japanese',
   'Portuguese',
   'Russian',
-  'Spanish'
+  'Spanish',
+  'French',
+  'Italian'
 ];
 
 class SeedLanguageStore = SeedLanguageStoreBase with _$SeedLanguageStore;

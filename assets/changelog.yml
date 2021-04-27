@@ -1,4 +1,11 @@
 -
+  version: 1.0.5
+  changes:
+    - Add French Seeds
+    - Add Italian Seeds
+    - Minor fixes
+    - Hardfork Oxen 9 'Audacious Aurochs'
+-
   version: 1.0.4
   changes:
     - Add French Transation thanks to Nicolai K., Grégoire L.G and MtGox
