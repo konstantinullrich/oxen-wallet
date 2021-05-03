@@ -135,13 +135,14 @@ abstract class WalletStoreBase with Store {
       amountValue = value.isNotEmpty ? '?tx_amount=$value' : '';
 
   @action
-  void validateAmount(String value) {
+  void validateAmount(String amount) {
     const maxValue = 18446744.073709551616;
+    final value = amount.replaceAll(',', '.');
 
     if (value.isEmpty) {
       isValid = true;
     } else {
-      const pattern = '^([0-9]+([.][0-9]{0,12})?|[.][0-9]{1,12})\$';
+      const pattern = '^([0-9]+([.][0-9]{0,9})?|[.][0-9]{1,9})\$';
       final regExp = RegExp(pattern);
 
       if (regExp.hasMatch(value)) {

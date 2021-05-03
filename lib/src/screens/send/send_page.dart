@@ -220,38 +220,34 @@ class SendFormState extends State<SendForm> {
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: true),
                           inputFormatters: [
-                            FilteringTextInputFormatter.deny(
-                                RegExp('[\\-|\\ |\\,]'))
+                            FilteringTextInputFormatter.deny(RegExp('[- ]'))
                           ],
                           decoration: InputDecoration(
                               prefixIcon: SizedBox(
                                 width: 75,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 8, top: 12),
-                                  child: Text('OXEN:',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Theme.of(context)
-                                            .accentTextTheme
-                                            .overline
-                                            .color,
-                                      )),
-                                ),
+                                    padding: EdgeInsets.only(left: 8, top: 12),
+                                    child: Text('OXEN:',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Theme.of(context)
+                                                .accentTextTheme
+                                                .overline
+                                                .color))),
                               ),
                               suffixIcon: Container(
                                 width: 1,
                                 padding: EdgeInsets.only(top: 0),
                                 child: Center(
-                                  child: InkWell(
-                                      onTap: () => sendStore.setSendAll(),
-                                      child: Text(S.of(context).all,
-                                          style: TextStyle(
-                                              fontSize: 10,
-                                              color: Theme.of(context)
-                                                  .accentTextTheme
-                                                  .overline
-                                                  .decorationColor))),
-                                ),
+                                    child: InkWell(
+                                        onTap: () => sendStore.setSendAll(),
+                                        child: Text(S.of(context).all,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                color: Theme.of(context)
+                                                    .accentTextTheme
+                                                    .overline
+                                                    .decorationColor)))),
                               ),
                               hintStyle: TextStyle(
                                   fontSize: 18.0,
@@ -290,24 +286,21 @@ class SendFormState extends State<SendForm> {
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: true),
                           inputFormatters: [
-                            FilteringTextInputFormatter.deny(
-                                RegExp('[\\-|\\ |\\,]'))
+                            FilteringTextInputFormatter.deny(RegExp('[- ]'))
                           ],
                           decoration: InputDecoration(
                               prefixIcon: SizedBox(
                                 width: 75,
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 8, top: 12),
-                                  child: Text(
-                                      '${settingsStore.fiatCurrency.toString()}:',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Theme.of(context)
-                                            .accentTextTheme
-                                            .overline
-                                            .color,
-                                      )),
-                                ),
+                                    padding: EdgeInsets.only(left: 8, top: 12),
+                                    child: Text(
+                                        '${settingsStore.fiatCurrency.toString()}:',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Theme.of(context)
+                                                .accentTextTheme
+                                                .overline
+                                                .color))),
                               ),
                               hintStyle: TextStyle(
                                   fontSize: 18.0,
