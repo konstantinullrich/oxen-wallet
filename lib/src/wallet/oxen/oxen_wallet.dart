@@ -389,7 +389,6 @@ class OxenWallet extends Wallet {
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
-    print('Ryan: onNewBlock start.');
     try {
       await askForUpdateTransactionHistory();
       askForUpdateBalance();
@@ -411,7 +410,6 @@ class OxenWallet extends Wallet {
     } catch (e) {
       print(e.toString());
     }
-    print('Ryan: onNewBlock finish.');
   }
 
   void _setListeners() {
@@ -493,13 +491,11 @@ class OxenWallet extends Wallet {
   }
 
   Future _onNewTransaction() async {
-    print('Ryan: onNewTransaction start.');
     try {
       await askForUpdateTransactionHistory();
       askForUpdateBalance();
     } catch (e) {
       print(e.toString());
     }
-    print('Ryan: onNewTransaction finish.');
   }
 }
