@@ -171,11 +171,11 @@ class OxenWallet extends Wallet {
   Future<String> getSeed() async => oxen_wallet.getSeed();
 
   @override
-  Future<int> getFullBalance() async =>
+  int getFullBalance() =>
       oxen_wallet.getFullBalance(accountIndex: _account.value.id);
 
   @override
-  Future<int> getUnlockedBalance() async =>
+  int getUnlockedBalance()  =>
       oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
 
   @override
@@ -339,9 +339,9 @@ class OxenWallet extends Wallet {
     await walletInfo.save();
   }
 
-  Future askForUpdateBalance() async {
-    final fullBalance = await getFullBalance();
-    final unlockedBalance = await getUnlockedBalance();
+  void askForUpdateBalance() {
+    final fullBalance = getFullBalance();
+    final unlockedBalance = getUnlockedBalance();
     final needToChange = _onBalanceChange.value != null
         ? _onBalanceChange.value.fullBalance != fullBalance ||
             _onBalanceChange.value.unlockedBalance != unlockedBalance
@@ -389,23 +389,29 @@ class OxenWallet extends Wallet {
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
-    await askForUpdateTransactionHistory();
-    await askForUpdateBalance();
+    print('Ryan: onNewBlock start.');
+    try {
+      await askForUpdateTransactionHistory();
+      askForUpdateBalance();
 
-    if (blocksLeft < 100) {
-      _syncStatus.add(SyncedSyncStatus());
-      await oxen_wallet.store();
+      if (blocksLeft < 100) {
+        _syncStatus.add(SyncedSyncStatus());
+        await oxen_wallet.store();
 
-      if (walletInfo.isRecovery) {
-        await setAsRecovered();
+        if (walletInfo.isRecovery) {
+          await setAsRecovered();
+        }
+      } else {
+        _syncStatus.add(SyncingSyncStatus(blocksLeft, ptc));
       }
-    } else {
-      _syncStatus.add(SyncingSyncStatus(blocksLeft, ptc));
-    }
 
-    if (blocksLeft <= 1) {
-      oxen_wallet.setRefreshFromBlockHeight(height: height);
+      if (blocksLeft <= 1) {
+        oxen_wallet.setRefreshFromBlockHeight(height: height);
+      }
+    } catch (e) {
+      print(e.toString());
     }
+    print('Ryan: onNewBlock finish.');
   }
 
   void _setListeners() {
@@ -487,7 +493,13 @@ class OxenWallet extends Wallet {
   }
 
   Future _onNewTransaction() async {
-    await askForUpdateBalance();
-    await askForUpdateTransactionHistory();
+    print('Ryan: onNewTransaction start.');
+    try {
+      await askForUpdateTransactionHistory();
+      askForUpdateBalance();
+    } catch (e) {
+      print(e.toString());
+    }
+    print('Ryan: onNewTransaction finish.');
   }
 }
