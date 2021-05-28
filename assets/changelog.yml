@@ -1,4 +1,8 @@
 -
+  version: 1.0.6
+  changes:
+    - Fix crash while syncing
+-
   version: 1.0.5
   changes:
     - Add French Seeds
