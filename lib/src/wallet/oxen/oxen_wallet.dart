@@ -24,6 +24,7 @@ import 'package:oxen_wallet/src/wallet/wallet.dart';
 import 'package:oxen_wallet/src/wallet/wallet_info.dart';
 import 'package:oxen_wallet/src/wallet/wallet_type.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:synchronized/synchronized.dart';
 
 const oxenBlockSize = 1000;
 
@@ -41,6 +42,7 @@ class OxenWallet extends Wallet {
     _onBalanceChange = BehaviorSubject<OxenBalance>();
     _account = BehaviorSubject<Account>()..add(Account(id: 0));
     _subaddress = BehaviorSubject<Subaddress>();
+    _synchronizedLock = Lock();
   }
 
   static Future<OxenWallet> createdWallet(
@@ -139,6 +141,8 @@ class OxenWallet extends Wallet {
   SubaddressList _cachedSubaddressList;
   AccountList _cachedAccountList;
   Future<int> _cachedGetNodeHeightOrUpdateRequest;
+
+  Lock _synchronizedLock;
 
   @override
   Future updateInfo() async {
@@ -312,15 +316,17 @@ class OxenWallet extends Wallet {
   @override
   Future<PendingTransaction> createTransaction(
       TransactionCreationCredentials credentials) async {
-    final _credentials = credentials as OxenTransactionCreationCredentials;
-    final transactionDescription = await transaction_history.createTransaction(
-        address: _credentials.address,
-        amount: _credentials.amount,
-        priorityRaw: _credentials.priority.serialize(),
-        accountIndex: _account.value.id);
+    return _synchronizedLock.synchronized(() async {
+      final _credentials = credentials as OxenTransactionCreationCredentials;
+      final transactionDescription = await transaction_history.createTransaction(
+          address: _credentials.address,
+          amount: _credentials.amount,
+          priorityRaw: _credentials.priority.serialize(),
+          accountIndex: _account.value.id);
 
-    return PendingTransaction.fromTransactionDescription(
-        transactionDescription);
+      return PendingTransaction.fromTransactionDescription(
+          transactionDescription);
+    });
   }
 
   @override
@@ -342,23 +348,34 @@ class OxenWallet extends Wallet {
     await walletInfo.save();
   }
 
-  void askForUpdateBalance() {
-    final fullBalance = getFullBalance();
-    final unlockedBalance = getUnlockedBalance();
-    final needToChange = _onBalanceChange.value != null
-        ? _onBalanceChange.value.fullBalance != fullBalance ||
-            _onBalanceChange.value.unlockedBalance != unlockedBalance
-        : true;
+  Future askForUpdateBalance() async {
+    await _synchronizedLock.synchronized(() async {
+      print('askForUpdateBalance start');
+      final fullBalance = getFullBalance();
+      final unlockedBalance = getUnlockedBalance();
+      final needToChange = _onBalanceChange.value != null
+          ? _onBalanceChange.value.fullBalance != fullBalance ||
+          _onBalanceChange.value.unlockedBalance != unlockedBalance
+          : true;
 
-    if (!needToChange) {
-      return;
-    }
+      if (!needToChange) {
+        print('askForUpdateBalance finish');
+        return;
+      }
 
-    _onBalanceChange.add(OxenBalance(
-        fullBalance: fullBalance, unlockedBalance: unlockedBalance));
+      _onBalanceChange.add(OxenBalance(
+          fullBalance: fullBalance, unlockedBalance: unlockedBalance));
+      print('askForUpdateBalance finish');
+    });
   }
 
-  Future askForUpdateTransactionHistory() async => await getHistory().update();
+  Future askForUpdateTransactionHistory() async {
+    await _synchronizedLock.synchronized(() async {
+      print('askForUpdateTransactionHistory start');
+      await getHistory().update();
+      print('askForUpdateTransactionHistory finish');
+    });
+  }
 
   void changeCurrentSubaddress(Subaddress subaddress) =>
       _subaddress.value = subaddress;
@@ -394,7 +411,7 @@ class OxenWallet extends Wallet {
   Future _onNewBlock(int height, int blocksLeft, double ptc) async {
     try {
       await askForUpdateTransactionHistory();
-      askForUpdateBalance();
+      await askForUpdateBalance();
 
       if (blocksLeft < 100) {
         _syncStatus.add(SyncedSyncStatus());
@@ -496,7 +513,7 @@ class OxenWallet extends Wallet {
   Future _onNewTransaction() async {
     try {
       await askForUpdateTransactionHistory();
-      askForUpdateBalance();
+      await askForUpdateBalance();
     } catch (e) {
       print(e.toString());
     }
