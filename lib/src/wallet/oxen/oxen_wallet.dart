@@ -31,11 +31,6 @@ const oxenBlockSize = 1000;
 class OxenWallet extends Wallet {
   OxenWallet({this.walletInfoSource, this.walletInfo}) {
     _cachedBlockchainHeight = 0;
-    _isSaving = false;
-    _lastSaveTime = 0;
-    _lastRefreshedTime = 0;
-    _refreshHeight = 0;
-    _lastSyncHeight = 0;
     _name = BehaviorSubject<String>();
     _address = BehaviorSubject<String>();
     _syncStatus = BehaviorSubject<SyncStatus>();
@@ -131,11 +126,6 @@ class OxenWallet extends Wallet {
   BehaviorSubject<String> _address;
   BehaviorSubject<Subaddress> _subaddress;
   int _cachedBlockchainHeight;
-  bool _isSaving;
-  int _lastSaveTime;
-  int _lastRefreshedTime;
-  int _refreshHeight;
-  int _lastSyncHeight;
 
   TransactionHistory _cachedTransactionHistory;
   SubaddressList _cachedSubaddressList;
@@ -281,16 +271,6 @@ class OxenWallet extends Wallet {
     }
   }
 
-  Future askForSave() async {
-    final diff = DateTime.now().millisecondsSinceEpoch - _lastSaveTime;
-
-    if (_lastSaveTime != 0 && diff < 120000) {
-      return;
-    }
-
-    await store();
-  }
-
   Future<int> getNodeHeightOrUpdate(int baseHeight) async {
     if (_cachedBlockchainHeight < baseHeight) {
       _cachedBlockchainHeight = await getNodeHeight();
@@ -389,22 +369,6 @@ class OxenWallet extends Wallet {
         .then((subaddresses) => _subaddress.value = subaddresses[0]);
   }
 
-  Future store() async {
-    if (_isSaving) {
-      return;
-    }
-
-    try {
-      _isSaving = true;
-      await oxen_wallet.store();
-      _isSaving = false;
-    } on PlatformException catch (e) {
-      print(e);
-      _isSaving = false;
-      rethrow;
-    }
-  }
-
   oxen_wallet.SyncListener setListeners() =>
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
@@ -469,45 +433,6 @@ class OxenWallet extends Wallet {
     }
 
     return nodeHeight - heightDistance;
-  }
-
-  Future _onNeedToRefresh() async {
-    try {
-      final currentHeight = getCurrentHeight();
-      final nodeHeight = await getNodeHeightOrUpdate(currentHeight);
-
-      // no blocks - maybe we're not connected to the node ?
-      if (currentHeight <= 1 || nodeHeight == 0) {
-        return;
-      }
-
-      if (_syncStatus.value is FailedSyncStatus) {
-        return;
-      }
-
-      await askForUpdateBalance();
-
-      final heightDifference = nodeHeight - currentHeight;
-      final isRefreshed = heightDifference < oxenBlockSize;
-
-      if (isRefreshed) {
-        _syncStatus.add(SyncedSyncStatus());
-
-        if (isRecovery) {
-          await setAsRecovered();
-        }
-      }
-
-      final now = DateTime.now().millisecondsSinceEpoch;
-      final lastRefreshedTimeDifference = now - _lastRefreshedTime;
-
-      if (lastRefreshedTimeDifference >= 60000) {
-        await askForSave();
-        _lastRefreshedTime = now;
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 
   Future _onNewTransaction() async {
