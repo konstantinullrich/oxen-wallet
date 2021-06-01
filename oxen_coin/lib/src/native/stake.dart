@@ -31,7 +31,7 @@ final submitStakeUnlockNative = oxenApi
 PendingTransactionDescription createStakeSync(
     String serviceNodeKey, String amount) {
   final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
-  final amountPointer = amount != null ? Utf8.toUtf8(amount) : nullptr;
+  final amountPointer = Utf8.toUtf8(amount);
   final errorMessagePointer = allocate<Utf8Box>();
   final pendingTransactionRawPointer = allocate<PendingTransactionRaw>();
   final created = stakeCreateNative(serviceNodeKeyPointer, amountPointer,
