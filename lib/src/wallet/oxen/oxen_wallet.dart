@@ -37,7 +37,7 @@ class OxenWallet extends Wallet {
     _onBalanceChange = BehaviorSubject<OxenBalance>();
     _account = BehaviorSubject<Account>()..add(Account(id: 0));
     _subaddress = BehaviorSubject<Subaddress>();
-    _synchronizedLock = Lock();
+    _mutex = Lock();
   }
 
   static Future<OxenWallet> createdWallet(
@@ -132,7 +132,7 @@ class OxenWallet extends Wallet {
   AccountList _cachedAccountList;
   Future<int> _cachedGetNodeHeightOrUpdateRequest;
 
-  Lock _synchronizedLock;
+  Lock _mutex;
 
   @override
   Future updateInfo() async {
@@ -296,7 +296,7 @@ class OxenWallet extends Wallet {
   @override
   Future<PendingTransaction> createTransaction(
       TransactionCreationCredentials credentials) async {
-    return _synchronizedLock.synchronized(() async {
+    return _mutex.synchronized(() async {
       final _credentials = credentials as OxenTransactionCreationCredentials;
       final transactionDescription = await transaction_history.createTransaction(
           address: _credentials.address,
@@ -329,8 +329,7 @@ class OxenWallet extends Wallet {
   }
 
   Future askForUpdateBalance() async {
-    await _synchronizedLock.synchronized(() async {
-      print('askForUpdateBalance start');
+    await _mutex.synchronized(() async {
       final fullBalance = getFullBalance();
       final unlockedBalance = getUnlockedBalance();
       final needToChange = _onBalanceChange.value != null
@@ -339,21 +338,17 @@ class OxenWallet extends Wallet {
           : true;
 
       if (!needToChange) {
-        print('askForUpdateBalance finish');
         return;
       }
 
       _onBalanceChange.add(OxenBalance(
           fullBalance: fullBalance, unlockedBalance: unlockedBalance));
-      print('askForUpdateBalance finish');
     });
   }
 
   Future askForUpdateTransactionHistory() async {
-    await _synchronizedLock.synchronized(() async {
-      print('askForUpdateTransactionHistory start');
+    await _mutex.synchronized(() async {
       await getHistory().update();
-      print('askForUpdateTransactionHistory finish');
     });
   }
 
