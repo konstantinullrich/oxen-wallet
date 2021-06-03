@@ -282,15 +282,17 @@ class OxenWallet extends Wallet {
   @override
   Future<PendingTransaction> createStake(
       TransactionCreationCredentials credentials) async {
-    final _credentials = credentials as OxenStakeTransactionCreationCredentials;
-    if (_credentials.amount == null || _credentials.address == null) {
-      return Future.error('Amount and address cannot be null.');
-    }
-    final transactionDescription =
-        await oxen_stake.createStake(_credentials.address, _credentials.amount);
+    return _mutex.synchronized(() async {
+      final _credentials = credentials as OxenStakeTransactionCreationCredentials;
+      if (_credentials.amount == null || _credentials.address == null) {
+        return Future.error('Amount and address cannot be null.');
+      }
+      final transactionDescription =
+      await oxen_stake.createStake(_credentials.address, _credentials.amount);
 
-    return PendingTransaction.fromTransactionDescription(
-        transactionDescription);
+      return PendingTransaction.fromTransactionDescription(
+          transactionDescription);
+    });
   }
 
   @override
