@@ -165,12 +165,14 @@ class OxenWallet extends Wallet {
   Future<String> getSeed() async => oxen_wallet.getSeed();
 
   @override
-  int getFullBalance() =>
-      oxen_wallet.getFullBalance(accountIndex: _account.value.id);
+  Future<int> getFullBalance() async {
+    return _mutex.synchronized(() => oxen_wallet.getFullBalance(accountIndex: _account.value.id));
+  }
 
   @override
-  int getUnlockedBalance()  =>
-      oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
+  Future<int> getUnlockedBalance() async {
+    return _mutex.synchronized(() => oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id));
+  }
 
   @override
   int getCurrentHeight() => oxen_wallet.getCurrentHeight();
@@ -331,21 +333,19 @@ class OxenWallet extends Wallet {
   }
 
   Future askForUpdateBalance() async {
-    await _mutex.synchronized(() async {
-      final fullBalance = getFullBalance();
-      final unlockedBalance = getUnlockedBalance();
-      final needToChange = _onBalanceChange.value != null
-          ? _onBalanceChange.value.fullBalance != fullBalance ||
-          _onBalanceChange.value.unlockedBalance != unlockedBalance
-          : true;
+    final fullBalance = await getFullBalance();
+    final unlockedBalance = await getUnlockedBalance();
+    final needToChange = _onBalanceChange.value != null
+        ? _onBalanceChange.value.fullBalance != fullBalance ||
+        _onBalanceChange.value.unlockedBalance != unlockedBalance
+        : true;
 
-      if (!needToChange) {
-        return;
-      }
+    if (!needToChange) {
+      return;
+    }
 
-      _onBalanceChange.add(OxenBalance(
-          fullBalance: fullBalance, unlockedBalance: unlockedBalance));
-    });
+    _onBalanceChange.add(OxenBalance(
+        fullBalance: fullBalance, unlockedBalance: unlockedBalance));
   }
 
   Future askForUpdateTransactionHistory() async {

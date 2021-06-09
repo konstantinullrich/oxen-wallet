@@ -134,8 +134,8 @@ abstract class BalanceStoreBase with Store {
       return;
     }
 
-    fullBalance = _walletService.getFullBalance();
-    unlockedBalance = _walletService.getUnlockedBalance();
+    fullBalance = await _walletService.getFullBalance();
+    unlockedBalance = await _walletService.getUnlockedBalance();
     await updateFiatBalance();
   }
 
