@@ -31,11 +31,17 @@ String getAddress({int accountIndex = 0, int addressIndex = 0}) =>
     convertUTF8ToString(
         pointer: oxen_wallet.getAddressNative(accountIndex, addressIndex));
 
-int getFullBalance({int accountIndex = 0}) =>
+int _getFullBalanceSync(int accountIndex) =>
     oxen_wallet.getFullBalanceNative(accountIndex);
 
-int getUnlockedBalance({int accountIndex = 0}) =>
+Future<int> getFullBalance({int accountIndex = 0}) =>
+  compute<int, int>(_getFullBalanceSync, accountIndex);
+
+int _getUnlockedBalanceSync(int accountIndex) =>
     oxen_wallet.getUnlockedBalanceNative(accountIndex);
+
+Future<int> getUnlockedBalance({int accountIndex = 0}) =>
+    compute<int, int>(_getUnlockedBalanceSync, accountIndex);
 
 int getCurrentHeight() => oxen_wallet.getCurrentHeightNative();
 
