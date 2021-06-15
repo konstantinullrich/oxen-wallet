@@ -1,7 +1,7 @@
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 
-class StakeRow extends Struct {
+class StakeRowPointer extends Struct {
   Pointer<Utf8> _serviceNodeKey;
 
   @Uint64()
@@ -9,4 +9,14 @@ class StakeRow extends Struct {
 
   String get serviceNodeKey => Utf8.fromUtf8(_serviceNodeKey);
   int get amount => _amount;
+}
+
+class StakeRow {
+  StakeRow(StakeRowPointer pointer) {
+    amount = pointer.amount;
+    serviceNodeKey = pointer.serviceNodeKey;
+  }
+
+  int amount;
+  String serviceNodeKey;
 }
