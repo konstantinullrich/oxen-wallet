@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -166,12 +167,27 @@ class OxenWallet extends Wallet {
 
   @override
   Future<int> getFullBalance() async {
-    return _mutex.synchronized(() => oxen_wallet.getFullBalance(accountIndex: _account.value.id));
+    return _mutex.synchronized(() async {
+      print('getFullBalance() start');
+      final balance = await oxen_wallet.getFullBalance(accountIndex: _account.value.id);
+      print('getFullBalance() finish');
+      return balance;
+    });
   }
 
   @override
   Future<int> getUnlockedBalance() async {
-    return _mutex.synchronized(() => oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id));
+    return _mutex.synchronized(() async {
+      print('getUnlockedBalance() start');
+      var balance = 0;
+      try {
+        balance = await oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
+      } catch (e) {
+        log('Error when getting unlocked balance, error message: $e');
+      }
+      print('getUnlockedBalance() finish');
+      return balance;
+    });
   }
 
   @override
@@ -350,7 +366,9 @@ class OxenWallet extends Wallet {
 
   Future askForUpdateTransactionHistory() async {
     await _mutex.synchronized(() async {
+      print('askForUpdateTransactionHistory() start');
       await getHistory().update();
+      print('askForUpdateTransactionHistory() finish');
     });
   }
 
