@@ -15,9 +15,6 @@ class TransactionDetailsPage extends BasePage {
   final TransactionInfo transactionInfo;
 
   @override
-  bool get isModalBackButton => true;
-
-  @override
   String get title => S.current.transaction_details_title;
 
   @override

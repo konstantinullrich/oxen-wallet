@@ -14,14 +14,9 @@ import 'package:oxen_wallet/src/screens/wallet_list/wallet_menu.dart';
 import 'package:oxen_wallet/src/widgets/picker.dart';
 
 class WalletListPage extends BasePage {
-  @override
-  bool get isModalBackButton => true;
 
   @override
   String get title => S.current.wallet_list_title;
-
-  @override
-  AppBarStyle get appBarStyle => AppBarStyle.withShadow;
 
   @override
   Widget body(BuildContext context) => WalletListBody();
