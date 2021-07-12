@@ -273,9 +273,10 @@ class Router {
                 ));
 
       case Routes.unlock:
-        return MaterialPageRoute<void>(
+        return PageRouteBuilder<void>(
             fullscreenDialog: true,
-            builder: (_) => createUnlockPage(
+            transitionDuration: Duration(milliseconds: 0),
+            pageBuilder: (_, __, ___) => createUnlockPage(
                 sharedPreferences: sharedPreferences,
                 userService: userService,
                 walletService: walletService,
