@@ -419,6 +419,12 @@ extern "C"
     }
 
     EXPORT
+    bool is_refreshing()
+    {
+        return get_current_wallet()->isRefreshing();
+    }
+
+    EXPORT
     bool connect_to_node(char *error)
     {
         nice(19);

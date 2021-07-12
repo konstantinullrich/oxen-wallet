@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_coin/stake.dart' as oxen_stake;
 import 'package:oxen_coin/transaction_history.dart' as transaction_history;
@@ -25,7 +24,6 @@ import 'package:oxen_wallet/src/wallet/wallet.dart';
 import 'package:oxen_wallet/src/wallet/wallet_info.dart';
 import 'package:oxen_wallet/src/wallet/wallet_type.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:synchronized/synchronized.dart';
 
 const oxenBlockSize = 1000;
 
@@ -38,7 +36,6 @@ class OxenWallet extends Wallet {
     _onBalanceChange = BehaviorSubject<OxenBalance>();
     _account = BehaviorSubject<Account>()..add(Account(id: 0));
     _subaddress = BehaviorSubject<Subaddress>();
-    _mutex = Lock();
   }
 
   static Future<OxenWallet> createdWallet(
@@ -133,8 +130,6 @@ class OxenWallet extends Wallet {
   AccountList _cachedAccountList;
   Future<int> _cachedGetNodeHeightOrUpdateRequest;
 
-  Lock _mutex;
-
   @override
   Future updateInfo() async {
     _name.value = await getName();
@@ -167,31 +162,25 @@ class OxenWallet extends Wallet {
 
   @override
   Future<int> getFullBalance() async {
-    return _mutex.synchronized(() async {
-      print('getFullBalance() start');
-      final balance = await oxen_wallet.getFullBalance(accountIndex: _account.value.id);
-      print('getFullBalance() finish');
-      return balance;
-    });
+    print('getFullBalance() start');
+    final balance = await oxen_wallet.getFullBalance(accountIndex: _account.value.id);
+    print('getFullBalance() finish');
+    return balance;
   }
 
   @override
   Future<int> getUnlockedBalance() async {
-    return _mutex.synchronized(() async {
-      print('getUnlockedBalance() start');
-      var balance = 0;
-      try {
-        balance = await oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
-      } catch (e) {
-        log('Error when getting unlocked balance, error message: $e');
-      }
-      print('getUnlockedBalance() finish');
-      return balance;
-    });
+    print('getUnlockedBalance() start');
+    final balance = await oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
+    print('getUnlockedBalance() finish');
+    return balance;
   }
 
   @override
   int getCurrentHeight() => oxen_wallet.getCurrentHeight();
+
+  @override
+  bool isRefreshing() => oxen_wallet.isRefreshing();
 
   @override
   Future<int> getNodeHeight() async {
@@ -280,7 +269,9 @@ class OxenWallet extends Wallet {
     try {
       _syncStatus.value = StartingSyncStatus();
       oxen_wallet.startRefresh();
+      print('setListeners');
       _setListeners();
+      print('_listener?.start()');
       _listener?.start();
     } catch (e) {
       _syncStatus.value = FailedSyncStatus();
@@ -300,33 +291,29 @@ class OxenWallet extends Wallet {
   @override
   Future<PendingTransaction> createStake(
       TransactionCreationCredentials credentials) async {
-    return _mutex.synchronized(() async {
-      final _credentials = credentials as OxenStakeTransactionCreationCredentials;
-      if (_credentials.amount == null || _credentials.address == null) {
-        return Future.error('Amount and address cannot be null.');
-      }
-      final transactionDescription =
-      await oxen_stake.createStake(_credentials.address, _credentials.amount);
+    final _credentials = credentials as OxenStakeTransactionCreationCredentials;
+    if (_credentials.amount == null || _credentials.address == null) {
+      return Future.error('Amount and address cannot be null.');
+    }
+    final transactionDescription =
+    await oxen_stake.createStake(_credentials.address, _credentials.amount);
 
-      return PendingTransaction.fromTransactionDescription(
-          transactionDescription);
-    });
+    return PendingTransaction.fromTransactionDescription(
+        transactionDescription);
   }
 
   @override
   Future<PendingTransaction> createTransaction(
       TransactionCreationCredentials credentials) async {
-    return _mutex.synchronized(() async {
-      final _credentials = credentials as OxenTransactionCreationCredentials;
-      final transactionDescription = await transaction_history.createTransaction(
-          address: _credentials.address,
-          amount: _credentials.amount,
-          priorityRaw: _credentials.priority.serialize(),
-          accountIndex: _account.value.id);
+    final _credentials = credentials as OxenTransactionCreationCredentials;
+    final transactionDescription = await transaction_history.createTransaction(
+        address: _credentials.address,
+        amount: _credentials.amount,
+        priorityRaw: _credentials.priority.serialize(),
+        accountIndex: _account.value.id);
 
-      return PendingTransaction.fromTransactionDescription(
-          transactionDescription);
-    });
+    return PendingTransaction.fromTransactionDescription(
+        transactionDescription);
   }
 
   @override
@@ -365,11 +352,9 @@ class OxenWallet extends Wallet {
   }
 
   Future askForUpdateTransactionHistory() async {
-    await _mutex.synchronized(() async {
-      print('askForUpdateTransactionHistory() start');
-      await getHistory().update();
-      print('askForUpdateTransactionHistory() finish');
-    });
+    print('askForUpdateTransactionHistory() start');
+    await getHistory().update();
+    print('askForUpdateTransactionHistory() finish');
   }
 
   void changeCurrentSubaddress(Subaddress subaddress) =>
@@ -387,24 +372,27 @@ class OxenWallet extends Wallet {
   oxen_wallet.SyncListener setListeners() =>
       oxen_wallet.setListeners(_onNewBlock, _onNewTransaction);
 
-  Future _onNewBlock(int height, int blocksLeft, double ptc) async {
+  Future _onNewBlock(int height, int blocksLeft, double ptc, bool isRefreshing) async {
     try {
-      await askForUpdateTransactionHistory();
-      await askForUpdateBalance();
-
-      if (blocksLeft < 100) {
-        _syncStatus.add(SyncedSyncStatus());
-        await oxen_wallet.store();
-
-        if (walletInfo.isRecovery) {
-          await setAsRecovered();
-        }
-      } else {
+      if (isRefreshing) {
+        print('is refreshing!!!!');
         _syncStatus.add(SyncingSyncStatus(blocksLeft, ptc));
-      }
+      } else {
+        await askForUpdateTransactionHistory();
+        await askForUpdateBalance();
 
-      if (blocksLeft <= 1) {
-        oxen_wallet.setRefreshFromBlockHeight(height: height);
+        if (blocksLeft < 100) {
+          _syncStatus.add(SyncedSyncStatus());
+          await oxen_wallet.store();
+
+          if (walletInfo.isRecovery) {
+            await setAsRecovered();
+          }
+        }
+
+        if (blocksLeft <= 1) {
+          oxen_wallet.setRefreshFromBlockHeight(height: height);
+        }
       }
     } catch (e) {
       print(e.toString());
@@ -422,6 +410,7 @@ class OxenWallet extends Wallet {
     }
 
     final currentHeight = getCurrentHeight();
+    print('setInitialHeight() $currentHeight');
 
     if (currentHeight <= 1) {
       final height = _getHeightByDate(walletInfo.date);

@@ -39,6 +39,8 @@ typedef GetCurrentHeight = int Function();
 
 typedef GetNodeHeight = int Function();
 
+typedef IsRefreshing = int Function();
+
 typedef IsConnected = int Function();
 
 typedef SetupNode = int Function(

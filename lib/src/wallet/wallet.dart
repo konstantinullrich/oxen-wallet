@@ -42,6 +42,8 @@ abstract class Wallet {
 
   int getCurrentHeight();
 
+  bool isRefreshing();
+
   Future<int> getNodeHeight();
 
   Future<bool> isConnected();

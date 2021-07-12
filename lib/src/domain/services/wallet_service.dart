@@ -97,6 +97,9 @@ class WalletService extends Wallet {
   int getCurrentHeight() => _currentWallet.getCurrentHeight();
 
   @override
+  bool isRefreshing() => currentWallet.isRefreshing();
+
+  @override
   Future<int> getNodeHeight() => _currentWallet.getNodeHeight();
 
   @override

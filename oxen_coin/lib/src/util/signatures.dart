@@ -39,6 +39,8 @@ typedef get_current_height = Int64 Function();
 
 typedef get_node_height = Int64 Function();
 
+typedef is_refreshing = Int8 Function();
+
 typedef is_connected = Int8 Function();
 
 typedef setup_node = Int8 Function(

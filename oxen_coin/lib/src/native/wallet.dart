@@ -44,6 +44,10 @@ final getNodeHeightNative = oxenApi
     .lookup<NativeFunction<get_node_height>>('get_node_height')
     .asFunction<GetNodeHeight>();
 
+final isRefreshingNative = oxenApi
+    .lookup<NativeFunction<is_refreshing>>('is_refreshing')
+    .asFunction<IsRefreshing>();
+
 final isConnectedNative = oxenApi
     .lookup<NativeFunction<is_connected>>('is_connected')
     .asFunction<IsConnected>();
@@ -118,6 +122,8 @@ final rescanBlockchainAsyncNative = oxenApi
     .asFunction<RescanBlockchainAsync>();
 
 int getNodeHeightSync() => getNodeHeightNative();
+
+bool isRefreshingSync() => isRefreshingNative() != 0;
 
 bool isConnectedSync() => isConnectedNative() != 0;
 

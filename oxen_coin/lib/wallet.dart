@@ -47,6 +47,8 @@ int getCurrentHeight() => oxen_wallet.getCurrentHeightNative();
 
 int getNodeHeightSync() => oxen_wallet.getNodeHeightNative();
 
+bool isRefreshingSync() => oxen_wallet.isRefreshingNative() != 0;
+
 bool isConnectedSync() => oxen_wallet.isConnectedNative() != 0;
 
 bool setupNodeSync(
@@ -120,7 +122,7 @@ class SyncListener {
     _initialSyncHeight = 0;
   }
 
-  void Function(int, int, double) onNewBlock;
+  void Function(int, int, double, bool) onNewBlock;
   void Function() onNewTransaction;
 
   Timer _updateSyncInfoTimer;
@@ -142,15 +144,13 @@ class SyncListener {
     _initialSyncHeight = 0;
     _updateSyncInfoTimer ??=
         Timer.periodic(Duration(milliseconds: 1200), (_) async {
-      if (isNewTransactionExist()) {
-        onNewTransaction?.call();
-      }
+      // var syncHeight = getSyncingHeight();
+      //
+      // if (syncHeight <= 0) {
+      //   syncHeight = getCurrentHeight();
+      // }
 
-      var syncHeight = getSyncingHeight();
-
-      if (syncHeight <= 0) {
-        syncHeight = getCurrentHeight();
-      }
+      final syncHeight = getCurrentHeight();
 
       if (_initialSyncHeight <= 0) {
         _initialSyncHeight = syncHeight;
@@ -172,15 +172,22 @@ class SyncListener {
         return;
       }
 
+      final refreshing = isRefreshing();
+      if (!refreshing) {
+        if (isNewTransactionExist()) {
+          onNewTransaction?.call();
+        }
+      }
+
       // 1. Actual new height; 2. Blocks left to finish; 3. Progress in percents;
-      onNewBlock?.call(syncHeight, left, ptc);
+      onNewBlock?.call(syncHeight, left, ptc, refreshing);
     });
   }
 
   void stop() => _updateSyncInfoTimer?.cancel();
 }
 
-SyncListener setListeners(void Function(int, int, double) onNewBlock,
+SyncListener setListeners(void Function(int, int, double, bool) onNewBlock,
     void Function() onNewTransaction) {
   final listener = SyncListener(onNewBlock, onNewTransaction);
   oxen_wallet.setListenerNative();
@@ -207,6 +214,8 @@ bool _setupNodeSync(Map args) {
 }
 
 bool _isConnected(Object _) => isConnectedSync();
+
+bool isRefreshing() => isRefreshingSync();
 
 int _getNodeHeight(Object _) => getNodeHeightSync();
 
