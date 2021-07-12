@@ -162,17 +162,13 @@ class OxenWallet extends Wallet {
 
   @override
   Future<int> getFullBalance() async {
-    print('getFullBalance() start');
     final balance = await oxen_wallet.getFullBalance(accountIndex: _account.value.id);
-    print('getFullBalance() finish');
     return balance;
   }
 
   @override
   Future<int> getUnlockedBalance() async {
-    print('getUnlockedBalance() start');
     final balance = await oxen_wallet.getUnlockedBalance(accountIndex: _account.value.id);
-    print('getUnlockedBalance() finish');
     return balance;
   }
 
@@ -352,9 +348,7 @@ class OxenWallet extends Wallet {
   }
 
   Future askForUpdateTransactionHistory() async {
-    print('askForUpdateTransactionHistory() start');
     await getHistory().update();
-    print('askForUpdateTransactionHistory() finish');
   }
 
   void changeCurrentSubaddress(Subaddress subaddress) =>
@@ -375,7 +369,6 @@ class OxenWallet extends Wallet {
   Future _onNewBlock(int height, int blocksLeft, double ptc, bool isRefreshing) async {
     try {
       if (isRefreshing) {
-        print('is refreshing!!!!');
         _syncStatus.add(SyncingSyncStatus(blocksLeft, ptc));
       } else {
         await askForUpdateTransactionHistory();

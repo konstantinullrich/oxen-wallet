@@ -142,10 +142,8 @@ abstract class ActionListBase with Store {
 
   Future _updateTransactionsList() async {
     // await _history.refresh();
-    print('updateTransactionsList start');
     final _transactions = await _history.getAll();
     await _setTransactions(_transactions);
-    print('updateTransactionsList finish');
   }
 
   Future _onWalletChanged(Wallet wallet) async {
