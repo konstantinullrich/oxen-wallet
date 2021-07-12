@@ -265,9 +265,7 @@ class OxenWallet extends Wallet {
     try {
       _syncStatus.value = StartingSyncStatus();
       oxen_wallet.startRefresh();
-      print('setListeners');
       _setListeners();
-      print('_listener?.start()');
       _listener?.start();
     } catch (e) {
       _syncStatus.value = FailedSyncStatus();
