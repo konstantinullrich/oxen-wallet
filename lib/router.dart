@@ -260,9 +260,10 @@ class Router {
                 child: WalletListPage()));
 
       case Routes.auth:
-        return MaterialPageRoute<void>(
+        return PageRouteBuilder<void>(
             fullscreenDialog: true,
-            builder: (_) => Provider(
+            transitionDuration: Duration(milliseconds: 0),
+            pageBuilder: (_, __, ___) => Provider(
                   create: (_) => AuthStore(
                       sharedPreferences: sharedPreferences,
                       userService: userService,
