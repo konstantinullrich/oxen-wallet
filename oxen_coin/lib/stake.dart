@@ -7,15 +7,18 @@ import 'package:oxen_coin/src/native/stake.dart' as stake_native;
 
 int countOfTransactions() => stake_native.stakeCountNative();
 
-List<StakeRow> getAllStakes() {
+List<StakeRow> _getAllStakesSync(int _) {
   final size = countOfTransactions();
   final stakePointer = stake_native.stakeGetAllNative();
   final stakeAddresses = stakePointer.asTypedList(size);
 
   return stakeAddresses
-      .map((addr) => Pointer<StakeRow>.fromAddress(addr).ref)
+      .map((addr) => StakeRow(Pointer<StakeRowPointer>.fromAddress(addr).ref))
       .toList();
 }
+
+Future<List<StakeRow>> getAllStakes() =>
+    compute<int, List<StakeRow>>(_getAllStakesSync, 0);
 
 PendingTransactionDescription _createStakeSync(Map args) {
   final serviceNodeKey = args['service_node_key'] as String;

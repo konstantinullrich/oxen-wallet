@@ -141,7 +141,7 @@ abstract class ActionListBase with Store {
 //  }
 
   Future _updateTransactionsList() async {
-    await _history.refresh();
+    // await _history.refresh();
     final _transactions = await _history.getAll();
     await _setTransactions(_transactions);
   }

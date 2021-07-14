@@ -18,13 +18,7 @@ class AddressBookPage extends BasePage {
   final bool isEditable;
 
   @override
-  bool get isModalBackButton => true;
-
-  @override
   String get title => S.current.address_book;
-
-  @override
-  AppBarStyle get appBarStyle => AppBarStyle.withShadow;
 
   @override
   Widget trailing(BuildContext context) {

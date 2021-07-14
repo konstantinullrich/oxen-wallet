@@ -31,9 +31,6 @@ class SettingsPage extends BasePage {
   String get title => S.current.settings_title;
 
   @override
-  bool get isModalBackButton => true;
-
-  @override
   Color get backgroundColor => Palette.lightGrey2;
 
   @override

@@ -67,7 +67,7 @@ class SeedPage extends BasePage {
                                 padding: EdgeInsets.only(bottom: 20.0),
                                 margin: EdgeInsets.only(bottom: 10.0),
                                 child: Text(
-                                  walletSeedStore.name,
+                                  walletSeedStore.name ?? '',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 18.0,
