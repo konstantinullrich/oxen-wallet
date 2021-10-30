@@ -30,7 +30,7 @@ Future<PendingTransactionDescription> createStake(
         {'service_node_key': serviceNodeKey, 'amount': amount});
 
 bool canRequestUnstake(String serviceNodeKey) {
-  final serviceNodeKeyPointer = Utf8.toUtf8(serviceNodeKey);
+  final serviceNodeKeyPointer = serviceNodeKey.toNativeUtf8();
   return stake_native.canRequestUnstakeNative(serviceNodeKeyPointer) != 0;
 }
 

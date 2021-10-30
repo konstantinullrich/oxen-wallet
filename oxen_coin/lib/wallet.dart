@@ -49,19 +49,19 @@ bool setupNodeSync(
     String password,
     bool useSSL = false,
     bool isLightWallet = false}) {
-  final addressPointer = Utf8.toUtf8(address);
+  final addressPointer = address.toNativeUtf8();
   Pointer<Utf8> loginPointer;
   Pointer<Utf8> passwordPointer;
 
   if (login != null) {
-    loginPointer = Utf8.toUtf8(login);
+    loginPointer = login.toNativeUtf8();
   }
 
   if (password != null) {
-    passwordPointer = Utf8.toUtf8(password);
+    passwordPointer = password.toNativeUtf8();
   }
 
-  final errorMessagePointer = allocate<Utf8>();
+  final errorMessagePointer = calloc.allocate<Utf8>(255);
   final isSetupNode = oxen_wallet.setupNodeNative(
           addressPointer,
           loginPointer,
@@ -71,9 +71,9 @@ bool setupNodeSync(
           errorMessagePointer) !=
       0;
 
-  free(addressPointer);
-  free(loginPointer);
-  free(passwordPointer);
+  calloc.free(addressPointer);
+  calloc.free(loginPointer);
+  calloc.free(passwordPointer);
 
   if (!isSetupNode) {
     throw SetupWalletException(

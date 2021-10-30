@@ -26,13 +26,13 @@ final accountSetLabelNative = oxenApi
     .asFunction<AccountSetLabel>();
 
 void addAccountSync({String label}) {
-  final labelPointer = Utf8.toUtf8(label);
+  final labelPointer = label.toNativeUtf8();
   accountAddNewNative(labelPointer);
-  free(labelPointer);
+  calloc.free(labelPointer);
 }
 
 void setLabelForAccountSync({int accountIndex, String label}) {
-  final labelPointer = Utf8.toUtf8(label);
+  final labelPointer = label.toNativeUtf8();
   accountSetLabelNative(accountIndex, labelPointer);
-  free(labelPointer);
+  calloc.free(labelPointer);
 }

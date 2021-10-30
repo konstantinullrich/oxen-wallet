@@ -3,12 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:oxen_coin/src/native/wallet_manager.dart' as wallet_manager;
 
 void loadWallet({String path, String password, int nettype = 0}) {
-  final pathPointer = Utf8.toUtf8(path);
-  final passwordPointer = Utf8.toUtf8(password);
+  final pathPointer = path.toNativeUtf8();
+  final passwordPointer = password.toNativeUtf8();
 
   wallet_manager.loadWalletNative(pathPointer, passwordPointer, nettype);
-  free(pathPointer);
-  free(passwordPointer);
+  calloc.free(pathPointer);
+  calloc.free(passwordPointer);
 }
 
 void _createWallet(Map<String, dynamic> args) {
